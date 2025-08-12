@@ -1,0 +1,34 @@
+.switch__container-subscription label {
+  cursor: pointer;
+}
+
+.productView-thumbnail-wrapper {
+  top: 0 !important;
+}
+.product-stories-wrapper {
+  margin: 0 !important;
+}
+.productView-title span,
+.sticky-title,
+.sticky-price * {
+  color: var(--lv_1_color) !important;
+}
+.form-input.quantity__input,
+sticky-add-to-cart {
+  background: var(--bgLight) !important;
+  border: none;
+  color: var(--lv_1_color);
+}
+
+.price-item,
+label,
+.productView-subtotal .text,
+.productView-subtotal .money-subtotal,
+.toggleLink .text,
+.toggle-content {
+  color: var(--lv_1_color) !important;
+}
+.tabs-contents .toggleLink .icon-plus:after,
+.tabs-contents .toggleLink .icon-plus:before {
+  background: var(--lv_1_color) !important;
+}

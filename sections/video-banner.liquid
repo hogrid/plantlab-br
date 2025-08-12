@@ -1,0 +1,86 @@
+<div class="container-video container">
+  <div class="text-section">
+    <div class="text-content left">
+      <h2 class="title-font">Inspirações da semana</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere itaque dolore aperiam consequatur, reprehenderit aut molestiae mollitia repellendus labore voluptatum!
+      </p>
+      <a href="#link-para-cta" class="button button--primary">Clique Aqui!</a>
+    </div>
+  </div>
+  <div class="video-section">
+    <video autoplay muted loop style="pointer-events: none">
+      <source src="https://cdn.shopify.com/videos/c/o/v/b28a051297714713a7570bf88412e220.mp4" type="video/mp4">
+      Seu navegador não suporta vídeos MP4.
+    </video>
+  </div>
+</div>
+
+<style>
+  .container-video {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+
+  .container-video .title-font {
+    font-size: 32px;
+    color: #8B4513;
+  }
+
+  .text-section {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    min-width: 50%;
+  }
+
+  .text-content {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .video-section {
+    flex: 2;
+    padding: 20px;
+  }
+
+  .video-section video {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+  }
+
+  .container-video .button {
+    max-width: 150px;
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .container-video.container {
+      flex-direction: column-reverse;
+      padding-top: 0;
+      padding-bottom: 32px;
+    }
+
+    .container-video.container .video-section {
+      padding: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Banner de Vídeo",
+  "class": "video-banner",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Bannner de Vídeo"
+    }
+  ]
+}
+{% endschema %}

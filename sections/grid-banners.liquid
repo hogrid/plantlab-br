@@ -1,0 +1,175 @@
+{% if section.blocks.size > 0 %}
+  <div class="grid-banners">
+    {% if section.settings.title %}
+      <div class="title-wrapper container">
+        <h2 class="title left">
+          <span class="text">{{ section.settings.title }}</span>
+        </h2>
+      </div>
+    {% endif %}
+  </div>
+  <div class="banner-grid-images container">
+    {% for block in section.blocks %}
+      <div class="grid-banner-item" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+        {% if block.settings.banner_image %}
+          <a href="{{ block.settings.banner_link }}" title="">
+            {{ block.settings.banner_image | image_url: width: 600 | image_tag: class: 'image-pc' }}
+            {% if block.settings.banner_image_mobile %}
+              {{ block.settings.banner_image_mobile | image_url: width: 600 | image_tag: class: 'image-mb' }}
+            {% endif %}
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  <style>
+    .section-grid-banners {
+      padding: 60px 0;
+    }
+
+    .banner-grid-images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 200px 200px 200px;
+      gap: 10px;
+      grid-template-areas:
+        'full minitop right'
+        'full bottom right'
+        'full bottom minibottom';
+    }
+
+    .grid-banners .title {
+      font-size: 48px;
+      color: var(--lv_1_color);
+      margin-bottom: 50px;
+    }
+
+    .banner-grid-images .grid-banner-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .banner-grid-images .grid-banner-item:first-child {
+      grid-area: full;
+    }
+
+    .banner-grid-images .grid-banner-item:nth-child(2) {
+      grid-area: minitop;
+    }
+
+    .banner-grid-images .grid-banner-item:nth-child(3) {
+      grid-area: bottom;
+    }
+
+    .banner-grid-images .grid-banner-item:nth-child(4) {
+      grid-area: right;
+    }
+
+    .banner-grid-images .grid-banner-item:nth-child(5) {
+      grid-area: minibottom;
+    }
+
+    .image-mb {
+      display: none !important;
+    }
+
+    .image-pc {
+        display: block !important;
+    }
+
+    @media (max-width: 767px) {
+      .section-grid-banners {
+        padding: 20px 0;
+      }
+
+      .image-mb {
+        display: block !important;
+      }
+
+      .image-pc {
+        display: none !important;
+      }
+
+      .section-grid-banners .title {
+        margin: 16px 0;
+      }
+
+      .section-grid-banners .title span {
+        font-size: 32px;
+      }
+
+      .banner-grid-images {
+        display: flex;
+        overflow-x: scroll;
+      }
+
+      .banner-grid-images .grid-banner-item {
+        flex: 1;
+        min-width: 80%;
+      }
+
+      .banner-grid-images .grid-banner-item {
+        grid-area: unset;
+      }
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Grid Banners",
+  "class": "section-grid-banners",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titulo"
+    },
+    {
+      "type": "text",
+      "id": "descricao",
+      "label": "Texto descritivo"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Texto descritivo"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto do CTA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bannner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Imagem do banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "banner_image_mobile",
+          "label": "Imagem Mobile banner"
+        },
+        {
+          "type": "url",
+          "id": "banner_link",
+          "label": "Link do banner"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid Banners"
+    }
+  ]
+}
+{% endschema %}

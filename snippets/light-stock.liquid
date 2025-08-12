@@ -1,0 +1,58 @@
+{% liquid
+  assign stock = product.selected_or_first_available_variant.inventory_quantity
+
+  if stock > 50
+    assign color = '#2ecc71'
+    assign text = 'Em estoque'
+  elsif stock < 50 and stock != 0
+    assign color = '#f1c40f'
+    assign text = 'Últimas unidades'
+  else
+    assign color = '#e74c3c'
+    assign text = 'Sem estoque'
+  endif
+%}
+
+<div class="light-stock">
+  <div class="light-blob" style="--blob-color: {{ color }}; --blob-pulse-color: {{ color |  color_modify: 'alpha', 0 }}; --blob-pulse-color-final: {{ color |  color_modify: 'alpha', 0.7 }};"></div>
+  <span class="text">{{ text }}</span>
+</div>
+
+<style>
+    .light-stock {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-weight: 400;
+        color: var(--lv_1_color);
+    }
+    .light-blob {
+        background: var(--blob-color);
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 var(--blob-color);
+        margin: 10px 10px 10px 0;
+        height: 8px;
+        width: 8px;
+        transform: scale(1);
+        animation: pulse-black 2s infinite;
+        display: inline-block;
+    }
+
+
+    @keyframes pulse-black {
+        0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 var(--blob-pulse-color-final);
+        }
+
+        70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 8px var(--blob-pulse-color);
+        }
+
+        100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 var(--blob-pulse-color);
+        }
+    }
+</style>

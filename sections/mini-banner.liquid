@@ -1,0 +1,284 @@
+<div
+  class="container-1170"
+  id="mini-banner-{{ section.id }}"
+  style="--spacing-top: {{ section.settings.spacing_top }}px;--spacing-bottom: {{ section.settings.spacing_bottom }}px; --spacing-top-tb: {{ section.settings.spacing_top_tb }}px;--spacing-bottom-tb: {{ section.settings.spacing_bottom_tb }}px;--spacing-top-tb: {{ section.settings.spacing_top_tb }}px;--spacing-bottom-mb: {{ section.settings.spacing_top_mb }}px;--spacing-top-mb: {{ section.settings.spacing_bottom }}px; --spacing-top-tb: {{ section.settings.spacing_top_tb }}px;--spacing-bottom-tb: {{ section.settings.spacing_bottom_tb }}px;--spacing-top-tb: {{ section.settings.spacing_top_tb }}px;--spacing-bottom-mb: {{ section.settings.spacing_bottom_mb }}px;--spacing-top-mb: {{ section.settings.spacing_top_mb }}px;"
+>
+  <div
+    class="mini-banner-wrapper"
+    style=""
+  >
+    <div class="text-content">
+      <h2 class="minibanner-title">{{ section.settings.title }}</h2>
+      <p>{{ section.settings.description }}</p>
+      <a href="{{ section.settings.button_link }}" class="cta-button button button--primary">
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+    <div
+      class="image-content"
+      style="--position: {{ section.settings.position }}%;--width: {{ section.settings.width }}%;"
+    >
+      <img src="{{ section.settings.image_bg | img_url: 'large' }}" alt="Background Image" class="bg-image">
+      <img src="{{ section.settings.image_banner | img_url: 'large' }}" alt="Banner Image" class="banner-image">
+    </div>
+  </div>
+</div>
+
+<style>
+  .mini-banner #mini-banner-{{ section.id }} {
+    padding-top: var(--spacing-top);
+    padding-bottom: var(--spacing-bottom);
+  }
+
+  #mini-banner-{{ section.id }} .mini-banner-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--bgLight);
+    border-radius: 30px;
+    gap: 0px;
+    {% if section.settings.reverse %}flex-direction: row-reverse;{% endif %};
+    height: 300px;
+  }
+
+  .mini-banner #mini-banner-{{ section.id }} .text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .mini-banner #mini-banner-{{ section.id }} .text-content h2 {
+    margin: 0 0 20px;
+    color: {{ section.settings.content_color }};
+    max-width: 50%;
+    line-height: 1.1;
+  }
+
+  .mini-banner #mini-banner-{{ section.id }} .text-content p {
+    margin: 0 0 20px;
+    color: {{ section.settings.content_color }};
+    font-size: 16px;
+    color: var(--lv_1_color) !important;
+  }
+
+  .mini-banner #mini-banner-{{ section.id }} .text-content .cta-button {
+    color: {{ section.settings.button_color }};
+    background: linear-gradient(90deg, rgba(142, 1, 205, 1), rgba(248, 80, 111, 1) 100%);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 999px;
+    margin: 0;
+    max-width: 160px;
+  }
+
+  .mini-banner #mini-banner-{{ section.id }} .image-content {
+    flex: 1;
+    position: relative;
+  }
+  .mini-banner  #mini-banner-{{ section.id }} .image-content .bg-image {
+    width: 100%;
+    height: 100%;
+    border-radius: {% if section.settings.reverse %}20px 0 0 20px{% else %}0 20px 20px 0{% endif %};
+    pointer-events: none;
+    user-select: none;
+    height: 300px;
+  }
+  .mini-banner #mini-banner-{{ section.id }} .image-content .banner-image {
+    position: absolute;
+    bottom: 0;
+    left: var(--position);
+    transform: translateX(-50%);
+    pointer-events: none;
+    user-select: none;
+    width: var(--width);
+  }
+
+  .minibanner-title {
+    font-size: 32px !important;
+    color: var(--lv_1_color) !important;
+  }
+
+  @media (max-width: 767px) {
+    #mini-banner-{{ section.id }} .mini-banner-wrapper {
+      gap: 0;
+      display: block;
+      height: auto;
+    }
+
+    #mini-banner-{{ section.id }} {
+      padding-top: var(--spacing-top-mb) !important;
+      padding-bottom: var(--spacing-bottom-mb) !important;
+    }
+
+    .mini-banner #mini-banner-{{ section.id }} .text-content {
+      padding: 30px;
+    }
+
+    .mini-banner  #mini-banner-{{ section.id }} .image-content .bg-image {
+      border-radius: 0 0 20px 20px;
+    }
+
+    .mini-banner  #mini-banner-{{ section.id }} .image-content {
+      overflow: hidden;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Mini Banner",
+  "class": "mini-banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Espaçamento Superior"
+    },
+    {
+      "type": "range",
+      "id": "spacing_top",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "spacing_top_tb",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Tablet",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "spacing_top_mb",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Dispositivos Móveis",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento Inferior"
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom_tb",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Tablet",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom_mb",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Dispositivos Móveis",
+      "default": 50
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Inverter lados"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Descrição"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Cor do conteúdo"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texto do botão"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link do botão"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Cor de fundo do botão"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Cor do botão"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_bg",
+      "label": "Imagem de fundo",
+      "info": "Lado do banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_banner",
+      "label": "Imagem do banner"
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Largura",
+      "min": 10,
+      "max": 100,
+      "default": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "position",
+      "label": "Posição",
+      "min": 10,
+      "max": 100,
+      "default": 50,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "color",
+      "id": "color_content",
+      "label": "Cor de fundo do conteúdo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mini Banner"
+    }
+  ]
+}
+{% endschema %}

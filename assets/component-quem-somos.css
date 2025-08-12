@@ -1,0 +1,98 @@
+html[data-theme="dark"] .video-section {
+    background-color: #131313;
+}
+
+html[data-theme="light"] .video-section {
+    background-color: transparent;
+}
+
+.video-section .title {
+    line-height: 1.1;
+}
+
+.video-section .titel br {
+    content: "";
+    margin: 2em;
+    display: block;
+    font-size: 24%;
+}
+
+.video-section video {
+    pointer-events: none;
+    user-select: none;
+}
+
+.video-section .subtext-video {
+    margin-top: 1.6rem;
+    color: var(--lv_1_color) !important;
+    max-width: 500px;
+}
+
+.rich-text p {
+    color: var(--lv_1_color) !important;
+}
+
+.sections-rich-text-video .container {
+    display: flex;
+    gap: 1.6rem;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sections-rich-text-video .container {
+    background: url('https://cdn.shopify.com/s/files/1/0729/4917/0461/files/Gradient.png?v=1728656662');
+    padding: 60px 0 !important;
+    border-radius: 1.6rem;
+    background-size: cover;
+}
+
+.sections-rich-text-video .heading span {
+    line-height: 1.1;
+}
+
+.sections-rich-text-video .container video {
+    width: 400px;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 1.6rem; 
+    pointer-events: none;
+    user-select: none;
+}
+
+@media (max-width: 767px) {
+    .video-section .container {
+        flex-direction: column-reverse !important;
+        gap: 1.6rem;
+    }
+
+    .sections-rich-text-video .container {
+        flex-direction: column !important;
+    }
+
+    .sections-rich-text-video .rich-text__blocks {
+        max-width: 90% !important; 
+    }
+
+    .sections-rich-text-video .container video {
+        width: 90% !important;
+        max-height: none !important;
+        height: auto !important;
+    }
+
+    .section-text-animation {
+        position: relative;
+        margin-bottom: 0px;
+     }
+
+     .content__container {
+        display: flex;
+        flex-direction: column;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+     }
+
+     .content__container__list {
+        padding: 0 !important;
+     }
+}

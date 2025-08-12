@@ -1,0 +1,284 @@
+<div class="bg-planos" data-config="{{ 'particlesjs-config-assinatura.json' | asset_url }}">
+  <div id="particles-js-assinatura"></div>
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="text-center">
+        <h2 class="main-title" data-aos="fade-up">
+          {{ section.settings.section_title }}
+        </h2>
+      </div>
+      <div class="planos-wrapper">
+        <div class="planos-mensal">
+          <div class="comparePlanos p-3">
+            <div class="points-unique">
+              <span class="text"> {{ section.settings.pontos_unica }} <span class="points">{{ section.settings.texto_pontos_unica }}</span>
+              </span>
+            </div>
+            <h2>{{ section.settings.title_unica }}</h2>
+          </div>
+          <ul class="planos-list">
+            <li>
+              <b>{{ section.settings.subtitulo_unica }}</b>
+              <p>{{ section.settings.desc_unica }}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="planos-anual">
+          <div class="points-subscription">
+            <span class="text gd-text"> {{ section.settings.pontos_assinatura }}<span class="points"> {{ section.settings.texto_pontos_assinatura }}</span>
+            </span>
+          </div>
+          <div class="comparePlanos p-3">
+            <h2>{{ section.settings.title_assinatura }}</h2>
+          </div>
+          <ul class="planos-list">
+            <li>
+              <b>{{ section.settings.subtitulo_assinatura }}</b>
+              <p>{{ section.settings.desc_assinatura }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a href="{{ section.settings.link_cta }}" class="button button--primary m-lr-auto cta-points">
+        {{ section.settings.button_cta }}
+      </a>
+    </div>
+  </div>
+</div>
+<style>
+  .bg-planos {
+    background: linear-gradient(90deg, rgba(0,125,186,1) 0%, rgba(12,175,255,1) 100%);;
+    background-size: 120% 120%;
+    animation: gradient-animation 2s ease infinite;
+    padding: 30px 0 60px 0;
+  }
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
+  .bg-planos .main-title {
+    font-size: 48px;
+    line-height: 1.1;
+    color: #fff;
+    font-weight: 700;
+  }
+  .planos-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .comparePlanos h2 {
+    color: var(--lv_1_color);
+    font-size: 32px;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .points {
+    font-size: 14px;
+    background: none;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+    color: var(--lv_1_color);
+  }
+
+  .points-unique,
+  .points-subscription {
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .points-unique .text {
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .points-subscription .text {
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .planos-mensal,
+  .planos-anual {
+    border-radius: 0;
+    background-color: var(--bgLight);
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 1;
+    max-width: 500px;
+    color: var(--lv_1_color);
+  }
+
+  .planos-anual {
+    border-radius: 0 20px 20px 0;
+    background: var(--gray-800);
+  }
+
+  html[data-theme='light'] .planos-anual {
+    background: var(--gray-100);
+  }
+
+  .planos-mensal {
+    border-radius: 20px 0 0 20px;
+  }
+
+  .planos-list {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .planos-list {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .planos-list li {
+    padding: 20px 10px;
+  }
+
+  .planos-list li:not(:last-child) {
+    border-bottom: 1px solid var(--gray-700);
+  }
+
+  .planos-list li:nth-last-child(2) {
+    border: none !important;
+  }
+
+  .planos-list li p {
+    margin: 4px 0;
+  }
+
+  .planos-list li b {
+    margin-bottom: 8px;
+  }
+
+  .button-assinatura.button {
+    color: #fff !important;
+    background: linear-gradient(255deg, darkviolet, #f34c73) !important;
+    background-size: 120% 120%;
+    animation: gradient-animation 2s ease infinite;
+    max-width: 200px;
+    scale: 1;
+  }
+
+  .cta-points {
+    max-width: 150px;
+    margin-top: 20px;
+  }
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 32px !important;
+    }
+
+    .comparePlanos h2 {
+      font-size: 20px;
+    }
+
+    .planos-wrapper {
+      flex-direction: column  !important;
+      gap: 10px;
+    }
+
+    .planos-wrapper * {
+      border-radius: 18px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Tabela de Clube de pontos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Título da seção"
+    },
+    {
+      "type": "text",
+      "id": "title_unica",
+      "label": "Título lado esquerdo"
+    },
+    {
+      "type": "text",
+      "id": "pontos_unica",
+      "label": "Quantidade de pontos"
+    },
+    {
+      "type": "text",
+      "id": "texto_pontos_unica",
+      "label": "Texto de pontos"
+    },
+    {
+      "type": "text",
+      "id": "subtitulo_unica",
+      "label": "Subtitulo"
+    },
+    {
+      "type": "text",
+      "id": "desc_unica",
+      "label": "Descrição"
+    },
+        {
+      "type": "text",
+      "id": "title_assinatura",
+      "label": "Título lado Direito"
+    },
+    {
+      "type": "text",
+      "id": "pontos_assinatura",
+      "label": "Quantidade de pontos"
+    },
+    {
+      "type": "text",
+      "id": "texto_pontos_assinatura",
+      "label": "Texto de pontos"
+    },
+    {
+      "type": "text",
+      "id": "subtitulo_assinatura",
+      "label": "Subtitulo"
+    },
+    {
+      "type": "text",
+      "id": "desc_assinatura",
+      "label": "Descrição"
+    },
+    {
+      "type": "text",
+      "id": "button_cta",
+      "label": "Texto do botão"
+    },
+    {
+      "type": "url",
+      "id": "link_cta",
+      "label": "Link do botão"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabela de Clube de pontos"
+    }
+  ]
+}
+{% endschema %}

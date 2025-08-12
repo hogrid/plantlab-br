@@ -1,0 +1,357 @@
+<style>
+  .stories-container {
+    display: none;
+    visibility: hidden;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 100%;
+    left: 0;
+    z-index: 99999 !important;
+    background-color: #000000ee;
+  }
+
+  .show-stories {
+    display: flex;
+    visibility: visible;
+    top: 0;
+  }
+
+  .stories-container .button--close {
+    display: block;
+    position: absolute;
+    background-color: #000;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+    border-radius: 10%;
+    border: none;
+  }
+
+  .stories-container .button--close svg {
+    fill: #fff;
+    stroke: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .product-story-video,
+  .product-story-video iframe {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .product-story-video video {
+    width: 100%;
+    height: 100%;
+  }
+
+  .stories-container .stories-wrapper {
+    width: 72.5%;
+  }
+
+  .stories-wrapper .slick-prev {
+    margin-left: 20px;
+  }
+  .stories-wrapper .slick-next {
+    margin-right: 20px;
+  }
+  .stories-wrapper .slick-arrow {
+    border: 1px solid #fff;
+  }
+  .stories-wrapper .slick-arrow svg {
+    fill: #000;
+    color: #000;
+  }
+
+  .stories-container .stories-info {
+    width: 27.5%;
+    background-color: #fff;
+    padding: 10px 30px 10px 20px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .stories-price .price-item {
+    font-size: calc(var(--product-price-font-size) + 6px);
+  }
+
+  .stories-price .price {
+    justify-content: left;
+  }
+
+  .stories-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  select.stories-select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #cecece;
+  }
+
+  .stories-tab .tab-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 10px 0;
+    border-bottom: 1px solid #cecece;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+  .stories-tab .tab-title p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .stories-tab-content {
+    height: 0px;
+    overflow: hidden;
+    transition: height 1s;
+  }
+
+  .open-tab {
+    height: auto;
+    overflow: auto;
+    max-height: 450px;
+  }
+
+  .story-product-images img {
+    width: 100%;
+  height: 100%;
+  object-fit: cover;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .stories-container .stories-wrapper {
+      width: 62.5%;
+    }
+    .stories-container .stories-info {
+      width: 37.5%;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .stories-container .stories-wrapper {
+      width: 50%;
+    }
+    .stories-container .stories-info {
+      width: 50%;
+    }
+
+    .stories-container .button--close {
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .stories-container .stories-wrapper {
+      width: 100%;
+    }
+    .stories-container .stories-info {
+      display: none !important;
+      width: 0%;
+    }
+
+    .stories-container .button--close {
+      left: 10px !important;
+      top: 50px !important;
+      right: unset;
+    }
+  }
+</style>
+
+<div class="stories-container" data-stories>
+  <div class="stories-wrapper">
+    {% if product.metafields.custom.video_stories.value != blank %}
+      {% for video in product.metafields.custom.video_stories.value %}
+        <div class="product-story-video">
+          {{ video | video_tag: controls: true, autoplay: false, muted: true }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <div class="stories-info">
+    <div class="stories-top">
+      <div class="variant-images images-slider">
+        {% for image in product.images %}
+          <div class="story-product-images">
+            {{ image | image_url: width: 200 | image_tag }}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="stories-header">
+        <h3 class="title">
+          <span class="text">{{ product.title }}</span>
+        </h3>
+      </div>
+      <div class="stories-price">
+        {% render 'price' %}
+      </div>
+      <div class="stories-form">
+        {% form 'product', product %}
+          <input type="hidden" id="variants-json" value="{{ product.variants | json }}">
+          <input
+            type="hidden"
+            id="selected-variant"
+            name="id"
+            value="{{ product.selected_or_first_available_variant.id }}"
+          >
+          {% if product.variants.size > 1 %}
+            {% for option in product.options_with_values %}
+              <select class="stories-select" name="{{ option.name }}" data-index="option{{ option.position }}">
+                {%- for value in option.values -%}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            {% endfor %}
+          {% endif %}
+          {% if product.available %}
+            <button class="button button--primary button-gradient" data-stories-add-to-cart>Adicionar ao carrinho</button>
+          {% else %}
+            <button class="button button--primary" disabled>Esgotado</button>
+          {% endif %}
+        {% endform %}
+      </div>
+      <div class="stories-description">
+        <div class="stories-tab" data-tab-handler>
+          <span class="tab-title">
+            <p>Descrição</p>
+            <span class="desc-down">{% render 'icon-down' %}</span></span
+          >
+        </div>
+        <div class="stories-tab-content open-tab">{{ product.description }}</div>
+      </div>
+    </div>
+  </div>
+  <button class="button--close" data-close-stories>{% render 'icon-close' %}</button>
+</div>
+
+<script>
+  window.imageSlider = $('.images-slider').slick({
+    infinite: false,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    nextArrow: window.arrows.icon_next,
+    prevArrow: window.arrows.icon_prev,
+  });
+
+  window.storiesSlider = $('.stories-wrapper').slick({
+    infinite: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: window.arrows.icon_next,
+    prevArrow: window.arrows.icon_prev,
+  });
+
+  
+  // play respecitve video when slide changes and when video ends go to next slide
+  window.storiesSlider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    document.querySelectorAll('.product-story-video video').forEach((video) => {
+      video.pause();
+    });
+
+    document.querySelectorAll('.youtube-video').forEach((item) => {
+      item.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+    });
+
+    let video = document.querySelectorAll('.product-story-video video')[nextSlide];
+    if (video) {
+      video.play();
+      video.muted = false
+    }
+  }); 
+
+  let closeStories = document.querySelectorAll('[data-close-stories]');
+  closeStories.forEach((item) => {
+    item.addEventListener('click', function () {
+      document.querySelectorAll('.product-story-video video').forEach((video) => {
+        video.pause();
+      });
+
+      let storiesConteiner = document.querySelector('[data-stories]');
+      storiesConteiner.classList.remove('show-stories');
+
+      // Para o video do youtube
+      document.querySelectorAll('.youtube-video').forEach((item) => {
+        item.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+      });
+
+      // Travar scroll do body
+      document.querySelector('body').classList.remove('stories-opened');
+    });
+  });
+
+  document.querySelector('[data-tab-handler]').addEventListener('click', function () {
+    let content = this.nextElementSibling;
+    content.classList.toggle('open-tab');
+  });
+
+  document.querySelector('.stories-form form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    let variantId = Number(document.querySelector('#selected-variant').value);
+
+    let target = $(this).find('[data-stories-add-to-cart]');
+
+    Shopify.addItem(variantId, 1, target, () => {
+      document.querySelector('[data-stories]').classList.remove('show-stories');
+      Shopify.getCart(window.updateCart);
+      document.body.classList.add('cart-sidebar-show');
+    });
+  });
+
+  // Função para encontrar o ID da variante
+  function findVariantId(options) {
+    // Obtenha a lista de variantes do elemento 'variants-json'
+    let variants = JSON.parse(document.querySelector('#variants-json').value);
+
+    // Filtre as variantes com base nas opções selecionadas
+    let filteredVariants = variants.filter(function (variant) {
+      for (const key in options) {
+        if (variant[key] !== options[key]) {
+          return false; // A variante não corresponde a todas as opções selecionadas
+        }
+      }
+      return true; // A variante corresponde a todas as opções selecionadas
+    });
+
+    // Exiba o resultado
+    let selectedVariant = document.querySelector('#selected-variant');
+    selectedVariant.value = filteredVariants[0].id;
+
+    // Checa disponibilidade da variante
+    let buyButton = document.querySelector('[data-stories-add-to-cart]');
+    if (!filteredVariants[0].available) {
+      buyButton.setAttribute('disabled', 'true');
+      buyButton.textContent = 'ESGOTADO';
+    } else {
+      buyButton.removeAttribute('disabled');
+      buyButton.textContent = 'ADICIONAR AO CARRINHO';
+    }
+
+    // muda o slide
+    window.imageSlider.slick('slickGoTo', filteredVariants[0].featured_image.position);
+  }
+
+  // Adicionar ouvinte de evento 'change' a todos os elementos com a classe 'stories-select'
+  document.querySelectorAll('.stories-select').forEach(function (select) {
+    select.addEventListener('change', function () {
+      let options = {};
+      document.querySelectorAll('.stories-select').forEach(function (select) {
+        options[select.getAttribute('data-index')] = select.value;
+      });
+      findVariantId(options);
+    });
+  });
+</script>

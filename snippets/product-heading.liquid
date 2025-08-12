@@ -1,0 +1,13 @@
+{% if block.settings.title %}
+    <div class="product-heading">
+        <span class="text">
+            {{ block.settings.title }}
+        </span>
+        {% if block.settings.subtitle %}
+            <span class="subtitle">
+                {{ block.settings.subtitle }}
+            </span>
+        {% endif %}
+        <span class="subtitle"></span>
+    </div>
+{% endif %}

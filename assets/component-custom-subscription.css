@@ -1,0 +1,224 @@
+.rc-widget {
+  padding-bottom: 0 !important;
+  margin-bottom: 12px;
+}
+
+.rc-template__radio-group .rc-radio .rc-radio__label {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.rc-widget {
+  /* background: #f9f9f9;
+  border: 1px solid #eee; */
+  padding: 0.5rem;
+}
+
+.rc-selling-plans {
+  margin: 0 !important;
+  padding: 20px !important;
+  padding-top: 0px !important;
+  padding-bottom: 15px !important;
+}
+
+.rc-radio-group__options {
+  border: 0 !important;
+}
+
+.rc-radio__input {
+  margin: 0 !important;
+}
+
+/* .rc-template__radio {
+  border: 1px solid #eee;
+  background: #f9f9f9;
+} */
+
+.rc-radio__label {
+  margin-left: 0px !important;
+}
+
+.rc-selling-plans,
+.rc-template__radio label {
+  background: none !important;
+}
+
+.rc-selling-plans-dropdown__select {
+  border: 1px solid #eee;
+}
+
+.rc-selling-plans-dropdown__select:focus-visible {
+  outline: 0;
+}
+
+.rc-selling-plans-dropdown__label,
+.rc-subscription-details__button,
+.arrow,
+.rc-tooltip__footer {
+  display: none !important;
+}
+
+.rc-template__radio,
+.rc-selling-plans-dropdown,
+.rc-selling-plans-dropdown__select,
+.rc-widget {
+  border-radius: 8px;
+}
+
+.rc-tooltip {
+  position: relative !important;
+  max-width: fit-content !important;
+  top: 0 !important;
+  box-shadow: none !important;
+}
+
+.rc-subscription-details {
+  padding: 0 !important;
+  max-width: 100%;
+}
+
+.rc-radio {
+  border: 2px solid var(--product-color-transparent);
+  border-radius: 12px;
+  transition: all 0.3s ese;
+  padding-left: 20px !important;
+}
+
+.rc-radio + .rc-selling-plans {
+  border-radius: 0 0 12px 12px;
+  border: 2px solid var(--product-color-transparent);
+  border-top: 0;
+  margin-bottom: 6px !important;
+}
+
+.rc-radio:has(input:checked),
+.rc-radio:has(input:checked) + .rc-selling-plans {
+  border-color: var(--product-color);
+}
+
+.rc-radio:not(:has(input:checked)),
+.rc-radio:not(:has(input:checked)) + .rc-selling-plans {
+  display: none;
+}
+
+.rc-radio:has(+ .rc-selling-plans) {
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+}
+
+.rc-radio__label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.rc-radio__label span,
+.rc-radio__label {
+  text-transform: none;
+  font-size: 14px;
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  color: var(--lv_1_color);
+}
+
+/* .rc-radio__label::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  outline: 2px solid var(--product-color);
+  outline-offset: 2px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.rc-radio:has(input:checked) .rc-radio__label::before {
+  background: var(--product-color);
+} */
+
+.rc-radio__subscription::after {
+  display: inline-block;
+  padding: 0px 12px;
+  color: var(--white);
+  background: var(--product-color);
+  border-radius: 999px;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+html[data-theme="dark"] .rc-widget label,
+html[data-theme="dark"] .rc-widget label + .rc-selling-plans {
+  background-color: var(--bgLight) !important;
+}
+
+html[data-theme="dark"] .nice-select,
+html[data-theme="dark"] .nice-select .nice-select-dropdown {
+  background-color: var(--gray-700) !important;
+  border: 1px solid var(--gray-700) !important;
+  color: var(--lv_1_color) !important;
+}
+
+html[data-theme="dark"] .nice-select .option:hover,
+html[data-theme="dark"] .nice-select .option.focus,
+html[data-theme="dark"] .nice-select .option.selected.focus {
+  border: none !important;
+  background-color: var(--gray-700) !important;
+  color: var(--lv_1_color) !important;
+}
+
+html[data-theme="dark"] .nice-select .option:hover,
+html[data-theme="dark"] .nice-select .option.focus,
+html[data-theme="dark"] .nice-select .option.selected.focus {
+  background-color: var(--gray-500) !important;
+  border-color: transparent;
+}
+
+.nice-select .list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* SWITCH */
+/* Estilo iOS */
+.switch__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--bgLight);
+  border-radius: 999px;
+}
+
+.switch__container > * {
+  flex: 1;
+  cursor: pointer;
+}
+
+.subscription-switch-text {
+  font-size: 16px;
+  color: var(--lv_1_color);
+  z-index: 1;
+  position: relative;
+}
+
+.subscription-switch .switch__indicator {
+  z-index: 0;
+  transform: translateY(-50%) translateX(calc(100% + 10px));
+}
+
+.subscription-switch .switch__indicator {
+  padding: 5px;
+}
+
+.switch__container label:has(input:checked) .subscription-switch-text {
+  color: var(--white);
+}
+
+.switch__container-subscription:has(label[for="compra-avulsa"] input:checked)
+  + .switch__indicator {
+  transform: translateX(10px) translateY(-50%);
+}

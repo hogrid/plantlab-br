@@ -1,0 +1,385 @@
+{% if product.metafields.custom.tabela_comparativa.value != blank %}
+<div
+  style="--product-color-bg: {{ product.metafields.custom.hexadecimal_2.value | default: 'var(--product-color);' }}"
+  class="product-table"
+  id="table-ingredients"
+>
+  <div class="table-section">
+    <div class="table-container">
+      <div class="table-heading">
+        <h2>Porque a Plantlab?</h2>
+      </div>
+
+      <div class="table-content">
+        <ul class="ingredients-list">
+          {% for item in product.metafields.custom.tabela_comparativa.value %}
+            {% assign text = item | split: ';' %}
+            <li>{{ text[0] }}</li>
+          {% endfor %}
+        </ul>
+
+        <ul class="product-values">
+          <li class="product-heading-table">
+            <span>
+              <img
+                class="d-block center m-lr-auto"
+                src="/cdn/shop/files/novo_logo_420x.png?v=1682441422"
+                width="117"
+                height="22"
+              >
+            </span>
+          </li>
+
+          {% for item in product.metafields.custom.tabela_comparativa.value %}
+            {% assign text = item | split: ';' %}
+            <li>{{ text[1] }}</li>
+          {% endfor %}
+
+          <li class="hidden-mobile">
+            <a href="{{ product.url }}" class="call-to-action button--primary button">Compre agora</a>
+          </li>
+        </ul>
+
+        <ul class="comparison-values">
+          <li class="comparison-heading">
+            <b>Outros</b>
+          </li>
+
+          {% for item in product.metafields.custom.tabela_comparativa.value %}
+            {% assign text = item | split: ';' %}
+            <li>{{ text[2] }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-table {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .table-section {
+    margin: 0 0 100px;
+    padding: 50px 0;
+  }
+
+  @media (min-width: 100px) and(max-width: 768px) {
+    .table-section {
+      margin: 40px 0;
+      padding: 24px 0;
+    }
+  }
+
+  .table-container {
+    max-width: 1090px;
+    margin: 0 auto;
+  }
+
+  .table-heading {
+    text-align: center;
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 100px) and(max-width: 600px) {
+    .table-heading {
+      max-width: 90%;
+    }
+  }
+
+  .table-heading h2 {
+    font-size: 48px;
+    color: var(--lv_1_color);
+    font-weight: 700;
+  }
+
+  @media (min-width: 100px) and(max-width: 768px) {
+    .table-heading h2 {
+      font-size: 32px;
+    }
+  }
+
+  .table-heading p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 0;
+    color: var(--lv_1_color);
+  }
+
+  .table-content {
+    text-align: center;
+  }
+
+  @media (min-width: 100px) and(max-width: 600px) {
+    .table-content {
+      margin-top: 30px;
+    }
+  }
+
+  .table-content ul {
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 28%;
+    list-style: none;
+    overflow: hidden;
+    border-radius: 8px;
+    padding: 0;
+  }
+
+  .table-content ul li {
+    display: flex;
+    align-items: center;
+    min-height: 74px;
+    line-height: 1;
+  }
+
+  .ingredients-list {
+    border: 1px solid var(--gray-100);
+  }
+
+  .table-content ul:not(.ingredients-list) li {
+    justify-content: center;
+  }
+
+  @media (min-width: 100px) and(max-width: 768px) {
+    .ingredients-list {
+      width: calc(40% - 2px) !important;
+    }
+  }
+
+  .ingredients-list li {
+    text-align: left;
+    color: var(--lv_1_color);
+    font-weight: 400;
+    font-size: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--gray-100);
+    min-height: 74px;
+  }
+
+  @media (min-width: 100px) and(max-width: 600px) {
+    .ingredients-list li {
+      font-size: 14px;
+      padding: 12px;
+    }
+  }
+
+  .ingredients-list li:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+  }
+
+  .product-values {
+    position: relative;
+    margin: 0 -20px;
+    top: 50px;
+    background: var(--product-color-bg);
+    border-radius: 20px !important;
+    z-index: 2;
+    padding: 0;
+  }
+
+  @media (min-width: 100px) and(max-width: 768px) {
+    .product-values {
+      width: calc(30% - 2px) !important;
+    }
+  }
+
+  @media (min-width: 100px) and(max-width: 600px) {
+    .product-values {
+      top: 20px;
+    }
+  }
+
+  .product-heading-table {
+    padding-top: 22px !important;
+    padding-bottom: 14px !important;
+  }
+
+  .product-heading-table img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .product-values li {
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    padding: 16px 20px;
+  }
+
+  @media (min-width: 100px) and(max-width: 600px) {
+    .product-values li {
+      font-size: 14px;
+      padding: 12px;
+    }
+  }
+
+  .call-to-action {
+    text-transform: inherit;
+  }
+
+  @media (min-width: 100px) and(max-width: 600px) {
+    .call-to-action {
+      display: none;
+    }
+  }
+
+  .comparison-values {
+    background: var(--bgLight);
+  }
+
+  @media (min-width: 100px) and(max-width: 600px) {
+    .comparison-values {
+      margin-left: 12px;
+      background: #fff;
+    }
+  }
+
+  @media (min-width: 100px) and(max-width: 768px) {
+    .comparison-values {
+      width: calc(30% - 2px) !important;
+    }
+  }
+
+  .comparison-heading {
+    border-bottom: 1px solid rgba(0, 0, 0, 0) !important;
+  }
+
+  .comparison-values li {
+    text-align: center;
+    color: var(--lv_1_color);
+    font-size: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--gray-800);
+  }
+  html[data-theme='light'] .comparison-values li {
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  @media (min-width: 100px) and(max-width: 600px) {
+    .comparison-values li {
+      font-size: 14px;
+      padding: 12px;
+    }
+  }
+
+  .comparison-values li:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+  }
+
+  html[data-theme='dark'] .ingredients-list {
+    border-color: var(--gray-800);
+  }
+
+  html[data-theme='dark'] .ingredients-list li {
+    border-color: var(--gray-800);
+  }
+
+  @media (max-width: 767px) {
+    .table-heading h2 {
+      font-size: 32px;
+      line-height: 1.1;
+      margin-top: 0;
+    }
+
+    .table-section {
+      padding: 24px 0;
+    }
+
+    .table-content {
+      display: flex;
+      padding: 0 15px;
+      margin-top: 70px;
+    }
+
+    .table-content ul {
+      flex: 1;
+      width: auto;
+      min-width: 150px;
+    }
+
+    .table-content .ingredients-list {
+       top: 24px
+    }
+
+    .product-values {
+      margin: 0;
+    }
+
+    .comparison-values {
+      margin-top: 0;
+    }
+
+    .product-values,
+    .comparison-values {
+      top: -50px;
+    }
+
+    .table-content ul {
+      height: fit-content;
+    }
+
+    .table-content ul li {
+      height: 50px !important;
+      font-size: 12px;
+    }
+
+    .table-content > ul {
+      width: 33% !important;
+      min-width: 33% !important;
+      max-width: 33% !important;
+      margin: 0;
+      border: none;
+    }
+
+    .ingredients-list li {
+      font-size: 12px;
+      padding: 15px !important;
+      border: none !important;
+      background-color: var(--bgLight);
+    }
+
+    .ingredients-list {
+      border-radius: 12px 0 0 12px !important;
+    }
+
+    ul.product-values {
+      border-radius: 12px 0 0 0px !important;
+    }
+
+    .product-values li {
+      padding: 16px 6px !important;
+    }
+
+    .product-heading-table img {
+      max-width: 80% !important;
+    }
+
+    .comparison-values {
+      border-radius: 0 12px 12px 0 !important;
+    }
+
+    .table-section {
+      margin-bottom: 0px;
+    }
+  }
+</style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Tabela Comparativa",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Tabela Comparativa"
+    }
+  ]
+}
+{% endschema %}

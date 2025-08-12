@@ -1,0 +1,350 @@
+{% liquid
+  assign active_switches = shop.metaobjects.agrupamento_de_produtos.values | reverse
+  assign first_switch_value = product.metafields.custom.tamanho.value | default: '500g'
+
+  assign active_switches_size = 0
+  assign switches = ''
+
+  if product
+    for switch in active_switches
+      assign aux = switch.tamanho.value | replace: '["', '' | replace: '"]', ''
+      if product.metafields.custom.opcoes_de_tamanhos.value contains aux
+        assign active_switches_size = active_switches_size | plus: 1
+        assign switches = switches | append: switch.tamanho.value | append: ','
+      endif
+    endfor
+
+    assign switches = switches | replace: '["', '' | replace: '"]', '' | split: ',' | uniq
+  else
+    assign switches = '500g,40g' | split: ','
+    assign active_switches_size = 2
+  endif
+%}
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js" defer></script>
+
+<div class="productView-flavors-selector" id="{{ section.id }}">
+  <div class="flavors-selector__title">
+    {% render 'product-heading', block: block %}
+  </div>
+  <div class="flavors-selector__switch" id="productView-flavors-selector">
+    <div class="flavors-selector__switch-wrapper">
+      {% for productSwitch in product.metafields.custom.opcoes_de_tamanhos.value %}
+        {% assign index = forloop.index0 %}
+        {% for switch in switches %}
+          {% if productSwitch == switch %}
+            {% render 'flavor-selector-switch', index: index, size: switch %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+      <div class="switch__indicator"></div>
+    </div>
+  </div>
+  <div class="flavors-selector__options">
+    {% for flavor_group in active_switches %}
+      {% assign aux = flavor_group.tamanho.value | replace: '["', '' | replace: '"]', '' %}
+      {% if switches contains aux %}
+        {% if flavor_group.tamanho.value %}
+          <div
+            class="flavor-selector__option-wrapper{% if first_switch_value == flavor_group.tamanho.value %} active{% endif %}"
+            data-size="{{ flavor_group.tamanho.value }}"
+          >
+            {% for flavor in flavor_group.produtos.value %}
+              <a
+                href="{{ flavor.url }}"
+                style="--background: {{ flavor.metafields.custom.cor_de_fundo.value  }};"
+                class="{% unless flavor.available %}unavailable {% endunless %}flavors-selector__option{% if product.id == flavor.id %}  current-product{% endif %}"
+                data-size-group="{{ flavor_group.tamanho.value }}"
+              >
+                <input
+                  type="radio"
+                  name="flavor"
+                  value="{{ flavor.id }}"
+                  {% if flavor.id == product.selected_or_first_available_variant.id %}
+                    checked
+                  {% endif %}
+                >
+                <div class="flavor-selector__option-media">
+                  {% render 'light-stock', product: flavor %}
+                  {{ flavor.featured_image | image_url: width: 70 | image_tag }}
+                </div>
+                <span class="center">
+                  {{ flavor.metafields.custom.taste.value.name.value }}
+                </span>
+                <div class="price right">
+                  {% render 'price', product: flavor %}
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  /* Desktop */
+  .productView .productView-flavors-selector {
+    padding: 20px;
+    background-color: var(--gray-800);
+    border-radius: 20px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+  }
+
+  html[data-theme='light'] .productView .productView-flavors-selector {
+    background-color: var(--gray-100);
+  }
+
+  /* Fixed Mobile */
+  @media
+   (min-width: 768px) {
+    .flavor-selector-fixed .productView-flavors-selector {
+      display: none;
+    }
+  }
+
+  .flavor-selector-fixed .productView-flavors-selector {
+    position: fixed;
+    width: 95vw;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(100% + 75px));
+    z-index: 101;
+    max-height: 50dvh;
+    overflow: scroll;
+    background: #0f0f0fab;
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .flavor-selector-fixed .productView-flavors-selector.active {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .flavors-selector__switch-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background-color: #3e3e3e;
+      padding: 10px;
+      border-radius: 999px;
+      position: relative;
+  }
+
+  html[data-theme='light'] .flavors-selector__switch-wrapper {
+    background-color: var(--gray-200);
+  }
+
+  .flavors-selectors__switch-item {
+      cursor: pointer;
+      flex: 1;
+      text-align: center;
+      padding: 5px;
+  }
+
+  .flavors-selectors__switch-item label {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      display: block;
+      text-align: center;
+  }
+
+  html[data-theme='light'] input[type="radio"]:not(:checked) + .flavors-selectors__switch-item label{
+      color: var(--lv_1_color) !important;
+  }
+
+  .flavors-selectors__switch-item .text {
+      color: var(--white);
+      position: relative;
+      z-index: 2;
+  }
+
+  .switch__indicator {
+      height: calc(100% - 13px);
+      background: var(--product-gradient);
+      border-radius: 999px;
+      transition: all 0.3s;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+          z-index: 1;
+      display: block;
+  }
+
+  #{{ section.id }} .switch__indicator {
+      width: calc((100% / {{ active_switches_size }}) - 5px);
+  }
+
+  .flavors-selector__option {
+    display: block;
+    padding: 12px;
+    border-radius: 10px;
+    background: #3e3e3e;
+    margin: 10px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff !important;
+    font-size: 16px;
+    transition: all .3s ease !important;
+    font-weight: 900;
+  }
+
+  html[data-theme='light'] .flavors-selector__option:not(.current-product) {
+    background: var(--gray-100);
+    color: var(--gray-900) !important;
+  }
+
+  .flavors-selector__option.unavailable {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .flavors-selector__option.current-product {
+    background: var(--background) !important;
+  }
+
+  .flavors-selector__option:last-child {
+    margin-bottom: 0;
+  }
+
+  .flavors-selector__option:hover {
+    background: var(--background);
+  }
+
+  .flavors-selector__option .price {
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .flavors-selector__option .balance {
+   display: block !important;
+  }
+
+  .flavors-selector__option .flavors-selector__option-media img  {
+    border-radius: 999px;
+  }
+
+    .flavors-selector__options {
+        position: relative;
+        overflow: hidden;
+    }
+
+  .flavor-selector__option-wrapper {
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+  }
+
+  .flavor-selector__option-wrapper.active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .flavor-selector__option-media {
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .flavors-selector__option .price .price__sale {
+    flex-direction: column !important;
+    align-items: flex-end;
+  }
+
+  .flavors-selector__option .price .price__sale .price-item--regular {
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  .flavors-selector__option .price-item--sale {
+    color: #fff;
+  }
+
+  .flavors-selector__option  .center {
+    white-space: nowrap !important;
+  }
+
+    .flavors-selector__option .price dd {
+        margin: 0;
+    }
+
+  .flavors-selector__options .flavor-selector__option-media .text {
+    display: none;
+  }
+
+  .flavors-selector__options .flavor-selector__option-media .light-blob {
+    max-height: 8px;
+    max-width: 8px;
+    margin: 0 0 0 auto;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  {% assign position = 0 %}
+  {% for productSwitch in product.metafields.custom.opcoes_de_tamanhos.value %}
+    {% assign index = forloop.index0 %}
+      {% for switch in switches %}
+          {% if productSwitch == switch %}
+            .flavors-selectors__switch-item:has(input#size-switch-{{ index }}:checked) ~ .switch__indicator {
+              transform: translateY(-50%) translateX(calc({{ position | times: 100 }}% + 5px));
+            }
+            {% assign position = position | plus: 1  %}
+          {% endif %}
+        {% endfor %}
+  {% endfor %}
+</style>
+
+<script>
+  $(document).ready(function () {
+    // change the height of the options container to match the active flavor group every time the switch changes
+    document.querySelectorAll('.flavors-selector__switch input').forEach((input) => {
+      input.addEventListener('change', (event) => updateOptions(event));
+    });
+
+    updateOptions({ target: { value: '{{ first_switch_value }}' } });
+  });
+
+  function updateOptions(event) {
+    const size = event.target.value;
+    const wrapper = document.querySelector(`.flavor-selector__option-wrapper[data-size="${size}"]`);
+    const optionsContainer = document.querySelector('.flavors-selector__options');
+
+    // Get the current state
+    const state = Flip.getState(optionsContainer);
+
+    // Update the height
+    const height = wrapper.offsetHeight;
+    optionsContainer.style.height = `${height}px`;
+
+    // Animate the change
+    Flip.from(state, {
+      duration: 0.5,
+      ease: 'power1.inOut',
+    });
+  }
+
+  // when switches change, take the new value and show the correct flavor group
+  document.querySelectorAll('.flavors-selectors__switch-item input').forEach((input) => {
+    input.addEventListener('change', (event) => {
+      const size = event.target.value;
+      document.querySelectorAll('.flavor-selector__option-wrapper').forEach((wrapper) => {
+        wrapper.classList.remove('active');
+        if (wrapper.getAttribute('data-size') === size) {
+          wrapper.classList.add('active');
+        }
+      });
+    });
+  });
+</script>

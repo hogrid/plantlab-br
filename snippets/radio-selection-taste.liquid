@@ -1,0 +1,25 @@
+<div class="radio-selection-product{% unless product.available %} soldout{% endunless %}">
+    <input class="product-selection-input" value="{{ product.url }}" type="radio" name="product-selection" id="{{ product.id }}"{% if product.id == outscope_product.id %} checked{% endif %}>
+    <label for="{{ product.id }}" class="d-flex flex-align-center">
+        <div class="radio-circle"></div>
+        <div class="image-wrapper">
+            {{ product.featured_image |  image_url: width: 70 | image_tag }}
+        </div>
+        <div class="selection-info d-flex flex-align-center flex-jc-between">
+            <span class="text">
+                {{ product.metafields.custom.fixed_title.value | default: product.title }}
+                {% unless product.available %}
+                    <br>
+                    <span class="text">
+                        ESGOTADO
+                    </span>
+                {% endunless %}
+            </span>
+            <div class="per-dose-price">
+                {% assign price = product.price |  divided_by: product.metafields.custom.doses.value |  money_without_trailing_zeros  %}
+                {{ price }}
+                <sub class="right per-dose-label">por dose</sub>
+            </div>
+        </div>
+    </label>
+</div>

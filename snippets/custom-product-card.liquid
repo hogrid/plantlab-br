@@ -1,0 +1,34 @@
+<a
+  class="product-showcase-item"
+  style="--background: {{ product.metafields.custom.hexadecimal_2.value }}; --product-color: {{ product.metafields.custom.cor_de_fundo.value }}"
+  href="{{ product.url }}"
+  title="{{ product.title }}"
+>
+  {%- if settings.show_badge -%}
+    {% render 'product-badge', product: product, class: 'card__badge', badge_detail: true %}
+  {%- endif -%}
+  <div>
+    <div class="product-showcase-item-image">
+      <img
+        src="{{ product.featured_image | image_url: width: 350 }}"
+        alt="{{ product.title }}"
+        width="350"
+        height="auto"
+      >
+    </div>
+    <div class="view-details">
+      {% render 'icon-plus' %}
+    </div>
+  </div>
+  {% if product.metafields.custom.card_alt_image.value != blank %}
+    <div class="hover-info-wrapper">
+      <img
+        class="card__image-hover"
+        src="{{ product.metafields.custom.card_alt_image.value | image_url: width: 600 }}"
+        alt="{{ product.title }}"
+        width="350"
+        height="auto"
+      >
+    </div>
+  {% endif %}
+</a>

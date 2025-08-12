@@ -1,0 +1,279 @@
+<div class="benefit-showcase benefit-{{ section.id  }}">
+  <div class="container info">
+    {% if section.settings.title %}
+      <h2 class="title" data-aos="fade-up" data-aos-offset="100">
+        <span class="text">{{ section.settings.title }}</span><span style="color: #86868b;"> da assinatura</span>
+      </h2>
+    {% endif %}
+    <div class="arrows-wrapper d-flex flex-jc-center">
+      <div class="prev-arrow">
+        {% render 'icon-chevron-left' %}
+      </div>
+      <div class="next-arrow">
+        {% render 'icon-chevron-right' %}
+      </div>
+    </div>
+  </div>
+  <div class="slide-wrapper">
+    {% for block in section.blocks %}
+      <a class="benefit-showcase-item" style="--background: {{ block.settings.gradient }};"  href="{{ block.settings.product.url }}" title="{{ block.settings.product.title }}">
+        <div>
+          <div class="benefit-showcase-item-content">
+            <p>{{ block.settings.description | default: block.settings.product.description }}</p>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .benefit-showcase {
+    padding: 100px 0;
+    background: var(--bgLight);
+  }
+
+  .benefit-showcase h2.title {
+    color: var(--lv_1_color);
+    font-size: 48px;
+    letter-spacing: 0;
+    margin-top: 0;
+  }
+
+  .benefit-showcase .slick-track {
+    margin: 0 0 0 calc(((100vw - var(--body-custom-width-container)) / 2) + 15px)
+  }
+
+  .arrows-wrapper {
+    gap: 12px;
+  }
+
+  .arrows-wrapper .prev-arrow,
+  .arrows-wrapper .next-arrow {
+    position: relative;
+    left: unset;
+    top: unset;
+    transform: unset;
+    border: none;
+    background-color: #ffffff70;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arrows-wrapper .prev-arrow.slick-disabled,
+  .arrows-wrapper .next-arrow.slick-disabled {
+    display: flex !important;
+  }
+
+  .benefit-showcase .container.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .arrows-wrapper svg {
+    color: var(--lv_1_color);
+  }
+
+  .benefit-showcase-item-content p {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    font-weight: 600;
+    padding: 0;
+    color: var(--lv_1_color);
+  }
+
+  .benefit-showcase-item {
+    padding: 20px;
+    margin: 0 12px;
+    border-radius: 14px;
+    gap: 16px;
+    position: relative;
+    width: 350px;
+    min-height: 150px;
+    border: 2px solid rgba(243, 76, 115, 1);
+    display: flex !important;
+    align-items: flex-end;
+    color: rgba(243, 76, 115, 1);
+  }
+
+  .benefit-showcase-item:hover {
+    background: linear-gradient(90deg, rgba(146, 4, 201, 1), rgba(243, 76, 115, 1) 100%);
+    border-color: transparent; 
+  }
+
+  .benefit-showcase-item:hover .benefit-showcase-item-content p {
+    color: #fff;
+  }
+
+  .benefit-showcase-item .benefit-showcase-item-content {
+    max-width: 200px;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #fff;
+    display: block;
+    min-width: 100%;
+  }
+
+  .showcase-item-dots {
+    position: absolute;
+    bottom: 16px;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .showcase-item-dots ul {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    bottom: 16px;
+    z-index: 1;
+    max-width: 100%;
+  }
+
+  .showcase-dot {
+    background: tomato;
+    border-radius: 999px;
+    width: 14px !important;
+    height: 14px;
+  }
+
+  .benefit-showcase-item .view-details {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    padding: 12px;
+    background-color: #232323;
+    border-radius: 999px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all  .3s ease-in-out;
+  }
+
+  .benefit-showcase-item .view-details svg {
+    color: #fff;
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (max-width: 1600px) {
+    .benefit-showcase .slick-track {
+      margin: 0 15px;
+    } 
+  }
+
+  @media (max-width:  767px) {
+    .benefit-showcase h2.title {
+      font-size: 24px !important;
+    }
+
+    .benefit-showcase-item {
+      width: 300px;
+    }
+
+    .benefit-showcase {
+    padding: 40px 0;
+    background: var(--bgLight);
+  }
+  }
+</style>
+
+<script>
+  $(document).ready(function () {
+    $('.benefit-{{ section.id  }} .slide-wrapper').slick({
+      dots: false,
+      infinite: false,
+      slidesToShow: 4.5,
+      slidesToScroll: 3,
+      variableWidth: true,
+      initialSlide: 0,
+      arrows: true,
+      nextArrow: $(".benefit-{{ section.id  }} .next-arrow"),
+      prevArrow: $(".benefit-{{ section.id  }} .prev-arrow"),
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2.5,
+            slidesToScroll: 1,
+            infinite: false,
+            dots: false,
+            variableWidth: true
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
+            infinite: false,
+            dots: false,
+            variableWidth: true
+          }
+        }
+      ]
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Slide de benefícios",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título"
+    },
+    {
+      "type": "text",
+      "id": "descricao_cta",
+      "label": "Descrição CTA"
+    },
+    {
+      "type": "text",
+      "id": "texto_cta",
+      "label": "Texto CTA"
+    },
+    {
+      "type": "url",
+      "id": "link_cta",
+      "label": "Link do CTA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "beneficio",
+      "name": "Benefício",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Product"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descrição"
+        },
+        {
+          "type": "color_background",
+          "id": "gradient",
+          "label": "Gradiente"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slide de benefícios"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,387 @@
+<div class="product-gallery">
+  <div class="container info">
+    {% if section.settings.title %}
+      <h2 class="title" data-aos="fade-up" data-aos-offset="50">
+        <span class="text">{{ section.settings.title }}</span>
+      </h2>
+    {% endif %}
+
+    <a href="{{ section.settings.cta_link }}" class="product-redirect">
+      {{ section.settings.cta_text  }}
+    </a>
+  </div>
+  <div class="carousel-wrapper">
+    {% for block in section.blocks %}
+      <div class="product-gallery-item" style="--background: {{ block.settings.gradient }};">
+        {% if block.settings.link != blank %}
+          <a href="{{ block.settings.link }}">
+        {% endif %}
+        <div class="product-gallery-item-image">
+          {% if block.type == 'banner' %}
+            <img
+              src="{{ block.settings.banner | image_url: width: 600 }}"
+              width="600"
+              height="auto"
+            >
+          {% else %}
+            {% if block.id == section.blocks[0].id %}
+              {{
+                block.settings.video
+                | video_tag:
+                  autoplay: true,
+                  width: 600,
+                  loop: true,
+                  preload: 'none',
+                  image_size: '600x',
+                  muted: true
+              }}
+            {% else %}
+              {{
+                block.settings.video
+                | video_tag:
+                  autoplay: false,
+                  width: 600,
+                  loop: true,
+                  preload: 'none',
+                  image_size: '600x',
+                  muted: true
+              }}
+            {% endif %}
+          {% endif %}
+        </div>
+        {% if block.settings.link != blank %}
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="slick-dots-custom d-flex flex-align-center m-lr-auto">
+    <div class="video-play-btn playing">
+      {% render 'icon-play' %}
+      {% render 'icon-pause' %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-gallery {
+    padding: 50px 0;
+  }
+
+  .product-gallery .container.info {
+    flex-wrap: wrap;
+  }
+
+  .product-gallery .slick-list {
+    padding: 0 !important;
+  }
+
+  .product-gallery .slick-track {
+    margin: 0 0 0 calc(((100vw - var(--body-custom-width-container)) / 2) + 15px);
+  }
+
+  .product-gallery .slick-dots {
+    position: static;
+    max-width: fit-content;
+    margin: 32px auto;
+    padding: 16px 32px;
+    background: #24262774;
+    border-radius: 999px;
+    backdrop-filter: unset;
+    box-shadow: unset;
+  }
+
+  .video-play-btn {
+    padding: 16px;
+    border-radius: 999px;
+    width: 50px;
+    height: 50px;
+    background: #24262774;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .video-play-btn svg {
+    fill: #fff;
+    stroke: #fff;
+    width: 16px;
+    height: 16px;
+    display: none;
+  }
+
+  .video-play-btn.playing .icon-pause,
+  .video-play-btn .icon-play {
+    display: unset !important;
+  }
+
+  .video-play-btn .icon-pause,
+  .video-play-btn.playing .icon-play {
+    display: none !important;
+  }
+
+  .video-play-btn svg path {
+    fill: #fff;
+  }
+
+  .product-gallery .slick-dots button {
+    width: 8px;
+    height: 8px;
+    border: none;
+    background-color: #eee !important;
+    border-radius: 999px;
+  }
+
+  .slick-dots-custom {
+    max-width: fit-content;
+    gap: 6px;
+    height: 50px;
+    margin-top: 32px;
+  }
+
+  .product-gallery .slick-dots .slick-active button {
+    width: 40px;
+  }
+
+  .product-gallery-item {
+    background: var(--background);
+    border-radius: 14px;
+    gap: 16px;
+    position: relative;
+    margin-right: 24px;
+    /* min-height: 700px; */
+  }
+
+  .product-gallery-item-image,
+  .product-gallery-item-image img,
+  .product-gallery-item-image video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    /* min-height: 700px; */
+  }
+
+  .product-gallery-item .product-gallery-item-content {
+    font-size: 20px;
+    line-height: 1.4;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .gallery-item-dots {
+    margin: 12px auto;
+    display: flex;
+    max-width: fit-content;
+    gap: 6px;
+    z-index: 2;
+  }
+
+  .gallery-item-dots ul {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    bottom: 16px;
+    z-index: 1;
+    max-width: 100%;
+  }
+
+  .gallery-dot {
+    background: #ddd;
+    border-radius: 999px;
+    width: 14px !important;
+    height: 14px;
+    display: block;
+  }
+
+  .product-redirect {
+    font-size: 16px !important;
+    padding: 12px 24px;
+    background: #ffffff1c;
+    border-radius: 999px;
+    color: var(--lv_1_color) !important;
+  }
+
+  html[data-theme="light"] .product-redirect {
+    background-color: var(--gray-100);
+  }
+
+  @media (max-width: 1600px) {
+    .product-gallery .slick-track {
+      margin: 0 15px;
+    }
+  }
+
+  @media (max-width: 767px ) {
+    .product-gallery .title {
+      margin: 16px 0;
+    }
+    .product-gallery .title span {
+      font-size: 32px !important;
+    }
+
+    .product-gallery {
+      padding: 20px 0;
+    }
+
+    .carousel-wrapper {
+      margin-top: 20px;
+    }
+
+    .product-redirect {
+      font-size: 14px !important;
+      padding: 8px 16px;
+    }
+
+    .product-gallery-item {
+      min-height: auto;
+    }
+
+    .product-gallery-item-image video {
+      width: 100%;
+    }
+    
+    .product-gallery-item-image, .product-gallery-item-image img, .product-gallery-item-image video {
+      height: auto !important;
+      min-height: unset;
+    }
+
+    .product-gallery .container.info {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+  }
+  </style>
+
+<script>
+  $(document).ready(function () {
+    $('.carousel-wrapper').slick({
+      dots: true,
+      infinite: false,
+      speed: 1500,
+      arrows: false,
+      slidesToShow: 1.5,
+      slidesToScroll: 1,
+      centerMode: true,
+      appendDots: $('.slick-dots-custom'),
+      autoplay: true,
+      swipe: false,
+      autoplaySpeed: 5000,
+      pauseOnHover: false,
+      responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1.2,
+          slidesToScroll: 1,
+          infinite: false,
+          dots: true
+        }
+      }, {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }]
+    });
+
+    $('.carousel-wrapper').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      // get current slide with video and play it
+      const nextSlideVideo = $(slick.$slides[nextSlide]).find('video')[0];
+      const currentSlideVideo = $(slick.$slides[currentSlide]).find('video')[0];
+      if (nextSlideVideo) {
+        nextSlideVideo.play();
+      }
+
+      // end current slide video
+      if (currentSlideVideo) {
+        currentSlideVideo.pause();
+        currentSlideVideo.currentTime = 0;
+      }
+    });
+
+    $('.video-play-btn.playing').on('click', function () {
+      const currentSlide = $('.carousel-wrapper').slick('slickCurrentSlide');
+      const currentSlideVideo = $($('.carousel-wrapper').find('.slick-slide')[currentSlide]).find('video')[0];
+
+      if (currentSlideVideo.paused) {
+        currentSlideVideo.play();
+        $(this).addClass('playing');
+        $('.carousel-wrapper').slick('slickPlay');
+      } else {
+        currentSlideVideo.pause();
+        $(this).removeClass('playing');
+        $('.carousel-wrapper').slick('slickPause');
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Products Gallery",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "cta_description",
+      "label": "CTA Description"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner",
+          "label": "Banner"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link do banner"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link do banner"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Gallery"
+    }
+  ]
+}
+{% endschema %}

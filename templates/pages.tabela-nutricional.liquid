@@ -1,0 +1,270 @@
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/jablonczay/code-box-copy/code-box-copy/css/code-box-copy.min.css" rel="stylesheet">
+<style>
+  #popup-quick-product,
+  .background-overlay{
+    display: none !important;
+  }
+
+  table#table-generator td:empty, table#table-generator th:empty {
+    display: table-cell;
+  }
+
+  .code-box-copy {
+    max-height: 300px;
+    overflow: auto;
+    max-width: 100%;
+  }
+
+  table#table-generator th {
+    min-width: fit-content;
+    width: 200px;
+  }
+
+  table#table-generator {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: #b5b5b5;
+    border: none;
+  }
+
+  table#table-generator th, table#table-generator td {
+    padding: 3px 20px;
+  }
+
+  .table-top {
+    display: flex;
+    gap: 10px;
+    position: relative;
+  }
+
+  .content-tabela {
+    width: fit-content;
+    max-width: calc(100% - 20px);
+    overflow: auto;
+  }
+
+  button#addColumn {
+    flex: 1;
+    max-width: fit-content;
+    background: #717171;
+    border-color: #717171;
+    color: #fff;
+    border: none;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+  }
+
+  button#addRow {
+    width: 100%;
+    background: #717171;
+    border-color: #717171;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+
+  button#generateJSON {
+    width: 100%;
+    background: var(--btn-1-bg);
+    border-color: var(--btn-1-border);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+
+  td.control-row {
+    width: fit-content !important;
+    max-width: fit-content !important;
+    min-width: fit-content !important;
+    border: none;
+  }
+
+  th.control-row {
+    width: fit-content !important;
+    border: none;
+  }
+
+  th.nao-considerar.without-border {
+    border: none;
+  }
+</style>
+<h1>Gerador de tabela nutricional</h1>
+<div class="content-tabela">
+  <div class="table-top">
+    <table id="table-generator" border="1">
+      <thead class="exclusion-head">
+        <tr class="nao-considerar without-border">
+          <th class="control-row"></th>
+          <th class="nao-considerar without-border"></th>
+          <th class="nao-considerar without-border"></th>
+          <th class="nao-considerar without-border">
+            <button deleteColumn>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                <path d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"></path>
+              </svg>
+            </button>
+          </th>
+        </tr>
+
+        <tr>
+          <th class="control-row"></th>
+          <th></th>
+          <th contenteditable="true">100 g</th>
+          <th contenteditable="true">% VD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="control-row"></td>
+          <td contenteditable="true">Valor energético (Kcal)</td>
+          <td contenteditable="true">0</td>
+          <td contenteditable="true">0</td>
+        </tr>
+        <tr>
+          <td class="control-row">
+            <button deleteRow>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                <path d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"></path>
+              </svg>
+            </button>
+          </td>
+          <td contenteditable="true">Carboidratos (g)</td>
+          <td contenteditable="true">0</td>
+          <td contenteditable="true">0</td>
+        </tr>
+        <tr>
+          <td class="control-row">
+            <button deleteRow>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                <path d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"></path>
+              </svg>
+            </button>
+          </td>
+          <td contenteditable="true">Açúcares totais (g)</td>
+          <td contenteditable="true">0</td>
+          <td contenteditable="true">0</td>
+        </tr>
+        <tr>
+          <td class="control-row">
+            <button deleteRow>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                <path d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"></path>
+              </svg>
+            </button>
+          </td>
+          <td contenteditable="true">Açúcares adicionados (g)</td>
+          <td contenteditable="true">0</td>
+          <td contenteditable="true">0</td>
+        </tr>
+        <tr>
+          <td class="control-row">
+            <button deleteRow>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                <path d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"></path>
+              </svg>
+            </button>
+          </td>
+          <td contenteditable="true">Proteínas (g)</td>
+          <td contenteditable="true">0</td>
+          <td contenteditable="true">0</td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="addColumn">+</button>
+  </div>
+  <div class="table-bottom">
+    <button id="addRow">+</button>
+    <button id="generateJSON">Gerar JSON</button>
+
+    <div class="code-box-copy">
+      <button class="code-box-copy__btn" data-clipboard-target="#tabela-code" title="Copy"></button>
+      <pre><code class="language-json" id="tabela-code"> </code></pre>
+    </div>
+  </div>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/combine/gh/jablonczay/code-box-copy/clipboard/clipboard.min.js,gh/jablonczay/code-box-copy/code-box-copy/js/code-box-copy.min.js"
+></script>
+<script>
+  $(document).ready(function() {
+      $('#addRow').on('click', function() {
+          $('#table-generator tbody').append('<tr><td class="control-row"><button deleteRow><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24"> <path d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"></path> </svg></button></td></tr>');
+          $('#table-generator thead tr:not(.nao-considerar) th:not(.control-row)').each(function() {
+            $('#table-generator tbody tr:last-child').append('<td contenteditable="true"></td>');
+          });
+      });
+
+      $('#addColumn').on('click', function() {
+          $('#table-generator thead tr.nao-considerar + tr').append('<th contenteditable="true"></th>');
+          $('#table-generator thead tr.nao-considerar').append('<th class="nao-considerar without-border"><button deleteColumn><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24"> <path d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"></path> </svg></button></th>');
+          $('#table-generator tbody tr').each(function() {
+              $(this).append('<td contenteditable="true"></td>');
+          });
+      });
+
+      $('#generateJSON').on('click', function() {
+          var tableData = [];
+          var tableHeaders = [];
+          $('#table-generator thead th:not(.nao-considerar):not(.control-row)').each(function(col, th) {
+              tableHeaders[col] = $(th).text();
+          });
+          $('#table-generator tbody tr').each(function(row, tr) {
+              tableData[row] = [];
+              $(tr).find('td:not(.control-row)').each(function(col, td) {
+                  tableData[row][col] = $(td).text();
+              });
+          });
+
+          var jsonData = {
+              headers: tableHeaders,
+              data: tableData
+          };
+          $('#tabela-code').text(JSON.stringify(jsonData, null, 2));
+      });
+
+      $('.code-box-copy').codeBoxCopy({
+          tooltipText: 'Copied',
+          tooltipShowTime: 1000,
+          tooltipFadeInTime: 300,
+          tooltipFadeOutTime: 300
+      });
+
+    function deleteColumn(icon) {
+      var colIndex = $(icon).closest('th').index();
+      console.log(colIndex)
+        $('#table-generator .exclusion-head tr.nao-considerar th').eq(colIndex).remove();
+        $('#table-generator .exclusion-head tr.nao-considerar + tr th').eq(colIndex).remove();
+        $('#table-generator tbody tr').each(function() {
+            $(this).find('td').eq(colIndex).remove();
+           console.log($(this).find('td').eq(colIndex));
+        });
+    }
+
+    $(document).on('click', '[deleteColumn]', function(){
+      deleteColumn(this)
+    })
+    
+    function deleteRow(icon) {
+      var row = $(icon).closest('tr');
+      row.remove();
+    }
+
+    $(document).on('click', '[deleteRow]', function(){
+      deleteRow(this)
+    })
+  });
+</script>

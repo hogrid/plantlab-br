@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        "h1,p {color: var(--lv_1_color) !important;}",
+        "p {font-size: 16px;}"
+      ],
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,53 @@
+{{ 'component-reviews-marquee.css' | asset_url | stylesheet_tag }}
+
+<div class="reviews-marquee-container"{% unless product %} style="--product-gradient: linear-gradient(255deg, rgba(148, 0, 211, 1), rgba(243, 76, 115, 1) 100%);"{% endunless %}>
+  {% for i in (1..5) %}
+    <div class="reviews-marquee-wrapper">
+      <div class="reviews-marquee">
+        {% for block in section.blocks %}
+          {% render 'review-marquee-card',
+            content: block.settings.content,
+            author: block.settings.author,
+            subtitle: block.settings.subtitle
+          %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Reviews Marquee",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitulo"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Autor"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Conteudo"
+        }
+      ]
+    }
+  ],
+  "class": "reviews-marquee-section",
+  "presets": [
+    {
+      "name": "Reviews Marquee"
+    }
+  ]
+}
+{% endschema %}

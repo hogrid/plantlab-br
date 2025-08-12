@@ -1,0 +1,51 @@
+{% assign valor_limitador = settings.limitador_valor | append: '00' | plus: 0 %}
+{% assign quantidade_parcelas = settings.parcelas | plus: 0 %}
+{% assign desconto_avista = settings.porcentagem_avista %}
+{% assign ativar_desconto_avista = settings.desconto_avista %}
+{% assign padding_parcelamento = settings.header_padding_parcelamento %}
+{% assign preco = product.price | default: product.compare_at_price_min %}
+
+{% assign max_installments = preco | divided_by: valor_limitador | ceil %}
+
+{% if max_installments > quantidade_parcelas %}
+  {% assign max_installments = quantidade_parcelas | default: 1 %}
+  {% if quantidade_parcelas >= 10 %}
+    {% assign max_installments = 10 %}
+  {% endif %}
+{% endif %}
+
+{% unless rencently %}
+  {% if max_installments > 1 %}
+    <div class="flex-price-parcel">
+      <div class="PriceParcel">
+        <span class="linha_parcelamento">
+          <p style="margin-top: 0px;">
+            em até
+            {{ max_installments }}x
+            <span class="parcelamento-unit">
+              <span class="money">{{ preco | divided_by: max_installments | round: 0 | money }}</span>
+            </span>
+          </p>
+        </span>
+      </div>
+    </div>
+  {% endif %}
+{% else %}
+  {% if max_installments > 1 %}
+    <div class="flex-price-parcel">
+      <div class="PriceParcel">
+        <span class="linha_parcelamento">
+          <p style="margin-top: 0px;">
+            {{ max_installments }}x
+            <span class="parcelamento-unit">
+              <span class="money">
+                {% raw %}
+                  {{ html Shopify.formatMoney(price/{{ max_installments }}, window.money_format)}}{% endraw %}
+              </span>
+            </span>
+          </p>
+        </span>
+      </div>
+    </div>
+  {% endif %}
+{% endunless %}

@@ -1,0 +1,56 @@
+{%- liquid
+  assign color_title = 'var(--lv_1_color);'
+-%}
+{%- if check_show_share == '3' -%}
+  <div class="halo-share-3">
+    <h1
+      class="productView-title"
+      style="--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};"
+    >
+      <span>{{ product.title | escape }}</span>
+    </h1>
+    {% render 'halo-share', product: product, share_layout: check_show_share %}
+  </div>
+{%- else -%}
+  <div class="title-wrapper">
+    <h1
+      class="productView-title"
+      style="--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};"
+    >
+      <span>{{ product.metafields.custom.fixed_title.value | default: product.title | escape }}</span>
+    </h1>
+    {% render 'light-stock' %}
+  </div>
+{%- endif -%}
+
+<div class="d-flex flex-align-center">
+  <!-- Start of Judge.me code -->
+  <div class="jdgm-widget jdgm-preview-badge">
+    {{ product.metafields.judgeme.badge }}
+  </div>
+  <!-- End of Judge.me code -->
+  <div class="info-trigger-wrapper">
+    {% if product.description %}
+      <div class="product-description-trigger" data-fancybox="description" data-src="#description-content">
+        Ver descrição
+        <div id="description-content" style="display: none;">
+          {{ product.description }}
+        </div>
+      </div>
+    {% endif %}
+    {% if product.metafields.custom.tabela_nutricional_json.value != blank %}
+      <div class="tabela-nutricional-trigger" data-fancybox="tabela-nutricional" data-src="#tabela-container">
+        Tabela Nutricional
+        {% render 'tabela-nutricional' %}
+      </div>
+    {% endif %}
+    {% if product.metafields.custom.aminograma_novo.value != blank %}
+        <div class="ingredientes-trigger" data-fancybox="ingredientes" data-src="#ingredientes-content">
+          Ingredientes
+          <div id="ingredientes-content" style="display: none;">
+            {{ product.metafields.custom.aminograma_novo.value }}
+          </div>
+        </div>
+      {% endif %} 
+  </div>
+</div>

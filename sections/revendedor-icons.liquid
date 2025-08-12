@@ -1,0 +1,240 @@
+<div
+  class="reseller-icons-wrapper container"
+  id="icons-reseller-{{ section.id }}"
+  style="--spacing-top: {{ section.settings.spacing_top }}px;--spacing-bottom: {{ section.settings.spacing_bottom }}px; --spacing-top-tb: {{ section.settings.spacing_top_tb }}px;--spacing-bottom-tb: {{ section.settings.spacing_bottom_tb }}px;--spacing-top-tb: {{ section.settings.spacing_top_tb }}px;--spacing-bottom-mb: {{ section.settings.spacing_top_mb }}px;--spacing-top-mb: {{ section.settings.spacing_bottom }}px; --spacing-top-tb: {{ section.settings.spacing_top_tb }}px;--spacing-bottom-tb: {{ section.settings.spacing_bottom_tb }}px;--spacing-top-tb: {{ section.settings.spacing_top_tb }}px;--spacing-bottom-mb: {{ section.settings.spacing_bottom_mb }}px;--spacing-top-mb: {{ section.settings.spacing_top_mb }}px;"
+>
+  <h2 class="title center">
+    {{ section.settings.title }}
+  </h2>
+  <div class="reseller-icons__icons">
+    {% for block in section.blocks %}
+      <div class="reseller-icons__icon">
+        {{ block.settings.icon_img | image_url: width: 300 | image_tag }}
+        <div class="text">
+          {{ block.settings.text }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  #icons-reseller-{{ section.id }} {
+      padding-top: var(--spacing-top);
+      padding-bottom: var(--spacing-bottom);
+  }
+
+  .reseller-icons-wrapper {
+      display: flex;
+      /* justify-content: space-between; */
+      padding-right: calc((100% - var(--body-custom-width-container) + 30px) / 2);
+      gap: 60px;
+      flex-direction: column;
+  }
+
+  .reseller-icons-wrapper .title {
+    margin: 0;
+    font-size: 48px;
+  }
+
+  .reseller-icons-wrapper .reseller-icons__icons {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+  }
+
+  .reseller-icons-wrapper .reseller-icons__icon {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 5px;
+      width: calc(100% / {{ section.blocks.size }});
+  }
+
+  .reseller-icons__icon .text {
+    font-size: 18px;
+    color: var(--lv_1_color);
+    text-align: center;
+    width: 60%;
+    display: block;
+  }
+
+  .reseller-icons__icon img {
+      max-width: 100px;
+      height: 120px;
+      object-fit: contain;
+  }
+
+  .reseller-icons__banner img {
+    object-fit: contain;
+  }
+
+  @media (max-width: 1024px) {
+    .reseller-icons-wrapper {
+      gap: 0 !important;
+    }
+
+    .reseller-icons-wrapper .reseller-icons__icons {
+      gap: 10px;
+      padding: 16px;
+    }
+
+    .reseller-icons-wrapper {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 767px) {
+    #icons-reseller-{{ section.id }} {
+      padding-top: var(--spacing-top-mb);
+      padding-bottom: var(--spacing-bottom-mb);
+    }
+
+    .reseller-icons-wrapper {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .reseller-icons__banner img {
+      width: 100%;
+      height: auto;
+    }
+
+    .reseller-icons-wrapper .reseller-icons__icons {
+      display: grid;
+      padding: 10px;
+      gap: 0;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .reseller-icons-wrapper .title {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .reseller-icons-wrapper .reseller-icons__icons {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .reseller-icons-wrapper .reseller-icons__icon {
+    width: 100%;
+  }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Ícones de revendedor",
+  "class": "reseller-icons",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Vantagens exclusivas para revendedores"
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento Superior"
+    },
+    {
+      "type": "range",
+      "id": "spacing_top",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "spacing_top_tb",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Tablet",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "spacing_top_mb",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Dispositivos Móveis",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Espaçamento Inferior"
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom_tb",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Tablet",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom_mb",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 1,
+      "label": "Dispositivos Móveis",
+      "default": 50
+    },
+    {
+      "type": "image_picker",
+      "id": "aside_banner",
+      "label": "Banner lateral"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Ícone",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_img",
+          "label": "Ícone"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ícones de revendedor"
+    }
+  ]
+}
+{% endschema %}

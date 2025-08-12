@@ -1,0 +1,22 @@
+<div class="minibanner-info d-flex">
+    <div class="minibanner-info_image">
+        {% if video %}
+            <div class="icon-play-wrapper" data-fancybox="{{ title | handleize }}" data-src="{{ video }}">
+                {% render 'icon-play' %}
+            </div>
+        {% endif %}
+        {% if image %}
+            {{ image | image_url: width: 80 |  image_tag }}
+        {% else %}
+            <img src="{{ thumb | image_url: width: 120 }}" alt="{{ title }}" width="120" height="auto" />
+        {% endif %}
+    </div>
+    <div class="minibanner-info_text">
+        <span class="text">
+            {{ title }}
+        </span>
+        <span class="text des">
+            {{ des }}
+        </span>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-BlackItalic.eot");
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-BlackItalic.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-BlackItalic.woff2") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-BlackItalic.woff") format("woff"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Bold.eot");
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Bold.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Bold.woff2") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Bold.woff") format("woff"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-LightItalic.eot");
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-LightItalic.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-LightItalic.woff2") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-LightItalic.woff") format("woff"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-LightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-HeavyItalic.eot");
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-HeavyItalic.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-HeavyItalic.woff2") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-HeavyItalic.woff") format("woff"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-HeavyItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Medium.eot");
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Medium.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Medium.woff2") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Medium.woff") format("woff"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Regular.eot");
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Regular.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Regular.woff2") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Regular.woff") format("woff"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-SemiboldItalic.eot");
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-SemiboldItalic.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-SemiboldItalic.woff2") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-SemiboldItalic.woff") format("woff"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-SemiboldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-ThinItalic.eot");
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-ThinItalic.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-ThinItalic.woff2") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-ThinItalic.woff") format("woff"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-UltralightItalic.eot");
+  src: url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-UltralightItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-UltralightItalic.woff2") format("woff2"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-UltralightItalic.woff") format("woff"),
+    url("https://cdn.shopify.com/s/files/1/0729/4917/0461/files/SFProDisplay-UltralightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}

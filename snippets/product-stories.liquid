@@ -1,0 +1,158 @@
+<style>
+  .product-stories-wrapper {
+    display: flex;
+    overflow-x: auto;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 16px;
+    align-items: center;
+  }
+
+  .videos-wrapper {
+    display: flex;
+    gap: 10px;
+  }
+
+  .product-stories-wrapper p {
+    margin: 0;
+    display: block;
+    max-width: 150px;
+    max-height: fit-content;
+  }
+
+  .product-stories-wrapper::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  .product-stories-wrapper::-webkit-scrollbar-track {
+    background: #fafafa;
+  }
+
+  .product-stories-wrapper::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 20px;
+  }
+
+  .product-story {
+    position: relative;
+    display: block;
+    min-width: 70px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .product-story:before {
+    content: '';
+    top: 0;
+    left: 0;
+    position: relative;
+    /* display: block; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--product-color);
+    animation: spin 10s infinite;
+  }
+
+  .product-story .product-story-thumb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bgLight);
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .product-story .product-story-thumb img {
+    border-radius: 999px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .product-story-thumb video {
+    width: 100%;
+    height: auto;
+  }
+
+  .stories-opened {
+    overflow: hidden !important;
+  }
+
+  @-moz-keyframes spin {
+    100% {
+      -moz-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .product-stories-wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<div class="product-stories-wrapper">
+  <div class="videos-wrapper">
+    {% if product.metafields.custom.video_stories.value != blank %}
+      {% for video in product.metafields.custom.video_stories.value %}
+        <div class="product-story" data-open-stories="{{ variant.id }}" data-index="{{ forloop.index0 }}">
+          <div class="product-story-thumb">
+            <img
+              width="80"
+              height="100"
+              src="{{ video.preview_image | image_url: width: 200 }}"
+              alt="Stories de {{ product.title }}"
+            >
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  let storiesBtn = document.querySelectorAll('[data-open-stories]');
+
+  storiesBtn.forEach((item) => {
+    item.addEventListener('click', function (e) {
+      let storiesConteiner = document.querySelector('[data-stories]');
+      storiesConteiner.classList.add('show-stories');
+      window.imageSlider.slick('refresh');
+      // window.storiesSlider.slick('refresh');
+
+      window.storiesSlider.slick('slickGoTo', e.currentTarget.dataset.index, true);
+      // play curent video
+      let currentSlide = window.storiesSlider.slick('slickCurrentSlide');
+      let currentVideo = storiesConteiner.querySelectorAll('video')[currentSlide];
+      if (currentVideo) {
+        currentVideo.play();
+        // unmute video
+        currentVideo.muted = false;
+      }
+
+      document.querySelector('body').classList.add('stories-opened');
+    });
+  });
+</script>

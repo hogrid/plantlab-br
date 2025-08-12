@@ -1,0 +1,16 @@
+{% assign handle_size_product = size | handleize %}
+{% assign handle_size = product.metafields.custom.tamanho.value | handleize%}
+<div class="flavors-selectors__switch-item">
+  <input
+    type="radio"
+    name="size-switch"
+    id="size-switch-{{ index }}"
+    value="{{ size }}"
+    {% if handle_size_product == handle_size %}checked{% endif %}
+  >
+  <label for="size-switch-{{ index }}">
+    <span class="text">
+      {{ size }}
+    </span>
+  </label>
+</div>

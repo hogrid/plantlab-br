@@ -1,0 +1,420 @@
+<div class="bg-planos" data-config="{{ 'particlesjs-config-assinatura.json' | asset_url }}">
+  <div id="particles-js-assinatura"></div>
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="text-center">
+        <h2 class="main-title" data-aos="fade-up">
+          {{ section.settings.section_title }}
+        </h2>
+      </div>
+      <div class="planos-wrapper">
+        <div class="planos-mensal">
+          <div class="comparePlanos p-3">
+            <h2>
+              {{ section.settings.title_assinatura }}
+            </h2>
+          </div>
+          <ul class="planos-list">
+            <li>
+              <b>{{ section.settings.title_assinatura_1 }}</b>
+              <p>{{ section.settings.subtitle_assinatura_1 }}</p>
+              <p style="font-size:13px">{{ section.settings.desc_assinatura_1 }}</p>
+            </li>
+            <li>
+              <b>{{ section.settings.title_assinatura_2 }}</b>
+              <p>{{ section.settings.subtitle_assinatura_2 }}</p>
+              <p style="font-size:13px">{{ section.settings.desc_assinatura_2 }}</p>
+            </li>
+            <li>
+              <b>{{ section.settings.title_assinatura_3 }}</b>
+              <p>{{ section.settings.subtitle_assinatura_3 }}</p>
+              <p style="font-size:13px">{{ section.settings.desc_assinatura_3 }}</p>
+            </li>
+            <li>
+              <b>{{ section.settings.title_assinatura_4 }}</b>
+              <p>{{ section.settings.subtitle_assinatura_4 }}</p>
+              <p style="font-size:13px">{{ section.settings.desc_assinatura_4 }}</p>
+            </li>
+            <li>
+              <b>{{ section.settings.title_assinatura_5 }}</b>
+              <p>{{ section.settings.subtitle_assinatura_5 }}</p>
+              <p style="font-size:13px">{{ section.settings.desc_assinatura_5 }}</p>
+            </li>
+            <li>
+              <a href="{{ section.settings.link_assinatura }}" class="button button--primary button-assinatura">
+                {{ section.settings.button_assinatura }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="planos-anual">
+          <div class="comparePlanos p-3">
+            <h2>{{ section.settings.title_unica }}</h2>
+          </div>
+          <ul class="planos-list">
+            <li>
+              <b>{{ section.settings.title_unica_1 }}</b>
+              <p>{{ section.settings.subtitle_unica_1 }}</p>
+              <p style="font-size:13px">{{ section.settings.desc_unica_1 }}</p>
+            </li>
+            <li>
+              <b>{{ section.settings.title_unica_2 }}</b>
+              <p>{{ section.settings.subtitle_unica_2 }}</p>
+              <p style="font-size:13px">{{ section.settings.desc_unica_2 }}</p>
+            </li>
+            <li>
+              <b>{{ section.settings.title_unica_3 }}</b>
+              <p>{{ section.settings.subtitle_unica_3 }}</p>
+              <p style="font-size:13px">{{ section.settings.desc_unica_3 }}</p>
+            </li>
+            <li>
+              <b>{{ section.settings.title_unica_4 }}</b>
+              <p>{{ section.settings.subtitle_unica_4 }}</p>
+              <p style="font-size:13px">{{ section.settings.desc_unica_4 }}</p>
+            </li>
+            <li>
+              <b>{{ section.settings.title_unica_5 }}</b>
+              <p>{{ section.settings.subtitle_unica_5 }}</p>
+              <p style="font-size:13px">{{ section.settings.desc_unica_5 }}</p>
+            </li>
+            <li>
+              <a href="{{ section.settings.link_unica }}" class="button button--primary button-assinatura">
+                {{ section.settings.button_unica }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .bg-planos {
+    background: linear-gradient(255deg,darkviolet,#f34c73);
+    background-size: 120% 120%;
+    animation: gradient-animation 2s ease infinite;
+    padding: 30px 0 60px 0;
+  }
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
+  .bg-planos .main-title {
+    font-size: 48px;
+    line-height: 1.1;
+    color: #fff;
+    margin: 24px auto;
+    text-align: center;
+    font-weight: 700;
+  }
+  .planos-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .comparePlanos h2 {
+    color: var(--lv_1_color);
+    font-size: 32px;
+    line-height: 1.2;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .planos-mensal,
+  .planos-anual {
+    border-radius: 0;
+    background-color: var(--bgLight);
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 1;
+    max-width: 500px;
+    color: var(--lv_1_color);
+  }
+
+  .planos-anual {
+    border-radius: 0 20px 20px 0;
+    background: var(--gray-800);
+  }
+
+  html[data-theme="light"] .planos-anual {
+    background: var(--gray-100);
+  }
+
+  .planos-mensal {
+    border-radius: 20px 0 0 20px;
+  }
+
+  .planos-list {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .planos-list {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .planos-list li {
+    padding: 20px 10px;
+  }
+
+  .planos-list li:not(:last-child) {
+    border-bottom: 1px solid var(--gray-700);
+  }
+
+  .planos-list li:nth-last-child(2) {
+    border: none !important;
+  }
+
+  .planos-list li p {
+    margin: 4px 0;
+  }
+
+  .planos-list li b {
+    margin-bottom: 8px;
+  }
+
+  .button-assinatura.button {
+    color: #fff !important;
+    background: linear-gradient(255deg,darkviolet,#f34c73) !important;
+    background-size: 120% 120%;
+    animation: gradient-animation 2s ease infinite;
+    max-width: 200px;
+    scale: 1;
+  }
+
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 32px !important;
+    }
+
+    .comparePlanos h2 {
+      font-size: 20px;
+    }
+
+    .planos-wrapper {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .planos-mensal,
+    .planos-anual {
+      border-radius: 20px;
+    }
+
+    .bg-planos .main-title {
+      max-width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Tabela de Assinatura",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Título da Seção"
+    },
+    {
+      "type": "text",
+      "id": "title_assinatura",
+      "label": "Título do lado esquerdo"
+    },
+    {
+      "type": "text",
+      "id": "title_assinatura_1",
+      "label": "Título do benefício 1"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_assinatura_1",
+      "label": "Subtítulo do benefício 1"
+    },
+    {
+      "type": "text",
+      "id": "desc_assinatura_1",
+      "label": "Descrição do benefício 1"
+    },
+        {
+      "type": "text",
+      "id": "title_assinatura_2",
+      "label": "Título do benefício 2"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_assinatura_2",
+      "label": "Subtítulo do benefício 2"
+    },
+    {
+      "type": "text",
+      "id": "desc_assinatura_2",
+      "label": "Descrição do benefício 2"
+    },
+            {
+      "type": "text",
+      "id": "title_assinatura_3",
+      "label": "Título do benefício 3"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_assinatura_3",
+      "label": "Subtítulo do benefício 3"
+    },
+    {
+      "type": "text",
+      "id": "desc_assinatura_3",
+      "label": "Descrição do benefício 3"
+    },
+                {
+      "type": "text",
+      "id": "title_assinatura_4",
+      "label": "Título do benefício 4"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_assinatura_4",
+      "label": "Subtítulo do benefício 4"
+    },
+    {
+      "type": "text",
+      "id": "desc_assinatura_4",
+      "label": "Descrição do benefício 4"
+    },
+    {
+      "type": "text",
+      "id": "title_assinatura_5",
+      "label": "Título do benefício 5"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_assinatura_5",
+      "label": "Subtítulo do benefício 5"
+    },
+    {
+      "type": "text",
+      "id": "desc_assinatura_5",
+      "label": "Descrição do benefício 5"
+    },
+    {
+      "type": "text",
+      "id": "button_assinatura",
+      "label": "Texto do botão lado esquerdo"
+    },
+    {
+      "type": "url",
+      "id": "link_assinatura",
+      "label": "Link do botão"
+    },
+    {
+      "type": "text",
+      "id": "title_unica",
+      "label": "Título do lado direito"
+    },
+    {
+      "type": "text",
+      "id": "title_unica_1",
+      "label": "Título do benefício 1"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_unica_1",
+      "label": "Subtítulo do benefício 1"
+    },
+    {
+      "type": "text",
+      "id": "desc_unica_1",
+      "label": "Descrição do benefício 1"
+    },
+        {
+      "type": "text",
+      "id": "title_unica_2",
+      "label": "Título do benefício 2"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_unica_2",
+      "label": "Subtítulo do benefício 2"
+    },
+    {
+      "type": "text",
+      "id": "desc_unica_2",
+      "label": "Descrição do benefício 2"
+    },
+            {
+      "type": "text",
+      "id": "title_unica_3",
+      "label": "Título do benefício 3"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_unica_3",
+      "label": "Subtítulo do benefício 3"
+    },
+    {
+      "type": "text",
+      "id": "desc_unica_3",
+      "label": "Descrição do benefício 3"
+    },
+                {
+      "type": "text",
+      "id": "title_unica_4",
+      "label": "Título do benefício 4"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_unica_4",
+      "label": "Subtítulo do benefício 4"
+    },
+    {
+      "type": "text",
+      "id": "desc_unica_4",
+      "label": "Descrição do benefício 4"
+    },
+    {
+      "type": "text",
+      "id": "title_unica_5",
+      "label": "Título do benefício 5"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_unica_5",
+      "label": "Subtítulo do benefício 5"
+    },
+    {
+      "type": "text",
+      "id": "desc_unica_5",
+      "label": "Descrição do benefício 5"
+    },
+    {
+      "type": "text",
+      "id": "button_unica",
+      "label": "Texto do botão lado direito"
+    },
+    {
+      "type": "url",
+      "id": "link_unica",
+      "label": "Link do botão"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tabela de Assinatura"
+    }
+  ]
+}
+{% endschema %}

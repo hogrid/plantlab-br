@@ -1,0 +1,10 @@
+{% liquid
+    assign title = product.metafields.custom.fixed_title.value | default: product.title
+    assign bg_color = product.metafields.custom.cor_de_fundo.value
+%}
+
+<div class="flavor-swatch-item{% if product.id == outscope_product.id %} active{% endif %}" style="--swatch-background: {{ product.metafields.custom.cor_de_fundo.value }};">
+    <a href="{{ product.url }}" title="{{ title }}">
+        {{ product.featured_image |  image_url: width: 80 | image_tag }}
+    </a>
+</div>

@@ -1,0 +1,12 @@
+<div class="productView-tags">
+    {% for tag in product.metafields.custom.tags.value %}
+        <span class="tag">
+            <div class="text">{{ tag }}</div>
+            <div class="c-button__blobs">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+        </span>
+    {% endfor %}
+</div>

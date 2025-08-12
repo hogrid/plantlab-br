@@ -1,0 +1,333 @@
+<div class="container-full ig-stories-container ig-{{ section.id }}">
+  <div class="container info flex-align-center ig-stories-header">
+    <h2 class="title left" data-aos="fade-up">
+      <span class="span">{{ section.settings.title }}</span>
+    </h2>
+    <div class="arrows-wrapper d-flex flex-jc-center">
+      <div class="prev-arrow">
+        {% render 'icon-chevron-left' %}
+      </div>
+      <div class="next-arrow">
+        {% render 'icon-chevron-right' %}
+      </div>
+    </div>
+  </div>
+  <div class="ig-stories-wrapper">
+    {% for story in section.blocks %}
+      {% assign pfp = 'https://cdn.shopify.com/s/files/1/0729/4917/0461/files/logo_ig.jpg?v=1727272648' %}
+      {% if story.settings.influencer_avatar != blank %}
+        {% assign pfp = story.settings.influencer_avatar | image_url: width: 32 %}
+      {% endif %}
+
+      {% if story.type == 'story' and story.settings.video != blank or story.settings.thumbnail %}
+        <div
+          class="story"
+          data-src="{{ story.settings.video.sources[1].url }}"
+          data-fancybox="Stories"
+        >
+          {% if story.settings.thumbnail %}
+            <img
+              src="{{ story.settings.thumbnail | image_url: width: 405 }}"
+              alt="{{ story.settings.product.title }}"
+            >
+          {% else %}
+            <img
+              src="{{ story.settings.video.preview_image | image_url: width: 405 }}"
+              alt="{{ story.settings.product.title }}"
+            >
+          {% endif %}
+          <div class="story-hud">
+            <div class="hud-header">
+              <div class="hud-info">
+                <img
+                  height="32"
+                  width="32"
+                  src="{{ pfp }}"
+                  alt="{{ story.settings.influencer_username | default: 'Plantlab' }}"
+                >
+                <span class="text">{{ story.settings.influencer_username | default: '@plantlabfoods' }}</span>
+              </div>
+              <div class="hud-play">
+                <span class="play-btn">
+                  {% render 'icon-play' %}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<style>
+  .ig-stories-container h2 {
+    margin-top: 0 !important;
+    font-size: 32px;
+    margin-bottom: 16px; 
+    color: var(--lv_1_color);
+    line-height: 72px;
+    font-size: 50px;
+  }
+
+  .ig-stories-wrapper {
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 80px;
+    overflow-x: auto;
+  }
+
+  .ig-stories-wrapper .slick-track {
+    margin-left: calc(((100vw - var(--body-custom-width-container)) / 2) + 15px);
+  }
+
+  .ig-stories-header {
+    margin-top: 48px;
+  }
+
+  .ig-stories-wrapper .slick-track::before {
+    content: unset;
+  }
+
+  .ig-stories-wrapper .slick-arrow:last-child {
+    right: 0;
+  }
+
+  .ig-stories-wrapper .story {
+    position: relative;
+    cursor: pointer;
+    min-width: 350px;
+    height: 600px;
+    margin-right: 15px;
+  }
+  
+  .ig-stories-wrapper .story img {
+    margin-right: 15px; 
+    margin-left: 15px; 
+    border-radius: 16px;
+    user-select: none;
+    margin: unset !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ig-stories-wrapper .story .story-hud {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    top: 0;
+    flex-direction: column;
+  }
+
+  .ig-stories-wrapper .story .story-hud .hud-info {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .ig-stories-wrapper .story .story-hud .hud-info img {
+    max-width: 32px;
+    /* display: none; */
+  }
+
+  .ig-stories-wrapper .story .story-hud .hud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .ig-stories-wrapper .story .story-hud .text,
+  .ig-stories-wrapper .story .story-hud .product-link a {
+    font-weight: 500;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .hud-play .play-btn {
+    background: #fff;
+    padding: 2px;
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hud-play .play-btn svg * {
+    fill: #6c63e7;
+  }
+
+  .ig-stories-wrapper .story:last-child {
+    margin-right: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .ig-stories-wrapper {
+      overflow-x: auto;
+    }
+
+    .ig-stories-container h2 {
+      font-size: 50px;
+      line-height: 32px;
+    }
+
+    .ig-stories-wrapper {
+      gap: 10px;
+    }
+
+    .ig-stories-wrapper .story {
+      min-width: 300px;
+      height: 500px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ig-stories-container {
+      margin-top: 48px;
+    }
+
+    .ig-stories-container .title {
+      margin-bottom: 16px;
+    }
+
+    .ig-stories-container .title span {
+      font-size: 24px;
+    }
+
+    .ig-stories-wrapper {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 1600px) {
+    .ig-stories-wrapper .slick-track {
+      margin: 0 15px;
+    } 
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+
+<script>
+  $('.ig-stories-wrapper').slick({
+    slidesToShow: 4.5,
+    slidesToScroll: 2,
+    initialSlide: 0,
+    variableWidth: true,
+    arrows: true,
+    infinite: false,
+    nextArrow: $(".ig-{{ section.id  }} .next-arrow"),
+    prevArrow: $(".ig-{{ section.id  }} .prev-arrow"),
+    responsive: [{
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3.5,
+        slidesToScroll: 3,
+        infinite: false,
+        dots: false
+      }
+    }, {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2.5,
+        slidesToScroll: 2,
+        infinite: false,
+        dots: false
+      }
+    }, {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
+        infinite: false,
+        dots: false
+      }
+    }]
+  });
+
+  Fancybox.bind("[data-fancybox]", {
+    // Your custom options
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Instagram Stories",
+  "class": "ig-stories-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título da seção"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Cor de fundo da seção"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Cor do título"
+    },
+    {
+      "type": "color",
+      "id": "wave_bottom_color",
+      "label": "Cor da divisão",
+      "default": "#fff"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Story",
+      "type": "story",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Foto de capa",
+          "info": "Opcional"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Story"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "influencer_username",
+          "label": "@ do Influencer"
+        },
+        {
+          "type": "image_picker",
+          "id": "influencer_avatar",
+          "label": "Avatar do Influencer"
+        }
+      ],
+      "limit": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Stories"
+    }
+  ]
+}
+{% endschema %}

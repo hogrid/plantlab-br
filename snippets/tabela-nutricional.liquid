@@ -1,0 +1,104 @@
+<style>
+  #tabela-nutricional *:empty {
+    display: inherit !important;
+  }
+
+  #tabela-nutricional {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: #b5b5b5;
+    border: none;
+  }
+
+  #tabela-container tbody tr td:first-child {
+    min-width: 200px;
+    background: transparent;
+  }
+
+  #tabela-container tbody tr td:not(:first-child) {
+    text-align: center;
+  }
+
+  #tabela-container tbody tr td {
+    color: var(--lv_1_color);
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+  }
+
+  #tabela-container thead.header-tabela th {
+    color: var(--lv_1_color);
+    padding: 5px 12px;
+    border: none;
+  }
+
+  #tabela-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: var(--bgLight);
+  }
+
+  .hide-title-decoration .title:before {
+    display: none;
+  }
+
+  .halo-text-format table tr:nth-child(2n + 1) {
+    background-color: transparent !important;
+  }
+
+  @media (max-width: 1200px) {
+    #tabela-container {
+      max-width: calc(100vw - 30px);
+    }
+  }
+</style>
+
+<div class="table-wrapper-plantlab">
+  <div id="tabela-container"></div>
+</div>
+
+<script>
+    function preencherTabelaComJSON(jsonData) {
+        console.log(jsonData);
+        // Criar a tabela e adicionar ao corpo do documento
+        const table = $('<table id="tabela-nutricional" border="1"></table>');
+        const thead = $('<thead class="header-tabela"></thead>');
+        const tbody = $('<tbody></tbody>');
+
+        // Preencher cabeçalhos
+        const headerRow = $('<tr></tr>');
+        for (const header of jsonData.headers) {
+            headerRow.append(`<th>${header}</th>`);
+        }
+        thead.append(headerRow);
+
+        // Preencher dados
+        for (const row of jsonData.data) {
+            const dataRow = $('<tr></tr>');
+            for (const col of row) {
+                dataRow.append(`<td>${col}</td>`);
+            }
+            tbody.append(dataRow);
+        }
+
+        // Adicionar thead e tbody à tabela
+        table.append(thead, tbody);
+
+        // Adicionar a tabela ao corpo do documento
+        $('#tabela-container').append(table);
+    }
+
+    // Exemplo de uso
+    $(document).ready(function() {
+        // Suponha que jsonData seja o JSON que você deseja usar
+        var jsonData = {{ product.metafields.custom.tabela_nutricional_json.value | json }};
+
+        // Chame a função para preencher a tabela com o JSON
+        preencherTabelaComJSON(jsonData);
+    });
+</script>

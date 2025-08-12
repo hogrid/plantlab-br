@@ -1,0 +1,384 @@
+<div class="product-showcase showcase-{{ section.id  }}">
+  <div class="container info">
+    {% if section.settings.title %}
+      <h2 class="title" data-aos="fade-up" data-aos-offset="100">
+        <span class="text">{{ section.settings.title }}</span>
+      </h2>
+    {% endif %}
+    <div class="arrows-wrapper d-flex flex-jc-center">
+      <div class="prev-arrow">
+        {% render 'icon-chevron-left' %}
+      </div>
+      <div class="next-arrow">
+        {% render 'icon-chevron-right' %}
+      </div>
+    </div>
+  </div>
+  <div class="slide-wrapper">
+    {% for block in section.blocks %}
+      <a
+        data-aos="fade-up"
+        data-aos-delay="{{ forloop.index | times: 100 }}"
+        class="product-showcase-item"
+        style="--background: {{ block.settings.gradient }}; --product-color: {{ block.settings.product.metafields.custom.cor_de_fundo.value }}"
+        href="{{ block.settings.product.url }}"
+        title="{{ block.settings.product.title }}"
+      >
+      {%- if settings.show_badge -%}
+        {% render 'product-badge', product: block.settings.product, class: 'card__badge', badge_detail: true %}
+      {%- endif -%}
+        <div>
+          <div class="product-showcase-item-content">
+            <p>{{ block.settings.description | default: block.settings.product.description }}</p>
+          </div>
+          <div class="product-showcase-item-image">
+            <img
+              src="{{ block.settings.product.featured_image | image_url: width: 350 }}"
+              alt="{{ block.settings.product.title }}"
+              width="350"
+              height="auto"
+            >
+          </div>
+          <div class="view-details">
+            {% render 'icon-plus' %}
+          </div>
+        </div>
+        {% if block.settings.product.metafields.custom.card_alt_image.value != blank %}
+          <div class="hover-info-wrapper">
+            <img
+              class="card__image-hover"
+              src="{{ block.settings.product.metafields.custom.card_alt_image.value | image_url: width: 600 }}"
+              alt="{{ block.settings.product.title }}"
+              width="350"
+              height="auto"
+            >
+            <div class="hover-info__text center">
+              <p>{{ block.settings.description | default: block.settings.product.description }}</p>
+            </div>
+          </div>
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .product-showcase {
+    padding: 100px 0;
+    background: var(--bgLight);
+  }
+
+  .product-showcase h2.title {
+    color: var(--lv_1_color);
+    font-size: 48px;
+    letter-spacing: 0;
+    margin-top: 0;
+  }
+
+  .product-showcase .slick-track {
+    margin: 0 0 0 calc(((100vw - var(--body-custom-width-container)) / 2) + 15px);
+  }
+
+  .arrows-wrapper {
+    gap: 12px;
+  }
+
+  .card__image-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateY(-10%);
+  }
+
+  .product-showcase-item:hover .card__image-hover {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .product-showcase-item .hover-info__text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    padding: 20px;
+    background-color: var(--product-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateY(10%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .product-showcase-item:hover .hover-info__text {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  .product-showcase-item {
+    overflow: hidden;
+  }
+
+  .arrows-wrapper .prev-arrow,
+  .arrows-wrapper .next-arrow {
+    position: relative;
+    left: unset;
+    top: unset;
+    transform: unset;
+    border: none;
+    background-color: #ffffff70;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arrows-wrapper .prev-arrow.slick-disabled,
+  .arrows-wrapper .next-arrow.slick-disabled {
+    display: flex !important;
+  }
+
+  .product-showcase .container.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .arrows-wrapper svg {
+    color: var(--lv_1_color);
+  }
+
+  .product-showcase-item-content p {
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .product-showcase-item {
+    padding: 12px 0 70px 0;
+    background: var(--background);
+    margin: 0 12px;
+    border-radius: 14px;
+    gap: 16px;
+    position: relative;
+    width: 350px;
+    max-width: calc(100vw - 30px) !important;
+  }
+
+  .product-showcase-item .product-showcase-item-content {
+    max-width: 200px;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #fff;
+    display: block;
+    min-width: 100%;
+    position: relative;
+    padding: 25px 40px;
+  }
+
+  .product-showcase .card__badge {
+    position: absolute;
+    top: 15px !important ;
+    left: 25px !important;
+  }
+
+  .product-showcase .badge {
+    border-radius: 999px;
+    padding: 3px 12px !important;
+    font-size: 14px !important;
+    font-weight: 900;
+  }
+
+  .showcase-item-dots {
+    position: absolute;
+    bottom: 16px;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .showcase-item-dots ul {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    bottom: 16px;
+    z-index: 1;
+    max-width: 100%;
+  }
+
+  .showcase-dot {
+    background: tomato;
+    border-radius: 999px;
+    width: 14px !important;
+    height: 14px;
+  }
+
+  .product-showcase-item .view-details {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    padding: 12px;
+    background-color: #232323;
+    border-radius: 999px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .product-showcase-item .view-details svg {
+    color: #fff;
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (max-width: 1600px) {
+    .product-showcase .slick-track {
+      margin: 0 15px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .product-showcase {
+      padding: 50px 0;
+    }
+
+    .product-showcase h2.title span {
+      font-size: 32px !important;
+    }
+
+    .product-showcase-item {
+      max-width: 320px;
+    }
+
+    .product-showcase-item .product-showcase-item-content {
+      font-size: 16px !important;
+    }
+
+    .product-showcase .card__badge {
+      flex-direction: row;
+      gap: 5px; 
+    }
+
+    .product-showcase-item-content {
+      padding-top: 32px !important;
+    }
+
+    .product-showcase-item-content p {
+      font-size: 24px;
+    }
+
+    .product-showcase .card__badge .badge {
+      margin: 0;
+    }
+  }
+</style>
+
+<script>
+  $(document).ready(function () {
+    $('.showcase-{{ section.id  }} .slide-wrapper').slick({
+      dots: false,
+      infinite: false,
+      slidesToShow: 4.5,
+      slidesToScroll: 3,
+      variableWidth: true,
+      initialSlide: 0,
+      arrows: true,
+      nextArrow: $('.showcase-{{ section.id  }} .next-arrow'),
+      prevArrow: $('.showcase-{{ section.id  }} .prev-arrow'),
+      responsive: [{
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 3.5,
+          slidesToScroll: 3,
+          infinite: false,
+          dots: false,
+          variableWidth: true
+        }
+      }, {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1
+        }
+      }, {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1
+        }
+      }]
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Sabores",
+  "class": "product-slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título"
+    },
+    {
+      "type": "text",
+      "id": "descricao_cta",
+      "label": "Descrição CTA"
+    },
+    {
+      "type": "text",
+      "id": "texto_cta",
+      "label": "Texto CTA"
+    },
+    {
+      "type": "url",
+      "id": "link_cta",
+      "label": "Link do CTA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Product"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descrição"
+        },
+        {
+          "type": "color_background",
+          "id": "gradient",
+          "label": "Gradiente"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sabores"
+    }
+  ]
+}
+{% endschema %}
