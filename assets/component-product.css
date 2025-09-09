@@ -1329,8 +1329,9 @@
     color: var(--atc-color);
     background: var(--atc-bg-color);
     border-color: var(--atc-border-color);
-    padding-top: 13px;
-    padding-bottom: 13px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-bottom: 40px;
 }
 
 .enable_gradient_button_card .productView-action .button{

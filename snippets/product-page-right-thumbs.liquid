@@ -1088,6 +1088,12 @@
                                                 %}
                                             </div>
                                         {% endunless %}
+                                    {%- when 'payment_promo' -%}
+                                        <div class="productView-moreItem"
+                                            style="--spacing-top: {{ spacing_top | append: 'px' }}; --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
+                                        >
+                                            {% render 'product-payment-promo', block: block, section: section %}
+                                        </div>
                                     {%- when 'customer_viewing' -%}
                                         <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
                                             style="--spacing-top: {{ spacing_top | append: 'px' }};

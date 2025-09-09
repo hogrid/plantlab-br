@@ -26,15 +26,19 @@
           <div class="copyright__content" style="--font-size: {{ type_footer_link_font_size }}px; --text-color: {{ block.settings.copyright_content_color }}">{{ block.settings.copyright_content | default: ' ' }}</div>
         </div>
       {%- endif -%}
-      <div class="footer__column-item footer__shop_name"><small class="copyright__content">
-        <a href="https://alfinet.com.br/?utm_source=referencias&amp;utm_medium=link&amp;utm_campaign=cliente_referencia&amp;utm_content={{ shop.name | handleize |  replace: '-', '' }}" title="Designed by Alfinet" target="_blank">
-        {% if section.settings.alfinet_logo == 'red' %}
-          <img class="lazyload" style="margin: 0 auto;" src="https://cdn.shopify.com/s/files/1/0502/6316/3060/files/alfinet-vermelho-rodape.png?v=1699537706" loading="lazy" alt="Designed by Alfinet" width="65">
-        {% elsif section.settings.alfinet_logo == 'white' %}
-          <img class="lazyload" style="margin: 0 auto;" src="https://cdn.shopify.com/s/files/1/0502/6316/3060/files/alfinet-branco-rodape.png?v=1699537706" loading="lazy" alt="Designed by Alfinet" width="65">
-        {% endif %}
-        </a>
-      </small></div>
+       <div class="footer__column-item footer__shop_name"><small class="copyright__content">
+          <a href="https://hogrid.com" title="Maintained by Hogrid" target="_blank">
+            {% if section.settings.alfinet_logo == 'red' %}
+            <img class="lazyload" style="margin: 0 auto;"
+              src="https://cdn.shopify.com/s/files/1/0663/9242/4502/files/logo-extend-white.png?v=1747670966"
+              loading="lazy" alt="Maintained by Hogrid" width="150">
+            {% elsif section.settings.alfinet_logo == 'white' %}
+            <img class="lazyload" style="margin: 0 auto;"
+              src="https://cdn.shopify.com/s/files/1/0663/9242/4502/files/logo-extend-white.png?v=1747670966"
+              loading="lazy" alt="Maintained by Hogrid" width="150">
+            {% endif %}
+          </a>
+        </small></div>
       <div class="footer__column footer__column--info">
         {%- if show_payment -%}
           {% render 'footer-payment', block: block %}

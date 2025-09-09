@@ -1,0 +1,427 @@
+{
+  "article": [],
+  "blog": [],
+  "collection": [],
+  "company": [],
+  "company_location": [],
+  "location": [],
+  "market": [],
+  "order": [],
+  "page": [],
+  "product": [
+    {
+      "key": "titulo_conteudo",
+      "namespace": "custom",
+      "name": "titulo-conteudo",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "conteudo",
+      "namespace": "custom",
+      "name": "conteudo",
+      "description": "",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "tabela_nutricional",
+      "namespace": "custom",
+      "name": "tabela-nutricional-desktop",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "video_sabores",
+      "namespace": "custom",
+      "name": "video_sabores",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "tabela_nutricional_mobile",
+      "namespace": "custom",
+      "name": "tabela-nutricional-mobile",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "aminograma",
+      "namespace": "custom",
+      "name": "aminograma",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "hexadecimal_2",
+      "namespace": "custom",
+      "name": "hexadecimal",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "aminograma_novo",
+      "namespace": "custom",
+      "name": "Ingredientes + aminograma",
+      "description": "texto de produto",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "model",
+      "namespace": "custom",
+      "name": "Model",
+      "description": "",
+      "type": {
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "taste",
+      "namespace": "custom",
+      "name": "Taste",
+      "description": "",
+      "type": {
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "cor_conteudo_video",
+      "namespace": "custom",
+      "name": "cor-conteudo-video",
+      "description": "",
+      "type": {
+        "name": "color",
+        "category": "COLOR"
+      }
+    },
+    {
+      "key": "altura_planeta",
+      "namespace": "custom",
+      "name": "altura planeta",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "grupo_de_produtos",
+      "namespace": "custom",
+      "name": "Grupo de Produtos",
+      "description": "",
+      "type": {
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "cor_de_fundo",
+      "namespace": "custom",
+      "name": "Cor de Fundo",
+      "description": "",
+      "type": {
+        "name": "color",
+        "category": "COLOR"
+      }
+    },
+    {
+      "key": "rating",
+      "namespace": "reviews",
+      "name": "Avaliação do produto",
+      "description": "Avaliação média de clientes",
+      "type": {
+        "name": "rating",
+        "category": "RATING"
+      }
+    },
+    {
+      "key": "rating_count",
+      "namespace": "reviews",
+      "name": "Contagem de avaliações do produto",
+      "description": "Número total de avaliações de clientes",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "doses",
+      "namespace": "custom",
+      "name": "doses",
+      "description": "",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    },
+    {
+      "key": "fixed_title",
+      "namespace": "custom",
+      "name": "Título fixo",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "product_tag",
+      "namespace": "custom",
+      "name": "Tag para o Produto",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "video_stories",
+      "namespace": "custom",
+      "name": "Stories",
+      "description": "",
+      "type": {
+        "name": "list.file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "tabela_nutricional_json",
+      "namespace": "custom",
+      "name": "Tabela Nutricional",
+      "description": "",
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    },
+    {
+      "key": "bullets",
+      "namespace": "custom",
+      "name": "Bullets",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "faqs",
+      "namespace": "custom",
+      "name": "Faqs",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "banner_de_imagem",
+      "namespace": "custom",
+      "name": "Banner de imagem",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "card_alt_image",
+      "namespace": "custom",
+      "name": "Imagem secundária",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "tamanho",
+      "namespace": "custom",
+      "name": "Tamanho",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "opcoes_de_tamanhos",
+      "namespace": "custom",
+      "name": "Opções de tamanho",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "tags",
+      "namespace": "custom",
+      "name": "Tags",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "imagem_do_gradiente",
+      "namespace": "custom",
+      "name": "Imagem do gradiente",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "titulo_da_secao_degrade",
+      "namespace": "custom",
+      "name": "Título da seção com gradiente",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "descricao_da_secao_degrade",
+      "namespace": "custom",
+      "name": "Descrição da seção com gradiente",
+      "description": "",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "video_da_secao_de_gradiente",
+      "namespace": "custom",
+      "name": "Vídeo da seção de gradiente",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "stories_dos_influencers",
+      "namespace": "custom",
+      "name": "Stories dos influencers",
+      "description": "",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "tabela_comparativa",
+      "namespace": "custom",
+      "name": "Tabela comparativa",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "hidden",
+      "namespace": "seo",
+      "name": "Esconder produto",
+      "description": "",
+      "type": {
+        "name": "number_integer",
+        "category": "NUMBER"
+      }
+    }
+  ],
+  "variant": [
+    {
+      "key": "tag_1",
+      "namespace": "custom",
+      "name": "tag_1",
+      "description": "Tag 1",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "tag_2",
+      "namespace": "custom",
+      "name": "tag_2",
+      "description": "Tag 2",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "comprimento",
+      "namespace": "frenet",
+      "name": "Comprimento",
+      "description": "Comprimento do produto",
+      "type": {
+        "name": "dimension",
+        "category": "MEASUREMENT"
+      }
+    },
+    {
+      "key": "largura",
+      "namespace": "frenet",
+      "name": "Largura",
+      "description": "Largura do produto",
+      "type": {
+        "name": "dimension",
+        "category": "MEASUREMENT"
+      }
+    },
+    {
+      "key": "altura",
+      "namespace": "frenet",
+      "name": "Altura",
+      "description": "Altura do produto",
+      "type": {
+        "name": "dimension",
+        "category": "MEASUREMENT"
+      }
+    }
+  ],
+  "shop": [
+    {
+      "key": "fastbundleconf",
+      "namespace": "rbrfb",
+      "name": "Fast Bundle Conf",
+      "description": "App's config for the widgets",
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    }
+  ]
+}

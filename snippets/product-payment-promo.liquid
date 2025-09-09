@@ -1,0 +1,229 @@
+{%- comment -%}
+  Product Payment + Promo module
+  - Shows payment info highlights (e.g., PIX discount, installments)
+  - Shows "Leve + Pague –" promo tiers
+  - All copy and colors configurable via block settings
+  - Rendered inside product page right column before buy button
+{%- endcomment -%}
+
+{%- liquid
+  assign spacing_top = block.settings.spacing_top | default: 0
+  assign spacing_bottom = block.settings.spacing_bottom | default: 16
+  assign enable_module = block.settings.enable_module | default: true
+
+  assign payment_title = block.settings.payment_title | default: 'Pagamento e Parcelamento'
+  assign show_pix = block.settings.show_pix | default: true
+  assign pix_text = block.settings.pix_text | default: '3% OFF no PIX'
+  assign show_installments = block.settings.show_installments | default: true
+  assign installments_text = block.settings.installments_text | default: '5x sem juros'
+  assign methods_text = block.settings.methods_text
+
+  assign promo_title = block.settings.promo_title | default: 'Leve + Pague –'
+
+  assign tier1_label = block.settings.tier1_label | default: '2 un (1 kg)'
+  assign tier1_discount = block.settings.tier1_discount | default: '8% OFF'
+  assign tier1_shipping = block.settings.tier1_shipping
+
+  assign tier2_label = block.settings.tier2_label | default: '3 un (1,5 kg)'
+  assign tier2_discount = block.settings.tier2_discount | default: '12% OFF'
+  assign tier2_shipping = block.settings.tier2_shipping | default: 'frete grátis Sul/Sudeste'
+
+  assign tier3_label = block.settings.tier3_label | default: '4 un (2 kg)'
+  assign tier3_discount = block.settings.tier3_discount | default: '14% OFF'
+  assign tier3_shipping = block.settings.tier3_shipping | default: 'frete grátis Brasil'
+
+  assign accent_color = block.settings.accent_color
+  assign bg_color = block.settings.bg_color
+  assign border_color = block.settings.border_color
+  assign text_color = block.settings.text_color
+  assign small_text_color = block.settings.small_text_color
+  assign title_color = block.settings.title_color
+
+  if accent_color == blank
+    assign accent_css = 'var(--product-gradient, var(--product-color, var(--color-global)))'
+  else
+    assign accent_css = accent_color
+  endif
+  if bg_color == blank
+    assign bg_css = 'var(--bg-white)'
+  else
+    assign bg_css = bg_color
+  endif
+  if border_color == blank
+    assign border_css = 'var(--border-color)'
+  else
+    assign border_css = border_color
+  endif
+  if text_color == blank
+    assign text_css = 'var(--color-text)'
+  else
+    assign text_css = text_color
+  endif
+  if small_text_color == blank
+    assign small_css = 'var(--color-text2)'
+  else
+    assign small_css = small_text_color
+  endif
+
+  if title_color == blank
+    assign title_css = text_css
+  else
+    assign title_css = title_color
+  endif
+
+  assign css_vars = '--pl-accent: ' | append: accent_css | append: '; --pl-bg: ' | append: bg_css | append: '; --pl-brd: ' | append: border_css | append: '; --pl-text: ' | append: text_css | append: '; --pl-small: ' | append: small_css | append: '; --pl-title: ' | append: title_css | append: ';'
+-%}
+
+{%- if enable_module -%}
+
+<section class="pl-payment-promo" role="region" aria-labelledby="pl-payment-promo-heading-{{ section.id }}"
+  style="--pl-gap: 12px; {{ css_vars }} --spacing-top: {{ spacing_top | append: 'px' }}; --spacing-bottom: {{ spacing_bottom | append: 'px' }}">
+  <div class="pl-box pl-box--payment">
+    <h3 id="pl-payment-promo-heading-{{ section.id }}" class="pl-title">{{ payment_title }}</h3>
+    <ul class="pl-highlights" role="list">
+      {%- if show_pix and pix_text != blank -%}
+        <li class="pl-chip" aria-label="{{ pix_text | escape }}">
+          <span class="pl-chip__dot" aria-hidden="true"></span>
+          <span class="pl-chip__text">{{ pix_text }}</span>
+        </li>
+      {%- endif -%}
+      {%- if show_installments and installments_text != blank -%}
+        <li class="pl-chip" aria-label="{{ installments_text | escape }}">
+          <span class="pl-chip__dot" aria-hidden="true"></span>
+          <span class="pl-chip__text">{{ installments_text }}</span>
+        </li>
+      {%- endif -%}
+    </ul>
+    {%- if methods_text != blank -%}
+      <p class="pl-methods">{{ methods_text }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="pl-box pl-box--promo">
+    <h3 class="pl-title">{{ promo_title }}</h3>
+    <div class="pl-tiers" role="list">
+      <div class="pl-tier" role="listitem">
+        <div class="pl-tier__left">
+          <span class="pl-tier__label">{{ tier1_label }}</span>
+        </div>
+        <div class="pl-tier__right">
+          <span class="pl-tier__discount" aria-label="{{ tier1_discount | escape }}">{{ tier1_discount }}</span>
+          {%- if tier1_shipping != blank -%}
+            <span class="pl-tier__ship">{{ tier1_shipping }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="pl-tier" role="listitem">
+        <div class="pl-tier__left">
+          <span class="pl-tier__label">{{ tier2_label }}</span>
+        </div>
+        <div class="pl-tier__right">
+          <span class="pl-tier__discount" aria-label="{{ tier2_discount | escape }}">{{ tier2_discount }}</span>
+          {%- if tier2_shipping != blank -%}
+            <span class="pl-tier__ship">{{ tier2_shipping }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+      <div class="pl-tier" role="listitem">
+        <div class="pl-tier__left">
+          <span class="pl-tier__label">{{ tier3_label }}</span>
+        </div>
+        <div class="pl-tier__right">
+          <span class="pl-tier__discount" aria-label="{{ tier3_discount | escape }}">{{ tier3_discount }}</span>
+          {%- if tier3_shipping != blank -%}
+            <span class="pl-tier__ship">{{ tier3_shipping }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #ProductSection-{{ section.id }} .pl-payment-promo {
+    display: grid;
+    gap: var(--pl-gap);
+    margin-top: var(--spacing-top);
+    margin-bottom: var(--spacing-bottom);
+    color: var(--pl-text);
+  }
+  #ProductSection-{{ section.id }} .pl-box {
+    background: var(--pl-bg);
+    border: 1px solid var(--pl-bg, #e5e5e5);
+    border-radius: var(--border-radius, 20px);
+    padding: 14px 16px;
+  }
+  #ProductSection-{{ section.id }} .pl-title {
+    font-size: calc(var(--font-body-size) + 2px);
+    line-height: 1.3;
+    margin: 0 0 10px;
+    font-weight: var(--font-weight-bold, 700);
+    letter-spacing: var(--heading-letter-spacing, 0);
+    color: var(--pl-title, var(--pl-text));
+  }
+  #ProductSection-{{ section.id }} .pl-highlights {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  #ProductSection-{{ section.id }} .pl-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-body-size);
+    line-height: 1.4;
+    padding: 8px 10px;
+    border: 1px solid var(--pl-brd, #e5e5e5);
+    border-radius: var(--border-radius, 10px);
+    background: var(--pl-brd);
+  }
+  #ProductSection-{{ section.id }} .pl-chip__dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--pl-accent);
+  }
+  #ProductSection-{{ section.id }} .pl-methods {
+    margin: 10px 0 0;
+    font-size: calc(var(--font-body-size) - 1px);
+    color: var(--pl-small);
+  }
+  #ProductSection-{{ section.id }} .pl-tiers {
+    display: grid;
+    gap: 8px;
+  }
+  #ProductSection-{{ section.id }} .pl-tier {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 12px;
+    background: var(--pl-bg);
+    border: 1px dashed var(--pl-brd, #e5e5e5);
+    border-radius: var(--border-radius, 10px);
+  }
+  #ProductSection-{{ section.id }} .pl-tier__label { font-weight: var(--font-weight-semibold, 600); color: var(--pl-text); }
+  #ProductSection-{{ section.id }} .pl-tier__discount {
+    display: inline-block;
+    padding: 4px 8px;
+    background: var(--pl-accent);
+    color: var(--bg-white);
+    border-radius: var(--border-radius, 6px);
+    font-weight: var(--font-weight-bold, 700);
+    font-size: calc(var(--font-body-size) - 1px);
+    margin-right: 8px;
+  }
+  #ProductSection-{{ section.id }} .pl-tier__ship {
+    font-size: calc(var(--font-body-size) - 2px);
+    color: var(--pl-small);
+  }
+
+  @media (min-width: 768px) {
+    #ProductSection-{{ section.id }} .pl-highlights {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
+
+{%- endif -%}

@@ -6718,3 +6718,9 @@ summary::-webkit-details-marker {
         transition: none !important;
     }
 }
+
+/* 12/08/2025 Mudança temporária desabilitando opção de assinatura */
+
+.productView-buttons .rc-container-wrapper, .productView-product .productView-purchaseType, .productView-product .product-heading, .productView-product .subscription-switch,.productView-product .minibanner-info, .productView-product .productView-app{
+    display: none;
+}

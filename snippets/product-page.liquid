@@ -978,6 +978,10 @@
                 assign spacing_bottom = block.settings.spacing_bottom
               -%}
               {%- case block.type -%}
+                {%- when 'payment_promo' -%}
+                  <div class="productView-moreItem" style="--spacing-top: {{ spacing_top | append: 'px' }}; --spacing-bottom: {{ spacing_bottom | append: 'px' }}">
+                    {% render 'product-payment-promo', block: block, section: section %}
+                  </div>
                 {%- when 'breadcrumb' -%}
                   {%- if breadcrumb_layout == 'content' -%}
                     <div
