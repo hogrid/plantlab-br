@@ -19,18 +19,57 @@
   assign methods_text = block.settings.methods_text
 
   assign promo_title = block.settings.promo_title | default: 'Leve + Pague –'
+  assign promo_subtitle = block.settings.promo_subtitle
 
-  assign tier1_label = block.settings.tier1_label | default: '2 un (1 kg)'
-  assign tier1_discount = block.settings.tier1_discount | default: '8% OFF'
-  assign tier1_shipping = block.settings.tier1_shipping
+  comment
+    Lógica condicional baseada no metafield model
+  endcomment
+  assign product_model = product.metafields.custom.model.value
+  assign model_name = ''
+  if product_model and product_model.name
+    assign model_name = product_model.name.value | downcase
+  endif
+  
+  assign is_500g = false
+  assign is_40g = false
+  
+  if model_name contains '500g' or model_name contains 'proteina vegetal cremosa'
+    assign is_500g = true
+  endif
+  
+  if model_name contains '40g' or model_name contains 'sache unitário'
+    assign is_40g = true
+  endif
+  
+  assign show_promo_block = false
+  if is_500g or is_40g
+    assign show_promo_block = true
+  endif
 
-  assign tier2_label = block.settings.tier2_label | default: '3 un (1,5 kg)'
-  assign tier2_discount = block.settings.tier2_discount | default: '12% OFF'
-  assign tier2_shipping = block.settings.tier2_shipping | default: 'frete grátis Sul/Sudeste'
-
-  assign tier3_label = block.settings.tier3_label | default: '4 un (2 kg)'
-  assign tier3_discount = block.settings.tier3_discount | default: '14% OFF'
-  assign tier3_shipping = block.settings.tier3_shipping | default: 'frete grátis Brasil'
+  comment
+    Configurações específicas por tamanho
+  endcomment
+  if is_500g
+    assign tier1_label = block.settings.tier1_label_500g | default: '2 un (1 kg)'
+    assign tier1_discount = block.settings.tier1_discount_500g | default: '8% OFF'
+    assign tier1_shipping = block.settings.tier1_shipping_500g
+    assign tier2_label = block.settings.tier2_label_500g | default: '3 un (1,5 kg)'
+    assign tier2_discount = block.settings.tier2_discount_500g | default: '12% OFF'
+    assign tier2_shipping = block.settings.tier2_shipping_500g | default: 'frete grátis Sul/Sudeste'
+    assign tier3_label = block.settings.tier3_label_500g | default: '4 un (2 kg)'
+    assign tier3_discount = block.settings.tier3_discount_500g | default: '14% OFF'
+    assign tier3_shipping = block.settings.tier3_shipping_500g | default: 'frete grátis Brasil'
+  elsif is_40g
+    assign tier1_label = block.settings.tier1_label_40g | default: '10 un'
+    assign tier1_discount = block.settings.tier1_discount_40g | default: '5% OFF'
+    assign tier1_shipping = block.settings.tier1_shipping_40g
+    assign tier2_label = block.settings.tier2_label_40g | default: '20 un'
+    assign tier2_discount = block.settings.tier2_discount_40g | default: '10% OFF'
+    assign tier2_shipping = block.settings.tier2_shipping_40g | default: 'frete grátis Sul/Sudeste'
+    assign tier3_label = block.settings.tier3_label_40g | default: '30 un'
+    assign tier3_discount = block.settings.tier3_discount_40g | default: '15% OFF'
+    assign tier3_shipping = block.settings.tier3_shipping_40g | default: 'frete grátis Brasil'
+  endif
 
   assign accent_color = block.settings.accent_color
   assign bg_color = block.settings.bg_color
@@ -99,8 +138,12 @@
     {%- endif -%}
   </div>
 
+  {%- if show_promo_block -%}
   <div class="pl-box pl-box--promo">
     <h3 class="pl-title">{{ promo_title }}</h3>
+    {%- if promo_subtitle != blank -%}
+      <p class="pl-subtitle">{{ promo_subtitle }}</p>
+    {%- endif -%}
     <div class="pl-tiers" role="list">
       <div class="pl-tier" role="listitem">
         <div class="pl-tier__left">
@@ -137,6 +180,7 @@
       </div>
     </div>
   </div>
+  {%- endif -%}
 </section>
 
 <style>
@@ -160,6 +204,13 @@
     font-weight: var(--font-weight-bold, 700);
     letter-spacing: var(--heading-letter-spacing, 0);
     color: var(--pl-title, var(--pl-text));
+  }
+  #ProductSection-{{ section.id }} .pl-subtitle {
+    font-size: var(--font-body-size);
+    line-height: 1.4;
+    margin: 0 0 12px;
+    font-weight: var(--font-weight-normal, 400);
+    color: var(--pl-small);
   }
   #ProductSection-{{ section.id }} .pl-highlights {
     display: grid;
