@@ -65,10 +65,10 @@
     assign tier1_shipping = block.settings.tier1_shipping_40g
     assign tier2_label = block.settings.tier2_label_40g | default: '20 un'
     assign tier2_discount = block.settings.tier2_discount_40g | default: '10% OFF'
-    assign tier2_shipping = block.settings.tier2_shipping_40g | default: 'frete grátis Sul/Sudeste'
+    assign tier2_shipping = block.settings.tier2_shipping_40g
     assign tier3_label = block.settings.tier3_label_40g | default: '30 un'
     assign tier3_discount = block.settings.tier3_discount_40g | default: '15% OFF'
-    assign tier3_shipping = block.settings.tier3_shipping_40g | default: 'frete grátis Brasil'
+    assign tier3_shipping = block.settings.tier3_shipping_40g
   endif
 
   assign accent_color = block.settings.accent_color
