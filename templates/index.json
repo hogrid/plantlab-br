@@ -941,6 +941,7 @@
         },
         "bannner_cJy8YV": {
           "type": "bannner",
+          "disabled": true,
           "settings": {
             "banner_image": "shopify://shop_images/Nossa_Linha_de_Produtos_-_GRID_Homepage_5.png",
             "banner_image_mobile": "shopify://shop_images/Nossa_Linha_de_Produtos_-_GRID_Homepage_-_Mobile_5.png",
@@ -965,6 +966,7 @@
         },
         "bannner_Qwmf6m": {
           "type": "bannner",
+          "disabled": true,
           "settings": {
             "banner_image": "shopify://shop_images/Nossa_Linha_de_Produtos_-_GRID_Homepage_2.png",
             "banner_image_mobile": "shopify://shop_images/Nossa_Linha_de_Produtos_-_GRID_Homepage_-_Mobile_2.png",
