@@ -14,10 +14,9 @@
       "blocks": {
         "16321237356a896dad-0": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image_slide": "shopify://shop_images/Banner_Desktop_-_Black_August.png",
-            "image_slide_mb": "shopify://shop_images/Banner_Mobile_-_Black_August.png",
+            "image_slide": "shopify://shop_images/Banner_Peanut.png",
+            "image_slide_mb": "shopify://shop_images/Banner_Mobile_-_Novo_site_669d2594-7dd8-4943-aef4-c15adac07146.png",
             "alignment": "left",
             "enable_custom_position": false,
             "custom_horizontal": "40",
@@ -302,6 +301,7 @@
         },
         "video_fQbCi6": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "style_video": "mp4",
             "video_link": "eTCtDW7O1aM",
@@ -429,7 +429,7 @@
         "announcement_EHeFaG": {
           "type": "announcement",
           "settings": {
-            "text": "<p>🥳 20% OFF em todo o site com o cupom <cupom>BLUEWEEK</cupom></p>",
+            "text": "<p>🥜 Até 27% OFF na sua cremosa de Amendoim 🥳</p>",
             "btn_color": "#f84248",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -450,7 +450,7 @@
           "type": "countdown",
           "settings": {
             "top_message_text": "",
-            "annou_countdown": "Aug 3, 2025 23:59:59",
+            "annou_countdown": "Sep 21, 2025 23:59:59",
             "color_countdown_text": "#06142e",
             "border_color_countdown": "#f7f8fa",
             "bg_color_countdown": "#f7f8fa"
@@ -473,7 +473,6 @@
         "countdown_XJexgU",
         "announcement_EVXXNk"
       ],
-      "disabled": true,
       "custom_css": [
         ".container {max-width: 100% !important;}"
       ],
@@ -483,7 +482,7 @@
         "enable_close": false,
         "color_text": "#ffffff",
         "bg_color_text": "rgba(0,0,0,0)",
-        "bg_color_text_gradient": "linear-gradient(90deg, rgba(0, 50, 255, 1), rgba(0, 209, 255, 1) 99%)",
+        "bg_color_text_gradient": "linear-gradient(90deg, rgba(248, 55, 29, 1), rgba(254, 198, 47, 1) 99%)",
         "font_size_text": 12,
         "font_style_text": "normal",
         "font_weight_text": "500",

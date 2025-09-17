@@ -17,7 +17,7 @@
         "announcement_EHeFaG": {
           "type": "announcement",
           "settings": {
-            "text": "<p>🥳wooow: AGORA PAGAMENTO NO PIX GERA 3% OFF!🥳 EXPERIMENTE COM DESCONTO<cupom>PRIMEIRACREMOSA</cupom></p>",
+            "text": "<p>🥳 wooow: AGORA PAGAMENTO NO PIX GERA 3% OFF!🥳 EXPERIMENTE COM DESCONTO<cupom>PRIMEIRACREMOSA</cupom></p>",
             "btn_color": "#f84248",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -37,7 +37,7 @@
         "enable_close": false,
         "color_text": "#ffffff",
         "bg_color_text": "rgba(0,0,0,0)",
-        "bg_color_text_gradient": "linear-gradient(90deg, rgba(202, 0, 255, 1) 2%, rgba(123, 7, 153, 1) 100%)",
+        "bg_color_text_gradient": "linear-gradient(90deg, rgba(247, 46, 21, 1) 2%, rgba(254, 198, 47, 1) 100%)",
         "font_size_text": 12,
         "font_style_text": "normal",
         "font_weight_text": "500",
