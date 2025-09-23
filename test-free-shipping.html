@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Frete Grátis - Proteína 500g</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+        .cart-item { margin: 10px 0; padding: 10px; background: #f5f5f5; }
+        .result { margin: 10px 0; padding: 10px; background: #e8f5e9; }
+    </style>
+</head>
+<body>
+    <h1>Teste da Nova Lógica de Frete Grátis</h1>
+    
+    <div class="test-section">
+        <h2>Simulação de Carrinho</h2>
+        <div id="cart-simulation"></div>
+        <button onclick="testFreeShipping()">Testar Lógica</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        // Simulação da lógica implementada
+        function countProtein500g(cartItems) {
+            let protein500gCount = 0;
+            
+            cartItems.forEach(item => {
+                const productTitle = item.product_title.toLowerCase();
+                const variantTitle = item.variant_title ? item.variant_title.toLowerCase() : '';
+                const fullTitle = (productTitle + ' ' + variantTitle).toLowerCase();
+                
+                // Check if product is 500g protein (same logic as product-payment-promo.liquid)
+                if (fullTitle.includes('500g') || fullTitle.includes('proteina vegetal cremosa')) {
+                    protein500gCount += item.quantity;
+                }
+            });
+            
+            return protein500gCount;
+        }
+        
+        function calculateFreeShippingProgress(protein500gCount) {
+            const requiredQuantity = 3;
+            return Math.min((protein500gCount * 100) / requiredQuantity, 100);
+        }
+        
+        function testFreeShipping() {
+            // Casos de teste
+            const testCases = [
+                {
+                    name: "Carrinho vazio",
+                    items: []
+                },
+                {
+                    name: "1 Proteína 500g Vanilla",
+                    items: [
+                        { product_title: "Proteína Vegetal Cremosa 500g", variant_title: "Vanilla Moon", quantity: 1 }
+                    ]
+                },
+                {
+                    name: "2 Proteínas 500g diferentes sabores",
+                    items: [
+                        { product_title: "Proteína Vegetal Cremosa 500g", variant_title: "Vanilla Moon", quantity: 1 },
+                        { product_title: "Proteína Vegetal Cremosa 500g", variant_title: "Chocolate", quantity: 1 }
+                    ]
+                },
+                {
+                    name: "3 Proteínas 500g (frete grátis)",
+                    items: [
+                        { product_title: "Proteína Vegetal Cremosa 500g", variant_title: "Vanilla Moon", quantity: 2 },
+                        { product_title: "Proteína Vegetal Cremosa 500g", variant_title: "Chocolate", quantity: 1 }
+                    ]
+                },
+                {
+                    name: "5 Proteínas 500g (acima do mínimo)",
+                    items: [
+                        { product_title: "Proteína Vegetal Cremosa 500g", variant_title: "Vanilla Moon", quantity: 3 },
+                        { product_title: "Proteína Vegetal Cremosa 500g", variant_title: "Chocolate", quantity: 2 }
+                    ]
+                },
+                {
+                    name: "Produtos mistos (2 proteínas 500g + outros)",
+                    items: [
+                        { product_title: "Proteína Vegetal Cremosa 500g", variant_title: "Vanilla Moon", quantity: 2 },
+                        { product_title: "Vitamina C", variant_title: "60 cápsulas", quantity: 1 },
+                        { product_title: "Proteína 40g", variant_title: "Sachê", quantity: 5 }
+                    ]
+                }
+            ];
+            
+            let resultsHTML = '<h3>Resultados dos Testes:</h3>';
+            
+            testCases.forEach(testCase => {
+                const protein500gCount = countProtein500g(testCase.items);
+                const progress = calculateFreeShippingProgress(protein500gCount);
+                const hasFreeShipping = protein500gCount >= 3;
+                
+                resultsHTML += `
+                    <div class="result">
+                        <strong>${testCase.name}</strong><br>
+                        Produtos 500g no carrinho: ${protein500gCount}<br>
+                        Progresso: ${progress.toFixed(1)}%<br>
+                        Frete grátis: ${hasFreeShipping ? '✅ SIM' : '❌ NÃO'}<br>
+                        ${!hasFreeShipping && protein500gCount > 0 ? `Faltam: ${3 - protein500gCount} unidades` : ''}
+                    </div>
+                `;
+            });
+            
+            document.getElementById('results').innerHTML = resultsHTML;
+        }
+        
+        // Executar teste automaticamente
+        window.onload = function() {
+            testFreeShipping();
+        };
+    </script>
+</body>
+</html>

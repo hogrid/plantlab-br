@@ -38,35 +38,44 @@ class FreeShippingMeter extends HTMLElement {
     }
 
     calculateProgress(cart) {
-        const cartTotalPrice = parseInt(cart.total_price) / 100;
-        const cartTotalPriceFormatted = cartTotalPrice.toFixed(2);
-        const cartTotalPriceRounded = parseFloat(cartTotalPriceFormatted);
-
-        let freeShipBar = Math.abs((cartTotalPriceRounded * 100) / FreeShippingMeter.freeshipPrice);
-        if (freeShipBar >= 100) {
-            freeShipBar = 100;
-        }
+        // Count 500g protein products in cart
+        let protein500gCount = 0;
         
-        const text = this.getText(cartTotalPriceFormatted, freeShipBar);
+        cart.items.forEach(item => {
+            const productTitle = item.product_title.toLowerCase();
+            const variantTitle = item.variant_title ? item.variant_title.toLowerCase() : '';
+            const fullTitle = (productTitle + ' ' + variantTitle).toLowerCase();
+            
+            // Check if product is 500g protein (same logic as product-payment-promo.liquid)
+            if (fullTitle.includes('500g') || fullTitle.includes('proteina vegetal cremosa')) {
+                protein500gCount += item.quantity;
+            }
+        });
+
+        // Calculate progress based on quantity (3 units = 100%)
+        const requiredQuantity = 3;
+        let freeShipBar = Math.min((protein500gCount * 100) / requiredQuantity, 100);
+        
+        const text = this.getText(protein500gCount, freeShipBar, requiredQuantity);
         const classLabel = this.getClassLabel(freeShipBar);
 
         this.setProgressWidthAndText(freeShipBar, text, classLabel);
     }
 
-    getText(cartTotalPrice, freeShipBar) {
+    getText(protein500gCount, freeShipBar, requiredQuantity) {
         let text;
 
-        if (cartTotalPrice == 0) {
+        if (protein500gCount == 0) {
             this.progressBar.classList.add('progress-hidden');
-            text = '<span>' + FreeShippingMeter.freeShippingText + ' ' + Shopify.formatMoney(FreeShippingMeter.freeshipPrice * 100, window.money_format) +'!</span>';
-        } else if (cartTotalPrice >= FreeShippingMeter.freeshipPrice) {
+            text = '<span>' + FreeShippingMeter.freeShippingText + ' ' + requiredQuantity + ' unidades de proteína 500g!</span>';
+        } else if (protein500gCount >= requiredQuantity) {
             this.progressBar.classList.remove('progress-hidden');
             this.freeShippingEligible = 1;
             text = FreeShippingMeter.freeShippingText1;
         } else {
             this.progressBar.classList.remove('progress-hidden');
-            const remainingPrice = Math.abs(FreeShippingMeter.freeshipPrice - cartTotalPrice);
-            text = '<span>' + FreeShippingMeter.freeShippingText2 + ' </span>' + Shopify.formatMoney(remainingPrice * 100, window.money_format) + '<span> ' +  FreeShippingMeter.freeShippingText3 + ' </span><span class="text">' + FreeShippingMeter.freeShippingText4 + '</span>';
+            const remainingQuantity = requiredQuantity - protein500gCount;
+            text = '<span>' + FreeShippingMeter.freeShippingText2 + ' </span>' + remainingQuantity + '<span> ' +  FreeShippingMeter.freeShippingText3 + ' </span><span class="text">' + FreeShippingMeter.freeShippingText4 + '</span>';
             this.shipVal = window.free_shipping_text.free_shipping_2;
         }
 
