@@ -125,6 +125,7 @@
       "blocks": {
         "product_wTzyeR": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "product": "caixa-display-mixed-flavours",
             "description": "Mixed Flavors",
