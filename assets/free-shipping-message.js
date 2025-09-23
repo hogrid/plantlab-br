@@ -6,7 +6,9 @@ class FreeShippingMeter extends HTMLElement {
     static freeShippingText = window.free_shipping_text.free_shipping_message;
     static freeShippingText1 = window.free_shipping_text.free_shipping_message_1;
     static freeShippingText2 = window.free_shipping_text.free_shipping_message_2;
+    static freeShippingText2Singular = window.free_shipping_text.free_shipping_message_2_singular;
     static freeShippingText3 = window.free_shipping_text.free_shipping_message_3;
+    static freeShippingText3Singular = window.free_shipping_text.free_shipping_message_3_singular;
     static freeShippingText4 = window.free_shipping_text.free_shipping_message_4;
     static classLabel1 = 'progress-30';
     static classLabel2 = 'progress-60';
@@ -40,12 +42,12 @@ class FreeShippingMeter extends HTMLElement {
     calculateProgress(cart) {
         // Count 500g protein products in cart
         let protein500gCount = 0;
-        
+
         cart.items.forEach(item => {
             const productTitle = item.product_title.toLowerCase();
             const variantTitle = item.variant_title ? item.variant_title.toLowerCase() : '';
             const fullTitle = (productTitle + ' ' + variantTitle).toLowerCase();
-            
+
             // Check if product is 500g protein (same logic as product-payment-promo.liquid)
             if (fullTitle.includes('500g') || fullTitle.includes('proteina vegetal cremosa')) {
                 protein500gCount += item.quantity;
@@ -55,7 +57,7 @@ class FreeShippingMeter extends HTMLElement {
         // Calculate progress based on quantity (3 units = 100%)
         const requiredQuantity = 3;
         let freeShipBar = Math.min((protein500gCount * 100) / requiredQuantity, 100);
-        
+
         const text = this.getText(protein500gCount, freeShipBar, requiredQuantity);
         const classLabel = this.getClassLabel(freeShipBar);
 
@@ -75,7 +77,12 @@ class FreeShippingMeter extends HTMLElement {
         } else {
             this.progressBar.classList.remove('progress-hidden');
             const remainingQuantity = requiredQuantity - protein500gCount;
-            text = '<span>' + FreeShippingMeter.freeShippingText2 + ' </span>' + remainingQuantity + '<span> ' +  FreeShippingMeter.freeShippingText3 + ' </span><span class="text">' + FreeShippingMeter.freeShippingText4 + '</span>';
+            
+            // Use singular or plural based on remaining quantity
+            const faltaText = remainingQuantity === 1 ? FreeShippingMeter.freeShippingText2Singular : FreeShippingMeter.freeShippingText2;
+            const proteinaText = remainingQuantity === 1 ? FreeShippingMeter.freeShippingText3Singular : FreeShippingMeter.freeShippingText3;
+            
+            text = '<span>' + faltaText + ' </span>' + remainingQuantity + '<span> ' + proteinaText + ' </span><span class="text">' + FreeShippingMeter.freeShippingText4 + '</span>';
             this.shipVal = window.free_shipping_text.free_shipping_2;
         }
 
@@ -99,7 +106,7 @@ class FreeShippingMeter extends HTMLElement {
 
         return classLabel;
     }
-    
+
     resetProgressClass(classLabel) {
         this.progressBar.classList.remove('progress-30');
         this.progressBar.classList.remove('progress-60');
@@ -108,7 +115,7 @@ class FreeShippingMeter extends HTMLElement {
 
         this.progressBar.classList.add(classLabel);
     }
-    
+
     setProgressWidthAndText(freeShipBar, text, classLabel) {
         setTimeout(() => {
             this.resetProgressClass(classLabel);

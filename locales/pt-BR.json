@@ -726,11 +726,13 @@
   },
   "calculator_free_shipping_message": {
     "general": {
-      "free_shipping_message": "Frete grátis para Sul e Sudeste na compra de 3 unidades 500g",
-      "free_shipping_message_1": "Você ganhou frete grátis ",
-      "free_shipping_message_2": "Faltam",
-      "free_shipping_message_3": "para",
-      "free_shipping_message_4": "Frete grátis para Sul e Sudeste",
+      "free_shipping_message": "Frete grátis para Sul e Sudeste na compra de",
+"free_shipping_message_1": "Você ganhou frete grátis ",
+"free_shipping_message_2": "Faltam",
+"free_shipping_message_2_singular": "Falta",
+"free_shipping_message_3": "proteínas 500g para frete grátis",
+"free_shipping_message_3_singular": "proteína 500g para frete grátis",
+"free_shipping_message_4": "Sul e Sudeste",
       "free_shipping_1": "Grátis",
       "free_shipping_2": "A ser determinado"
     }
