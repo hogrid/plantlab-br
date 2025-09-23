@@ -654,6 +654,7 @@
       "blocks": {
         "product_idK8Db": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "product": "caixa-display-mixed-flavours",
             "description": "Mixed Flavors",
