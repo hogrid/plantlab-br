@@ -1808,7 +1808,7 @@
           "button_color": "#be21e9",
           "secondary_color": "#ffffff",
           "ternary_color": "#6a6a6a",
-          "button_icon": "email",
+          "button_icon": "hand_wave",
           "button_text": "chat_with_us",
           "button_horizontal_position": "bottom_right",
           "button_vertical_position": "higher",
