@@ -1803,7 +1803,7 @@
       },
       "15683396631634586217": {
         "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "button_color": "#be21e9",
           "secondary_color": "#ffffff",
@@ -1812,7 +1812,7 @@
           "button_text": "chat_with_us",
           "button_horizontal_position": "bottom_right",
           "button_vertical_position": "lowest",
-          "greeting_message": ""
+          "greeting_message": "👋 Olá Humano! Dúvidas? Envie uma mensagem! Estamos por aqui ou no alien@theplantlab.com.br 👽"
         }
       }
     }
