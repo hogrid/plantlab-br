@@ -1811,7 +1811,7 @@
           "button_icon": "email",
           "button_text": "chat_with_us",
           "button_horizontal_position": "bottom_right",
-          "button_vertical_position": "lowest",
+          "button_vertical_position": "higher",
           "greeting_message": "👋 Olá Humano! Dúvidas? Envie uma mensagem! Estamos por aqui ou no alien@theplantlab.com.br 👽"
         }
       }
