@@ -1,24 +1,25 @@
 {%- comment -%}
-  Botão VIP para captura de e-mails e direcionamento ao WhatsApp
-  Configurações customizáveis via admin do Shopify
+Botão VIP para captura de e-mails e direcionamento ao WhatsApp
+Configurações customizáveis via admin do Shopify
 {%- endcomment -%}
 
 {%- liquid
-  assign vip_button_text = settings.vip_button_text | default: 'Faça parte do grupo VIP'
-  assign vip_button_description = settings.vip_button_description | default: 'Receba ofertas exclusivas, descontos especiais e seja o primeiro a saber sobre novos produtos!'
-  assign vip_email_placeholder = settings.vip_email_placeholder | default: 'Digite seu melhor e-mail'
-  assign vip_submit_button_text = settings.vip_submit_button_text | default: 'Quero fazer parte'
-  assign vip_success_message = settings.vip_success_message | default: 'Obrigado! Você será redirecionado para o WhatsApp'
-  assign vip_whatsapp_number = settings.vip_whatsapp_number | default: '5534999999999'
+assign vip_button_text = settings.vip_button_text | default: 'Faça parte do grupo VIP'
+assign vip_button_description = settings.vip_button_description | default: 'Receba ofertas exclusivas, descontos especiais e seja o primeiro a saber sobre novos produtos!'
+assign vip_email_placeholder = settings.vip_email_placeholder | default: 'Digite seu melhor e-mail'
+assign vip_submit_button_text = settings.vip_submit_button_text | default: 'Quero fazer parte'
+assign vip_success_message = settings.vip_success_message | default: 'Obrigado! Você será redirecionado para o WhatsApp'
+assign vip_whatsapp_number = settings.vip_whatsapp_number | default: '5534999999999'
 -%}
 
 {%- comment -%} Só exibir em páginas de produto {%- endcomment -%}
 
-<div class="vip-button-wrapper" data-product-id="{{ product.id }}" data-product-name="{{ product.title }}" data-product-price="{{ product.price }}">
+<div class="vip-button-wrapper" data-product-id="{{ product.id }}" data-product-name="{{ product.title }}"
+  data-product-price="{{ product.price }}">
   <!-- Botão Principal VIP -->
   <button type="button" class="vip-button" id="vip-button-trigger" aria-label="{{ vip_button_text }}">
     <svg class="vip-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
+      <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor" />
     </svg>
     <span class="vip-button-text">{{ vip_button_text }}</span>
   </button>
@@ -28,8 +29,8 @@
     <div class="vip-modal-overlay" id="vip-modal-overlay"></div>
     <div class="vip-modal-content">
       <button type="button" class="vip-modal-close" id="vip-modal-close" aria-label="Fechar modal">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
 
@@ -42,26 +43,23 @@
         <form class="vip-form" id="vip-form" novalidate>
           <div class="vip-form-group">
             <label for="vip-email" class="vip-form-label">E-mail</label>
-            <input 
-              type="email" 
-              id="vip-email" 
-              name="email" 
-              class="vip-form-input" 
-              placeholder="{{ vip_email_placeholder }}" 
-              required 
-              autocomplete="email"
-              aria-describedby="vip-email-error"
-            >
+            <input type="email" id="vip-email" name="email" class="vip-form-input"
+              placeholder="{{ vip_email_placeholder }}" required autocomplete="email"
+              aria-describedby="vip-email-error">
             <div class="vip-form-error" id="vip-email-error" role="alert" aria-live="polite"></div>
           </div>
 
           <button type="submit" class="vip-form-submit" id="vip-submit-button">
             <span class="vip-submit-text">{{ vip_submit_button_text }}</span>
             <span class="vip-submit-loading" style="display: none;">
-              <svg class="vip-loading-spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="31.416" stroke-dashoffset="31.416">
-                  <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
-                  <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+              <svg class="vip-loading-spinner" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                  stroke-dasharray="31.416" stroke-dashoffset="31.416">
+                  <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416"
+                    repeatCount="indefinite" />
+                  <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416"
+                    repeatCount="indefinite" />
                 </circle>
               </svg>
               Salvando...
@@ -69,15 +67,19 @@
           </button>
         </form>
 
-        <div class="vip-success-message" id="vip-success-message" style="display: none;" role="status" aria-live="polite">
-          <svg class="vip-success-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10" fill="#10B981"/>
-            <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <div class="vip-success-message" id="vip-success-message" style="display: none;" role="status"
+          aria-live="polite">
+          <svg class="vip-success-icon" width="48" height="48" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" fill="#10B981" />
+            <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
           </svg>
           <p id="vip-success-text">{{ vip_success_message }}</p>
           <p class="vip-success-redirect">
             Você será redirecionado para o grupo VIP em alguns segundos...
-            <a id="vip-success-link" href="https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig" target="_blank" rel="noopener">Clique aqui se não for redirecionado</a>
+            <a id="vip-success-link" href="https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig" target="_blank"
+              rel="noopener">Clique aqui se não for redirecionado</a>
           </p>
         </div>
       </div>
