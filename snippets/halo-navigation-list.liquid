@@ -182,4 +182,9 @@
             %}
         {%- endif -%}
     {%- endfor -%}
+    
+    {%- comment -%} Botão VIP adicionado após os itens do menu {%- endcomment -%}
+    <li class="menu-lv-1 vip-button-nav-item">
+        {% render 'vip-button-header' %}
+    </li>
 </ul>

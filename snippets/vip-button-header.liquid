@@ -1,0 +1,170 @@
+{%- comment -%}
+Botão VIP para Header - Versão compacta para navegação
+Mantém a funcionalidade do botão original mas adaptado para header
+{%- endcomment -%}
+
+{%- liquid
+assign vip_button_text = settings.vip_button_text | default: 'Grupo VIP'
+assign vip_button_description = settings.vip_button_description | default: 'Receba ofertas exclusivas, descontos especiais e seja o primeiro a saber sobre novos produtos!'
+assign vip_email_placeholder = settings.vip_email_placeholder | default: 'Digite seu melhor e-mail'
+assign vip_submit_button_text = settings.vip_submit_button_text | default: 'Quero fazer parte'
+assign vip_success_message = settings.vip_success_message | default: 'Obrigado! Você será redirecionado para o WhatsApp'
+assign vip_whatsapp_number = settings.vip_whatsapp_number | default: '5534999999999'
+-%}
+
+<li class="menu-lv-item menu-lv-1 text-left vip-header-item">
+  <div class="vip-button-header-wrapper" data-product-id="header" data-product-name="Header VIP">
+    <!-- Botão Principal VIP Header -->
+    <button type="button" class="vip-button-header" id="vip-button-header-trigger" aria-label="Grupo VIP">
+      <svg class="vip-icon-header" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor" />
+      </svg>
+      <span class="vip-button-header-text">Grupo VIP</span>
+    </button>
+
+    <!-- Modal VIP Header -->
+    <div class="vip-modal-header-container" id="vip-modal-header" aria-hidden="true" role="dialog" aria-labelledby="vip-modal-header-title">
+      <div class="vip-modal-header-overlay" id="vip-modal-header-overlay"></div>
+      <div class="vip-modal-header-content">
+        <button type="button" class="vip-modal-header-close" id="vip-modal-header-close" aria-label="Fechar modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="vip-modal-header-header">
+          <h2 id="vip-modal-header-title" class="vip-modal-header-title">{{ vip_button_text }}</h2>
+          <p class="vip-modal-header-subtitle">{{ vip_button_description }}</p>
+        </div>
+
+        <div class="vip-modal-header-body">
+          <form class="vip-form-header" id="vip-form-header" novalidate>
+            <div class="vip-form-header-group">
+              <label for="vip-email-header" class="vip-form-header-label">E-mail</label>
+              <input type="email" id="vip-email-header" name="email" class="vip-form-header-input"
+                placeholder="{{ vip_email_placeholder }}" required autocomplete="email"
+                aria-describedby="vip-email-header-error">
+              <div class="vip-form-header-error" id="vip-email-header-error" role="alert" aria-live="polite"></div>
+            </div>
+
+            <button type="submit" class="vip-submit-header-button" id="vip-submit-header-button">
+              <span class="vip-submit-header-text">{{ vip_submit_button_text }}</span>
+              <div class="vip-submit-header-loading" aria-hidden="true">
+                <svg class="vip-loading-header-spinner" width="20" height="20" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+                    <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
+                    <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+                  </circle>
+                </svg>
+              </div>
+            </button>
+          </form>
+
+          <!-- Mensagem de Sucesso -->
+          <div class="vip-success-header-message" id="vip-success-header-message" role="alert" aria-live="polite">
+            <svg class="vip-success-header-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#10B981"/>
+              <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="vip-success-header-text">
+              <p class="vip-success-header-title">{{ vip_success_message }}</p>
+              <p class="vip-success-header-subtitle">
+                Caso não seja redirecionado automaticamente, 
+                <a href="https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig" target="_blank" rel="noopener noreferrer" class="vip-whatsapp-header-link">
+                  clique aqui para acessar o grupo
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+
+<script>
+// Script específico para o botão VIP da header
+(function() {
+  'use strict';
+  
+  const headerButton = document.getElementById('vip-button-header-trigger');
+  const headerModal = document.getElementById('vip-modal-header');
+  const headerOverlay = document.getElementById('vip-modal-header-overlay');
+  const headerCloseBtn = document.getElementById('vip-modal-header-close');
+  const headerForm = document.getElementById('vip-form-header');
+  const headerEmailInput = document.getElementById('vip-email-header');
+  const headerSubmitBtn = document.getElementById('vip-submit-header-button');
+  const headerSuccessMessage = document.getElementById('vip-success-header-message');
+  const headerErrorDiv = document.getElementById('vip-email-header-error');
+
+  if (!headerButton || !headerModal) return;
+
+  // Abrir modal
+  headerButton.addEventListener('click', function() {
+    headerModal.classList.add('active');
+    headerModal.setAttribute('aria-hidden', 'false');
+    headerEmailInput.focus();
+    document.body.style.overflow = 'hidden';
+  });
+
+  // Fechar modal
+  function closeHeaderModal() {
+    headerModal.classList.remove('active');
+    headerModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    headerForm.reset();
+    headerErrorDiv.textContent = '';
+    headerSuccessMessage.classList.remove('show');
+    headerSubmitBtn.disabled = false;
+  }
+
+  headerCloseBtn.addEventListener('click', closeHeaderModal);
+  headerOverlay.addEventListener('click', closeHeaderModal);
+
+  // Fechar com ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && headerModal.classList.contains('active')) {
+      closeHeaderModal();
+    }
+  });
+
+  // Validação de email
+  function validateHeaderEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  // Submit do formulário
+  headerForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = headerEmailInput.value.trim();
+    
+    if (!email) {
+      headerErrorDiv.textContent = 'Por favor, digite seu e-mail';
+      headerEmailInput.focus();
+      return;
+    }
+    
+    if (!validateHeaderEmail(email)) {
+      headerErrorDiv.textContent = 'Por favor, digite um e-mail válido';
+      headerEmailInput.focus();
+      return;
+    }
+    
+    headerErrorDiv.textContent = '';
+    headerSubmitBtn.disabled = true;
+    
+    // Simular envio
+    setTimeout(function() {
+      headerSuccessMessage.style.display = 'flex';
+      headerSuccessMessage.classList.add('show');
+      
+      // Redirecionar para WhatsApp após 2 segundos
+      setTimeout(function() {
+        window.location.href = 'https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig';
+      }, 2000);
+    }, 1000);
+  });
+})();
+</script>

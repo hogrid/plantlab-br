@@ -395,6 +395,402 @@
   }
 }
 
+/* Header VIP Button Styles */
+.vip-header-item {
+  margin-left: 20px;
+}
+
+/* Item de navegação do botão VIP */
+.vip-button-nav-item {
+  display: inline-block !important;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vip-button-header-wrapper {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  top: -7px;
+}
+
+/* Animação de reflexo de luz refinada */
+@keyframes lightReflection {
+  0% {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    background-size: 100% 100%;
+  }
+  20% {
+    background: linear-gradient(135deg, #FFED4E 0%, #FFD700 40%, #FFA500 100%);
+    background-size: 110% 100%;
+  }
+  40% {
+    background: linear-gradient(135deg, #FFF59D 0%, #FFED4E 25%, #FFD700 60%, #FFA500 100%);
+    background-size: 120% 100%;
+  }
+  60% {
+    background: linear-gradient(135deg, #FFED4E 0%, #FFD700 40%, #FFA500 100%);
+    background-size: 110% 100%;
+  }
+  80% {
+    background: linear-gradient(135deg, #FFD700 0%, #FFED4E 30%, #FFA500 100%);
+    background-size: 105% 100%;
+  }
+  100% {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    background-size: 100% 100%;
+  }
+}
+
+/* Botão Principal Header */
+.vip-button-header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 3px 10px rgba(255, 215, 0, 0.2), 0 1px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  min-height: 35px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  /* Removendo animação de gradiente contínua para focar no efeito shiny */
+  animation: none;
+}
+
+/* Efeito shiny mais evidente (reflexo em diagonal atravessando o botão) */
+.vip-button-header::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -100%;
+  width: 60px;
+  height: 220%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(0) rotate(35deg);
+  filter: blur(1px);
+  will-change: transform, opacity;
+  animation: vipShiny 3s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Acelera o reflexo no hover para maior destaque sem exagero */
+.vip-button-header:hover::before {
+  animation-duration: 2.5s;
+}
+
+@keyframes vipShiny {
+  0% { transform: translateX(0) rotate(35deg); opacity: 0; }
+  10% { opacity: 0.45; }
+  50% { opacity: 0.85; }
+  90% { opacity: 0.4; }
+  100% { transform: translateX(300%) rotate(35deg); opacity: 0; }
+}
+
+@-webkit-keyframes vipShiny {
+  0% { -webkit-transform: translateX(0) rotate(35deg); opacity: 0; }
+  10% { opacity: 0.45; }
+  50% { opacity: 0.85; }
+  90% { opacity: 0.4; }
+  100% { -webkit-transform: translateX(300%) rotate(35deg); opacity: 0; }
+}
+
+.vip-button-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #FFF59D 0%, #FFED4E 30%, #FFD700 70%, #FFA500 100%) !important;
+}
+
+.vip-button-header:active {
+  transform: translateY(-1px);
+  transition-duration: 0.1s;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.vip-button-header:focus {
+  outline: 2px solid rgba(255, 215, 0, 0.5);
+  outline-offset: 2px;
+}
+
+.vip-icon-header {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.vip-button-header:hover .vip-icon-header {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.vip-button-header-text {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  position: relative;
+  z-index: 2;
+}
+
+/* Ícone Header */
+.vip-icon-header {
+  position: relative;
+  z-index: 2;
+}
+
+/* Modal Header Styles */
+.vip-modal-header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vip-modal-header-container.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.vip-modal-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+
+.vip-modal-header-content {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2), 0 8px 32px rgba(0, 0, 0, 0.1);
+  transform: scale(0.9) translateY(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vip-modal-header-container.active .vip-modal-header-content {
+  transform: scale(1) translateY(0);
+}
+
+.vip-modal-header-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #6b7280;
+}
+
+.vip-modal-header-close:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.vip-modal-header-close svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  stroke: #000;
+}
+
+.vip-modal-header-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.vip-modal-header-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+
+.vip-modal-header-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Form Header Styles */
+.vip-form-header {
+  margin-bottom: 24px;
+}
+
+.vip-form-header-group {
+  margin-bottom: 24px;
+}
+
+.vip-form-header-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.vip-form-header-input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #1f2937;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.vip-form-header-input:focus {
+  outline: none;
+  border-color: #FFD700;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.vip-form-header-input::placeholder {
+  color: #9ca3af;
+}
+
+.vip-form-header-error {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 8px;
+  min-height: 20px;
+}
+
+.vip-submit-header-button {
+  width: 100%;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.vip-submit-header-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.3);
+  background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+}
+
+.vip-submit-header-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.vip-submit-header-loading {
+  display: none;
+}
+
+.vip-submit-header-button:disabled .vip-submit-header-text {
+  display: none;
+}
+
+.vip-submit-header-button:disabled .vip-submit-header-loading {
+  display: block;
+}
+
+.vip-loading-header-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Success Message Header */
+.vip-success-header-message {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  background: #f0fdf4;
+  border: 2px solid #10b981;
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.vip-success-header-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vip-success-header-icon {
+  margin-bottom: 16px;
+}
+
+.vip-success-header-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #065f46;
+  margin: 0 0 8px;
+}
+
+.vip-success-header-subtitle {
+  font-size: 14px;
+  color: #047857;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.vip-whatsapp-header-link {
+  color: #059669;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.vip-whatsapp-header-link:hover {
+  color: #047857;
+}
+
 @media (max-width: 768px) {
   .vip-button-wrapper {
     margin: 16px 0;
@@ -466,6 +862,51 @@
     font-size: 16px;
     min-height: 56px;
     border-radius: 10px;
+  }
+
+  /* Header responsive */
+  .vip-header-item {
+    margin-left: 10px;
+  }
+
+  .vip-button-header {
+    padding: 8px 12px;
+    font-size: 13px;
+    min-height: 36px;
+    gap: 6px;
+  }
+
+  .vip-button-header-text {
+    font-size: 13px;
+  }
+
+  .vip-icon-header {
+    width: 14px;
+    height: 14px;
+  }
+
+  .vip-modal-header-content {
+    margin: 10px;
+    padding: 24px;
+    max-width: calc(100vw - 20px);
+  }
+
+  .vip-modal-header-title {
+    font-size: 20px;
+  }
+
+  .vip-modal-header-subtitle {
+    font-size: 14px;
+  }
+
+  .vip-form-header-input {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+
+  .vip-submit-header-button {
+    padding: 16px 20px;
+    font-size: 15px;
   }
 }
 
