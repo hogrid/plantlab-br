@@ -5,7 +5,7 @@
     padding-top: var(--padding-top);
     padding-bottom: var(--padding-bottom);
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .marque-border--top {
@@ -80,11 +80,11 @@
     .marque-border--top {
         border-top: 1px solid var(--border-color);
     }
-    
+
     .marque-border--bottom {
         border-bottom: 1px solid var(--border-color);
     }
-    
+
     .marque-border--top_bottom {
         border-top: 1px solid var(--border-color);
         border-bottom: 1px solid var(--border-color);

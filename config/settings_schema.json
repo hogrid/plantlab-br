@@ -9075,5 +9075,87 @@
         "default": "#fff"
       }
     ]
+  },
+  {
+    "name": "VIP Button",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Configurações do Botão VIP"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_vip_button",
+        "label": "Ativar botão VIP",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "vip_whatsapp_number",
+        "label": "Número do WhatsApp (com código do país)",
+        "default": "5534999999999",
+        "info": "Formato: 5534999999999 (sem espaços ou símbolos)"
+      },
+      {
+        "type": "header",
+        "content": "Integração Shopify"
+      },
+      {
+        "type": "text",
+        "id": "shopify_access_token",
+        "label": "Shopify Access Token",
+        "info": "Token de acesso para API do Shopify (configurar nas variáveis de ambiente)"
+      },
+      {
+        "type": "header",
+        "content": "Integração Klaviyo"
+      },
+      {
+        "type": "text",
+        "id": "klaviyo_api_key",
+        "label": "Klaviyo API Key",
+        "info": "Chave da API do Klaviyo (configurar nas variáveis de ambiente)"
+      },
+      {
+        "type": "text",
+        "id": "klaviyo_vip_list_id",
+        "label": "ID da Lista VIP no Klaviyo",
+        "info": "ID da lista 'Grupo VIP' no Klaviyo"
+      },
+      {
+        "type": "header",
+        "content": "Textos do Botão VIP"
+      },
+      {
+        "type": "text",
+        "id": "vip_button_text",
+        "label": "Texto do botão principal",
+        "default": "Faça parte do grupo VIP"
+      },
+      {
+        "type": "textarea",
+        "id": "vip_button_description",
+        "label": "Descrição dos benefícios",
+        "default": "Receba ofertas exclusivas, descontos especiais e seja o primeiro a saber sobre novos produtos!"
+      },
+      {
+        "type": "text",
+        "id": "vip_email_placeholder",
+        "label": "Placeholder do campo de e-mail",
+        "default": "Digite seu melhor e-mail"
+      },
+      {
+        "type": "text",
+        "id": "vip_submit_button_text",
+        "label": "Texto do botão de confirmação",
+        "default": "Quero fazer parte"
+      },
+      {
+        "type": "text",
+        "id": "vip_success_message",
+        "label": "Mensagem de sucesso",
+        "default": "Obrigado! Você será redirecionado para o WhatsApp"
+      }
+    ]
   }
 ]

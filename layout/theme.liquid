@@ -35,6 +35,7 @@
         {{ 'custom.css' | asset_url | stylesheet_tag }}
         {% render 'global-style' %}
         {{ 'color-theme.css' |  asset_url |  stylesheet_tag }}
+        {{ 'vip-button.css' | asset_url | stylesheet_tag }}
         {% render 'global-script' %}
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
         <script src="//alfinet.com.br/cdn/shop/t/23/assets/TweenMax.min.js?v=48492179057540021181710458392" type="text/javascript"></script>
@@ -42,6 +43,14 @@
         <script>history.scrollRestoration = "manual"</script>
 
         <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+        
+        <!-- Configuração Global do Klaviyo VIP -->
+        <script>
+          window.KLAVIYO_CONFIG = {
+            apiKey: '{{ settings.klaviyo_api_key }}',
+            listId: '{{ settings.klaviyo_vip_list_id }}'
+          };
+        </script>
 
         {%- liquid
             if settings.layout_body == 'full'
@@ -168,6 +177,7 @@
         {%- endif -%}
 
         <script src="{{ 'particles.min.js' | asset_url }}" defer></script>
+        <script src="{{ 'vip-button.js' | asset_url }}" defer></script>
         <script defer type="text/javascript" src="https://static.rechargecdn.com/assets/js/widget.min.js?shop=plantlab-vegan.myshopify.com"></script>
     </body>
 </html>

@@ -131,10 +131,10 @@
             </div>
         {%- endform -%}
     </product-form>
-    {%- if settings.show_notify_form -%}
-        {%- assign form_id = 'product-productView-notify-form-' | append: product.id -%}
-        <div class="productView-notifyMe  halo-notifyMe{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" {% if product.variants.size > 1 %}style="display: none;"{% else %}{% if product.available %}style="display: none;"{% endif %}{% endif %}>
-            {% render 'halo-notify-sold-out', id: product.id, id_form: form_id , current_variant: current_variant %}
-        </div>
-    {%- endif -%}
+
+    
+    {%- comment -%} Botão VIP - Posicionado estrategicamente após os botões de compra {%- endcomment -%}
+    <div class="productView-vip{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+        {% render 'vip-button', product: product %}
+    </div>
 </div>

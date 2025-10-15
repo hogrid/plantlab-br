@@ -716,6 +716,8 @@ body:not(.template-index)
   gap: 4px;
   margin-top: 12px;
   flex-wrap: wrap;
+  z-index: 0;
+  position: relative;
 }
 
 .productView-tags .tag {
