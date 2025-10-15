@@ -555,8 +555,23 @@ class VIPButton {
     const formContainer = this.modal.querySelector('.vip-form');
 
     if (successMessage && formContainer) {
+      // Esconde o formulário e garante que a mensagem apareça mesmo com inline style
       formContainer.style.display = 'none';
       successMessage.classList.add('show');
+      successMessage.style.display = 'flex';
+
+      // Atualiza o texto de sucesso a partir das configurações, se disponível
+      try {
+        const cfg = (window.VIP_CONFIG || {});
+        const textEl = this.modal.querySelector('#vip-success-text');
+        const fallbackText = 'Cadastro realizado com sucesso! Você será redirecionado em alguns segundos...';
+        const msg = (cfg.text && cfg.text.successMessage) ? String(cfg.text.successMessage).trim() : fallbackText;
+        if (textEl) {
+          textEl.textContent = msg || fallbackText;
+        }
+      } catch (e) {
+        // silencioso
+      }
     }
   }
 
@@ -571,8 +586,9 @@ class VIPButton {
    * Redirect to WhatsApp with personalized message
    */
   redirectToWhatsApp(email = '') {
+    // Redireciona para o link oficial do grupo VIP informado
     const vipGroupUrl = 'https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig';
-    window.open(vipGroupUrl, '_blank');
+    window.location.assign(vipGroupUrl);
   }
 }
 

@@ -69,12 +69,16 @@
           </button>
         </form>
 
-        <div class="vip-success-message" id="vip-success-message" style="display: none;">
+        <div class="vip-success-message" id="vip-success-message" style="display: none;" role="status" aria-live="polite">
           <svg class="vip-success-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="10" fill="#10B981"/>
             <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <p>{{ vip_success_message }}</p>
+          <p id="vip-success-text">{{ vip_success_message }}</p>
+          <p class="vip-success-redirect">
+            Você será redirecionado para o grupo VIP em alguns segundos...
+            <a id="vip-success-link" href="https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig" target="_blank" rel="noopener">Clique aqui se não for redirecionado</a>
+          </p>
         </div>
       </div>
     </div>
