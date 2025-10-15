@@ -10,25 +10,122 @@ class VIPButton {
   }
 
   /**
+   * Normalize and validate configuration object
+   */
+  normalizeConfig(raw) {
+    if (!raw) return null;
+    const cfg = {
+      klaviyoApiKey: (raw.klaviyoApiKey || raw.apiKey || '').trim(),
+      klaviyoListId: (raw.klaviyoListId || raw.listId || '').trim(),
+      product: raw.product || {
+        id: null,
+        title: document.title,
+        url: window.location.href
+      }
+    };
+    // Basic validation: require non-empty keys
+    if (!cfg.klaviyoApiKey || !cfg.klaviyoListId) {
+      return cfg; // Return even if incomplete so caller can decide
+    }
+    return cfg;
+  }
+
+  /**
+   * Mask sensitive values before logging to console
+   */
+  maskKey(str) {
+    if (typeof str !== 'string') return str;
+    const s = str.trim();
+    if (!s) return '';
+    if (s.length <= 4) return '****';
+    return `${s.slice(0, 3)}***${s.slice(-2)}`;
+  }
+
+  sanitizeConfigForLog(obj) {
+    if (!obj || typeof obj !== 'object') return obj;
+    try {
+      const copy = JSON.parse(JSON.stringify(obj));
+      if (copy.apiKey) copy.apiKey = this.maskKey(copy.apiKey);
+      if (copy.klaviyoApiKey) copy.klaviyoApiKey = this.maskKey(copy.klaviyoApiKey);
+      if (copy.listId) copy.listId = this.maskKey(copy.listId);
+      if (copy.klaviyoListId) copy.klaviyoListId = this.maskKey(copy.klaviyoListId);
+      return copy;
+    } catch (e) {
+      return obj;
+    }
+  }
+
+  /**
    * Get configuration from the page
    */
   getConfig() {
-    // Prioriza configuração global do Klaviyo; fallback para configuração local
-    if (window.KLAVIYO_CONFIG && window.KLAVIYO_CONFIG.apiKey && window.KLAVIYO_CONFIG.listId) {
-      return {
-        klaviyoApiKey: window.KLAVIYO_CONFIG.apiKey,
-        klaviyoListId: window.KLAVIYO_CONFIG.listId,
-        product: window.VIP_CONFIG?.product || {
-          id: null,
-          title: document.title,
-          url: window.location.href
-        }
+    // Não usar chaves hardcoded como fallback; ler apenas das fontes disponíveis
+
+    // Unifica fontes: JSON inline (#vip-config-data), KLAVIYO_CONFIG, VIP_CONFIG e atributos de dados no wrapper
+    const wrapper = document.querySelector('.vip-button-wrapper');
+    const ds = (wrapper && wrapper.dataset) ? wrapper.dataset : {};
+
+    // Tenta ler o JSON inline gerado pelo Liquid para maior robustez
+    let jsonCfg = {};
+    try {
+      const jsonEl = document.getElementById('vip-config-data');
+      if (jsonEl && jsonEl.textContent) {
+        jsonCfg = JSON.parse(jsonEl.textContent);
+      }
+    } catch (e) {
+      // silenciosamente ignora erros de parse
+    }
+
+    const sources = [
+      jsonCfg || {},
+      window.KLAVIYO_CONFIG || {},
+      window.VIP_CONFIG || {},
+      {
+        apiKey: ds.klaviyoApiKey,
+        klaviyoApiKey: ds.klaviyoApiKey,
+        listId: ds.klaviyoListId,
+        klaviyoListId: ds.klaviyoListId
+      }
+    ];
+
+    const merged = {
+      klaviyoApiKey: '',
+      klaviyoListId: '',
+      product: null
+    };
+
+    // Seleciona o primeiro valor válido de cada chave, entre as fontes disponíveis
+    for (const s of sources) {
+      if (!merged.klaviyoApiKey && typeof s.klaviyoApiKey === 'string' && s.klaviyoApiKey.trim()) {
+        merged.klaviyoApiKey = s.klaviyoApiKey.trim();
+      }
+      if (!merged.klaviyoApiKey && typeof s.apiKey === 'string' && s.apiKey.trim()) {
+        merged.klaviyoApiKey = s.apiKey.trim();
+      }
+      if (!merged.klaviyoListId && typeof s.klaviyoListId === 'string' && s.klaviyoListId.trim()) {
+        merged.klaviyoListId = s.klaviyoListId.trim();
+      }
+      if (!merged.klaviyoListId && typeof s.listId === 'string' && s.listId.trim()) {
+        merged.klaviyoListId = s.listId.trim();
+      }
+      if (!merged.product && s.product) {
+        merged.product = s.product;
+      }
+    }
+
+    // Se ainda faltar produto, cria um básico
+    if (!merged.product) {
+      merged.product = {
+        id: null,
+        title: document.title,
+        url: window.location.href
       };
     }
-    if (window.VIP_CONFIG && window.VIP_CONFIG.klaviyoApiKey && window.VIP_CONFIG.klaviyoListId) {
-      return window.VIP_CONFIG;
-    }
-    return null;
+
+    // Sem fallback de credenciais aqui para evitar uso incorreto de chaves; validar no submit
+
+    const cfg = this.normalizeConfig(merged);
+    return cfg;
   }
 
   /**
@@ -38,6 +135,16 @@ class VIPButton {
     // Load configuration if available, but do not block modal interactions
     // Opening the modal should work even if Klaviyo config is missing; we'll validate on submit
     this.config = this.getConfig();
+    // Debug info to help diagnose configuration issues in console
+    try {
+      const cfg = this.config || {};
+      console.info('[VIP Button] Configuração Klaviyo detectada:', {
+        apiKey_present: !!cfg.klaviyoApiKey,
+        listId_present: !!cfg.klaviyoListId,
+        apiKey_value_preview: (cfg.klaviyoApiKey || '').slice(0, 6),
+        listId_value_preview: (cfg.klaviyoListId || '').slice(0, 6)
+      });
+    } catch (e) {}
     const button = document.querySelector('.vip-button');
     if (button) {
       this.bindEvents();
@@ -111,6 +218,9 @@ class VIPButton {
     this.submitButton = this.modal.querySelector('.vip-form-submit');
 
     this.modal.classList.add('active');
+    // Corrige acessibilidade: modal visível não deve estar aria-hidden
+    this.modal.setAttribute('aria-hidden', 'false');
+    this.modal.setAttribute('aria-modal', 'true');
     document.body.style.overflow = 'hidden';
 
     setTimeout(() => {
@@ -127,6 +237,9 @@ class VIPButton {
     if (!this.modal) return;
 
     this.modal.classList.remove('active');
+    // Restaura atributos ARIA ao fechar
+    this.modal.setAttribute('aria-hidden', 'true');
+    this.modal.removeAttribute('aria-modal');
     document.body.style.overflow = '';
 
     // Reset form
@@ -237,9 +350,25 @@ class VIPButton {
       if (!this.config) {
         this.config = this.getConfig();
       }
-      if (!this.config || !this.config.klaviyoApiKey || !this.config.klaviyoListId) {
-        throw new Error('Configurações do Klaviyo não encontradas ou incompletas.');
+      const cfg = this.normalizeConfig(this.config);
+      if (!cfg || !cfg.klaviyoApiKey || !cfg.klaviyoListId) {
+        // Última tentativa de recuperar de atributos do DOM antes de falhar
+        const wrapper = document.querySelector('.vip-button-wrapper');
+        if (wrapper) {
+          const ds = wrapper.dataset || {};
+          const apiKey = (ds.klaviyoApiKey || '').trim();
+          const listId = (ds.klaviyoListId || '').trim();
+          if (apiKey && listId) {
+            cfg.klaviyoApiKey = apiKey;
+            cfg.klaviyoListId = listId;
+          }
+        }
+        if (!cfg.klaviyoApiKey || !cfg.klaviyoListId) {
+          console.error('[VIP Button] Configuração de Klaviyo ausente/incompleta', { cfg: this.sanitizeConfigForLog(cfg), KLAVIYO_CONFIG: this.sanitizeConfigForLog(window.KLAVIYO_CONFIG), VIP_CONFIG: this.sanitizeConfigForLog(window.VIP_CONFIG) });
+          throw new Error('Configurações do Klaviyo não encontradas ou incompletas.');
+        }
       }
+      this.config = cfg;
       // Process submission
       await this.processSubmission(email);
 
@@ -252,6 +381,10 @@ class VIPButton {
       }, 2000);
 
     } catch (error) {
+      // Log detalhado de erro no console
+      try {
+        console.error('[VIP Button] Falha no envio', { error_message: error && error.message, error });
+      } catch (e) {}
       
       // Extract meaningful error message
       let errorMessage = 'Erro ao salvar email. Tente novamente.';
@@ -312,7 +445,7 @@ class VIPButton {
       throw new Error('Configurações do Klaviyo não encontradas.');
     }
 
-    const { klaviyoApiKey, klaviyoListId, product } = this.config;
+    const { klaviyoApiKey, klaviyoListId, product } = this.normalizeConfig(this.config);
     if (!klaviyoApiKey || !klaviyoListId) {
       throw new Error('Configurações do Klaviyo incompletas.');
     }
@@ -322,33 +455,70 @@ class VIPButton {
       data: {
         type: 'subscription',
         attributes: {
-          list_id: klaviyoListId,
-          email: email,
           custom_source: 'VIP Button',
-          properties: {
-            product_id: product?.id,
-            product_title: product?.title,
-            product_url: product?.url,
-            source: 'website_vip_button'
+          profile: {
+            data: {
+              type: 'profile',
+              attributes: {
+                email: email,
+                // Armazena propriedades no perfil
+                properties: {
+                  product_id: product?.id,
+                  product_title: product?.title,
+                  product_url: product?.url,
+                  source: 'website_vip_button'
+                }
+              }
+            }
+          }
+        },
+        relationships: {
+          list: {
+            data: { type: 'list', id: klaviyoListId }
           }
         }
       }
     };
 
+    // Log de requisição para depuração
+    try {
+      console.info('[VIP Button] Enviando assinatura para Klaviyo', {
+        url,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/vnd.api+json', revision: '2024-10-15' },
+        payload: data
+      });
+    } catch (e) {}
+
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'revision': '2023-12-15'
+        'Content-Type': 'application/vnd.api+json',
+        'revision': '2024-10-15'
       },
       body: JSON.stringify(data)
     });
 
     if (response.ok || response.status === 202) {
+      try {
+        console.info('[VIP Button] Klaviyo: sucesso na assinatura', { status: response.status, ok: response.ok });
+      } catch (e) {}
       return true;
     } else {
       const errorText = await response.text();
-      throw new Error(`Erro na API do Klaviyo: ${response.status}`);
+      let errorJson = null;
+      try { errorJson = JSON.parse(errorText); } catch (e) {}
+      try {
+        console.error('[VIP Button] Klaviyo API error', {
+          status: response.status,
+          statusText: response.statusText,
+          url,
+          requestPayload: data,
+          responseBody: errorJson || errorText
+        });
+      } catch (e) {}
+      const detail = (errorJson && errorJson.errors && errorJson.errors[0] && errorJson.errors[0].detail) ? ` - ${errorJson.errors[0].detail}` : '';
+      throw new Error(`Klaviyo API error: ${response.status}${detail}`);
     }
   }
 
@@ -413,6 +583,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (vipWrapper) {
     const vipButton = new VIPButton();
     vipButton.init();
+    // expõe para debug no console
+    try { window.vipButton = vipButton; } catch (e) {}
   }
 });
 

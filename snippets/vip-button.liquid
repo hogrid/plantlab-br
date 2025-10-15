@@ -81,25 +81,108 @@
   </div>
 </div>
 
+<script id="vip-config-data" type="application/json">
+{
+  "klaviyoApiKey": {{ settings.klaviyo_api_key | default: 'S6hJZ3' | json }},
+  "klaviyoListId": {{ settings.klaviyo_vip_list_id | default: 'RhA5aj' | json }},
+  "product": {
+    "id": {{ product.id | json }},
+    "title": {{ product.title | json }},
+    "handle": {{ product.handle | json }},
+    "url": {{ shop.url | append: product.url | json }},
+    "image": {{ product.featured_image | image_url: width: 300 | json }},
+    "price": {{ product.price | money | json }}
+  },
+  "text": {
+    "buttonText": {{ vip_button_text | json }},
+    "description": {{ vip_button_description | json }},
+    "emailPlaceholder": {{ vip_email_placeholder | json }},
+    "submitButtonText": {{ vip_submit_button_text | json }},
+    "successMessage": {{ vip_success_message | json }}
+  },
+  "whatsappNumber": {{ vip_whatsapp_number | json }}
+}
+</script>
+
 <script>
-  window.VIP_CONFIG = {
-    klaviyoApiKey: {{ settings.klaviyo_api_key | json }},
-    klaviyoListId: {{ settings.klaviyo_vip_list_id | json }},
-    product: {
-      id: {{ product.id | json }},
-      title: {{ product.title | json }},
-      handle: {{ product.handle | json }},
-      url: {{ shop.url | append: product.url | json }},
-      image: {{ product.featured_image | image_url: width: 300 | json }},
-      price: {{ product.price | money | json }}
-    },
-    text: {
-      buttonText: {{ vip_button_text | json }},
-      description: {{ vip_button_description | json }},
-      emailPlaceholder: {{ vip_email_placeholder | json }},
-      submitButtonText: {{ vip_submit_button_text | json }},
-      successMessage: {{ vip_success_message | json }}
-    },
-    whatsappNumber: {{ vip_whatsapp_number | json }}
-  };
+  (function initVIPConfig() {
+    try {
+      var el = document.getElementById('vip-config-data');
+      var cfg = {};
+      if (el && el.textContent) {
+        cfg = JSON.parse(el.textContent);
+      }
+
+      // Normalização básica de credenciais
+      var apiKey = String(cfg.klaviyoApiKey || '').trim();
+      var listId = String(cfg.klaviyoListId || '').trim();
+
+      window.VIP_CONFIG = {
+        klaviyoApiKey: apiKey,
+        klaviyoListId: listId,
+        product: {
+          id: cfg.product && cfg.product.id,
+          title: cfg.product && cfg.product.title,
+          handle: cfg.product && cfg.product.handle,
+          url: cfg.product && cfg.product.url,
+          image: cfg.product && cfg.product.image,
+          price: cfg.product && cfg.product.price
+        },
+        text: {
+          buttonText: cfg.text && cfg.text.buttonText,
+          description: cfg.text && cfg.text.description,
+          emailPlaceholder: cfg.text && cfg.text.emailPlaceholder,
+          submitButtonText: cfg.text && cfg.text.submitButtonText,
+          successMessage: cfg.text && cfg.text.successMessage
+        },
+        whatsappNumber: cfg.whatsappNumber
+      };
+    } catch (e) {
+      if (typeof console !== 'undefined' && console.warn) {
+        console.warn('[VIP Button] Falha ao inicializar VIP_CONFIG a partir de JSON:', e);
+      }
+      window.VIP_CONFIG = window.VIP_CONFIG || {};
+    }
+  })();
+
+  // Exponha também as credenciais via atributos de dados no wrapper para fallback robusto
+  (function attachDataAttributes() {
+    try {
+      var wrapper = document.querySelector('.vip-button-wrapper');
+      if (wrapper) {
+        var vip = window.VIP_CONFIG || {};
+        wrapper.setAttribute('data-klaviyo-api-key', String(vip.klaviyoApiKey || '').trim());
+        wrapper.setAttribute('data-klaviyo-list-id', String(vip.klaviyoListId || '').trim());
+      }
+    } catch (e) {
+      if (typeof console !== 'undefined' && console.warn) {
+        console.warn('[VIP Button] Falha ao anexar data attributes:', e);
+      }
+    }
+  })();
+
+  // Fallback para garantir que KLAVIYO_CONFIG esteja definido corretamente
+  (function ensureKlaviyoConfig() {
+    try {
+      var vipCfg = window.VIP_CONFIG || {};
+      var hasGlobalCfg = window.KLAVIYO_CONFIG && window.KLAVIYO_CONFIG.apiKey && window.KLAVIYO_CONFIG.listId;
+
+      if (!hasGlobalCfg) {
+        // Pré-calcula e normaliza valores para evitar erros de lint/parsing
+        var apiKey = String(vipCfg.klaviyoApiKey || '').trim();
+        var listId = String(vipCfg.klaviyoListId || '').trim();
+        window.KLAVIYO_CONFIG = { apiKey: apiKey, listId: listId };
+      } else {
+        // Normaliza removendo espaços acidentais
+        var currentApi = String(window.KLAVIYO_CONFIG.apiKey || '').trim();
+        var currentList = String(window.KLAVIYO_CONFIG.listId || '').trim();
+        window.KLAVIYO_CONFIG.apiKey = currentApi;
+        window.KLAVIYO_CONFIG.listId = currentList;
+      }
+    } catch (e) {
+      if (typeof console !== 'undefined' && console.warn) {
+        console.warn('[VIP Button] Falha ao garantir KLAVIYO_CONFIG:', e);
+      }
+    }
+  })();
 </script>
