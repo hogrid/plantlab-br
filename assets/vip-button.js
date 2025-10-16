@@ -56,6 +56,21 @@ class VIPButton {
   }
 
   /**
+   * Detect placeholder or invalid values that should be ignored
+   */
+  isPlaceholder(val = '') {
+    const v = String(val).trim().toUpperCase();
+    if (!v) return true;
+    const placeholders = [
+      'INSIRA_SUA_KLAVIYO_API_KEY',
+      'INSIRA_SEU_KLAVIYO_LIST_ID',
+      'INSERT_YOUR_KLAVIYO_API_KEY',
+      'INSERT_YOUR_KLAVIYO_LIST_ID'
+    ];
+    return placeholders.includes(v);
+  }
+
+  /**
    * Get configuration from the page
    */
   getConfig() {
@@ -84,7 +99,13 @@ class VIPButton {
         apiKey: ds.klaviyoApiKey,
         klaviyoApiKey: ds.klaviyoApiKey,
         listId: ds.klaviyoListId,
-        klaviyoListId: ds.klaviyoListId
+        klaviyoListId: ds.klaviyoListId,
+        product: (ds.productId || ds.productName || ds.productPrice) ? {
+          id: ds.productId || null,
+          title: ds.productName || document.title,
+          url: window.location.href,
+          price: ds.productPrice || null
+        } : undefined
       }
     ];
 
@@ -96,17 +117,21 @@ class VIPButton {
 
     // Seleciona o primeiro valor válido de cada chave, entre as fontes disponíveis
     for (const s of sources) {
-      if (!merged.klaviyoApiKey && typeof s.klaviyoApiKey === 'string' && s.klaviyoApiKey.trim()) {
-        merged.klaviyoApiKey = s.klaviyoApiKey.trim();
+      if (!merged.klaviyoApiKey && typeof s.klaviyoApiKey === 'string') {
+        const v = s.klaviyoApiKey.trim();
+        if (v && !this.isPlaceholder(v)) merged.klaviyoApiKey = v;
       }
-      if (!merged.klaviyoApiKey && typeof s.apiKey === 'string' && s.apiKey.trim()) {
-        merged.klaviyoApiKey = s.apiKey.trim();
+      if (!merged.klaviyoApiKey && typeof s.apiKey === 'string') {
+        const v = s.apiKey.trim();
+        if (v && !this.isPlaceholder(v)) merged.klaviyoApiKey = v;
       }
-      if (!merged.klaviyoListId && typeof s.klaviyoListId === 'string' && s.klaviyoListId.trim()) {
-        merged.klaviyoListId = s.klaviyoListId.trim();
+      if (!merged.klaviyoListId && typeof s.klaviyoListId === 'string') {
+        const v = s.klaviyoListId.trim();
+        if (v && !this.isPlaceholder(v)) merged.klaviyoListId = v;
       }
-      if (!merged.klaviyoListId && typeof s.listId === 'string' && s.listId.trim()) {
-        merged.klaviyoListId = s.listId.trim();
+      if (!merged.klaviyoListId && typeof s.listId === 'string') {
+        const v = s.listId.trim();
+        if (v && !this.isPlaceholder(v)) merged.klaviyoListId = v;
       }
       if (!merged.product && s.product) {
         merged.product = s.product;
@@ -145,8 +170,8 @@ class VIPButton {
         listId_value_preview: (cfg.klaviyoListId || '').slice(0, 6)
       });
     } catch (e) {}
-    const button = document.querySelector('.vip-button');
-    if (button) {
+    const buttons = Array.from(document.querySelectorAll('.vip-button, .vip-button-header'));
+    if (buttons.length) {
       this.bindEvents();
       this.setupAccessibility();
     }
@@ -156,11 +181,13 @@ class VIPButton {
    * Bind event listeners
    */
   bindEvents() {
-    const mainButton = document.querySelector('.vip-button');
-    if (mainButton) {
-      mainButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.openModal();
+    const triggers = Array.from(document.querySelectorAll('.vip-button, .vip-button-header'));
+    if (triggers.length) {
+      triggers.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.openModal();
+        });
       });
     }
 
@@ -209,8 +236,8 @@ class VIPButton {
    * Open the modal
    */
   openModal() {
-    const wrapper = document.querySelector('.vip-button-wrapper');
-    this.modal = (wrapper ? wrapper.querySelector('.vip-modal') : document.querySelector('.vip-modal'));
+    // Sempre usar o modal global para padronizar em todos os botões
+    this.modal = document.querySelector('#vip-modal') || document.querySelector('.vip-modal');
     if (!this.modal) return;
 
     this.form = this.modal.querySelector('.vip-form');
@@ -358,7 +385,7 @@ class VIPButton {
           const ds = wrapper.dataset || {};
           const apiKey = (ds.klaviyoApiKey || '').trim();
           const listId = (ds.klaviyoListId || '').trim();
-          if (apiKey && listId) {
+          if (apiKey && listId && !this.isPlaceholder(apiKey) && !this.isPlaceholder(listId)) {
             cfg.klaviyoApiKey = apiKey;
             cfg.klaviyoListId = listId;
           }
@@ -594,9 +621,8 @@ class VIPButton {
 
 // Initialize VIP Button when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  const vipWrapper = document.querySelector('.vip-button-wrapper');
-  
-  if (vipWrapper) {
+  const hasTrigger = document.querySelector('.vip-button, .vip-button-header');
+  if (hasTrigger) {
     const vipButton = new VIPButton();
     vipButton.init();
     // expõe para debug no console

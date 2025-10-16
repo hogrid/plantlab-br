@@ -132,9 +132,9 @@
         {%- endform -%}
     </product-form>
 
-    
-    {%- comment -%} Botão VIP - Posicionado estrategicamente após os botões de compra {%- endcomment -%}
-    <div class="productView-vip{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
-        {% render 'vip-button', product: product %}
-    </div>
+
+    {%- comment -%}
+      Removido: Botão VIP abaixo do botão de adicionar ao carrinho (sidebar) para evitar duplicação.
+      O CTA VIP agora deve ser inserido via seção 'CTA Grupo VIP' ou pelos triggers globais (header/produto) que abrem o mesmo modal.
+    {%- endcomment -%}
 </div>
