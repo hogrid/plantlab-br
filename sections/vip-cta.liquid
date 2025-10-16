@@ -51,7 +51,7 @@
       {%- endif -%}
 
       <div class="vip-button-wrapper">
-        <a href="#" class="vip-button" aria-label="{{ section.settings.button_aria_label | default: 'Faça parte do grupo VIP' }}">
+        <a href="#" class="vip-button vip-button--cta-shiny" aria-label="{{ section.settings.button_aria_label | default: 'Faça parte do grupo VIP' }}">
           {%- if section.settings.show_icon -%}
             <span class="vip-icon">{% render 'icon-star' %}</span>
           {%- endif -%}
