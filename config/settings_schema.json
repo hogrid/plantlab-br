@@ -9090,7 +9090,7 @@
         "default": true
       },
       {
-        "type": "url",
+        "type": "text",
         "id": "vip_whatsapp_group_link",
         "label": "Link do Grupo WhatsApp VIP",
         "default": "https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig",
