@@ -100,10 +100,10 @@
             "tier1_shipping_500g": "",
             "tier2_label_500g": "3 un. de 500g  (1,5 kg)",
             "tier2_discount_500g": "12% OFF",
-            "tier2_shipping_500g": "FRETE GRÁTIS Sul/Sudeste",
+            "tier2_shipping_500g": "FRETE GRÁTIS BRASIL",
             "tier3_label_500g": "4 un. de 500g (2 kg)",
             "tier3_discount_500g": "14% OFF",
-            "tier3_shipping_500g": "FRETE GRÁTIS Sul/Sudeste",
+            "tier3_shipping_500g": "FRETE GRÁTIS BRASIL",
             "tier1_label_40g": "3 un. de 40g",
             "tier1_discount_40g": "8% OFF",
             "tier1_shipping_40g": "",
@@ -876,6 +876,8 @@
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget",
             "max_width": 1200
           }
         }
