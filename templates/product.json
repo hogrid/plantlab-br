@@ -299,6 +299,56 @@
         "minus_spacing_top": 0
       }
     },
+    "vip_cta_nB9yM4": {
+      "type": "vip-cta",
+      "blocks": {
+        "benefit_b8mUrX": {
+          "type": "benefit",
+          "settings": {
+            "icon": "star",
+            "title": "Acesso antecipado a lançamentos",
+            "text": "Seja o primeiro a conhecer nossos novos produtos e sabores."
+          }
+        },
+        "benefit_8Mnp8m": {
+          "type": "benefit",
+          "settings": {
+            "icon": "star",
+            "title": "Acesso antecipado a Alien Friday",
+            "text": "Nossos humanos VIPs são VIPs de verdade e ganham acesso aos descontos da Black Friday antes de todo mundo."
+          }
+        },
+        "benefit_Kqr9wc": {
+          "type": "benefit",
+          "settings": {
+            "icon": "star",
+            "title": "Descontos e conteúdos exclusivos",
+            "text": "No grupo VIP você terá acesso a descontos exclusivos e promoções especiais que serão divulgadas apenas no grupo."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_b8mUrX",
+        "benefit_8Mnp8m",
+        "benefit_Kqr9wc"
+      ],
+      "name": "CTA Grupo VIP",
+      "settings": {
+        "heading": "Faça parte do Grupo VIP",
+        "subheading": "Benefícios exclusivos para membros",
+        "description": "<p>Junte-se ao nosso Grupo VIP e tenha acesso antecipado a lançamentos, ofertas especiais e conteúdos exclusivos.</p>",
+        "bg_gradient_start": "#0f0f0f",
+        "bg_gradient_end": "#1c1c1c",
+        "bg_angle": 135,
+        "show_icon": true,
+        "button_text": "Faça parte do Grupo VIP",
+        "button_aria_label": "Faça parte do grupo VIP",
+        "modal_title": "Grupo VIP",
+        "modal_subtitle": "Desbloqueie benefícios exclusivos para membros VIP",
+        "submit_text": "Quero participar",
+        "success_message": "Cadastro realizado com sucesso! Você será redirecionado em alguns segundos..."
+      }
+    },
     "rich_text_video_product_Qm9CVg": {
       "type": "rich-text-video-product",
       "blocks": {
@@ -898,6 +948,7 @@
   "order": [
     "main",
     "marquee_f3FPk7",
+    "vip_cta_nB9yM4",
     "rich_text_video_product_Qm9CVg",
     "tabela_comparativa_UGYiQd",
     "image_banner_KTjMr6",
