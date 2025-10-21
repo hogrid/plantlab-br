@@ -9097,6 +9097,13 @@
         "info": "Formato: 5534999999999 (sem espaços ou símbolos)"
       },
       {
+        "type": "url",
+        "id": "vip_whatsapp_group_link",
+        "label": "Link do Grupo WhatsApp VIP",
+        "default": "https://chat.whatsapp.com/exemplo",
+        "info": "Link completo do grupo WhatsApp para onde os usuários serão redirecionados"
+      },
+      {
         "type": "header",
         "content": "Integração Shopify"
       },

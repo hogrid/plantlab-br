@@ -50,6 +50,11 @@
             apiKey: '{{ settings.klaviyo_api_key }}',
             listId: '{{ settings.klaviyo_vip_list_id }}'
           };
+          
+          // Configuração Global do WhatsApp VIP
+          window.VIP_CONFIG = {
+            whatsappGroupLink: '{{ settings.vip_whatsapp_group_link | default: "https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig" }}'
+          };
         </script>
 
         {%- liquid

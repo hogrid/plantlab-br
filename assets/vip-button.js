@@ -4,7 +4,8 @@
 
 class VIPButton {
   constructor() {
-    this.whatsappUrl = 'https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig';
+    // Usa a configuração dinâmica do tema ou fallback para o link padrão
+    this.whatsappUrl = window.VIP_CONFIG?.whatsappGroupLink || 'https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig';
   }
 
   /**
