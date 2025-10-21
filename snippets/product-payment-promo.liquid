@@ -21,9 +21,7 @@
   assign promo_title = block.settings.promo_title | default: 'Leve + Pague –'
   assign promo_subtitle = block.settings.promo_subtitle
 
-  comment
-    Lógica condicional baseada no metafield model
-  endcomment
+  # Lógica condicional baseada no metafield model
   assign product_model = product.metafields.custom.model.value
   assign model_name = ''
   if product_model and product_model.name
@@ -37,7 +35,7 @@
     assign is_500g = true
   endif
   
-  if model_name contains '40g' or model_name contains 'sache unitário'
+  if model_name contains '40g' or model_name contains 'sache unitário' or model_name contains 'sachê unitário'
     assign is_40g = true
   endif
   
@@ -46,9 +44,7 @@
     assign show_promo_block = true
   endif
 
-  comment
-    Configurações específicas por tamanho
-  endcomment
+  # Configurações específicas por tamanho
   if is_500g
     assign tier1_label = block.settings.tier1_label_500g | default: '2 un (1 kg)'
     assign tier1_discount = block.settings.tier1_discount_500g | default: '8% OFF'

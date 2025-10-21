@@ -1,22 +1,53 @@
 {% liquid
   assign active_switches = shop.metaobjects.agrupamento_de_produtos.values | reverse
-  assign first_switch_value = product.metafields.custom.tamanho.value | default: '500g'
+  assign first_switch_value = product.metafields.custom.tamanho.value | default: 'Saco'
+  assign normalized_first_switch_value = first_switch_value
+  # Normalizar first_switch_value
+  if normalized_first_switch_value == '500g' or normalized_first_switch_value == 'saco' or normalized_first_switch_value == 'SACO'
+    assign normalized_first_switch_value = 'Saco'
+  elsif normalized_first_switch_value == '40g' or normalized_first_switch_value == 'sache' or normalized_first_switch_value == 'Sache' or normalized_first_switch_value == 'sachê' or normalized_first_switch_value == 'SACHÊ'
+    assign normalized_first_switch_value = 'Sachê'
+  endif
 
   assign active_switches_size = 0
   assign switches = ''
 
   if product
+    # Build normalized_opcoes from product metafield
+    assign normalized_opcoes = ''
+    if product.metafields.custom.opcoes_de_tamanhos.value
+      for sz in product.metafields.custom.opcoes_de_tamanhos.value
+        assign sz_norm = sz
+        if sz == '500g' or sz == 'saco' or sz == 'SACO'
+          assign sz_norm = 'Saco'
+        elsif sz == '40g' or sz == 'sache' or sz == 'Sache' or sz == 'sachê' or sz == 'SACHÊ'
+          assign sz_norm = 'Sachê'
+        endif
+        assign normalized_opcoes = normalized_opcoes | append: sz_norm | append: ','
+      endfor
+      assign normalized_opcoes = normalized_opcoes | split: ',' | uniq
+    endif
+
     for switch in active_switches
       assign aux = switch.tamanho.value | replace: '["', '' | replace: '"]', ''
-      if product.metafields.custom.opcoes_de_tamanhos.value contains aux
+      assign normalized_aux = aux
+      
+      # Normalizar valores antigos para novos
+      if aux == '500g'
+        assign normalized_aux = 'Saco'
+      elsif aux == '40g'
+        assign normalized_aux = 'Sachê'
+      endif
+      
+      if normalized_opcoes contains normalized_aux
         assign active_switches_size = active_switches_size | plus: 1
-        assign switches = switches | append: switch.tamanho.value | append: ','
+        assign switches = switches | append: normalized_aux | append: ','
       endif
     endfor
 
-    assign switches = switches | replace: '["', '' | replace: '"]', '' | split: ',' | uniq
+    assign switches = switches | split: ',' | uniq
   else
-    assign switches = '500g,40g' | split: ','
+    assign switches = 'Saco,Sachê' | split: ','
     assign active_switches_size = 2
   endif
 %}
@@ -44,18 +75,27 @@
   <div class="flavors-selector__options">
     {% for flavor_group in active_switches %}
       {% assign aux = flavor_group.tamanho.value | replace: '["', '' | replace: '"]', '' %}
-      {% if switches contains aux %}
+      {% assign normalized_aux = aux %}
+      
+      {% comment %}Normalizar valores antigos para novos{% endcomment %}
+      {% if aux == '500g' %}
+        {% assign normalized_aux = 'Saco' %}
+      {% elsif aux == '40g' %}
+        {% assign normalized_aux = 'Sachê' %}
+      {% endif %}
+      
+      {% if switches contains normalized_aux %}
         {% if flavor_group.tamanho.value %}
           <div
-            class="flavor-selector__option-wrapper{% if first_switch_value == flavor_group.tamanho.value %} active{% endif %}"
-            data-size="{{ flavor_group.tamanho.value }}"
+            class="flavor-selector__option-wrapper{% if normalized_first_switch_value == normalized_aux %} active{% endif %}"
+            data-size="{{ normalized_aux }}"
           >
             {% for flavor in flavor_group.produtos.value %}
               <a
                 href="{{ flavor.url }}"
                 style="--background: {{ flavor.metafields.custom.cor_de_fundo.value  }};"
                 class="{% unless flavor.available %}unavailable {% endunless %}flavors-selector__option{% if product.id == flavor.id %}  current-product{% endif %}"
-                data-size-group="{{ flavor_group.tamanho.value }}"
+                data-size-group="{{ normalized_aux }}"
               >
                 <input
                   type="radio"
@@ -308,18 +348,34 @@
 
 <script>
   $(document).ready(function () {
+    const initialSize = '{{ normalized_first_switch_value }}';
+
+    // Ensure the initial radio is checked and the correct wrapper is visible
+    const initialInput = document.querySelector(`.flavors-selector__switch input[value="${initialSize}"]`);
+    if (initialInput) {
+      initialInput.checked = true;
+    }
+
+    document.querySelectorAll('.flavor-selector__option-wrapper').forEach((wrapper) => {
+      wrapper.classList.toggle('active', wrapper.getAttribute('data-size') === initialSize);
+    });
+
     // change the height of the options container to match the active flavor group every time the switch changes
     document.querySelectorAll('.flavors-selector__switch input').forEach((input) => {
       input.addEventListener('change', (event) => updateOptions(event));
     });
 
-    updateOptions({ target: { value: '{{ first_switch_value }}' } });
+    updateOptions({ target: { value: initialSize } });
   });
 
   function updateOptions(event) {
     const size = event.target.value;
-    const wrapper = document.querySelector(`.flavor-selector__option-wrapper[data-size="${size}"]`);
     const optionsContainer = document.querySelector('.flavors-selector__options');
+    const wrapper = document.querySelector(`.flavor-selector__option-wrapper[data-size="${size}"]`) || document.querySelector('.flavor-selector__option-wrapper.active');
+
+    if (!optionsContainer || !wrapper) {
+      return;
+    }
 
     // Get the current state
     const state = Flip.getState(optionsContainer);

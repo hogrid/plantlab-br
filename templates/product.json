@@ -42,7 +42,7 @@
           "settings": {
             "title": "Escolha seu sabor e tamanho",
             "subtitle": "",
-            "switch_items": "1kg,500g,Display,40g"
+            "switch_items": "1kg,Saco,Display,Sachê,500g,40g"
           }
         },
         "purchase_type_fpdVPT": {
@@ -755,7 +755,7 @@
           "type": "product",
           "settings": {
             "product": "proteina-vegetal-cremosa-500g-red-berries-star",
-            "description": "Red  Berries Star",
+            "description": "Red  BerriesStar",
             "gradient": "linear-gradient(90deg, rgba(143, 0, 47, 1), rgba(238, 52, 45, 1) 50%, rgba(243, 112, 93, 1) 100%)"
           }
         },
