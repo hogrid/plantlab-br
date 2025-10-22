@@ -1814,6 +1814,11 @@
           "button_vertical_position": "higher",
           "greeting_message": "👋 Olá Humano! Dúvidas? Envie uma mensagem! Estamos por aqui ou no alien@theplantlab.com.br 👽"
         }
+      },
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "disabled": false,
+        "settings": {}
       }
     }
   }
