@@ -1068,7 +1068,7 @@
     "enable_popup_cart": true,
     "cart_popup_title": "👽 PAGUE NO PIX E GANHE DESCONTO!",
     "cart_popup_desc": "🎁 Ao finalizar sua compra pague no PIX e garanta 3% OFF 🥳",
-    "cart_popup_cupom": "",
+    "cart_popup_cupom": "PIX = 3% OFF 🤑",
     "quick_view_layout": "3",
     "quick_view_product_image_ratio": "adapt",
     "show_quick_view_short_description": false,
