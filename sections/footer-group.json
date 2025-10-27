@@ -1,1 +1,272 @@
-{"type":"footer","name":"Footer Group","sections":{"newsletter_mfzDFR":{"type":"newsletter","blocks":{"newsletter_344M7i":{"type":"newsletter","settings":{"section_title":"Inscreva-se em nossa newsletter","section_title_font_size":32,"section_title_font_size_mb":24,"section_title_font_weight":"600","section_title_text_transform":"none","section_title_font_style":"normal","section_title_color":"#191919","mg_bottom_title":12,"mg_bottom_title_mb":12,"section_description":"","section_description_font_size":16,"section_description_font_size_mb":14,"section_description_font_weight":"500","section_description_color":"#191919","margin_bottom_des":0,"des_line_height":20,"show_input_field":true,"input_style":"style_1","input_width":450,"input_border_radius":0,"input_text_font_size":13,"button_text":"Enviar","button_font_size":16,"button_width":150,"button_text_color":"#ffffff","button_border_color":"rgba(0,0,0,0)","button_background_color":"#232323","button_gradient_color":"linear-gradient(90deg, rgba(146, 4, 201, 1), rgba(243, 76, 115, 1) 100%)","button_text_color_hover":"#ffffff","button_border_color_hover":"#232323","button_background_color_hover":"rgba(0,0,0,0)","button_gradient_color_hover":"linear-gradient(90deg, rgba(146, 4, 201, 1), rgba(243, 76, 115, 1) 100%)","button_text_transform":"capitalize","button_font_weight":"600","input_placeholder":"Digite seu email","input_placeholder_color":"#191919","input_background_color":"rgba(0,0,0,0)","input_border_color":"#333333","form_gap":15,"newsletter_content_direction":"row","newsletter_form_justify_content":"space-between","input_width_behavior":"restricted"}}},"block_order":["newsletter_344M7i"],"custom_css":["input {border-radius: 4px;}",".container {max-width: var(--body-custom-width-container);}","html[data-theme=\"dark\"] input {color: var(--lv_1_color);}"],"settings":{"container":"container","padding_full_width":0,"background":"rgba(0,0,0,0)","background_gradient":"","mg_top_desktop":50,"mg_top_tablet":50,"mg_top_mobile":50,"mg_bottom_desktop":50,"mg_bottom_tablet":50,"mg_bottom_mobile":50,"section_text_align":"left","justify_section_content":"center","section_item_distance":20,"enable_social_media_below":false}},"footer-1":{"type":"footer-01","blocks":{"text_8XqLhY":{"type":"text","settings":{"custom_width":"30","heading":"","logo":"shopify:\/\/shop_images\/novo_logo.png","logo_margin_bottom":20,"subtext":"<p>Proteína vegetal cremosa e gostosa de verdade para TODOS! <\/p>","address_icon":"point_icon","show_address_icon":true,"address_text":"","phone_icon":"phone_icon","show_phone_icon":true,"phone_text":"","email_icon":"envelope_icon","show_email_icon":true,"email_text":"<p>alien@theplantlab.com.br<\/p>","icon_size":16,"icon_color":"#f8f8f8","content_spacing":1,"mg_bottom":0,"enable_custom_position_icon":false,"show_social":true,"social_heading":"","enable_bg_social":false,"social_margin_top":12,"social_icon_width":12,"social_icon_padding":12,"social_icon_border_width":1,"social_icon_margin_right":15,"social_color":"#282828","social_border_color":"#ffffff","social_background_color":"#ffffff","social_background_color_gradient":"","social_color_hover":"#282828","social_border_color_hover":"#ffffff","social_background_color_hover":"#ffffff","social_background_color_gradient_hover":"","social_box_hover_color":"#ffffff"}},"592a8373-a70d-47d3-a311-321a645e1f14":{"type":"link_list","settings":{"custom_width":"16","heading":"Shop","menu":"main-menu","mg_bottom":0}},"link_list_D6mdhz":{"type":"link_list","settings":{"custom_width":"16","heading":"Informações","menu":"informa-es","mg_bottom":0}},"a6e74cd6-bd47-4ada-98b5-15e28b94aef6":{"type":"link_list","settings":{"custom_width":"16","heading":"Institucional","menu":"institucional","mg_bottom":0}},"2265e00a-3824-4d57-af37-fa00fa88a555":{"type":"link_list","settings":{"custom_width":"16","heading":"Para você","menu":"para-voc","mg_bottom":0}},"selos_NNXhKc":{"type":"selos","settings":{}},"41adb6e5-e71d-422b-a1e1-d2034c83869c":{"type":"footer_bottom","settings":{"pdtop_footer_bottom":20,"pdbottom_footer_bottom":30,"border_top":false,"footer_bottom_color":"#cfcfcf","border_top_color":"#282828","footer_bottom_bg":"#151515","footer_bottom_bg_gradient":"","show_copyright":true,"show_shop_name":true,"enable_layout_grid":true,"copyright_content":"<p>PLANTLAB © 2024. Todos os direitos reservados.<\/p>","copyright_content_color":"#cfcfcf","shop_name":"","show_payment":false,"payment_margin_top":0,"payment_type":"custom","show_payment_visa":true,"show_payment_master":true,"show_payment_maestro":true,"show_payment_american_express":true,"show_payment_apple_pay":true,"show_payment_bitcoin":false,"show_payment_dankort":false,"show_payment_diners_club":false,"show_payment_discover":false,"show_payment_paypal":false,"show_payment_dogecoin":false,"show_payment_dwolla":false,"show_payment_forbrugsforeningen":false,"show_payment_jcb":false,"show_payment_litecoin":false,"show_payment_afterpay":false,"show_payment_google_pay":false,"show_payment_ideal":false,"show_payment_klarna":false,"show_payment_klarna-pay-later":false,"show_payment_shopify_pay":false,"show_payment_sofort":false}}},"block_order":["text_8XqLhY","592a8373-a70d-47d3-a311-321a645e1f14","link_list_D6mdhz","a6e74cd6-bd47-4ada-98b5-15e28b94aef6","2265e00a-3824-4d57-af37-fa00fa88a555","selos_NNXhKc","41adb6e5-e71d-422b-a1e1-d2034c83869c"],"custom_css":[".footer-block__details .image_logo img {max-width: 175px; height: auto;}"],"settings":{"container":"1570","padding_full_width":60,"alfinet_logo":"white","type_footer_heading":"font_1","type_footer_heading_font_size":15,"type_footer_heading_font_weight":"600","type_footer_heading_text_transform":"uppercase","type_footer_heading_line_height":22,"type_footer_heading_letter_spacing":".05em","type_footer_link":"font_1","type_footer_link_font_size":12,"type_footer_link_font_weight":"400","type_footer_link_text_transform":"capitalize","type_footer_link_line_height":28,"type_footer_link_letter_spacing":".02em","enable_border_footer_top":false,"border_footer_top_color":"#282828","pdtop_footer_top":50,"pdbottom_footer_top":40,"footer_top_bg":"#151515","footer_top_bg_gradient":"","show_footer_top_bg_img":false,"footer_top_bg_position_x":"center","footer_top_bg_position_y":"center","footer_top_bg_repeat":"no-repeat","footer_top_bg_attachment":"fixed","footer_top_bg_size":"cover","footer_top_text_align":"left","footer_top_title_color":"#ffffff","footer_top_color_link":"#e8e8e8","footer_top_color_link_hover":"#ffffff","show_border_item":false,"footer_border_item":"#808080"}}},"order":["newsletter_mfzDFR","footer-1"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "newsletter_mfzDFR": {
+      "type": "newsletter",
+      "blocks": {
+        "newsletter_344M7i": {
+          "type": "newsletter",
+          "settings": {
+            "section_title": "Inscreva-se em nossa newsletter",
+            "section_title_font_size": 32,
+            "section_title_font_size_mb": 24,
+            "section_title_font_weight": "600",
+            "section_title_text_transform": "none",
+            "section_title_font_style": "normal",
+            "section_title_color": "#191919",
+            "mg_bottom_title": 12,
+            "mg_bottom_title_mb": 12,
+            "section_description": "",
+            "section_description_font_size": 16,
+            "section_description_font_size_mb": 14,
+            "section_description_font_weight": "500",
+            "section_description_color": "#191919",
+            "margin_bottom_des": 0,
+            "des_line_height": 20,
+            "show_input_field": true,
+            "input_style": "style_1",
+            "input_width": 450,
+            "input_border_radius": 0,
+            "input_text_font_size": 13,
+            "button_text": "Enviar",
+            "button_font_size": 16,
+            "button_width": 150,
+            "button_text_color": "#ffffff",
+            "button_border_color": "rgba(0,0,0,0)",
+            "button_background_color": "#232323",
+            "button_gradient_color": "linear-gradient(90deg, rgba(146, 4, 201, 1), rgba(243, 76, 115, 1) 100%)",
+            "button_text_color_hover": "#ffffff",
+            "button_border_color_hover": "#232323",
+            "button_background_color_hover": "rgba(0,0,0,0)",
+            "button_gradient_color_hover": "linear-gradient(90deg, rgba(146, 4, 201, 1), rgba(243, 76, 115, 1) 100%)",
+            "button_text_transform": "capitalize",
+            "button_font_weight": "600",
+            "input_placeholder": "Digite seu email",
+            "input_placeholder_color": "#191919",
+            "input_background_color": "rgba(0,0,0,0)",
+            "input_border_color": "#333333",
+            "form_gap": 15,
+            "newsletter_content_direction": "row",
+            "newsletter_form_justify_content": "space-between",
+            "input_width_behavior": "restricted"
+          }
+        }
+      },
+      "block_order": [
+        "newsletter_344M7i"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "input {border-radius: 4px;}",
+        ".container {max-width: var(--body-custom-width-container);}",
+        "html[data-theme=\"dark\"] input {color: var(--lv_1_color);}"
+      ],
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "section_text_align": "left",
+        "justify_section_content": "center",
+        "section_item_distance": 20,
+        "enable_social_media_below": false
+      }
+    },
+    "footer-1": {
+      "type": "footer-01",
+      "blocks": {
+        "text_8XqLhY": {
+          "type": "text",
+          "settings": {
+            "custom_width": "30",
+            "heading": "",
+            "logo": "shopify://shop_images/novo_logo.png",
+            "logo_margin_bottom": 20,
+            "subtext": "<p>Proteína vegetal cremosa e gostosa de verdade para TODOS! </p>",
+            "address_icon": "point_icon",
+            "show_address_icon": true,
+            "address_text": "",
+            "phone_icon": "phone_icon",
+            "show_phone_icon": true,
+            "phone_text": "",
+            "email_icon": "envelope_icon",
+            "show_email_icon": true,
+            "email_text": "<p>alien@theplantlab.com.br</p>",
+            "icon_size": 16,
+            "icon_color": "#f8f8f8",
+            "content_spacing": 1,
+            "mg_bottom": 0,
+            "enable_custom_position_icon": false,
+            "show_social": true,
+            "social_heading": "",
+            "enable_bg_social": false,
+            "social_margin_top": 12,
+            "social_icon_width": 12,
+            "social_icon_padding": 12,
+            "social_icon_border_width": 1,
+            "social_icon_margin_right": 15,
+            "social_color": "#282828",
+            "social_border_color": "#ffffff",
+            "social_background_color": "#ffffff",
+            "social_background_color_gradient": "",
+            "social_color_hover": "#282828",
+            "social_border_color_hover": "#ffffff",
+            "social_background_color_hover": "#ffffff",
+            "social_background_color_gradient_hover": "",
+            "social_box_hover_color": "#ffffff"
+          }
+        },
+        "592a8373-a70d-47d3-a311-321a645e1f14": {
+          "type": "link_list",
+          "settings": {
+            "custom_width": "16",
+            "heading": "Shop",
+            "menu": "main-menu",
+            "mg_bottom": 0
+          }
+        },
+        "link_list_D6mdhz": {
+          "type": "link_list",
+          "settings": {
+            "custom_width": "16",
+            "heading": "Informações",
+            "menu": "informa-es",
+            "mg_bottom": 0
+          }
+        },
+        "a6e74cd6-bd47-4ada-98b5-15e28b94aef6": {
+          "type": "link_list",
+          "settings": {
+            "custom_width": "16",
+            "heading": "Institucional",
+            "menu": "institucional",
+            "mg_bottom": 0
+          }
+        },
+        "2265e00a-3824-4d57-af37-fa00fa88a555": {
+          "type": "link_list",
+          "settings": {
+            "custom_width": "16",
+            "heading": "Para você",
+            "menu": "para-voc",
+            "mg_bottom": 0
+          }
+        },
+        "selos_NNXhKc": {
+          "type": "selos",
+          "settings": {}
+        },
+        "41adb6e5-e71d-422b-a1e1-d2034c83869c": {
+          "type": "footer_bottom",
+          "settings": {
+            "pdtop_footer_bottom": 20,
+            "pdbottom_footer_bottom": 30,
+            "border_top": false,
+            "footer_bottom_color": "#cfcfcf",
+            "border_top_color": "#282828",
+            "footer_bottom_bg": "#151515",
+            "footer_bottom_bg_gradient": "",
+            "show_copyright": true,
+            "show_shop_name": true,
+            "enable_layout_grid": true,
+            "copyright_content": "<p>PLANTLAB © 2024. Todos os direitos reservados.</p>",
+            "copyright_content_color": "#cfcfcf",
+            "shop_name": "",
+            "show_payment": false,
+            "payment_margin_top": 0,
+            "payment_type": "custom",
+            "show_payment_visa": true,
+            "show_payment_master": true,
+            "show_payment_maestro": true,
+            "show_payment_american_express": true,
+            "show_payment_apple_pay": true,
+            "show_payment_bitcoin": false,
+            "show_payment_dankort": false,
+            "show_payment_diners_club": false,
+            "show_payment_discover": false,
+            "show_payment_paypal": false,
+            "show_payment_dogecoin": false,
+            "show_payment_dwolla": false,
+            "show_payment_forbrugsforeningen": false,
+            "show_payment_jcb": false,
+            "show_payment_litecoin": false,
+            "show_payment_afterpay": false,
+            "show_payment_google_pay": false,
+            "show_payment_ideal": false,
+            "show_payment_klarna": false,
+            "show_payment_klarna-pay-later": false,
+            "show_payment_shopify_pay": false,
+            "show_payment_sofort": false
+          }
+        }
+      },
+      "block_order": [
+        "text_8XqLhY",
+        "592a8373-a70d-47d3-a311-321a645e1f14",
+        "link_list_D6mdhz",
+        "a6e74cd6-bd47-4ada-98b5-15e28b94aef6",
+        "2265e00a-3824-4d57-af37-fa00fa88a555",
+        "selos_NNXhKc",
+        "41adb6e5-e71d-422b-a1e1-d2034c83869c"
+      ],
+      "custom_css": [
+        ".footer-block__details .image_logo img {max-width: 175px; height: auto;}"
+      ],
+      "settings": {
+        "container": "1570",
+        "padding_full_width": 60,
+        "alfinet_logo": "white",
+        "type_footer_heading": "font_1",
+        "type_footer_heading_font_size": 15,
+        "type_footer_heading_font_weight": "600",
+        "type_footer_heading_text_transform": "uppercase",
+        "type_footer_heading_line_height": 22,
+        "type_footer_heading_letter_spacing": ".05em",
+        "type_footer_link": "font_1",
+        "type_footer_link_font_size": 12,
+        "type_footer_link_font_weight": "400",
+        "type_footer_link_text_transform": "capitalize",
+        "type_footer_link_line_height": 28,
+        "type_footer_link_letter_spacing": ".02em",
+        "enable_border_footer_top": false,
+        "border_footer_top_color": "#282828",
+        "pdtop_footer_top": 50,
+        "pdbottom_footer_top": 40,
+        "footer_top_bg": "#151515",
+        "footer_top_bg_gradient": "",
+        "show_footer_top_bg_img": false,
+        "footer_top_bg_position_x": "center",
+        "footer_top_bg_position_y": "center",
+        "footer_top_bg_repeat": "no-repeat",
+        "footer_top_bg_attachment": "fixed",
+        "footer_top_bg_size": "cover",
+        "footer_top_text_align": "left",
+        "footer_top_title_color": "#ffffff",
+        "footer_top_color_link": "#e8e8e8",
+        "footer_top_color_link_hover": "#ffffff",
+        "show_border_item": false,
+        "footer_border_item": "#808080"
+      }
+    }
+  },
+  "order": [
+    "newsletter_mfzDFR",
+    "footer-1"
+  ]
+}

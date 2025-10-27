@@ -26,8 +26,8 @@
         "image_7Fdr9Q": {
           "type": "image",
           "settings": {
-            "image_slide": "shopify://shop_images/Banner_Site_-_Quem_Somos_-_Desktop.png",
-            "image_slide_mb": "shopify://shop_images/Banner_Site_-_Quem_Somos_-_Mobile_638_x_700_px_1.png",
+            "image_slide": "shopify://shop_images/Banner_Site_-_Quem_Somos_-_Desktop_200926e8-d1fa-476e-9e10-1dae8e958183.png",
+            "image_slide_mb": "shopify://shop_images/Banner_Site_-_Quem_Somos_-_Mobile_638_x_700_px_6864e87b-946d-414d-9e97-11b4fe0d33a8.png",
             "alignment": "left",
             "enable_custom_position": false,
             "custom_horizontal": "",
@@ -58,7 +58,7 @@
             "border_sub_heading": "none",
             "sub_title_position": "sub_title_above",
             "color_sub_heading": "#ffffff",
-            "heading": "<pt>Somos Plantlab e fazemos proteína vegetal gostosa de verdade.<pt></pt></pt>",
+            "heading": "",
             "letter_spacing_heading": "",
             "enable_border_heading": false,
             "font_style_heading": "normal",
@@ -186,6 +186,7 @@
     },
     "video_block_et77ee": {
       "type": "video-block",
+      "disabled": true,
       "custom_css": [
         ".container {display: flex; align-items: center; flex-direction: row-reverse; gap: 24px;}",
         ".container > * {flex: 1; min-width: 50%;}"
@@ -218,13 +219,41 @@
         "full_width": false
       }
     },
+    "1761592650de9bbe92": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_8FfLQt": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "718568",
+            "text_color": "#ffffff",
+            "button_background_color": "#efb521ff",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878B9",
+            "errors_color": "#E02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 24,
+            "padding_bottom": 24,
+            "padding_right": 24,
+            "padding_left": 24
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_8FfLQt"
+      ],
+      "settings": {
+        "include_margins": false
+      }
+    },
     "marquee_99FJTb": {
       "type": "marquee",
       "blocks": {
         "marquee_LwUyMJ": {
           "type": "marquee",
           "settings": {
-            "text": "<p><strong>PROTEIN FOR ALL</strong></p>",
+            "text": "<p><strong>ALIEN FRIDAY</strong></p>",
             "color": "#ffffff",
             "color_mb": "#ffffff",
             "enable_border_bottom": false
@@ -233,7 +262,7 @@
         "marquee_pNDFwV": {
           "type": "marquee",
           "settings": {
-            "text": "<p><strong>WE MAKE VEGAN M*LKSHAKES</strong></p>",
+            "text": "<p><strong>SUPER PROMO</strong></p>",
             "color": "#ffffff",
             "color_mb": "#ffffff",
             "enable_border_bottom": false
@@ -242,7 +271,7 @@
         "marquee_GcYiTz": {
           "type": "marquee",
           "settings": {
-            "text": "<p><strong>PEACE FOR ANIMALS</strong></p>",
+            "text": "<p><strong>ACESSO EXCLUSIVO</strong></p>",
             "color": "#ffffff",
             "color_mb": "#ffffff",
             "enable_border_bottom": false
@@ -251,18 +280,18 @@
         "marquee_GBTYY9": {
           "type": "marquee",
           "settings": {
-            "text": "<p><strong>BE COOL, NOT CRUEL</strong></p>",
+            "text": "<p><strong>HUMAN VIP</strong></p>",
             "color": "#ffffff",
             "color_mb": "#ffffff",
             "enable_border_bottom": false
           }
         },
-        "marquee_VtWmjm": {
+        "marquee_hK68i9": {
           "type": "marquee",
           "settings": {
-            "text": "<p><strong>BE CREAMY, BE YOU</strong></p>",
-            "color": "#ffffff",
-            "color_mb": "#ffffff",
+            "text": "<p>O MELHOR DESCONTO DO ANO</p>",
+            "color": "#000000",
+            "color_mb": "#000000",
             "enable_border_bottom": false
           }
         }
@@ -272,11 +301,11 @@
         "marquee_pNDFwV",
         "marquee_GcYiTz",
         "marquee_GBTYY9",
-        "marquee_VtWmjm"
+        "marquee_hK68i9"
       ],
       "settings": {
         "mq_background": "",
-        "mq_gradient": "linear-gradient(90deg, rgba(142, 1, 205, 1), rgba(248, 80, 111, 1) 100%)",
+        "mq_gradient": "linear-gradient(90deg, rgba(239, 181, 33, 1), rgba(238, 198, 95, 1) 100%)",
         "type_tab_font": "font_1",
         "text_size": 26,
         "text_font_weight": "400",
@@ -323,6 +352,7 @@
         "heading_TaCdqN",
         "text_LHEkLQ"
       ],
+      "disabled": true,
       "settings": {
         "container": "container",
         "padding_full_width": 0,
@@ -371,6 +401,7 @@
         "heading_EmKK8z",
         "text_qaUpVB"
       ],
+      "disabled": true,
       "custom_css": [
         ".container .rich-text__blocks .heading {line-height: 1.1;}",
         ".container .rich-text__blocks {max-width: 50%;}",
@@ -397,10 +428,12 @@
     },
     "text_animation_9RNGTf": {
       "type": "text-animation",
+      "disabled": true,
       "settings": {}
     },
     "1728651093856ac18e": {
       "type": "apps",
+      "disabled": true,
       "settings": {
         "include_margins": false
       }
@@ -411,6 +444,7 @@
     "main",
     "slide_show_9iCgim",
     "video_block_et77ee",
+    "1761592650de9bbe92",
     "marquee_99FJTb",
     "rich_text_Bg98AY",
     "rich_text_aDCDUg",
