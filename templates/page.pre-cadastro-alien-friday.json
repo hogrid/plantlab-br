@@ -289,7 +289,7 @@
         "marquee_hK68i9": {
           "type": "marquee",
           "settings": {
-            "text": "<p>O MELHOR DESCONTO DO ANO</p>",
+            "text": "<p><strong>O MELHOR DESCONTO DO ANO</strong></p>",
             "color": "#ffffff",
             "color_mb": "#ffffff",
             "enable_border_bottom": false
