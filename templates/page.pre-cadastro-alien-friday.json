@@ -1,0 +1,505 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_VLML8A": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{{ 'component-quem-somos.css' | asset_url | stylesheet_tag }}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "slide_show_9iCgim": {
+      "type": "slide-show",
+      "blocks": {
+        "image_7Fdr9Q": {
+          "type": "image",
+          "settings": {
+            "image_slide": "shopify://shop_images/Banner_Site_-_Quem_Somos_-_Desktop_200926e8-d1fa-476e-9e10-1dae8e958183.png",
+            "image_slide_mb": "shopify://shop_images/Banner_Site_-_Quem_Somos_-_Mobile_638_x_700_px_6864e87b-946d-414d-9e97-11b4fe0d33a8.png",
+            "alignment": "left",
+            "enable_custom_position": false,
+            "custom_horizontal": "",
+            "custom_vertical": "",
+            "enable_position_outside_image": false,
+            "text_alignment": "left",
+            "enable_border_line": false,
+            "padding_vertical": 30,
+            "content_width": 475,
+            "bg_color_content": "",
+            "border_color_content": "",
+            "profile_name": "",
+            "profile_name_color": "",
+            "profile_name_fs": 20,
+            "profile_name_fs_mb": 20,
+            "profile_name_fw": "normal",
+            "profile_title": "",
+            "profile_title_color": "",
+            "profile_title_fs": 20,
+            "profile_title_fs_mb": 20,
+            "profile_title_fw": "normal",
+            "profile_spacing_bottom": 50,
+            "sub_heading": "",
+            "letter_spacing_sub_title": "",
+            "font_size_sub_heading": 30,
+            "sub_heading_spacing_bottom": 20,
+            "font_weight_sub_heading": "400",
+            "border_sub_heading": "none",
+            "sub_title_position": "sub_title_above",
+            "color_sub_heading": "#ffffff",
+            "heading": "",
+            "letter_spacing_heading": "",
+            "enable_border_heading": false,
+            "font_style_heading": "normal",
+            "font_size_heading": 32,
+            "line_height_heading": 40,
+            "heading_spacing_bottom": 8,
+            "color_heading": "#ffffff",
+            "slide-des": "",
+            "font_size_des": 12,
+            "des_spacing_bottom": 35,
+            "color_des": "#232323",
+            "sub_heading_mb": "",
+            "font_size_sub_heading_mb": 20,
+            "sub_heading_spacing_bottom_mb": 20,
+            "font_weight_sub_heading_mb": "400",
+            "border_sub_heading_mb": "none",
+            "color_sub_heading_mb": "#ffffff",
+            "heading_mb": "<pt><br><br><br><br><br><br><br><br><br>Somos Plantlab e fazemos proteína vegetal gostosa de verdade.<pt></pt></pt>",
+            "font_style_heading_mb": "normal",
+            "font_size_heading_mb": 22,
+            "line_height_heading_mb": 24,
+            "heading_spacing_bottom_mb": 8,
+            "color_heading_mb": "#ffffff",
+            "slide-des-mb": "",
+            "font_size_des_mb": 12,
+            "des_spacing_bottom_mb": 35,
+            "color_des_mb": "#ffffff",
+            "enable_icon_button": false,
+            "enable_button_link": false,
+            "enable_underline": true,
+            "font_size_link": 36,
+            "button_slide": "",
+            "link": "",
+            "button_style": "button_1",
+            "button_slide_2": "",
+            "link_2": "",
+            "min_width_banner_button": 270,
+            "color_button": "#ffffff",
+            "border_button": "#232323",
+            "bg_button": "#232323",
+            "bg_button_gradient": "",
+            "color_button_hover": "#ffffff",
+            "border_button_hover": "#232323",
+            "bg_button_hover": "#232323",
+            "bg_button_gradient_hover": "",
+            "lb_product_1": "",
+            "horizontal_pos_1": 0,
+            "vertical_pos_1": 0,
+            "lookbook_pos_1": "right",
+            "lb_product_2": "",
+            "horizontal_pos_2": 0,
+            "vertical_pos_2": 0,
+            "lookbook_pos_2": "right",
+            "lb_product_3": "",
+            "horizontal_pos_3": 0,
+            "vertical_pos_3": 0,
+            "lookbook_pos_3": "right"
+          }
+        }
+      },
+      "block_order": [
+        "image_7Fdr9Q"
+      ],
+      "settings": {
+        "container": "fullwidth",
+        "padding_full_width": 0,
+        "mg_top_desktop": 0,
+        "mg_top_tablet": 0,
+        "mg_top_mobile": 0,
+        "mg_bottom_desktop": 0,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0,
+        "slideshow_background": "",
+        "slideshow_background_gradient": "",
+        "autoplay": true,
+        "slideshow_speed": "5000",
+        "slideshow_transition": "true",
+        "dots": "shape",
+        "dots_color": "#707979",
+        "dots_border_color": "#707979",
+        "dots_active_color": "rgba(0,0,0,0)",
+        "dots_active_border_color": "#505656",
+        "dots_direction": "bottom",
+        "dots_shape": "disc",
+        "position_slick_dots": "34px",
+        "dots_opacity": false,
+        "arrow_active": true,
+        "enable_custom_arrow": false,
+        "arrow_width": 35,
+        "arrow_height": 35,
+        "arrow_size_icon": 17,
+        "arrow_color": "#666d6d",
+        "arrow_border_color": "#666d6d",
+        "arrow_bg_color": "#ffffff",
+        "arrow_color_hover": "",
+        "arrow_border_color_hover": "",
+        "arrow_bg_color_hover": "",
+        "position_slick_arrow": "10%",
+        "position_vertical_slick_arrow": "50%",
+        "image_behavior": "none",
+        "video_height": "41.7%",
+        "auto_playvideo": true,
+        "enable_categories": false,
+        "text_categories": "Shop by categories",
+        "title_color": "#ffffff",
+        "bg_title": "#fd6506",
+        "text_icon_color": "#202020",
+        "menu_category": "",
+        "enable_banner": false,
+        "lookbook_style": "1",
+        "enable_lookbook_width": false,
+        "lookbook_width": 250,
+        "dot_desktop_size": 24,
+        "dot_mobile_size": 16,
+        "dot_shadow_color": "#ffffff",
+        "dot_outer_color": "#ffffff",
+        "show_dot_number": false,
+        "show_dot_number_mobile": false,
+        "show_plus_icon": false,
+        "dot_inner_color": "#000000",
+        "number_desktop_size": 24,
+        "number_mobile_size": 16,
+        "lookbook_truncate": "1"
+      }
+    },
+    "video_block_et77ee": {
+      "type": "video-block",
+      "disabled": true,
+      "custom_css": [
+        ".container {display: flex; align-items: center; flex-direction: row-reverse; gap: 24px;}",
+        ".container > * {flex: 1; min-width: 50%;}"
+      ],
+      "settings": {
+        "container": "container",
+        "mg_top_desktop": 0,
+        "mg_top_tablet": 0,
+        "mg_top_mobile": 0,
+        "mg_bottom_desktop": 0,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0,
+        "spotlight_bg": "rgba(0,0,0,0)",
+        "spotlight_bg_gradient": "",
+        "video_block_title": "A melhor Proteína vegetal do mundo!",
+        "color_title": "#232323",
+        "fontsize_title": 40,
+        "fontsize_title_mb": 32,
+        "margin_bottom_title": 13,
+        "video_block_des": "Proteína vegetal cremosa só com água, produzida com o que há de melhor na galáxia para você se surpreender com uma textura lisa, sem areia e sem amargor. Com proteína de ervilha sem hexano importada dos EUA, Stévia REB M fermentada com grau 97% de pureza e leite de arroz orgânico do Paquistão. Produtos 100% veganos, sem glúten, sem lactose e zero polióis!",
+        "color_des": "#3c3c3c",
+        "fontsize_des": 18,
+        "title_align": "left",
+        "autoplay": true,
+        "video_height": "54",
+        "style_video": "mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "url_mp4": "https://cdn.shopify.com/videos/c/o/v/caccbae02b874c46a2579f0401d01458.mp4",
+        "description": "",
+        "full_width": false
+      }
+    },
+    "1761592650de9bbe92": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_8FfLQt": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "718568",
+            "text_color": "#ffffff",
+            "button_background_color": "#efb521",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 24,
+            "padding_bottom": 24,
+            "padding_right": 24,
+            "padding_left": 24
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_8FfLQt"
+      ],
+      "settings": {
+        "include_margins": false
+      }
+    },
+    "marquee_99FJTb": {
+      "type": "marquee",
+      "blocks": {
+        "marquee_LwUyMJ": {
+          "type": "marquee",
+          "settings": {
+            "text": "<p><strong>ALIEN FRIDAY</strong></p>",
+            "color": "#ffffff",
+            "color_mb": "#ffffff",
+            "enable_border_bottom": false
+          }
+        },
+        "marquee_pNDFwV": {
+          "type": "marquee",
+          "settings": {
+            "text": "<p><strong>SUPER PROMO</strong></p>",
+            "color": "#ffffff",
+            "color_mb": "#ffffff",
+            "enable_border_bottom": false
+          }
+        },
+        "marquee_GcYiTz": {
+          "type": "marquee",
+          "settings": {
+            "text": "<p><strong>ACESSO EXCLUSIVO</strong></p>",
+            "color": "#ffffff",
+            "color_mb": "#ffffff",
+            "enable_border_bottom": false
+          }
+        },
+        "marquee_GBTYY9": {
+          "type": "marquee",
+          "settings": {
+            "text": "<p><strong>HUMAN VIP</strong></p>",
+            "color": "#ffffff",
+            "color_mb": "#ffffff",
+            "enable_border_bottom": false
+          }
+        },
+        "marquee_hK68i9": {
+          "type": "marquee",
+          "settings": {
+            "text": "<p><strong>O MELHOR DESCONTO DO ANO</strong></p>",
+            "color": "#ffffff",
+            "color_mb": "#ffffff",
+            "enable_border_bottom": false
+          }
+        }
+      },
+      "block_order": [
+        "marquee_LwUyMJ",
+        "marquee_pNDFwV",
+        "marquee_GcYiTz",
+        "marquee_GBTYY9",
+        "marquee_hK68i9"
+      ],
+      "settings": {
+        "mq_background": "",
+        "mq_gradient": "linear-gradient(90deg, rgba(239, 181, 33, 1), rgba(238, 198, 95, 1) 100%)",
+        "type_tab_font": "font_1",
+        "text_size": 26,
+        "text_font_weight": "400",
+        "gap_blocks": 20,
+        "border": "none",
+        "border_color": "#000000",
+        "icon": "none",
+        "icon_color": "#000000",
+        "text_size_mb": 30,
+        "border_color_mb": "#000000",
+        "icon_color_mb": "#000000",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "minus_spacing_top": 0
+      }
+    },
+    "vip_cta_gHfVK4": {
+      "type": "vip-cta",
+      "blocks": {
+        "benefit_4D4Xcg": {
+          "type": "benefit",
+          "settings": {
+            "icon": "star",
+            "title": "Acesso antecipado a lançamentos",
+            "text": "Seja o primeiro a conhecer nossos novos produtos e sabores."
+          }
+        },
+        "benefit_3EW64R": {
+          "type": "benefit",
+          "settings": {
+            "icon": "star",
+            "title": "Acesso antecipado a Alien Friday",
+            "text": "Nossos humanos VIPs são VIPs de verdade e ganham acesso aos descontos da Black Friday antes de todo mundo."
+          }
+        },
+        "benefit_7yMDam": {
+          "type": "benefit",
+          "settings": {
+            "icon": "star",
+            "title": "Descontos e conteúdos exclusivos",
+            "text": "No grupo VIP você terá acesso a descontos exclusivos e promoções especiais que serão divulgadas apenas no grupo."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_4D4Xcg",
+        "benefit_3EW64R",
+        "benefit_7yMDam"
+      ],
+      "name": "CTA Grupo VIP",
+      "settings": {
+        "heading": "Faça parte do Grupo VIP",
+        "subheading": "Benefícios exclusivos para membros",
+        "description": "<p>Junte-se ao nosso Grupo VIP e tenha acesso antecipado a lançamentos, ofertas especiais e conteúdos exclusivos.</p>",
+        "bg_gradient_start": "#0f0f0f",
+        "bg_gradient_end": "#1c1c1c",
+        "bg_angle": 135,
+        "show_icon": true,
+        "button_text": "Faça parte do Grupo VIP",
+        "button_aria_label": "Faça parte do grupo VIP",
+        "modal_title": "Grupo VIP",
+        "modal_subtitle": "Desbloqueie benefícios exclusivos para membros VIP",
+        "submit_text": "Quero participar",
+        "success_message": "Cadastro realizado com sucesso! Você será redirecionado em alguns segundos..."
+      }
+    },
+    "rich_text_Bg98AY": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_TaCdqN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Veganos desde sempre e para sempre!",
+            "heading_size": 40,
+            "heading_size_mb": 26,
+            "heading_line_height": 1,
+            "heading_color": "#000000"
+          }
+        },
+        "text_LHEkLQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ao contrário da indústria de suplementos (que tem linhas veganas, mas também produtos de origem animal) a Plantlab nunca irá criar nada de origem animal. Produtos 100% vegetais, sem leite e sem glúten.<br>Nunca iremos explorar animais!</p>",
+            "text_size": 20,
+            "text_size_mb": 18,
+            "text_line_height": 1.3,
+            "margin_top_text": 20,
+            "text_color": "#000000",
+            "text_width": "800px"
+          }
+        }
+      },
+      "block_order": [
+        "heading_TaCdqN",
+        "text_LHEkLQ"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 75,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 0,
+        "rich_text_bg": "rgba(0,0,0,0)",
+        "rich_text_bg_gradient": "",
+        "enable_column": false,
+        "content_align": "left"
+      }
+    },
+    "rich_text_aDCDUg": {
+      "type": "rich-text-video",
+      "blocks": {
+        "heading_EmKK8z": {
+          "type": "heading",
+          "settings": {
+            "heading": "Em nossa galáxia animais são amigos e todas as diversidades são celebradas.",
+            "heading_size": 40,
+            "heading_size_mb": 30,
+            "heading_line_height": 1,
+            "heading_color": "#000000"
+          }
+        },
+        "text_qaUpVB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nosso Laboratório de Plantas cruzou a galáxia para revolucionar o segmento fitness e provar que pode ser gostoso e vegano ao mesmo tempo! ✨<br>👽 Junte-se à Alien Crew. </p>",
+            "text_size": 20,
+            "text_size_mb": 18,
+            "text_line_height": 1,
+            "margin_top_text": 20,
+            "text_color": "#000000",
+            "text_width": "800px"
+          }
+        }
+      },
+      "block_order": [
+        "heading_EmKK8z",
+        "text_qaUpVB"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".container .rich-text__blocks .heading {line-height: 1.1;}",
+        ".container .rich-text__blocks {max-width: 50%;}",
+        ".title span,.heading,.title,div.rich-text p {color: var(--white) !important;}",
+        "@media (max-width: 767px) {.sections-rich-text-video .container {padding: 24px 0 !important; max-width: calc(100vw - 20px) !important; }}"
+      ],
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 65,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 95,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 60,
+        "rich_text_bg": "rgba(0,0,0,0)",
+        "rich_text_bg_gradient": "",
+        "enable_column": false,
+        "content_align": "left"
+      }
+    },
+    "text_animation_9RNGTf": {
+      "type": "text-animation",
+      "disabled": true,
+      "settings": {}
+    },
+    "1728651093856ac18e": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": false
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_VLML8A",
+    "main",
+    "slide_show_9iCgim",
+    "video_block_et77ee",
+    "1761592650de9bbe92",
+    "marquee_99FJTb",
+    "vip_cta_gHfVK4",
+    "rich_text_Bg98AY",
+    "rich_text_aDCDUg",
+    "text_animation_9RNGTf",
+    "1728651093856ac18e"
+  ]
+}
