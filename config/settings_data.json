@@ -1224,6 +1224,7 @@
     "notification_popup_link": "#",
     "notification_popup_link_title_color": "#683fe4",
     "enable_preloading_screen": true,
+    "vip_whatsapp_group_link": "https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig?mode=wwt",
     "enable_popup": true,
     "checkout_logo_image": "shopify://shop_images/Home-6-Logo-Parallax.png",
     "show_review": false,
