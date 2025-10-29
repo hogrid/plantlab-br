@@ -1,0 +1,23 @@
+{%- comment -%}
+  VIP Button Mobile Component
+  Botão VIP específico para o menu mobile com design otimizado
+{%- endcomment -%}
+
+{%- liquid
+assign vip_whatsapp_url = settings.vip_whatsapp_group_link | default: 'https://chat.whatsapp.com/C8oUYnWED2GFiJpr4Qfwig'
+assign vip_button_text = settings.vip_button_text | default: 'Grupo VIP'
+assign vip_icon = settings.vip_icon | default: '⭐'
+-%}
+
+<div class="vip-button-mobile-wrapper">
+  <a href="{{ vip_whatsapp_url }}" 
+     class="vip-button-mobile" 
+     target="_blank" 
+     rel="noopener noreferrer"
+     data-vip-mobile-button
+     aria-label="Entrar no {{ vip_button_text }}">
+    <span class="vip-button-mobile-icon">{{ vip_button_icon }}</span>
+    <span class="vip-button-mobile-text">{{ vip_button_text }}</span>
+    <span class="vip-button-mobile-arrow">→</span>
+  </a>
+</div>

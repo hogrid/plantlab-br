@@ -28,6 +28,52 @@ class VIPButton {
         });
       });
     }
+
+    // Bind mobile VIP button events
+    this.bindMobileEvents();
+  }
+
+  /**
+   * Bind mobile VIP button events
+   */
+  bindMobileEvents() {
+    const mobileButtons = Array.from(document.querySelectorAll('[data-vip-mobile-button]'));
+    if (mobileButtons.length) {
+      mobileButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.handleMobileClick(btn);
+        });
+
+        // Add touch feedback for mobile
+        btn.addEventListener('touchstart', (e) => {
+          this.addClickFeedback(btn);
+        });
+      });
+    }
+  }
+
+  /**
+   * Handle mobile button click with feedback
+   */
+  handleMobileClick(button) {
+    // Add visual feedback
+    this.addClickFeedback(button);
+    
+    // Small delay for visual feedback before redirect
+    setTimeout(() => {
+      this.redirectToWhatsApp();
+    }, 150);
+  }
+
+  /**
+   * Add visual click feedback
+   */
+  addClickFeedback(button) {
+    button.classList.add('clicked');
+    setTimeout(() => {
+      button.classList.remove('clicked');
+    }, 200);
   }
 
   /**
@@ -40,7 +86,7 @@ class VIPButton {
 
 // Initialize VIP Button when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  const hasTrigger = document.querySelector('.vip-button, .vip-button-header');
+  const hasTrigger = document.querySelector('.vip-button, .vip-button-header, [data-vip-mobile-button]');
   if (hasTrigger) {
     const vipButton = new VIPButton();
     vipButton.init();
