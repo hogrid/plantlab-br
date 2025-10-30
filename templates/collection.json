@@ -80,6 +80,7 @@
         },
         "product_3a6FDe": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "product": "proteina-vegetal-cremosa-500g-neptune-bubble-gum",
             "description": "Bubble Gum",
