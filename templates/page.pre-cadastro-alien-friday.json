@@ -219,6 +219,42 @@
         "full_width": false
       }
     },
+    "marquee_h6cGJz": {
+      "type": "marquee",
+      "blocks": {
+        "marquee_6WMQMy": {
+          "type": "marquee",
+          "settings": {
+            "text": "<p>🚨 <strong>Atenção:</strong> nossa Alien Friday começará na última semana de novembro 👀</p>",
+            "color": "#000000",
+            "color_mb": "#000000",
+            "enable_border_bottom": false
+          }
+        }
+      },
+      "block_order": [
+        "marquee_6WMQMy"
+      ],
+      "name": "t:sections.marquee.presets.name",
+      "settings": {
+        "mq_background": "",
+        "mq_gradient": "linear-gradient(90deg, rgba(239, 181, 33, 1), rgba(238, 198, 95, 1) 99%)",
+        "type_tab_font": "font_1",
+        "text_size": 26,
+        "text_font_weight": "400",
+        "gap_blocks": 20,
+        "border": "none",
+        "border_color": "#000000",
+        "icon": "thunder",
+        "icon_color": "#000000",
+        "text_size_mb": 30,
+        "border_color_mb": "#000000",
+        "icon_color_mb": "#000000",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "minus_spacing_top": 0
+      }
+    },
     "1761592650de9bbe92": {
       "type": "apps",
       "blocks": {
@@ -494,6 +530,7 @@
     "main",
     "slide_show_9iCgim",
     "video_block_et77ee",
+    "marquee_h6cGJz",
     "1761592650de9bbe92",
     "marquee_99FJTb",
     "vip_cta_gHfVK4",
