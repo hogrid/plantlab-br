@@ -226,8 +226,8 @@
           "type": "marquee",
           "settings": {
             "text": "<p>🚨 <strong>Atenção:</strong> nossa Alien Friday começará na última semana de novembro 👀</p>",
-            "color": "#000000",
-            "color_mb": "#000000",
+            "color": "#ffffff",
+            "color_mb": "#ffffff",
             "enable_border_bottom": false
           }
         }
@@ -245,7 +245,7 @@
         "gap_blocks": 20,
         "border": "none",
         "border_color": "#000000",
-        "icon": "thunder",
+        "icon": "none",
         "icon_color": "#000000",
         "text_size_mb": 30,
         "border_color_mb": "#000000",
