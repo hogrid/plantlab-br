@@ -26,7 +26,25 @@
           <div class="copyright__content" style="--font-size: {{ type_footer_link_font_size }}px; --text-color: {{ block.settings.copyright_content_color }}">{{ block.settings.copyright_content | default: ' ' }}</div>
         </div>
       {%- endif -%}
-       <div class="footer__column-item footer__shop_name"><small class="copyright__content">
+       <div class="footer__column-item footer__shop_name">
+        <small class="copyright__content" style="display: flex
+;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;">
+          Design: <a href="https://alfinet.com.br/" target="_blank">
+            <img class="lazyload" style="margin: 0 auto;"
+              src="https://cdn.shopify.com/s/files/1/0502/6316/3060/files/alfinet-branco-rodape.png?v=1699537706" loading="lazy"
+              alt="" height="15"></a>
+              | Gestão:
+              <a href="https://hogrid.com" title="Maintained by Hogrid" target="_blank" rel="noopener noreferrer">
+            <img class="lazyload" style="margin: 0 auto;"
+          src="https://cdn.shopify.com/s/files/1/0663/9242/4502/files/logo-extend-white.png?v=1747670966" loading="lazy"
+          alt="Hogrid - Serviços Tecnológicos" height="25"> </a>
+        </a>
+      </small>
+        <!-- <small class="copyright__content" style="margin-top: 10px; display: block;">
+
           <a href="https://hogrid.com" title="Maintained by Hogrid" target="_blank">
             {% if section.settings.alfinet_logo == 'red' %}
             <img class="lazyload" style="margin: 0 auto;"
@@ -38,7 +56,9 @@
               loading="lazy" alt="Maintained by Hogrid" width="150">
             {% endif %}
           </a>
-        </small></div>
+        </small> -->
+
+      </div>
       <div class="footer__column footer__column--info">
         {%- if show_payment -%}
           {% render 'footer-payment', block: block %}
