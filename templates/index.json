@@ -781,6 +781,24 @@
             "description": "Cappuccino",
             "gradient": "linear-gradient(270deg, rgba(75, 33, 11, 1), rgba(195, 137, 69, 1) 100%)"
           }
+        },
+        "product_cqAfHV": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "",
+            "description": "Vênus Doce de Leite",
+            "gradient": "linear-gradient(90deg, rgba(233, 153, 27, 1), rgba(228, 186, 121, 1) 98%)"
+          }
+        },
+        "product_x8Ncwa": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "",
+            "description": "Black Hole",
+            "gradient": "linear-gradient(90deg, rgba(229, 48, 139, 1), rgba(203, 0, 203, 1) 100%)"
+          }
         }
       },
       "block_order": [
@@ -792,7 +810,9 @@
         "product_3a6FDe",
         "product_Yd7A6H",
         "product_AeENTk",
-        "product_MDeF6G"
+        "product_MDeF6G",
+        "product_cqAfHV",
+        "product_x8Ncwa"
       ],
       "settings": {
         "title": "Proteínas em Pó",
