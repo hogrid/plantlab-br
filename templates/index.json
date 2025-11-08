@@ -728,6 +728,14 @@
         "product_U7TtWy": {
           "type": "product",
           "settings": {
+            "product": "proteina-vegetal-cremosa-500g-venus-doce-de-leite",
+            "description": "Doce de leite",
+            "gradient": "linear-gradient(90deg, rgba(238, 116, 50, 1), rgba(166, 102, 8, 1) 100%)"
+          }
+        },
+        "product_Uwmmq3": {
+          "type": "product",
+          "settings": {
             "product": "proteina-vegetal-cremosa-cookies-and-cream",
             "description": "Cookies & Cream",
             "gradient": "linear-gradient(90deg, rgba(200, 176, 115, 1), rgba(166, 102, 8, 1) 100%)"
@@ -805,6 +813,7 @@
         "product_idK8Db",
         "product_DnVJF6",
         "product_U7TtWy",
+        "product_Uwmmq3",
         "product_drFqzR",
         "product_R43Bez",
         "product_3a6FDe",
