@@ -37,13 +37,20 @@
     "flavors_showcase_Ep4qrF": {
       "type": "flavors-showcase",
       "blocks": {
+        "product_FDPqne": {
+          "type": "product",
+          "settings": {
+            "product": "proteina-vegetal-cremosa-440g-black-hole",
+            "description": "Black Hole",
+            "gradient": "linear-gradient(90deg, rgba(229, 48, 139, 1), rgba(203, 0, 203, 1) 100%)"
+          }
+        },
         "product_aBBDQG": {
           "type": "product",
-          "disabled": true,
           "settings": {
-            "product": "",
-            "description": "Vênus Doce de Leite",
-            "gradient": "linear-gradient(54deg, rgba(233, 153, 27, 1) 1%, rgba(233, 177, 90, 1) 100%)"
+            "product": "proteina-vegetal-cremosa-500g-venus-doce-de-leite",
+            "description": "Doce de Leite",
+            "gradient": "linear-gradient(90deg, rgba(233, 153, 27, 1) 1%, rgba(228, 186, 121, 1) 100%)"
           }
         },
         "product_U7TtWy": {
@@ -105,6 +112,7 @@
         }
       },
       "block_order": [
+        "product_FDPqne",
         "product_aBBDQG",
         "product_U7TtWy",
         "product_Yd7A6H",
@@ -133,13 +141,20 @@
             "gradient": "linear-gradient(90deg, rgba(198, 27, 184, 1), rgba(47, 196, 241, 1) 100%)"
           }
         },
+        "product_KUKaGg": {
+          "type": "product",
+          "settings": {
+            "product": "sache-unitario-40g-black-hole",
+            "description": "Black Hole",
+            "gradient": "linear-gradient(90deg, rgba(229, 48, 139, 1), rgba(203, 0, 203, 1) 100%)"
+          }
+        },
         "product_9BDMBd": {
           "type": "product",
-          "disabled": true,
           "settings": {
-            "product": "",
-            "description": "Vênus Doce de Leite",
-            "gradient": "linear-gradient(310deg, rgba(233, 153, 27, 1) 2%, rgba(233, 177, 90, 1) 100%)"
+            "product": "sache-unitario-40g-venus-doce-de-leite",
+            "description": "Doce de Leite",
+            "gradient": "linear-gradient(90deg, rgba(233, 153, 27, 1) 2%, rgba(228, 186, 121, 1) 100%)"
           }
         },
         "product_3CdQb3": {
@@ -225,6 +240,7 @@
       },
       "block_order": [
         "product_wTzyeR",
+        "product_KUKaGg",
         "product_9BDMBd",
         "product_3CdQb3",
         "product_bhtVCy",
