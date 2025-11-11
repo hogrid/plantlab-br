@@ -121,6 +121,21 @@
             "title_color": "#ffffff"
           }
         },
+        "promo_countdown_Yk9bqn": {
+          "type": "promo_countdown",
+          "disabled": true,
+          "settings": {
+            "enable_module": true,
+            "spacing_top": 16,
+            "spacing_bottom": 16,
+            "promo_title": "Alien Friday",
+            "countdown_text": "CONTAGEM PARA O DESCONTO ACABAR",
+            "promo_description": "Aqui vai o texto com a descrição",
+            "end_date": "2025-11-29",
+            "end_time": "23:59",
+            "coupon_code": "ALIENFRIDAY"
+          }
+        },
         "f1b31d90-1e43-4948-9fe3-97ba43f6fb34": {
           "type": "buy_buttons",
           "settings": {
@@ -174,6 +189,7 @@
         "custom_liquid_rMPara",
         "custom_liquid_dpWNxk",
         "pl-payment-promo",
+        "promo_countdown_Yk9bqn",
         "f1b31d90-1e43-4948-9fe3-97ba43f6fb34",
         "1180d91b-75f9-49d9-a9db-2b9f5a49408d"
       ],
