@@ -1,0 +1,491 @@
+{%- comment -%}
+  Product Promo Countdown Component
+  - Promoção com contagem regressiva e cupom copiável
+  - Estilo dourado similar ao botão VIP
+  - Totalmente gerenciável via painel Shopify
+{%- endcomment -%}
+
+{%- liquid
+  assign enable_module = block.settings.enable_module | default: true
+  assign spacing_top = block.settings.spacing_top | default: 0
+  assign spacing_bottom = block.settings.spacing_bottom | default: 16
+
+  assign promo_title = block.settings.promo_title | default: 'Alien Friday'
+  assign countdown_text = block.settings.countdown_text | default: 'CONTAGEM PARA O DESCONTO ACABAR'
+  assign promo_description = block.settings.promo_description
+  assign coupon_code = block.settings.coupon_code | default: ''
+  assign end_date = block.settings.end_date
+  assign end_time = block.settings.end_time | default: '23:59'
+-%}
+
+{%- if enable_module and coupon_code != blank and end_date != blank -%}
+<div class="pl-promo-countdown"
+     id="promo-countdown-{{ section.id }}-{{ block.id }}"
+     data-end-date="{{ end_date }}"
+     data-end-time="{{ end_time }}"
+     style="--spacing-top: {{ spacing_top | append: 'px' }}; --spacing-bottom: {{ spacing_bottom | append: 'px' }}">
+
+  <div class="pl-promo-countdown__container">
+    <div class="pl-promo-countdown__header">
+      <span class="pl-promo-countdown__icon">👽</span>
+      <span class="pl-promo-countdown__star">⭐</span>
+      <h3 class="pl-promo-countdown__title">{{ promo_title }}</h3>
+    </div>
+
+    <p class="pl-promo-countdown__subtitle">{{ countdown_text }}</p>
+
+    <div class="pl-promo-countdown__timer">
+      <div class="pl-promo-countdown__time-group" data-countdown-days>
+        <div class="pl-promo-countdown__time-boxes">
+          <div class="pl-promo-countdown__time-box">
+            <span class="pl-promo-countdown__time-value" data-days-tens>0</span>
+          </div>
+          <div class="pl-promo-countdown__time-box">
+            <span class="pl-promo-countdown__time-value" data-days-ones>0</span>
+          </div>
+        </div>
+        <span class="pl-promo-countdown__time-label">DIAS</span>
+      </div>
+
+      <div class="pl-promo-countdown__time-group">
+        <div class="pl-promo-countdown__time-boxes">
+          <div class="pl-promo-countdown__time-box">
+            <span class="pl-promo-countdown__time-value" data-hours-tens>0</span>
+          </div>
+          <div class="pl-promo-countdown__time-box">
+            <span class="pl-promo-countdown__time-value" data-hours-ones>0</span>
+          </div>
+        </div>
+        <span class="pl-promo-countdown__time-label">HORAS</span>
+      </div>
+
+      <div class="pl-promo-countdown__time-group">
+        <div class="pl-promo-countdown__time-boxes">
+          <div class="pl-promo-countdown__time-box">
+            <span class="pl-promo-countdown__time-value" data-minutes-tens>0</span>
+          </div>
+          <div class="pl-promo-countdown__time-box">
+            <span class="pl-promo-countdown__time-value" data-minutes-ones>0</span>
+          </div>
+        </div>
+        <span class="pl-promo-countdown__time-label">MINUTOS</span>
+      </div>
+
+      <div class="pl-promo-countdown__time-group" data-countdown-seconds style="display: none; opacity: 0;">
+        <div class="pl-promo-countdown__time-boxes">
+          <div class="pl-promo-countdown__time-box">
+            <span class="pl-promo-countdown__time-value" data-seconds-tens>0</span>
+          </div>
+          <div class="pl-promo-countdown__time-box">
+            <span class="pl-promo-countdown__time-value" data-seconds-ones>0</span>
+          </div>
+        </div>
+        <span class="pl-promo-countdown__time-label">SEGUNDOS</span>
+      </div>
+    </div>
+
+    {%- if promo_description != blank -%}
+      <p class="pl-promo-countdown__description">{{ promo_description }}</p>
+    {%- endif -%}
+
+    <div class="pl-promo-countdown__coupon-wrapper">
+      <button type="button"
+              class="pl-promo-countdown__coupon-btn"
+              data-coupon-code="{{ coupon_code }}"
+              aria-label="Copiar cupom {{ coupon_code }}">
+        <span class="pl-promo-countdown__coupon-text">CUPOM</span>
+        <span class="pl-promo-countdown__coupon-code">{{ coupon_code }}</span>
+        <svg class="pl-promo-countdown__coupon-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 2H4C3.44772 2 3 2.44772 3 3V13C3 13.5523 3.44772 14 4 14H12C12.5523 14 13 13.5523 13 13V6M10 2L13 5M10 2V5H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="pl-promo-countdown__copied-message" aria-live="polite">Cupom copiado!</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #ProductSection-{{ section.id }} .pl-promo-countdown {
+    margin-top: var(--spacing-top);
+    margin-bottom: var(--spacing-bottom);
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__container {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border: 3px solid #FFD700;
+    border-radius: 16px;
+    padding: 24px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    animation: shine 3s infinite;
+  }
+
+  @keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__icon,
+  #ProductSection-{{ section.id }} .pl-promo-countdown__star {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFD700;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__subtitle {
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 20px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__timer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__time-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.3s ease;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__time-boxes {
+    display: flex;
+    gap: 4px;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__time-box {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__time-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__time-label {
+    font-size: 9px;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__description {
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 20px;
+    line-height: 1.5;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__coupon-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__coupon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 24px;
+    background: transparent;
+    border: 2px dashed #FFD700;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__coupon-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+    border-color: #FFA500;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__coupon-btn:active {
+    transform: translateY(0);
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__coupon-btn.copied {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: #4CAF50;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__coupon-text {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__coupon-code {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__coupon-icon {
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__copied-message {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4CAF50;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  }
+
+  #ProductSection-{{ section.id }} .pl-promo-countdown__copied-message.show {
+    opacity: 1;
+    visibility: visible;
+    top: -50px;
+  }
+
+  @media (max-width: 767px) {
+    #ProductSection-{{ section.id }} .pl-promo-countdown__container {
+      padding: 20px 16px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__title {
+      font-size: 18px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__subtitle {
+      font-size: 10px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__timer {
+      gap: 8px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__time-boxes {
+      gap: 3px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__time-box {
+      width: 35px;
+      height: 35px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__time-value {
+      font-size: 16px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__time-label {
+      font-size: 8px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__coupon-btn {
+      padding: 14px 20px;
+      font-size: 14px;
+      gap: 8px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    #ProductSection-{{ section.id }} .pl-promo-countdown__timer {
+      gap: 6px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__time-boxes {
+      gap: 2px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__time-box {
+      width: 30px;
+      height: 30px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__time-value {
+      font-size: 14px;
+    }
+
+    #ProductSection-{{ section.id }} .pl-promo-countdown__time-label {
+      font-size: 7px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const countdownEl = document.getElementById('promo-countdown-{{ section.id }}-{{ block.id }}');
+    if (!countdownEl) return;
+
+    const endDate = countdownEl.dataset.endDate;
+    const endTime = countdownEl.dataset.endTime;
+    const couponBtn = countdownEl.querySelector('.pl-promo-countdown__coupon-btn');
+    const copiedMessage = countdownEl.querySelector('.pl-promo-countdown__copied-message');
+
+    // Elementos de dias e segundos
+    const daysGroup = countdownEl.querySelector('[data-countdown-days]');
+    const secondsGroup = countdownEl.querySelector('[data-countdown-seconds]');
+
+    // Contagem regressiva
+    function updateCountdown() {
+      if (!endDate || !endTime) return;
+
+      const [hours, minutes] = endTime.split(':');
+      const endDateTime = new Date(endDate + 'T' + hours + ':' + minutes + ':00');
+      const now = new Date();
+      const diff = endDateTime - now;
+
+      if (diff <= 0) {
+        countdownEl.querySelectorAll('.pl-promo-countdown__time-value').forEach(el => {
+          el.textContent = '0';
+        });
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hoursRemaining = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      // Alternar entre mostrar dias ou segundos
+      if (days === 0) {
+        // Sem dias - mostrar horas, minutos e segundos
+        if (daysGroup) {
+          daysGroup.style.display = 'none';
+        }
+        if (secondsGroup) {
+          secondsGroup.style.display = 'flex';
+          secondsGroup.style.opacity = '1';
+        }
+
+        const hoursStr = String(hoursRemaining).padStart(2, '0');
+        const minsStr = String(mins).padStart(2, '0');
+        const secsStr = String(secs).padStart(2, '0');
+
+        const hoursTensEl = countdownEl.querySelector('[data-hours-tens]');
+        const hoursOnesEl = countdownEl.querySelector('[data-hours-ones]');
+        const minutesTensEl = countdownEl.querySelector('[data-minutes-tens]');
+        const minutesOnesEl = countdownEl.querySelector('[data-minutes-ones]');
+        const secondsTensEl = countdownEl.querySelector('[data-seconds-tens]');
+        const secondsOnesEl = countdownEl.querySelector('[data-seconds-ones]');
+
+        if (hoursTensEl) hoursTensEl.textContent = hoursStr.charAt(0);
+        if (hoursOnesEl) hoursOnesEl.textContent = hoursStr.charAt(1);
+        if (minutesTensEl) minutesTensEl.textContent = minsStr.charAt(0);
+        if (minutesOnesEl) minutesOnesEl.textContent = minsStr.charAt(1);
+        if (secondsTensEl) secondsTensEl.textContent = secsStr.charAt(0);
+        if (secondsOnesEl) secondsOnesEl.textContent = secsStr.charAt(1);
+      } else {
+        // Com dias - mostrar dias, horas e minutos
+        if (daysGroup) {
+          daysGroup.style.display = 'flex';
+          daysGroup.style.opacity = '1';
+        }
+        if (secondsGroup) {
+          secondsGroup.style.display = 'none';
+        }
+
+        const daysStr = String(days).padStart(2, '0');
+        const hoursStr = String(hoursRemaining).padStart(2, '0');
+        const minsStr = String(mins).padStart(2, '0');
+
+        const daysTensEl = countdownEl.querySelector('[data-days-tens]');
+        const daysOnesEl = countdownEl.querySelector('[data-days-ones]');
+        const hoursTensEl = countdownEl.querySelector('[data-hours-tens]');
+        const hoursOnesEl = countdownEl.querySelector('[data-hours-ones]');
+        const minutesTensEl = countdownEl.querySelector('[data-minutes-tens]');
+        const minutesOnesEl = countdownEl.querySelector('[data-minutes-ones]');
+
+        if (daysTensEl) daysTensEl.textContent = daysStr.charAt(0);
+        if (daysOnesEl) daysOnesEl.textContent = daysStr.charAt(1);
+        if (hoursTensEl) hoursTensEl.textContent = hoursStr.charAt(0);
+        if (hoursOnesEl) hoursOnesEl.textContent = hoursStr.charAt(1);
+        if (minutesTensEl) minutesTensEl.textContent = minsStr.charAt(0);
+        if (minutesOnesEl) minutesOnesEl.textContent = minsStr.charAt(1);
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Copiar cupom
+    if (couponBtn) {
+      couponBtn.addEventListener('click', function() {
+        const couponCode = this.dataset.couponCode;
+        if (!couponCode) return;
+
+        navigator.clipboard.writeText(couponCode).then(function() {
+          couponBtn.classList.add('copied');
+          if (copiedMessage) {
+            copiedMessage.classList.add('show');
+            setTimeout(function() {
+              copiedMessage.classList.remove('show');
+              couponBtn.classList.remove('copied');
+            }, 2000);
+          }
+        }).catch(function(err) {
+          console.error('Erro ao copiar cupom:', err);
+        });
+      });
+    }
+  })();
+</script>
+
+{%- endif -%}
+

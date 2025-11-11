@@ -12,7 +12,7 @@
 {% schema %}
 {
     "name": "t:sections.main-product.name",
-    "settings": 
+    "settings":
     [
         {
             "type": "header",
@@ -277,7 +277,7 @@
             "id": "sidebar_collapse",
             "label": "t:sections.main-sidebar.settings.general.label__2",
             "default": "collapse",
-            "options": 
+            "options":
             [
                 {
                   "value": "collapse",
@@ -304,7 +304,7 @@
             "id": "sidebar_layout",
             "label": "t:sections.main-sidebar.settings.general.layout",
             "default": "layout_1",
-            "options": 
+            "options":
             [
                 {
                   "value": "layout_1",
@@ -321,7 +321,7 @@
             "id": "sidebar_collapse_default",
             "label": "t:sections.main-sidebar.settings.general.label__4",
             "default": "expand",
-            "options": 
+            "options":
             [
                 {
                   "value": "expand",
@@ -338,7 +338,7 @@
             "id": "sidebar_position",
             "label": "t:sections.general.settings.position.label__1",
             "default": "left",
-            "options": 
+            "options":
             [
                 {
                   "value": "left",
@@ -479,7 +479,7 @@
             "id": "media_fit",
             "label": "t:sections.main-product.settings.media.label__5",
             "default": "cover",
-            "options": [    
+            "options": [
                 {
                     "label": "t:sections.main-product.settings.media.options__6",
                     "value": "unset"
@@ -488,7 +488,7 @@
                     "label": "t:sections.main-product.settings.media.options__7",
                     "value": "contain"
                 },
-                {   
+                {
                     "label": "t:sections.main-product.settings.media.options__8",
                     "value": "cover"
                 }
@@ -1058,6 +1058,26 @@
             ]
         },
         {
+            "type": "promo_countdown",
+            "name": "Contagem Regressiva BF",
+            "limit": 1,
+            "settings": [
+                { "type": "checkbox", "id": "enable_module", "label": "Exibir módulo", "default": true },
+                { "type": "header", "content": "Espaçamento" },
+                { "type": "range", "id": "spacing_top", "label": "Margem superior", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 16 },
+                { "type": "range", "id": "spacing_bottom", "label": "Margem inferior", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 16 },
+                { "type": "header", "content": "Configurações da Promoção" },
+                { "type": "text", "id": "promo_title", "label": "Título da promoção", "default": "Alien Friday" },
+                { "type": "text", "id": "countdown_text", "label": "Texto da contagem", "default": "CONTAGEM PARA O DESCONTO ACABAR" },
+                { "type": "textarea", "id": "promo_description", "label": "Descrição sobre cupons e descontos" },
+                { "type": "header", "content": "Contagem Regressiva" },
+                { "type": "text", "id": "end_date", "label": "Data de término (YYYY-MM-DD)", "info": "Formato: 2024-12-31" },
+                { "type": "text", "id": "end_time", "label": "Horário de término (HH:MM)", "default": "23:59", "info": "Formato: 23:59" },
+                { "type": "header", "content": "Cupom" },
+                { "type": "text", "id": "coupon_code", "label": "Código do cupom", "default": "ALIENFRIDAY" }
+            ]
+        },
+        {
             "type": "breadcrumb",
             "name": "t:sections.general.settings.breadcrumb.title",
             "limit": 1,
@@ -1097,7 +1117,7 @@
                     }],
                     "default": "left"
                 },
-                { 
+                {
                     "type": "color",
                     "id": "breadcrumb_bg",
                     "label": "t:settings_schema.colors.settings.colors_name.background_color",
@@ -1109,7 +1129,7 @@
                     "label": "t:settings_schema.colors.settings.colors_name.background_color_gradient",
                     "info": "t:sections.general.settings.breadcrumb.breacrumb_desktop_bg_info"
                 },
-                { 
+                {
                     "type": "color",
                     "id": "breadcrumb_bg_mb",
                     "label": "t:settings_schema.colors.settings.colors_name.background_color_mobile",
@@ -1360,7 +1380,7 @@
             "type": "short_description",
             "name": "t:sections.main-product.settings.header__6.content",
             "limit": 1,
-            "settings": 
+            "settings":
             [
                 {
                     "type": "text",
@@ -1415,7 +1435,7 @@
             "type": "variant_description",
             "name": "t:sections.main-product.settings.header__21.content",
             "limit": 1,
-            "settings": 
+            "settings":
             [
                 {
                     "type": "header",
@@ -1447,7 +1467,7 @@
             "type": "info",
             "name": "t:sections.main-product.settings.header__7.content",
             "limit": 1,
-            "settings": 
+            "settings":
             [
                 {
                     "type": "checkbox",
@@ -2610,7 +2630,7 @@
             "type": "description",
             "name": "t:sections.main-product.blocks.description.name",
             "limit": 1,
-            "settings": 
+            "settings":
             [
                 {
                     "type": "checkbox",
@@ -2650,7 +2670,7 @@
         {
             "type": "custom",
             "name": "t:sections.main-product.blocks.custom.name",
-            "settings": 
+            "settings":
             [
                 {
                     "type": "checkbox",
@@ -2763,7 +2783,7 @@
                         {
                             "value": "3_level",
                             "label": "t:sections.main-sidebar.blocks.category.settings.general.options__2"
-                        }                    
+                        }
                     ]
                 },
                 {
@@ -2871,7 +2891,7 @@
             ]
         },
         {
-            "type": "policies", 
+            "type": "policies",
             "name": "t:sections.policies_block.blocks.filter",
             "settings": [
                 {
@@ -2995,14 +3015,14 @@
                     "label" : "t:sections.image-banner.blocks.image.settings.content.label__17",
                     "info" : "Go to this link [Find your Icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
                 },
-                
+
                 {
                     "type" : "text",
                     "id" : "text_1",
                     "label" : "t:sections.image-banner.blocks.image.settings.content.label__1",
                     "default" : "FREE SHIPPING"
                 },
-                
+
                 {
                     "type" : "textarea",
                     "id" : "description_1",
@@ -3039,14 +3059,14 @@
                     "label" : "t:sections.image-banner.blocks.image.settings.content.label__17",
                     "info" : "Go to this link [Find your Icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
                 },
-                
+
                 {
                     "type" : "text",
                     "id" : "text_2",
                     "label" : "t:sections.image-banner.blocks.image.settings.content.label__1",
                     "default" : "FREE SHIPPING"
                 },
-                
+
                 {
                     "type" : "textarea",
                     "id" : "description_2",
@@ -3083,14 +3103,14 @@
                     "label" : "t:sections.image-banner.blocks.image.settings.content.label__17",
                     "info" : "Go to this link [Find your Icon](https://fontawesome.com/v5.15/icons?d=gallery&p=2). Find the icon you want, then copy the SVG code and paste it here."
                 },
-                
+
                 {
                     "type" : "text",
                     "id" : "text_3",
                     "label" : "t:sections.image-banner.blocks.image.settings.content.label__1",
                     "default" : "FREE SHIPPING"
                 },
-                
+
                 {
                     "type" : "textarea",
                     "id" : "description_3",

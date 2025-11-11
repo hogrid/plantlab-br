@@ -297,7 +297,7 @@
     #ProductSection-{{ section.id }} .cursor-wrapper .counter #count-image:before {
         background-color: {{ count_color }};
     }
-   
+
     #ProductSection-{{ section.id }} .custom-cursor__inner .arrow:before,
     #ProductSection-{{ section.id }} .custom-cursor__inner .arrow:after {
         background-color: {{ icon_color }};
@@ -378,13 +378,13 @@
             '{{ variant.id }}': '{{ variant.inventory_quantity }}',
         {%endfor%}
     };
-  
+
     window.selling_array_{{ product.id }} = {
         {% for variant in product.variants %}
             '{{ variant.id }}': '{{ variant.inventory_policy }}',
         {%endfor%}
     };
-  
+
     window.subtotal = {
         show: {{ show_subtotal_text }},
         style: {{ subtotal_style }},
@@ -488,7 +488,7 @@
                                         serial: 1
                                     %}
                                 {%- endif -%}
-                                <div class="productView-nav productView-nav-gallery{% if main_image_show_1_column_mb %} enable_1_item_mb{% endif %} style-{{ main_image_layout }} image-fit-{{ media_fit }}" 
+                                <div class="productView-nav productView-nav-gallery{% if main_image_show_1_column_mb %} enable_1_item_mb{% endif %} style-{{ main_image_layout }} image-fit-{{ media_fit }}"
                                     data-image-gallery-main
                                     data-arrows-desk="{{ main_image_arrows_desktop }}"
                                     data-arrows-mobi="{{ main_image_arrows_mobile }}"
@@ -515,9 +515,9 @@
                                                             {% endif %}
                                                         {% endunless %}
                                                     >
-                                                        <div 
-                                                            class="media" 
-                                                            {% if zoomed_image and main_image_show_custom_cursor != true %} data-zoom-image="{{ media.preview_image | img_url: 'master' }}"{% endif %} 
+                                                        <div
+                                                            class="media"
+                                                            {% if zoomed_image and main_image_show_custom_cursor != true %} data-zoom-image="{{ media.preview_image | img_url: 'master' }}"{% endif %}
                                                             {% if product_image_popup == 'fancybox' %} data-fancybox="images" href="{{ media.preview_image | img_url: 'master' }}" {% endif %}
                                                         >
                                                             <img id="product-featured-image-{{ media.id }}"
@@ -824,7 +824,7 @@
                                             %}
                                         </div>
                                     {%- when 'meta' -%}
-                                        {%- liquid 
+                                        {%- liquid
                                             assign show_sold_in = block.settings.show_sold_in
                                             assign sold_in_number = block.settings.sold_in_number
                                             assign sold_in_hours = block.settings.sold_in_hours
@@ -870,7 +870,7 @@
                                             %}
                                         </div>
                                     {%- when 'info' -%}
-                                        {%- liquid 
+                                        {%- liquid
                                             assign show_vendor = block.settings.show_vendor
                                             assign show_availability = block.settings.show_availability
                                             assign show_sku = block.settings.show_sku
@@ -966,7 +966,7 @@
                                                 {%- if settings.enable_combined_products_listing -%}
                                                     {% render 'combined-products-listing', product: product %}
                                                 {%- endif -%}
-                                                
+
                                                 {% render 'product-variant',
                                                     block: block,
                                                     product: product,
@@ -1095,6 +1095,12 @@
                                         >
                                             {% render 'product-payment-promo', block: block, section: section %}
                                         </div>
+                                    {%- when 'promo_countdown' -%}
+                                        <div class="productView-moreItem"
+                                            style="--spacing-top: {{ spacing_top | append: 'px' }}; --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
+                                        >
+                                            {% render 'product-promo-countdown', block: block, section: section %}
+                                        </div>
                                     {%- when 'customer_viewing' -%}
                                         <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
                                             style="--spacing-top: {{ spacing_top | append: 'px' }};
@@ -1109,7 +1115,7 @@
                                             style="--spacing-top: {{ spacing_top | append: 'px' }};
                                             --spacing-bottom: {{ spacing_bottom | append: 'px' }}"
                                         >
-                                            {%- liquid 
+                                            {%- liquid
                                                 assign show_pickup_availability = block.settings.show_pickup_availability
                                             -%}
                                             {%- if show_pickup_availability -%}
@@ -1148,7 +1154,7 @@
                                             </div>
                                         {%- endif -%}
                                     {%- when 'product_text' -%}
-                                        {%- liquid 
+                                        {%- liquid
                                             assign content_spacing = block.settings.content_spacing
                                             assign custom_block_align = block.settings.custom_block_align
                                             assign background_color_block = block.settings.background_color_block
@@ -1224,7 +1230,7 @@
                                                     {%- endif -%}
                                                     <div class="complementary-products-slider" {% if complementary_product_layout == "2" %}style="--complementary-object-fit: {{ complementary_product_object }};"{% endif %}>
                                                         <div class="products-carousel {% if complementary_product_layout == "1" %}column-{{ complementary_product_limit }}{% endif %}"
-                                                            data-item-arrows= "{{ complementary_product_arrows }}" 
+                                                            data-item-arrows= "{{ complementary_product_arrows }}"
                                                             data-item-dots= "{{ complementary_product_dots }}"
                                                             {% if complementary_product_layout == "1" %}
                                                                 data-item-to-show="{{ complementary_product_limit_1 }}"
@@ -1283,11 +1289,11 @@
                                             --spacing-bottom: {{ spacing_bottom | append: 'px' }};"
                                         >
                                             <delivery-time class="productView-dlvr d-none"
-                                                data-delivery-time 
+                                                data-delivery-time
                                                 data-frm-day="{{frm_day}}"
-                                                data-exclude-day="{{exclude_day}}" 
-                                                data-estimate-start="{{d_start}}" 
-                                                data-estimate-end="{{d_end}}" 
+                                                data-exclude-day="{{exclude_day}}"
+                                                data-estimate-start="{{d_start}}"
+                                                data-estimate-end="{{d_end}}"
                                                 data-time="{{time}}"
                                                 style="--color-text: {{block.settings.color_title}};--font-size: {{block.settings.fontsize_text}}px;"
                                             >

@@ -1114,6 +1114,26 @@
           ]
         },
         {
+          "type": "promo_countdown",
+          "name": "Contagem Regressiva BF",
+          "limit": 1,
+          "settings": [
+            { "type": "checkbox", "id": "enable_module", "label": "Exibir módulo", "default": true },
+            { "type": "header", "content": "Espaçamento" },
+            { "type": "range", "id": "spacing_top", "label": "Margem superior", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 16 },
+            { "type": "range", "id": "spacing_bottom", "label": "Margem inferior", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 16 },
+            { "type": "header", "content": "Configurações da Promoção" },
+            { "type": "text", "id": "promo_title", "label": "Título da promoção", "default": "Alien Friday" },
+            { "type": "text", "id": "countdown_text", "label": "Texto da contagem", "default": "CONTAGEM PARA O DESCONTO ACABAR" },
+            { "type": "textarea", "id": "promo_description", "label": "Descrição sobre cupons e descontos" },
+            { "type": "header", "content": "Contagem Regressiva" },
+            { "type": "text", "id": "end_date", "label": "Data de término (YYYY-MM-DD)", "info": "Formato: 2024-12-31" },
+            { "type": "text", "id": "end_time", "label": "Horário de término (HH:MM)", "default": "23:59", "info": "Formato: 23:59" },
+            { "type": "header", "content": "Cupom" },
+            { "type": "text", "id": "coupon_code", "label": "Código do cupom", "default": "ALIENFRIDAY" }
+          ]
+        },
+        {
             "type": "breadcrumb",
             "name": "t:sections.general.settings.breadcrumb.title",
             "limit": 1,
