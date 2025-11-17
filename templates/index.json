@@ -448,6 +448,7 @@
         },
         "countdown_XJexgU": {
           "type": "countdown",
+          "disabled": true,
           "settings": {
             "top_message_text": "",
             "annou_countdown": "Nov 24, 2025 11:00:00",
