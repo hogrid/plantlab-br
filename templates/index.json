@@ -429,7 +429,7 @@
         "announcement_EHeFaG": {
           "type": "announcement",
           "settings": {
-            "text": "<p>🥜 Até 27% OFF na sua cremosa de Amendoim 🥳</p>",
+            "text": "<p>🚨 ATENÇÃO HUMAN! 👽 Alien Friday está sendo preparada e chegará em breve... 👀</p>",
             "btn_color": "#f84248",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -450,7 +450,7 @@
           "type": "countdown",
           "settings": {
             "top_message_text": "",
-            "annou_countdown": "Sep 21, 2025 23:59:59",
+            "annou_countdown": "Nov 24, 2025 11:00:00",
             "color_countdown_text": "#06142e",
             "border_color_countdown": "#f7f8fa",
             "bg_color_countdown": "#f7f8fa"
@@ -473,7 +473,6 @@
         "countdown_XJexgU",
         "announcement_EVXXNk"
       ],
-      "disabled": true,
       "custom_css": [
         ".container {max-width: 100% !important;}"
       ],
@@ -483,7 +482,7 @@
         "enable_close": false,
         "color_text": "#ffffff",
         "bg_color_text": "rgba(0,0,0,0)",
-        "bg_color_text_gradient": "linear-gradient(90deg, rgba(248, 55, 29, 1), rgba(254, 198, 47, 1) 99%)",
+        "bg_color_text_gradient": "linear-gradient(90deg, rgba(239, 186, 66, 1), rgba(230, 154, 28, 1) 99%)",
         "font_size_text": 12,
         "font_style_text": "normal",
         "font_weight_text": "500",
