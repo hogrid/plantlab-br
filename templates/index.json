@@ -14,7 +14,6 @@
       "blocks": {
         "16321237356a896dad-0": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image_slide": "shopify://shop_images/BANNER_DESKTOP_-_Alien_Friday.png",
             "image_slide_mb": "shopify://shop_images/BANNER_MOBILE_-_Alien_Friday.png",
@@ -302,6 +301,7 @@
         },
         "video_fQbCi6": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "style_video": "mp4",
             "video_link": "eTCtDW7O1aM",
@@ -429,7 +429,7 @@
         "announcement_EHeFaG": {
           "type": "announcement",
           "settings": {
-            "text": "<p>🚨 ATENÇÃO HUMAN! 👽 Alien Friday está sendo preparada e chegará em breve... 👀</p>",
+            "text": "<p>🚨 ATENÇÃO HUMAN! 👽 ALIEN FRIDAY ESTÁ ON!</p>",
             "btn_color": "#f84248",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -450,7 +450,7 @@
           "type": "countdown",
           "settings": {
             "top_message_text": "",
-            "annou_countdown": "Nov 24, 2025 18:00:00",
+            "annou_countdown": "Nov 30, 2025 23:59:59",
             "color_countdown_text": "#06142e",
             "border_color_countdown": "#f7f8fa",
             "bg_color_countdown": "#f7f8fa"
