@@ -1757,6 +1757,7 @@
           },
           "collection_NBndpN": {
             "type": "collection",
+            "disabled": true,
             "settings": {
               "collection": "barrinha-de-proteina",
               "cor": "linear-gradient(220deg, rgba(224, 240, 133, 1) 21.44%, rgba(140, 141, 69, 1) 78.44%)",
