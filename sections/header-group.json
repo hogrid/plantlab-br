@@ -37,7 +37,7 @@
         "enable_close": false,
         "color_text": "#ffffff",
         "bg_color_text": "rgba(0,0,0,0)",
-        "bg_color_text_gradient": "linear-gradient(90deg, rgba(247, 183, 21, 1) 1%, rgba(241, 201, 101, 1) 99%)",
+        "bg_color_text_gradient": "linear-gradient(90deg, rgba(252, 14, 152, 1) 1%, rgba(0, 38, 255, 1) 99%)",
         "font_size_text": 12,
         "font_style_text": "normal",
         "font_weight_text": "500",
