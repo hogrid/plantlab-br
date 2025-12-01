@@ -14,10 +14,9 @@
       "blocks": {
         "16321237356a896dad-0": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image_slide": "shopify://shop_images/BANNER_DESKTOP_-_Alien_Friday.png",
-            "image_slide_mb": "shopify://shop_images/BANNER_MOBILE_-_Alien_Friday.png",
+            "image_slide": "shopify://shop_images/BANNER_DESKTOP_-_CYBER_MONDAY.png",
+            "image_slide_mb": "shopify://shop_images/BANNER_MOBILE_-_Cyber_Monday.png",
             "alignment": "left",
             "enable_custom_position": false,
             "custom_horizontal": "40",
@@ -302,6 +301,7 @@
         },
         "video_fQbCi6": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "style_video": "mp4",
             "video_link": "eTCtDW7O1aM",
