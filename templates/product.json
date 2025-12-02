@@ -83,7 +83,6 @@
         },
         "pl-payment-promo": {
           "type": "payment_promo",
-          "disabled": true,
           "settings": {
             "enable_module": true,
             "spacing_top": 8,
