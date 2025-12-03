@@ -191,6 +191,7 @@
         },
         "product_rq6Udy": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "product": "sache-unitario-40g-neptune",
             "description": "Bubble Gum",
@@ -215,6 +216,7 @@
         },
         "product_wX9ARJ": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "product": "caixa-display-sache-chocolate",
             "description": "Kit 7 sachês Chocolate",
@@ -223,6 +225,7 @@
         },
         "product_GLe8GT": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "product": "caixa-display-sache-peanut",
             "description": "Kit 7 sachês Peanut",
@@ -231,6 +234,7 @@
         },
         "product_wwUAPM": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "product": "caixa-display-sache-red-berries",
             "description": "Kit 7 sachês Red Berries",
