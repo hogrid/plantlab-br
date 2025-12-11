@@ -1,0 +1,707 @@
+{%- comment -%}
+Combo de Natal 2025 - Upsell Component
+- Exibe um upsell no mini cart quando há produtos no carrinho
+- Permite selecionar variantes do combo
+- Configurável via Theme Settings e Metafields do produto
+- Paleta natalina integrada ao design system existente
+{%- endcomment -%}
+
+{%- liquid
+# Verificar se o upsell está ativado nas configurações do tema
+assign show_upsell = settings.show_combo_natal_upsell | default: false
+assign product_handle = settings.combo_natal_product_handle | default: 'combo-natal-2025'
+
+# Carregar o produto do combo
+assign combo_product = all_products[product_handle]
+
+# Verificar se o produto existe e está disponível
+assign product_exists = false
+assign product_available = false
+if combo_product != blank and combo_product != empty
+assign product_exists = true
+if combo_product.available
+assign product_available = true
+endif
+endif
+
+# Verificar se o combo já está no carrinho
+assign combo_in_cart = false
+if product_exists
+for item in cart.items
+if item.product_id == combo_product.id
+assign combo_in_cart = true
+break
+endif
+endfor
+endif
+
+# Determinar se deve exibir o componente
+assign should_render = false
+if show_upsell and product_exists and product_available and combo_in_cart == false and cart.item_count > 0
+assign should_render = true
+endif
+
+# Textos
+assign default_title = 'Combo de Natal 2025'
+assign default_desc = 'Livro de Receitas + Planner 2026 + Caixa Presente'
+assign default_cta = 'Adicionar ao Pedido'
+assign default_badge = 'Edicao Limitada'
+assign upsell_title = settings.combo_natal_title | default: default_title
+assign upsell_description = settings.combo_natal_description | default: default_desc
+assign upsell_cta_text = settings.combo_natal_cta_text | default: default_cta
+assign upsell_badge_text = settings.combo_natal_badge_text | default: default_badge
+
+# Imagem do combo (metafield ou featured image do produto)
+assign combo_image = combo_product.metafields.combo_natal.image | default: combo_product.featured_image
+
+# Variante selecionada por padrão
+assign selected_variant = combo_product.selected_or_first_available_variant
+-%}
+
+{%- if should_render -%}
+<div class="combo-natal-upsell" id="combo-natal-upsell" data-combo-product-id="{{ combo_product.id }}"
+  data-combo-variant-id="{{ selected_variant.id }}" aria-label="Oferta especial: {{ upsell_title | escape }}">
+  <div class="combo-natal-upsell__container">
+    {%- comment -%} Badge de destaque {%- endcomment -%}
+    {%- if upsell_badge_text != blank -%}
+    <div class="combo-natal-upsell__badge">
+      <span class="combo-natal-upsell__badge-icon" aria-hidden="true">🎄</span>
+      <span class="combo-natal-upsell__badge-text">{{ upsell_badge_text }}</span>
+    </div>
+    {%- endif -%}
+
+    <div class="combo-natal-upsell__content">
+      {%- comment -%} Imagem do combo {%- endcomment -%}
+      <div class="combo-natal-upsell__image-wrapper">
+        <a href="{{ combo_product.url }}" class="combo-natal-upsell__image-link">
+          {%- if combo_image != blank -%}
+          <img srcset="{{ combo_image | img_url: '120x' }}" src="{{ combo_image | img_url: '120x' }}" width="120"
+            height="{{ 120 | divided_by: combo_image.aspect_ratio | default: 120 | round }}"
+            alt="{{ upsell_title | escape }}" loading="lazy" class="combo-natal-upsell__image">
+          {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'combo-natal-upsell__image-placeholder' }}
+          {%- endif -%}
+        </a>
+      </div>
+
+      {%- comment -%} Informações do combo {%- endcomment -%}
+      <div class="combo-natal-upsell__info">
+        <h4 class="combo-natal-upsell__title">
+          <a href="{{ combo_product.url }}" class="combo-natal-upsell__title-link">
+            {{ upsell_title }}
+          </a>
+        </h4>
+
+        <p class="combo-natal-upsell__description">{{ upsell_description }}</p>
+
+        {%- comment -%} Preço {%- endcomment -%}
+        <div class="combo-natal-upsell__price">
+          {%- if selected_variant.compare_at_price > selected_variant.price -%}
+          <span class="combo-natal-upsell__price-compare">
+            <s>{{ selected_variant.compare_at_price | money }}</s>
+          </span>
+          {%- endif -%}
+          <span class="combo-natal-upsell__price-current" data-combo-price>
+            {{ selected_variant.price | money }}
+          </span>
+        </div>
+
+        {%- comment -%} Seletor de variantes (se houver mais de uma) {%- endcomment -%}
+        {%- unless combo_product.has_only_default_variant -%}
+        <div class="combo-natal-upsell__variants">
+          {%- for option in combo_product.options_with_values -%}
+          <div class="combo-natal-upsell__variant-group">
+            <label class="combo-natal-upsell__variant-label" for="combo-natal-option-{{ option.name | handleize }}">
+              {{ option.name }}:
+            </label>
+            <select class="combo-natal-upsell__variant-select" id="combo-natal-option-{{ option.name | handleize }}"
+              data-option-index="{{ forloop.index0 }}" data-combo-option-select>
+              {%- for value in option.values -%}
+              <option value="{{ value | escape }}" {% if option.selected_value==value %}selected{% endif %}>
+                {{ value }}
+              </option>
+              {%- endfor -%}
+            </select>
+          </div>
+          {%- endfor -%}
+        </div>
+        {%- endunless -%}
+
+        {%- comment -%} Botão de adicionar ao carrinho {%- endcomment -%}
+        <button type="button" class="combo-natal-upsell__button button button-1" data-combo-add-to-cart {% unless
+          selected_variant.available %}disabled{% endunless %}>
+          <span class="combo-natal-upsell__button-text" data-combo-button-text>
+            {%- if selected_variant.available -%}
+            {{ upsell_cta_text }}
+            {%- else -%}
+            {{ 'products.product.sold_out' | t | default: 'Esgotado' }}
+            {%- endif -%}
+          </span>
+          <span class="combo-natal-upsell__button-loading" aria-hidden="true" style="display: none;">
+            <svg class="combo-natal-upsell__spinner" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-dasharray="31.4 31.4" stroke-linecap="round">
+                <animateTransform attributeName="transform" type="rotate" dur="1s" from="0 12 12" to="360 12 12"
+                  repeatCount="indefinite" />
+              </circle>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} Dados das variantes para JavaScript {%- endcomment -%}
+<script type="application/json" id="combo-natal-variants-data">
+  {{ combo_product.variants | json }}
+</script>
+
+<script>
+  (function () {
+    var COMBO_UPSELL = {
+      container: null,
+      productId: null,
+      variantId: null,
+      variants: [],
+      ctaText: "{{ upsell_cta_text | escape }}",
+      soldOutText: "{{ 'products.product.sold_out' | t | default: 'Esgotado' | escape }}",
+
+      init: function () {
+        console.log('[COMBO UPSELL] Inicializando...');
+        this.container = document.getElementById('combo-natal-upsell');
+        if (!this.container) {
+          console.log('[COMBO UPSELL] Container nao encontrado');
+          return;
+        }
+        console.log('[COMBO UPSELL] Container encontrado');
+        this.productId = this.container.dataset.comboProductId;
+        this.variantId = this.container.dataset.comboVariantId;
+        console.log('[COMBO UPSELL] Product ID:', this.productId, 'Variant ID:', this.variantId);
+        var variantsData = document.getElementById('combo-natal-variants-data');
+        if (variantsData) {
+          try {
+            this.variants = JSON.parse(variantsData.textContent);
+            console.log('[COMBO UPSELL] Variantes carregadas:', this.variants.length);
+          } catch (e) {
+            console.error('[COMBO UPSELL] Erro ao parsear variantes:', e);
+          }
+        }
+        this.bindEvents();
+        this.checkCartState();
+      },
+
+      bindEvents: function () {
+        var self = this;
+        var addButton = this.container.querySelector('[data-combo-add-to-cart]');
+        console.log('[COMBO UPSELL] Botao encontrado:', addButton);
+        if (addButton && !addButton.dataset.listenerAdded) {
+          addButton.dataset.listenerAdded = 'true';
+          addButton.addEventListener('click', function (e) {
+            console.log('[COMBO UPSELL] Botao clicado!');
+            if (addButton.disabled) {
+              console.log('[COMBO UPSELL] Botao desabilitado, ignorando');
+              return;
+            }
+            self.handleAddToCart(e);
+          });
+          console.log('[COMBO UPSELL] Event listener adicionado');
+        }
+        var optionSelects = this.container.querySelectorAll('[data-combo-option-select]');
+        optionSelects.forEach(function (select) {
+          select.addEventListener('change', function () {
+            self.handleOptionChange();
+          });
+        });
+        document.addEventListener('cart-update', function (e) {
+          self.handleCartUpdate(e);
+        });
+      },
+
+      handleOptionChange: function () {
+        var selectedOptions = [];
+        var optionSelects = this.container.querySelectorAll('[data-combo-option-select]');
+        optionSelects.forEach(function (select) {
+          selectedOptions.push(select.value);
+        });
+        var matchedVariant = this.variants.find(function (variant) {
+          return variant.options.every(function (option, index) {
+            return option === selectedOptions[index];
+          });
+        });
+        if (matchedVariant) {
+          this.variantId = matchedVariant.id;
+          this.container.dataset.comboVariantId = matchedVariant.id;
+          this.updatePrice(matchedVariant);
+          this.updateButtonState(matchedVariant.available);
+        }
+      },
+
+      updatePrice: function (variant) {
+        var priceElement = this.container.querySelector('[data-combo-price]');
+        if (priceElement && variant) {
+          priceElement.textContent = this.formatMoney(variant.price);
+        }
+      },
+
+      updateButtonState: function (available) {
+        var button = this.container.querySelector('[data-combo-add-to-cart]');
+        var buttonText = this.container.querySelector('[data-combo-button-text]');
+        if (button && buttonText) {
+          button.disabled = !available;
+          buttonText.textContent = available ? this.ctaText : this.soldOutText;
+        }
+      },
+
+      formatMoney: function (cents) {
+        if (typeof Shopify !== 'undefined' && Shopify.formatMoney) {
+          return Shopify.formatMoney(cents);
+        }
+        return 'R$ ' + (cents / 100).toFixed(2).replace('.', ',');
+      },
+
+      handleAddToCart: function (event) {
+        console.log('[COMBO UPSELL] handleAddToCart chamado');
+        event.preventDefault();
+        var self = this;
+        var button = event.currentTarget;
+        var buttonText = button.querySelector('[data-combo-button-text]');
+        var buttonLoading = button.querySelector('.combo-natal-upsell__button-loading');
+        console.log('[COMBO UPSELL] Variant ID:', self.variantId);
+        button.disabled = true;
+        if (buttonText) buttonText.style.display = 'none';
+        if (buttonLoading) buttonLoading.style.display = 'inline-flex';
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            items: [{
+              id: parseInt(self.variantId),
+              quantity: 1
+            }]
+          })
+        })
+          .then(function (response) {
+            console.log('[COMBO UPSELL] Response status:', response.status);
+            if (!response.ok) {
+              return response.json().then(function (error) {
+                throw new Error(error.description || 'Erro ao adicionar ao carrinho');
+              });
+            }
+            return response.json();
+          })
+          .then(function (data) {
+            console.log('[COMBO UPSELL] Item adicionado:', data);
+            self.refreshCart();
+            self.hideUpsell();
+          })
+          .catch(function (error) {
+            console.error('[COMBO UPSELL] Erro:', error);
+            alert('Nao foi possivel adicionar o produto ao carrinho. Tente novamente.');
+            button.disabled = false;
+            if (buttonText) buttonText.style.display = 'inline';
+            if (buttonLoading) buttonLoading.style.display = 'none';
+          });
+      },
+
+      refreshCart: function () {
+        var self = this;
+        console.log('[COMBO UPSELL] Atualizando carrinho...');
+
+        // Usar jQuery AJAX (mesmo metodo do tema Halo)
+        var jq = (typeof jQuery !== 'undefined') ? jQuery : (typeof $ !== 'undefined' ? $ : null);
+
+        if (jq) {
+          jq.getJSON('/cart.js', function (cart) {
+            console.log('[COMBO UPSELL] Carrinho:', cart.item_count, 'itens');
+
+            // Atualizar contador
+            jq('[data-cart-count]').text(cart.item_count);
+
+            // Atualizar o sidebar via AJAX (mesmo metodo do tema Halo)
+            var $cartDropdown = jq('#halo-cart-sidebar .halo-sidebar-wrapper .previewCart-wrapper');
+
+            if ($cartDropdown.length) {
+              console.log('[COMBO UPSELL] Atualizando sidebar via AJAX...');
+              jq.ajax({
+                type: 'GET',
+                url: '/cart?view=ajax_side_cart',
+                cache: false,
+                success: function (data) {
+                  $cartDropdown.html(data);
+                  console.log('[COMBO UPSELL] Sidebar atualizado com sucesso!');
+                  document.dispatchEvent(new CustomEvent('cart-update', { detail: cart }));
+                },
+                error: function (err) {
+                  console.error('[COMBO UPSELL] Erro ao atualizar sidebar:', err);
+                }
+              });
+            } else {
+              console.log('[COMBO UPSELL] Tentando halo.updateSidebarCart...');
+              if (typeof halo !== 'undefined' && typeof halo.updateSidebarCart === 'function') {
+                halo.updateSidebarCart(cart);
+              }
+            }
+          });
+        } else {
+          console.log('[COMBO UPSELL] jQuery nao disponivel, recarregando...');
+          window.location.reload();
+        }
+      },
+
+      hideUpsell: function () {
+        console.log('[COMBO UPSELL] Escondendo upsell');
+        if (this.container) {
+          this.container.style.display = 'none';
+        }
+      },
+
+      showUpsell: function () {
+        console.log('[COMBO UPSELL] Mostrando upsell');
+        if (this.container) {
+          this.container.style.display = 'block';
+        }
+      },
+
+      handleCartUpdate: function (event) {
+        var self = this;
+        var cart = event.detail;
+        if (cart && cart.items) {
+          var comboInCart = cart.items.some(function (item) {
+            return item.product_id === parseInt(self.productId);
+          });
+          if (comboInCart) {
+            this.hideUpsell();
+          } else if (cart.item_count > 0) {
+            this.showUpsell();
+          } else {
+            this.hideUpsell();
+          }
+        }
+      },
+
+      checkCartState: function () {
+        var self = this;
+        fetch('/cart.js')
+          .then(function (response) { return response.json(); })
+          .then(function (cart) {
+            self.handleCartUpdate({ detail: cart });
+          })
+          .catch(function (error) {
+            console.error('[COMBO UPSELL] Erro ao verificar carrinho:', error);
+          });
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () { COMBO_UPSELL.init(); });
+    } else {
+      COMBO_UPSELL.init();
+    }
+
+    document.addEventListener('cart-update', function () {
+      setTimeout(function () {
+        var newContainer = document.getElementById('combo-natal-upsell');
+        if (newContainer && !newContainer.dataset.initialized) {
+          newContainer.dataset.initialized = 'true';
+          COMBO_UPSELL.init();
+        }
+      }, 100);
+    });
+  })();
+</script>
+
+<style>
+  /* =====================================================
+     Combo de Natal 2025 - Upsell Styles
+     Paleta Natalina integrada ao design system do tema
+     ===================================================== */
+
+  .combo-natal-upsell {
+    --xmas-red: #C8102E;
+    --xmas-green: #228B22;
+    --xmas-gold: #D4AF37;
+    --xmas-snow: #FFFAFA;
+    --xmas-dark: #1a1a1a;
+
+    border: none;
+    border-radius: var(--border-radius, 16px);
+    padding: 2px;
+    margin: 16px 0;
+    position: relative;
+    background: linear-gradient(90deg, var(--xmas-red), var(--xmas-green), var(--xmas-gold), var(--xmas-red));
+    background-size: 200% 100%;
+    animation: xmas-gradient 3s ease infinite;
+  }
+
+  /* Container interno com background que cria o efeito de borda */
+  .combo-natal-upsell__container {
+    position: relative;
+    background: linear-gradient(135deg, var(--xmas-snow) 0%, #fff9f9 100%);
+    border-radius: calc(var(--border-radius, 16px) - 2px);
+    padding: 14px;
+  }
+
+  @keyframes xmas-gradient {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .combo-natal-upsell__container {
+    position: relative;
+  }
+
+  /* Badge de destaque */
+  .combo-natal-upsell__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--xmas-red);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: var(--font-weight-bold, 700);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+
+  .combo-natal-upsell__badge-icon {
+    font-size: 14px;
+  }
+
+  /* Container do conteúdo */
+  .combo-natal-upsell__content {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  /* Imagem */
+  .combo-natal-upsell__image-wrapper {
+    flex-shrink: 0;
+    width: 90px;
+  }
+
+  .combo-natal-upsell__image-link {
+    display: block;
+    border-radius: var(--border-radius, 10px);
+    overflow: hidden;
+    border: 1px solid rgba(200, 16, 46, 0.2);
+  }
+
+  .combo-natal-upsell__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  .combo-natal-upsell__image-placeholder {
+    width: 100%;
+    height: 90px;
+    background: #f5f5f5;
+  }
+
+  /* Informações */
+  .combo-natal-upsell__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .combo-natal-upsell__title {
+    font-size: calc(var(--font-body-size, 14px) + 1px);
+    font-weight: var(--font-weight-bold, 700);
+    line-height: 1.3;
+    margin: 0 0 6px;
+    color: var(--xmas-dark);
+  }
+
+  .combo-natal-upsell__title-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .combo-natal-upsell__title-link:hover {
+    color: var(--xmas-red);
+  }
+
+  .combo-natal-upsell__description {
+    font-size: calc(var(--font-body-size, 14px) - 2px);
+    color: var(--color-text2, #666);
+    line-height: 1.4;
+    margin: 0 0 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Preço */
+  .combo-natal-upsell__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .combo-natal-upsell__price-compare {
+    font-size: calc(var(--font-body-size, 14px) - 2px);
+    color: var(--color-text2, #999);
+  }
+
+  .combo-natal-upsell__price-current {
+    font-size: calc(var(--font-body-size, 14px) + 2px);
+    font-weight: var(--font-weight-bold, 700);
+    color: var(--xmas-green);
+  }
+
+  /* Seletor de variantes */
+  .combo-natal-upsell__variants {
+    margin-bottom: 10px;
+  }
+
+  .combo-natal-upsell__variant-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .combo-natal-upsell__variant-label {
+    font-size: calc(var(--font-body-size, 14px) - 2px);
+    font-weight: var(--font-weight-semibold, 600);
+    color: var(--color-text, #333);
+    white-space: nowrap;
+  }
+
+  .combo-natal-upsell__variant-select {
+    flex: 1;
+    padding: 6px 24px 6px 10px;
+    font-size: calc(var(--font-body-size, 14px) - 2px);
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: var(--border-radius, 8px);
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    appearance: none;
+    cursor: pointer;
+    max-width: 140px;
+  }
+
+  .combo-natal-upsell__variant-select:focus {
+    outline: none;
+    border-color: var(--xmas-red);
+    box-shadow: 0 0 0 2px rgba(200, 16, 46, 0.1);
+  }
+
+  /* Botão de adicionar */
+  .combo-natal-upsell__button.button.button-1,
+  .combo-natal-upsell__button {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-size: var(--font-body-size, 14px);
+    font-weight: var(--font-weight-bold, 700);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff !important;
+    background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%) !important;
+    background-color: #228B22 !important;
+    border: none !important;
+    border-radius: var(--border-radius, 10px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .combo-natal-upsell__button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .combo-natal-upsell__button:hover:not(:disabled)::before {
+    left: 100%;
+  }
+
+  .combo-natal-upsell__button.button.button-1:hover:not(:disabled),
+  .combo-natal-upsell__button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1a6b1a 0%, #228B22 100%) !important;
+    background-color: #228B22 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(34, 139, 34, 0.3);
+  }
+
+  .combo-natal-upsell__button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  .combo-natal-upsell__button-loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .combo-natal-upsell__spinner {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Responsivo */
+  @media (max-width: 480px) {
+    .combo-natal-upsell {
+      padding: 12px;
+    }
+
+    .combo-natal-upsell__content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .combo-natal-upsell__image-wrapper {
+      width: 100px;
+    }
+
+    .combo-natal-upsell__info {
+      width: 100%;
+    }
+
+    .combo-natal-upsell__variant-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .combo-natal-upsell__variant-select {
+      max-width: none;
+    }
+
+    .combo-natal-upsell__price {
+      justify-content: center;
+    }
+  }
+</style>
+{%- endif -%}

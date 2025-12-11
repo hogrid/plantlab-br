@@ -5941,6 +5941,59 @@
         "type": "text",
         "id": "cart_popup_cupom",
         "label": "Cupom da Popup"
+      },
+      {
+        "type": "header",
+        "content": "Produtos Recomendados (Upsell)"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_upsell_cart_recommendations",
+        "label": "Mostrar Produtos Recomendados",
+        "info": "Exibe a seção 'Outros produtos que você pode gostar' no mini cart",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Upsell Combo de Natal 2025"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_combo_natal_upsell",
+        "label": "Ativar Upsell Combo de Natal",
+        "info": "Exibe o upsell do Combo de Natal no mini cart quando há produtos no carrinho",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "combo_natal_product_handle",
+        "label": "Handle do Produto",
+        "info": "Ex: combo-natal-2025",
+        "placeholder": "combo-natal-2025"
+      },
+      {
+        "type": "text",
+        "id": "combo_natal_title",
+        "label": "Título do Upsell (fallback)",
+        "default": "Combo de Natal 2025"
+      },
+      {
+        "type": "textarea",
+        "id": "combo_natal_description",
+        "label": "Descrição (fallback)",
+        "default": "Livro de Receitas + Planner 2026 + Caixa Presente"
+      },
+      {
+        "type": "text",
+        "id": "combo_natal_cta_text",
+        "label": "Texto do Botão",
+        "default": "Adicionar ao Pedido"
+      },
+      {
+        "type": "text",
+        "id": "combo_natal_badge_text",
+        "label": "Badge/Destaque",
+        "default": "Edição Limitada"
       }
     ]
   },

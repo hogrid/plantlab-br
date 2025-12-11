@@ -152,8 +152,8 @@
     {
       "key": "rating",
       "namespace": "reviews",
-      "name": "Avaliação do produto",
-      "description": "Avaliação média de clientes",
+      "name": "Classificação do produto",
+      "description": "Classificação média dos clientes",
       "type": {
         "name": "rating",
         "category": "RATING"
@@ -162,8 +162,8 @@
     {
       "key": "rating_count",
       "namespace": "reviews",
-      "name": "Contagem de avaliações do produto",
-      "description": "Número total de avaliações de clientes",
+      "name": "Contagem de classificações do produto",
+      "description": "Número total de classificações dos clientes",
       "type": {
         "name": "number_integer",
         "category": "NUMBER"
