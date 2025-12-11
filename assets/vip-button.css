@@ -1038,6 +1038,10 @@
 
 /* VIP CTA Section Styles */
 .vip-cta-section {
+  /* CSS Custom Properties para cor dinâmica - valores padrão */
+  --vip-accent-color: #FFD700;
+  --vip-accent-color-dark: #FFA500;
+
   padding: 80px 0;
   position: relative;
   overflow: hidden;
@@ -1064,7 +1068,7 @@
   justify-content: center;
   gap: 12px;
   padding: 16px;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  background: linear-gradient(135deg, var(--vip-accent-color) 0%, var(--vip-accent-color-dark, var(--vip-accent-color)) 100%);
   color: #1a1a1a;
   border: none;
   border-radius: 12px;
@@ -1145,6 +1149,39 @@
   z-index: 2; /* texto e ícone acima do ::before (reflexo) */
 }
 
+/* VIP CTA Buttons Container - dois botões lado a lado */
+.vip-cta-section .vip-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+/* VIP Button Outline Style */
+.vip-cta-section .vip-button--outline {
+  background: transparent;
+  border: 2px solid var(--vip-accent-color);
+  color: var(--vip-accent-color);
+  box-shadow: none;
+  max-width: 350px;
+}
+
+.vip-cta-section .vip-button--outline::before {
+  display: none; /* Remove o efeito shiny do botão outline */
+}
+
+.vip-cta-section .vip-button--outline:hover {
+  background: var(--vip-accent-color);
+  color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vip-cta-section .vip-button--outline .vip-button-text {
+  color: inherit;
+}
+
 .vip-cta-content {
   text-align: center;
   max-width: 1100px;
@@ -1157,7 +1194,7 @@
 
 .vip-cta-subtitle {
   font-size: 16px;
-  color: #FFD700;
+  color: var(--vip-accent-color);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -1170,10 +1207,23 @@
   color: #ffffff;
   margin: 0 0 24px;
   line-height: 1.2;
-  background: linear-gradient(135deg, #FFD700, #FFA500);
+  background: linear-gradient(135deg, var(--vip-accent-color), var(--vip-accent-color-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.vip-cta-header-image {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.vip-cta-header-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
 }
 
 .vip-cta-description {
@@ -1219,7 +1269,7 @@
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  color: #FFD700;
+  color: var(--vip-accent-color);
   margin-top: 4px;
 }
 
@@ -1227,6 +1277,36 @@
   width: 100%;
   height: 100%;
   fill: currentColor;
+}
+
+/* Benefício com imagem - layout em coluna */
+.vip-cta-benefit--has-image {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.vip-cta-benefit-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.vip-cta-benefit-image img {
+  max-width: 120px;
+  height: auto;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+.vip-cta-benefit--has-image .vip-cta-benefit-icon {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.vip-cta-benefit--has-image .vip-cta-benefit-texts {
+  text-align: center;
 }
 
 .vip-cta-benefit-texts {
@@ -1262,6 +1342,10 @@
     font-size: 40px;
   }
 
+  .vip-cta-header-image img {
+    max-height: 250px;
+  }
+
   .vip-cta-benefits {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -1270,6 +1354,16 @@
 
   .vip-cta-benefit {
     padding: 20px;
+  }
+
+  .vip-cta-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .vip-cta-section .vip-button {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -1284,6 +1378,14 @@
 
   .vip-cta-header {
     margin-bottom: 36px;
+  }
+
+  .vip-cta-header-image {
+    margin: 20px 0;
+  }
+
+  .vip-cta-header-image img {
+    max-height: 200px;
   }
 
   .vip-cta-subtitle {
@@ -1308,6 +1410,11 @@
   .vip-cta-benefit {
     padding: 18px;
     gap: 14px;
+  }
+
+  .vip-cta-benefit-image img {
+    max-width: 100px;
+    max-height: 100px;
   }
 
   .vip-cta-benefit-icon {
@@ -1456,7 +1563,7 @@
   .vip-button-wrapper:not(.vip-button-mobile-wrapper) {
     display: none !important;
   }
-  
+
   /* Ocultar botão VIP no header mobile */
   .header-mobile .vip-button-wrapper,
   .header-mobile .vip-button,
@@ -1464,7 +1571,7 @@
   .vip-button-header {
     display: none !important;
   }
-  
+
   /* Ocultar todos os botões VIP desktop */
   .vip-button:not(.vip-button-mobile),
   .vip-button-header,
@@ -1478,21 +1585,21 @@
   .vip-button-mobile-wrapper {
     padding: 12px 16px;
   }
-  
+
   .vip-button-mobile {
     padding: 14px 16px;
     font-size: 15px;
     min-height: 48px;
   }
-  
+
   .vip-button-mobile-text {
     font-size: 15px;
   }
-  
+
   .vip-button-mobile-icon {
     font-size: 18px;
   }
-  
+
   .vip-button-mobile-arrow {
     font-size: 16px;
   }
@@ -1504,7 +1611,7 @@
     padding: 12px 14px;
     font-size: 14px;
   }
-  
+
   .vip-button-mobile-text {
     font-size: 14px;
     margin: 0 8px;
@@ -1537,7 +1644,7 @@
   .vip-loading-spinner circle {
     animation: none;
   }
-  
+
   .vip-button-mobile.clicked {
     animation: none;
   }
