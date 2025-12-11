@@ -33,7 +33,7 @@
           "type": "product",
           "disabled": true,
           "settings": {
-            "product": "",
+            "product": "kit-de-natal-plantlab",
             "description": "Kit de Natal",
             "gradient": "linear-gradient(310deg, rgba(251, 17, 17, 1), rgba(37, 191, 39, 1) 100%)"
           }
