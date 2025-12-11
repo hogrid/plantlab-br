@@ -1062,7 +1062,7 @@
     "quick_cart_popular_product_title": "",
     "quick_cart_popular_product_collection": "suito",
     "quick_cart_popular_product_dots": false,
-    "quick_cart_popular_product_arrows": true,
+    "quick_cart_popular_product_arrows": false,
     "show_quick_edit_cart": false,
     "quick_edit_cart_picker_type": "button",
     "enable_popup_cart": true,
