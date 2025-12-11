@@ -371,14 +371,6 @@
     "flavors_showcase_TAXpec": {
       "type": "flavors-showcase",
       "blocks": {
-        "product_7R4yM6": {
-          "type": "product",
-          "settings": {
-            "product": "ecobag-plantlab",
-            "description": "Ecobag Preta",
-            "gradient": "linear-gradient(90deg, rgba(179, 0, 255, 1), rgba(193, 155, 209, 1) 100%)"
-          }
-        },
         "product_gxaFde": {
           "type": "product",
           "settings": {
@@ -386,11 +378,28 @@
             "description": "Ebook Plantlab",
             "gradient": "linear-gradient(46deg, rgba(52, 133, 236, 1) 13%, rgba(170, 248, 219, 1) 86%)"
           }
+        },
+        "product_b8UAMX": {
+          "type": "product",
+          "settings": {
+            "product": "kit-de-natal-plantlab",
+            "description": "Kit de Natal",
+            "gradient": "linear-gradient(310deg, rgba(251, 17, 17, 1) 4%, rgba(44, 161, 21, 1) 100%)"
+          }
+        },
+        "product_7R4yM6": {
+          "type": "product",
+          "settings": {
+            "product": "ecobag-plantlab",
+            "description": "Ecobag Preta",
+            "gradient": "linear-gradient(90deg, rgba(179, 0, 255, 1), rgba(193, 155, 209, 1) 100%)"
+          }
         }
       },
       "block_order": [
-        "product_7R4yM6",
-        "product_gxaFde"
+        "product_gxaFde",
+        "product_b8UAMX",
+        "product_7R4yM6"
       ],
       "settings": {
         "title": "Acessórios",
