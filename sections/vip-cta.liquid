@@ -4,20 +4,24 @@ A seção destaca o Grupo VIP com descrição, lista de benefícios e um botão 
 Todos os textos e benefícios são editáveis via painel.
 {%- endcomment -%}
 
-{%- assign start_color = section.settings.bg_gradient_start | default: '#111111' -%}
-{%- assign end_color = section.settings.bg_gradient_end | default: '#1c1c1c' -%}
-{%- assign bg_angle = section.settings.bg_angle | default: 135 -%}
-{%- assign accent_color = section.settings.accent_color | default: '#FFD700' -%}
+{%- liquid
+assign start_color = section.settings.bg_gradient_start | default: '#111111'
+assign end_color = section.settings.bg_gradient_end | default: '#1c1c1c'
+assign bg_angle = section.settings.bg_angle | default: 135
+assign accent_start = section.settings.accent_color_start | default: '#FFD700'
+assign accent_end = section.settings.accent_color_end | default: '#FFA500'
+assign btn1_text_color = section.settings.button_primary_text_color | default: '#FFD700'
+assign btn2_text_color = section.settings.button_secondary_text_color | default: '#1a1a1a'
+-%}
 
 <section id="vip-cta" class="vip-cta-section"
-  style="background: linear-gradient({{ bg_angle }}deg, {{ start_color }} 0%, {{ end_color }} 100%); --vip-accent-color: {{ accent_color }};">
+  style="background: linear-gradient({{ bg_angle }}deg, {{ start_color }} 0%, {{ end_color }} 100%); --vip-accent-start: {{ accent_start }}; --vip-accent-end: {{ accent_end }}; --vip-btn1-text: {{ btn1_text_color }}; --vip-btn2-text: {{ btn2_text_color }};">
   <div class="vip-cta-container page-width">
     <div class="vip-cta-content">
       <header class="vip-cta-header">
         {%- if section.settings.subheading != blank -%}
         <p class="vip-cta-subtitle">{{ section.settings.subheading }}</p>
         {%- endif -%}
-        <h2 class="vip-cta-title">{{ section.settings.heading | default: 'Faça parte do Grupo VIP' }}</h2>
         {%- if section.settings.header_image != blank -%}
         <div class="vip-cta-header-image">
           <img src="{{ section.settings.header_image | image_url: width: 600 }}"
@@ -26,6 +30,7 @@ Todos os textos e benefícios são editáveis via painel.
             loading="lazy">
         </div>
         {%- endif -%}
+        <h2 class="vip-cta-title">{{ section.settings.heading | default: 'Faça parte do Grupo VIP' }}</h2>
         {%- if section.settings.description != blank -%}
         <div class="vip-cta-description">{{ section.settings.description }}</div>
         {%- endif -%}
@@ -43,7 +48,7 @@ Todos os textos e benefícios são editáveis via painel.
               alt="{{ block.settings.image.alt | default: block.settings.title }}"
               width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" loading="lazy">
           </div>
-          {%- endif -%}
+          {%- else -%}
           <span class="vip-cta-benefit-icon" aria-hidden="true">
             {%- case block.settings.icon -%}
             {%- when 'star' -%}{% render 'icon-star' %}
@@ -59,6 +64,7 @@ Todos os textos e benefícios são editáveis via painel.
             {%- else -%}{% render 'icon-star' %}
             {%- endcase -%}
           </span>
+          {%- endif -%}
           <div class="vip-cta-benefit-texts">
             {%- if block.settings.title != blank -%}
             <h3 class="vip-cta-benefit-title">{{ block.settings.title }}</h3>
@@ -140,14 +146,25 @@ Todos os textos e benefícios são editáveis via painel.
 },
 {
 "type": "header",
-"content": "Aparência"
+"content": "Cores de Destaque (Degradê)"
 },
 {
 "type": "color",
-"id": "accent_color",
-"label": "Cor de destaque",
+"id": "accent_color_start",
+"label": "Cor de destaque (início)",
 "default": "#FFD700",
-"info": "Aplicada em ícones, textos de destaque e botões"
+"info": "Primeira cor do degradê de destaque"
+},
+{
+"type": "color",
+"id": "accent_color_end",
+"label": "Cor de destaque (fim)",
+"default": "#FFA500",
+"info": "Segunda cor do degradê de destaque"
+},
+{
+"type": "header",
+"content": "Fundo"
 },
 {
 "type": "color",
@@ -186,6 +203,12 @@ Todos os textos e benefícios são editáveis via painel.
 "label": "Link do botão"
 },
 {
+"type": "color",
+"id": "button_primary_text_color",
+"label": "Cor do texto",
+"default": "#FFD700"
+},
+{
 "type": "header",
 "content": "Botão Secundário (Solid)"
 },
@@ -200,6 +223,12 @@ Todos os textos e benefícios são editáveis via painel.
 "type": "url",
 "id": "button_secondary_link",
 "label": "Link do botão"
+},
+{
+"type": "color",
+"id": "button_secondary_text_color",
+"label": "Cor do texto",
+"default": "#1a1a1a"
 },
 {
 "type": "checkbox",

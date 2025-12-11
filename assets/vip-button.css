@@ -1038,9 +1038,11 @@
 
 /* VIP CTA Section Styles */
 .vip-cta-section {
-  /* CSS Custom Properties para cor dinâmica - valores padrão */
-  --vip-accent-color: #FFD700;
-  --vip-accent-color-dark: #FFA500;
+  /* CSS Custom Properties para cores dinâmicas - valores padrão */
+  --vip-accent-start: #FFD700;
+  --vip-accent-end: #FFA500;
+  --vip-btn1-text: #FFD700;
+  --vip-btn2-text: #1a1a1a;
 
   padding: 80px 0;
   position: relative;
@@ -1068,8 +1070,8 @@
   justify-content: center;
   gap: 12px;
   padding: 16px;
-  background: linear-gradient(135deg, var(--vip-accent-color) 0%, var(--vip-accent-color-dark, var(--vip-accent-color)) 100%);
-  color: #1a1a1a;
+  background: linear-gradient(135deg, var(--vip-accent-start) 0%, var(--vip-accent-end) 100%);
+  color: var(--vip-btn2-text);
   border: none;
   border-radius: 12px;
   font-size: 18px;
@@ -1077,7 +1079,7 @@
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--vip-accent-start) 30%, transparent), 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
   min-height: 54px;
@@ -1092,7 +1094,7 @@
 .vip-cta-section .vip-button::before {
   content: '';
   position: absolute;
-  top: -60%;
+  top: -75%;
   left: -100%;
   width: 120px; /* aumentado para garantir que translateX(300%) atravesse o botão (max-width: 350px) */
   height: 220%;
@@ -1112,19 +1114,20 @@
 
 .vip-cta-section .vip-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--vip-accent-start) 40%, transparent), 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Variação específica do CTA: reflexo mais forte e cobrindo toda a largura do botão */
 .vip-cta-section .vip-button.vip-button--cta-shiny::before {
-  top: -70%;
+  top: -110%;
   left: -40%;
   width: 35%; /* proporcional à largura do botão para cobrir sempre toda a área */
-  height: 250%;
+  height: 300%;
   background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
   filter: blur(0.7px);
   will-change: transform, opacity;
   animation: vipShinyCTA 4s linear infinite;
+  opacity: 0.7;
 }
 
 .vip-cta-section .vip-button.vip-button--cta-shiny:hover::before {
@@ -1147,6 +1150,7 @@
 .vip-cta-section .vip-button.vip-button--cta-shiny .vip-icon {
   position: relative;
   z-index: 2; /* texto e ícone acima do ::before (reflexo) */
+  color: var(--vip-btn2-text);
 }
 
 /* VIP CTA Buttons Container - dois botões lado a lado */
@@ -1162,23 +1166,44 @@
 /* VIP Button Outline Style */
 .vip-cta-section .vip-button--outline {
   background: transparent;
-  border: 2px solid var(--vip-accent-color);
-  color: var(--vip-accent-color);
+  border: 2px solid var(--vip-accent-start);
+  color: var(--vip-btn1-text);
   box-shadow: none;
   max-width: 350px;
+  isolation: isolate;
 }
 
 .vip-cta-section .vip-button--outline::before {
-  display: none; /* Remove o efeito shiny do botão outline */
+  content: '';
+  position: absolute;
+  top: -110%;
+  left: -40%;
+  width: 35%;
+  height: 300%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(0) rotate(35deg);
+  filter: blur(0.7px);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  animation: none;
+}
+
+.vip-cta-section .vip-button--outline:hover::before {
+  opacity: 0.7;
+  animation: vipShinyCTA 4s linear infinite;
 }
 
 .vip-cta-section .vip-button--outline:hover {
-  background: var(--vip-accent-color);
-  color: #1a1a1a;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--vip-accent-start) 0%, var(--vip-accent-end) 100%);
+  color: var(--vip-btn2-text);
+  border-color: transparent;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--vip-accent-start) 30%, transparent), 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .vip-cta-section .vip-button--outline .vip-button-text {
+  position: relative;
+  z-index: 2;
   color: inherit;
 }
 
@@ -1194,7 +1219,7 @@
 
 .vip-cta-subtitle {
   font-size: 16px;
-  color: var(--vip-accent-color);
+  color: var(--vip-accent-start);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -1207,7 +1232,7 @@
   color: #ffffff;
   margin: 0 0 24px;
   line-height: 1.2;
-  background: linear-gradient(135deg, var(--vip-accent-color), var(--vip-accent-color-dark));
+  background: linear-gradient(135deg, var(--vip-accent-start), var(--vip-accent-end));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1220,10 +1245,10 @@
 }
 
 .vip-cta-header-image img {
-  max-width: 100%;
+  width: auto;
   height: auto;
-  max-height: 300px;
-  object-fit: contain;
+  max-width: 100%;
+  border-radius: 15px;
 }
 
 .vip-cta-description {
@@ -1261,15 +1286,15 @@
 .vip-cta-benefit:hover {
   transform: translateY(-4px);
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 215, 0, 0.4);
-  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.15);
+  border-color: color-mix(in srgb, var(--vip-accent-start) 40%, transparent);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--vip-accent-start) 15%, transparent);
 }
 
 .vip-cta-benefit-icon {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  color: var(--vip-accent-color);
+  color: var(--vip-accent-start);
   margin-top: 4px;
 }
 
@@ -1298,6 +1323,7 @@
   height: auto;
   max-height: 120px;
   object-fit: contain;
+  border-radius: 15px;
 }
 
 .vip-cta-benefit--has-image .vip-cta-benefit-icon {
@@ -1342,10 +1368,6 @@
     font-size: 40px;
   }
 
-  .vip-cta-header-image img {
-    max-height: 250px;
-  }
-
   .vip-cta-benefits {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -1382,10 +1404,6 @@
 
   .vip-cta-header-image {
     margin: 20px 0;
-  }
-
-  .vip-cta-header-image img {
-    max-height: 200px;
   }
 
   .vip-cta-subtitle {
