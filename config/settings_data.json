@@ -1065,7 +1065,7 @@
     "quick_cart_popular_product_arrows": true,
     "show_quick_edit_cart": false,
     "quick_edit_cart_picker_type": "button",
-    "enable_popup_cart": false,
+    "enable_popup_cart": true,
     "cart_popup_title": "👽 PAGUE NO PIX E GANHE DESCONTO!",
     "cart_popup_desc": "🎁 Ao finalizar sua compra pague no PIX e garanta 3% OFF 🥳",
     "cart_popup_cupom": "PIX = 3% OFF 🤑",
