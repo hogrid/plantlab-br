@@ -1,1 +1,68 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"custom_css":["h1,p {color: var(--lv_1_color) !important;}","p {font-size: 16px;}"],"settings":{}},"flavors_showcase_LqtWyb":{"type":"flavors-showcase","blocks":{"product_CJTGnA":{"type":"product","settings":{"product":"ebook-digital-de-receitas-veganas","description":"Ebook Plantlab","gradient":"linear-gradient(46deg, rgba(52, 133, 236, 1) 13%, rgba(170, 248, 219, 1) 86%)"}},"product_cYfaaM":{"type":"product","settings":{"product":"ecobag-plantlab","description":"Ecobag","gradient":"linear-gradient(89deg, rgba(219, 149, 250, 1) 7%, rgba(148, 88, 255, 1) 94%)"}}},"block_order":["product_CJTGnA","product_cYfaaM"],"name":"Sabores","settings":{"title":"Acessórios","descricao_cta":"","texto_cta":"","link_cta":""}}},"order":["main","flavors_showcase_LqtWyb"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1,p {color: var(--lv_1_color) !important;}",
+        "p {font-size: 16px;}"
+      ],
+      "settings": {}
+    },
+    "flavors_showcase_LqtWyb": {
+      "type": "flavors-showcase",
+      "blocks": {
+        "product_CJTGnA": {
+          "type": "product",
+          "settings": {
+            "product": "ebook-digital-de-receitas-veganas",
+            "description": "Ebook Plantlab",
+            "gradient": "linear-gradient(46deg, rgba(52, 133, 236, 1) 13%, rgba(170, 248, 219, 1) 86%)"
+          }
+        },
+        "product_8Eh4cx": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "",
+            "description": "Kit de Natal",
+            "gradient": "linear-gradient(310deg, rgba(251, 17, 17, 1), rgba(37, 191, 39, 1) 100%)"
+          }
+        },
+        "product_cYfaaM": {
+          "type": "product",
+          "settings": {
+            "product": "ecobag-plantlab",
+            "description": "Ecobag",
+            "gradient": "linear-gradient(89deg, rgba(219, 149, 250, 1) 7%, rgba(148, 88, 255, 1) 94%)"
+          }
+        }
+      },
+      "block_order": [
+        "product_CJTGnA",
+        "product_8Eh4cx",
+        "product_cYfaaM"
+      ],
+      "name": "Sabores",
+      "settings": {
+        "title": "Acessórios",
+        "descricao_cta": "",
+        "texto_cta": "",
+        "link_cta": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "flavors_showcase_LqtWyb"
+  ]
+}
