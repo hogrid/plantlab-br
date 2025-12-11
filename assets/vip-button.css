@@ -1046,7 +1046,7 @@
 
   padding: 80px 0;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .vip-cta-container {
@@ -1386,6 +1386,11 @@
   .vip-cta-section .vip-button {
     max-width: 100%;
     width: 100%;
+    display: inline-flex !important;
+  }
+
+  .vip-cta-section .vip-cta-buttons {
+    display: flex !important;
   }
 }
 
@@ -1448,6 +1453,14 @@
   .vip-cta-benefit-text {
     font-size: 13px;
   }
+
+  .vip-cta-section .vip-button {
+    display: inline-flex !important;
+  }
+
+  .vip-cta-section .vip-cta-buttons {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1489,6 +1502,17 @@
 
   .vip-cta-benefit-text {
     font-size: 12px;
+  }
+
+  .vip-cta-section .vip-button {
+    display: inline-flex !important;
+    min-height: 48px;
+    font-size: 14px;
+  }
+
+  .vip-cta-section .vip-cta-buttons {
+    display: flex !important;
+    margin-top: 32px;
   }
 }
 
@@ -1578,7 +1602,7 @@
 
 /* Ocultar botão VIP desktop no mobile */
 @media screen and (max-width: 989px) {
-  .vip-button-wrapper:not(.vip-button-mobile-wrapper) {
+  .vip-button-wrapper:not(.vip-button-mobile-wrapper):not(.vip-cta-buttons) {
     display: none !important;
   }
 
@@ -1590,11 +1614,21 @@
     display: none !important;
   }
 
-  /* Ocultar todos os botões VIP desktop */
-  .vip-button:not(.vip-button-mobile),
+  /* Ocultar todos os botões VIP desktop - exceto os da seção CTA */
+  .vip-button:not(.vip-button-mobile):not(.vip-cta-section .vip-button),
   .vip-button-header,
   .vip-header-item {
     display: none !important;
+  }
+
+  /* Garantir que os botões da seção VIP CTA apareçam no mobile */
+  .vip-cta-section .vip-button-wrapper,
+  .vip-cta-section .vip-button {
+    display: inline-flex !important;
+  }
+
+  .vip-cta-section .vip-cta-buttons {
+    display: flex !important;
   }
 }
 
