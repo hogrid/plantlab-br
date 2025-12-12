@@ -50,6 +50,8 @@ assign upsell_title = settings.combo_natal_title | default: default_title
 assign upsell_description = settings.combo_natal_description | default: default_desc
 assign upsell_cta_text = settings.combo_natal_cta_text | default: default_cta
 assign upsell_badge_text = settings.combo_natal_badge_text | default: default_badge
+assign combo_price_color = settings.combo_natal_price_color | default: '#D4AF37'
+assign combo_button_color = settings.combo_natal_button_color | default: '#D4AF37'
 
 # Imagem do combo (metafield ou featured image do produto)
 assign combo_image = combo_product.metafields.combo_natal.image | default: combo_product.featured_image
@@ -59,7 +61,7 @@ assign selected_variant = combo_product.selected_or_first_available_variant
 -%}
 
 {%- if should_render -%}
-<div class="combo-natal-upsell" id="combo-natal-upsell" data-combo-product-id="{{ combo_product.id }}"
+<div class="combo-natal-upsell" id="combo-natal-upsell" style="--combo-price-color: {{ combo_price_color }}; --combo-button-color: {{ combo_button_color }};" data-combo-product-id="{{ combo_product.id }}"
   data-combo-variant-id="{{ selected_variant.id }}" aria-label="Oferta especial: {{ upsell_title | escape }}">
   <div class="combo-natal-upsell__container">
     {%- comment -%} Badge de destaque {%- endcomment -%}
@@ -564,7 +566,7 @@ assign selected_variant = combo_product.selected_or_first_available_variant
   .combo-natal-upsell__price-current {
     font-size: calc(var(--font-body-size, 14px) + 2px);
     font-weight: var(--font-weight-bold, 700);
-    color: var(--xmas-green);
+    color: var(--combo-price-color, #D4AF37);
   }
 
   /* Seletor de variantes */
@@ -621,8 +623,8 @@ assign selected_variant = combo_product.selected_or_first_available_variant
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: #fff !important;
-    background: linear-gradient(135deg, #228B22 0%, #1a6b1a 100%) !important;
-    background-color: #228B22 !important;
+    background: var(--combo-button-color, #D4AF37) !important;
+    background-color: var(--combo-button-color, #D4AF37) !important;
     border: none !important;
     border-radius: var(--border-radius, 10px);
     cursor: pointer;
@@ -648,10 +650,9 @@ assign selected_variant = combo_product.selected_or_first_available_variant
 
   .combo-natal-upsell__button.button.button-1:hover:not(:disabled),
   .combo-natal-upsell__button:hover:not(:disabled) {
-    background: linear-gradient(135deg, #1a6b1a 0%, #228B22 100%) !important;
-    background-color: #228B22 !important;
+    filter: brightness(0.9);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(34, 139, 34, 0.3);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
   }
 
   .combo-natal-upsell__button:disabled {

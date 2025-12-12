@@ -5994,6 +5994,18 @@
         "id": "combo_natal_badge_text",
         "label": "Badge/Destaque",
         "default": "Edição Limitada"
+      },
+      {
+        "type": "color",
+        "id": "combo_natal_price_color",
+        "label": "Cor do preço (Combo de Natal)",
+        "default": "#D4AF37"
+      },
+      {
+        "type": "color",
+        "id": "combo_natal_button_color",
+        "label": "Cor do botão (Combo de Natal)",
+        "default": "#D4AF37"
       }
     ]
   },
