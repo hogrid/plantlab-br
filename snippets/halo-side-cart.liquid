@@ -16,20 +16,20 @@ endfor
     {%- for item in cart.items -%}
     <li class="previewCartItem clearfix" data-item-row>
       <a href="{{ item.url }}" class="previewCartItem-image">
-        <img srcset="{{ item.image | img_url: '110x' }}" src="{{ item.image | img_url: '110x' }}" width="110"
-          height="{{ 110 | divided_by: item.image.aspect_ratio | round }}" alt="{{ item.title | escape }}" sizes="auto"
-          loading="lazy">
+        <img srcset="{{ item.image | image_url: width: 110 }}" src="{{ item.image | image_url: width: 110 }}"
+          width="110" height="{{ 110 | divided_by: item.image.aspect_ratio | round }}" alt="{{ item.title | escape }}"
+          sizes="auto" loading="lazy">
       </a>
       <div class="previewCartItem-content cart-item-block-right">
         {%- liquid
-        assign thisHandle = item.product.handle
-        assign thisProduct = all_products[thisHandle]
+        assign this_handle = item.product.handle
+        assign this_product = all_products[this_handle]
         -%}
         <script type="text/javascript">
-          window.cart_selling_array_{ { thisProduct.id } } = {
-            {% - for variantProduct in thisProduct.variants -%}
-            '{{ variantProduct.id }}': '{{ variantProduct.inventory_policy }}',
-              {% - endfor -%}
+          window.cart_selling_array_{{ this_product.id }} = {
+            {%- for variantProduct in this_product.variants -%}
+            '{{ variantProduct.id }}': '{{ variantProduct.inventory_policy }}'{% unless forloop.last %}, {% endunless %}
+            {%- endfor -%}
           };
         </script>
         <a class="previewCartItem-name link-underline" href="{{ item.url }}">
@@ -94,7 +94,7 @@ endfor
           <cart-update-quantity class="previewCartItem-qty" data-product="{{ item.product_id }}"
             data-variant="{{ item.variant.id }}">
             <label class="form-label hiddenLabels" for="upsell-update-{{ item.id }}">
-              {{ 'sections.cart.heading.quantity' | t }}
+              {{ 'sections.cart.headings.quantity' | t }}
             </label>
             <a href="#" data-minus-quantity-cart="" class="minus btn-quantity"></a>
             <input class="form-input quantity" name="quantity" data-index="{{ item.index | plus: 1 }}"
