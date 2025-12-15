@@ -351,7 +351,6 @@
         "benefit_8Mnp8m",
         "benefit_Kqr9wc"
       ],
-      "disabled": true,
       "name": "CTA Grupo VIP",
       "settings": {
         "heading": "GARANTA SEU KIT DE NATAL",
@@ -366,7 +365,7 @@
         "button_primary_link": "",
         "button_primary_text_color": "#b41414",
         "button_secondary_text": "GARANTA SEU KIT DE NATAL",
-        "button_secondary_link": "",
+        "button_secondary_link": "shopify://products/kit-de-natal-plantlab",
         "button_secondary_text_color": "#ffffff",
         "show_icon": false,
         "modal_title": "Grupo VIP",

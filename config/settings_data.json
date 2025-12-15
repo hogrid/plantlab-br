@@ -1102,7 +1102,7 @@
     "gdpr_cookie_consent_color": "#ffffff",
     "gdpr_cookie_consent_color_privacy": "#818181",
     "gdpr_cookie_consent_bg": "#141414",
-    "show_newsletter_popup": true,
+    "show_newsletter_popup": false,
     "newsletter_popup_delay": 5,
     "newsletter_popup_image": "shopify://shop_images/Popup_Site_a5337842-e7d3-4f30-a8e1-8b0188b9ca99.png",
     "popup_newsletter_link_image": "https://www.instagram.com/plantlabfoods/",
