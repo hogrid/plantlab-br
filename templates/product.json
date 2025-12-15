@@ -321,25 +321,28 @@
         "benefit_b8mUrX": {
           "type": "benefit",
           "settings": {
-            "icon": "star",
-            "title": "Acesso antecipado a lançamentos",
-            "text": "Seja o primeiro a conhecer nossos novos produtos e sabores."
+            "image": "shopify://shop_images/Caixa_1.png",
+            "icon": "gift",
+            "title": "Caixa presente",
+            "text": "Nossa caixa especial de Natal foi feita para embrulhar afeto, sabor e um toque intergaláctico. É o tipo de presente que brilha antes mesmo de abrir. 🎄🚀💚\nNossa caixa presente é bem durinha, estruturada e cabe até 2 proteínas de 500g."
           }
         },
         "benefit_8Mnp8m": {
           "type": "benefit",
           "settings": {
-            "icon": "star",
-            "title": "Acesso antecipado a Alien Friday",
-            "text": "Nossos humanos VIPs são VIPs de verdade e ganham acesso aos descontos da Black Friday antes de todo mundo."
+            "image": "shopify://shop_images/Planner.png",
+            "icon": "gift",
+            "title": "Planner Fitness 2026",
+            "text": "Páginas coloridas, espaço para sonhos, novos objetivos, treinos e tudo que você espera do seu melhor ano. 🌱✨\nNosso Planner tem o tamanho A5, 14 páginas, espaço para anotações, metas e o calendário de cada mês de 2026."
           }
         },
         "benefit_Kqr9wc": {
           "type": "benefit",
           "settings": {
-            "icon": "star",
-            "title": "Descontos e conteúdos exclusivos",
-            "text": "No grupo VIP você terá acesso a descontos exclusivos e promoções especiais que serão divulgadas apenas no grupo."
+            "image": "shopify://shop_images/Livro.png",
+            "icon": "gift",
+            "title": "Livro de Receitas",
+            "text": "Montamos um mini livrinho culinário natalino com 6 receitas veganas e proteicas para iluminar sua ceia. Três salgadas, três doces, todas com aquele toque que só nossas cremosas dão. Perfeitas para encher a mesa de sabor, cor e boas histórias. 🌱"
           }
         }
       },
@@ -348,17 +351,24 @@
         "benefit_8Mnp8m",
         "benefit_Kqr9wc"
       ],
+      "disabled": true,
       "name": "CTA Grupo VIP",
       "settings": {
-        "heading": "Faça parte do Grupo VIP",
-        "subheading": "Benefícios exclusivos para membros",
-        "description": "<p>Junte-se ao nosso Grupo VIP e tenha acesso antecipado a lançamentos, ofertas especiais e conteúdos exclusivos.</p>",
+        "heading": "GARANTA SEU KIT DE NATAL",
+        "subheading": "KIT SUPER EXCLUSIVO E LIMITADO",
+        "description": "<p>O Kit de Natal da Plantlab chegou reunindo planner, livrinho de receitas e caixa presente. É o trio perfeito para fechar o ano com sabor, organização e aquela vibe gostosa de celebração. 🚀💚</p>",
+        "accent_color_start": "#b41414",
+        "accent_color_end": "#dc2d2d",
         "bg_gradient_start": "#0f0f0f",
         "bg_gradient_end": "#1c1c1c",
         "bg_angle": 135,
-        "show_icon": true,
-        "button_text": "Faça parte do Grupo VIP",
-        "button_aria_label": "Faça parte do grupo VIP",
+        "button_primary_text": "",
+        "button_primary_link": "",
+        "button_primary_text_color": "#b41414",
+        "button_secondary_text": "GARANTA SEU KIT DE NATAL",
+        "button_secondary_link": "",
+        "button_secondary_text_color": "#ffffff",
+        "show_icon": false,
         "modal_title": "Grupo VIP",
         "modal_subtitle": "Desbloqueie benefícios exclusivos para membros VIP",
         "submit_text": "Quero participar",
