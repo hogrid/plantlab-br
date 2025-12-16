@@ -278,6 +278,90 @@
     ]
   },
   {
+    "name": "Tema de Natal",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Controle Principal"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_christmas_theme",
+        "label": "Ativar Tema de Natal",
+        "default": false,
+        "info": "Controle mestre: ativa todas as personalizações natalinas"
+      },
+      {
+        "type": "checkbox",
+        "id": "christmas_show_snow",
+        "label": "Mostrar Neve Decorativa",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "christmas_show_icons",
+        "label": "Mostrar Ícones Natalinos",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Cores do Degradê"
+      },
+      {
+        "type": "color",
+        "id": "christmas_gradient_start",
+        "label": "Vermelho Inicial",
+        "default": "#991B1B"
+      },
+      {
+        "type": "color",
+        "id": "christmas_gradient_end",
+        "label": "Vermelho Final",
+        "default": "#DC2626"
+      },
+      {
+        "type": "range",
+        "id": "christmas_gradient_angle",
+        "label": "Ângulo do Degradê",
+        "min": 0,
+        "max": 360,
+        "step": 15,
+        "unit": "deg",
+        "default": 90
+      },
+      {
+        "type": "header",
+        "content": "Intensidade dos Efeitos"
+      },
+      {
+        "type": "range",
+        "id": "christmas_snow_intensity",
+        "label": "Intensidade da Neve",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 3,
+        "info": "1 = muito leve, 5 = intensa"
+      },
+      {
+        "type": "range",
+        "id": "christmas_icon_size",
+        "label": "Tamanho dos Ícones",
+        "min": 20,
+        "max": 60,
+        "step": 4,
+        "unit": "px",
+        "default": 32
+      },
+      {
+        "type": "color",
+        "id": "christmas_icon_color",
+        "label": "Cor dos Ícones",
+        "default": "#DC2626"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.typography.name",
     "settings": [
       {

@@ -1,0 +1,17 @@
+{%- liquid
+  assign christmas_enabled = settings.enable_christmas_theme
+  assign show_icons = settings.christmas_show_icons
+  assign icon_index = product.id | modulo: 9
+  assign icon_number = icon_index | plus: 1
+  if icon_number < 10
+    assign icon_file = 'christmas-icon-0' | append: icon_number | append: '.svg'
+  else
+    assign icon_file = 'christmas-icon-' | append: icon_number | append: '.svg'
+  endif
+-%}
+
+{%- if christmas_enabled and show_icons -%}
+<div class="christmas-product-badge" aria-hidden="true">
+  <img src="{{ icon_file | asset_url }}" alt="" loading="lazy">
+</div>
+{%- endif -%}

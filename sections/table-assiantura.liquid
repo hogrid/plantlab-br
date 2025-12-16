@@ -90,7 +90,7 @@
 </div>
 <style>
   .bg-planos {
-    background: linear-gradient(255deg,darkviolet,#f34c73);
+    background: {% if settings.enable_christmas_theme %}linear-gradient({{ settings.christmas_gradient_angle }}deg, {{ settings.christmas_gradient_start }} 0%, {{ settings.christmas_gradient_end }} 50%, {{ settings.christmas_gradient_start }} 100%){% else %}linear-gradient(255deg,darkviolet,#f34c73){% endif %};
     background-size: 120% 120%;
     animation: gradient-animation 2s ease infinite;
     padding: 30px 0 60px 0;
@@ -189,7 +189,7 @@
 
   .button-assinatura.button {
     color: #fff !important;
-    background: linear-gradient(255deg,darkviolet,#f34c73) !important;
+    background: {% if settings.enable_christmas_theme %}linear-gradient({{ settings.christmas_gradient_angle }}deg, {{ settings.christmas_gradient_start }} 0%, {{ settings.christmas_gradient_end }} 50%, {{ settings.christmas_gradient_start }} 100%){% else %}linear-gradient(255deg,darkviolet,#f34c73){% endif %} !important;
     background-size: 120% 120%;
     animation: gradient-animation 2s ease infinite;
     max-width: 200px;

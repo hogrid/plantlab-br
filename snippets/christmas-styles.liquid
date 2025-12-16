@@ -1,0 +1,383 @@
+{%- if settings.enable_christmas_theme -%}
+<style>
+/*=====================================================
+  CHRISTMAS THEME - Plantlab BR
+  Estilos natalinos modulares
+  =====================================================*/
+
+/* ===== VARIÁVEIS NATALINAS ===== */
+:root {
+  --christmas-gradient-start: {{ settings.christmas_gradient_start | default: '#991B1B' }};
+  --christmas-gradient-end: {{ settings.christmas_gradient_end | default: '#DC2626' }};
+  --christmas-gradient-angle: {{ settings.christmas_gradient_angle | default: 90 }}deg;
+  --christmas-gradient: linear-gradient(
+    var(--christmas-gradient-angle),
+    var(--christmas-gradient-start) 0%,
+    var(--christmas-gradient-end) 50%,
+    var(--christmas-gradient-start) 100%
+  );
+  --christmas-gradient-255: linear-gradient(
+    255deg,
+    var(--christmas-gradient-start) 0%,
+    var(--christmas-gradient-end) 50%,
+    var(--christmas-gradient-start) 100%
+  );
+  --christmas-icon-color: {{ settings.christmas_icon_color | default: '#DC2626' }};
+  --christmas-icon-size: {{ settings.christmas_icon_size | default: 32 }}px;
+
+  /* Cores complementares */
+  --christmas-red-light: #FCA5A5;
+  --christmas-red-dark: #7F1D1D;
+  --christmas-green: #059669;
+  --christmas-gold: #F59E0B;
+  --christmas-snow-white: #FFFBFB;
+}
+
+/* ===== OVERRIDE DOS GRADIENTES EXISTENTES ===== */
+
+/* Gradient text effect (custom.css - linha 99) - usa 255deg */
+.gd-text {
+  color: transparent !important;
+  background: var(--christmas-gradient-255) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+}
+
+/* Button gradients (custom.css - linha 205-209) - usa 90deg */
+.button-gradient,
+.button.button-gradient,
+button.button-gradient {
+  background: var(--christmas-gradient) !important;
+  color: #fff !important;
+}
+
+/* Button primary styles (color-theme.css - linha 310) - usa 255deg */
+.button-1,
+.button.button-1,
+button.button-1,
+input[type="submit"].button-1,
+html[data-theme="dark"] .globo-form-id-65895 .globo-form-app .footer button,
+html[data-theme="dark"] .globo-form-id-65895 .globo-form-app .gfb__footer button {
+  background: var(--christmas-gradient-255) !important;
+  border: none !important;
+}
+
+/* Quick cart button (component-quick-cart.css) */
+.quick-cart .button-primary,
+.quick-cart button[type="submit"] {
+  background: var(--christmas-gradient) !important;
+}
+
+/* Preview Cart Popup (component-quick-cart.css - linha 914) - usa 90deg */
+.previewCartPopup {
+  background: var(--christmas-gradient) !important;
+}
+
+/* Slide button container (custom.css - linha 940) - usa 90deg */
+.slide-button__container {
+  background: var(--christmas-gradient) !important;
+  width: 100%;
+}
+
+/* Slide button completed overlay (custom.css - linha 996) - usa 90deg */
+.slide-button__completed-overlay {
+  background: var(--christmas-gradient) !important;
+}
+
+/* Customer review hover effect (custom.css - linha 1052) - usa 90deg */
+.customer-review__item:hover {
+  background: var(--christmas-gradient) !important;
+}
+
+/* Sections que usam gradientes inline */
+.table-assiantura-gradient,
+.table-clube-gradient,
+.benefits-slider-gradient,
+.reviews-marquee-gradient {
+  background: var(--christmas-gradient) !important;
+}
+
+/* Seletores genéricos para capturar outros elementos com gradiente */
+[style*="linear-gradient"][style*="146, 4, 201"],
+[style*="linear-gradient"][style*="darkviolet"] {
+  /* Nota: Gradientes inline precisam ser substituídos manualmente */
+}
+
+/* ===== ANNOUNCEMENT BAR & MARQUEE ===== */
+
+/* Announcement bar (barra de anúncio no topo) */
+.announcement-bar,
+.announcement-bar .announcement-bar__message,
+.shopify-section--announcement-bar {
+  background: var(--christmas-gradient) !important;
+}
+
+/* Marquee (carrossel de texto) - força gradiente diretamente */
+.christmas-theme-active .marquee {
+  background: var(--christmas-gradient) !important;
+}
+
+/* Remove background dos elementos filhos do marquee */
+.christmas-theme-active .marquee__list,
+.christmas-theme-active .marquee__item {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+/* Força especificidade ainda maior para marquee wrapper */
+.christmas-theme-active .marquee-wrapper,
+.christmas-theme-active .section-block-template {
+  background: var(--christmas-gradient) !important;
+}
+
+/* Textos dentro do marquee devem ser brancos */
+.christmas-theme-active .marquee *,
+.christmas-theme-active .announcement-bar * {
+  color: #ffffff !important;
+}
+
+/* ===== ESTILOS DOS ÍCONES ===== */
+
+/* Ícone no header */
+.christmas-header-icon {
+  display: inline-block !important;
+  margin: 0 12px;
+  line-height: 1;
+  animation: christmas-pulse 2s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+.christmas-header-icon img {
+  width: var(--christmas-icon-size);
+  height: var(--christmas-icon-size);
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Ícones no footer */
+.christmas-footer-decoration {
+  text-align: center;
+  padding: 12px 0;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  opacity: 0.85;
+}
+
+.christmas-footer-decoration img {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+}
+
+/* Badge/selo natalino para produtos */
+.christmas-product-badge {
+  position: absolute !important;
+  top: 8px;
+  right: 8px;
+  z-index: 10 !important;
+  pointer-events: none;
+  line-height: 1;
+  animation: christmas-sparkle 3s ease-in-out infinite;
+}
+
+.christmas-product-badge img {
+  width: 28px;
+  height: 28px;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* ===== ANIMAÇÕES ===== */
+
+@keyframes christmas-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes christmas-sparkle {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+  }
+}
+
+{%- if settings.christmas_show_snow -%}
+/* ===== EFEITO DE NEVE ===== */
+
+.christmas-snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999999;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  animation: snowfall linear infinite;
+  pointer-events: none;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(100px) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* ===== CONTROLE DE INTENSIDADE ===== */
+.christmas-snow-container[data-intensity="1"] .snowflake:nth-child(n+6) { display: none; }
+.christmas-snow-container[data-intensity="2"] .snowflake:nth-child(n+11) { display: none; }
+.christmas-snow-container[data-intensity="3"] .snowflake:nth-child(n+16) { display: none; }
+.christmas-snow-container[data-intensity="4"] .snowflake:nth-child(n+21) { display: none; }
+
+/* ===== DISTRIBUIÇÃO E TIMING VARIADOS ===== */
+.snowflake:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 15%; animation-duration: 10s; animation-delay: 2s; }
+.snowflake:nth-child(3) { left: 25%; animation-duration: 14s; animation-delay: 4s; }
+.snowflake:nth-child(4) { left: 35%; animation-duration: 11s; animation-delay: 1s; }
+.snowflake:nth-child(5) { left: 45%; animation-duration: 13s; animation-delay: 3s; }
+.snowflake:nth-child(6) { left: 55%; animation-duration: 15s; animation-delay: 5s; }
+.snowflake:nth-child(7) { left: 65%; animation-duration: 9s; animation-delay: 0s; }
+.snowflake:nth-child(8) { left: 75%; animation-duration: 12s; animation-delay: 2s; }
+.snowflake:nth-child(9) { left: 85%; animation-duration: 10s; animation-delay: 4s; }
+.snowflake:nth-child(10) { left: 95%; animation-duration: 14s; animation-delay: 1s; }
+.snowflake:nth-child(11) { left: 10%; animation-duration: 11s; animation-delay: 3s; }
+.snowflake:nth-child(12) { left: 20%; animation-duration: 13s; animation-delay: 5s; }
+.snowflake:nth-child(13) { left: 30%; animation-duration: 12s; animation-delay: 0s; }
+.snowflake:nth-child(14) { left: 40%; animation-duration: 10s; animation-delay: 2s; }
+.snowflake:nth-child(15) { left: 50%; animation-duration: 14s; animation-delay: 4s; }
+.snowflake:nth-child(16) { left: 60%; animation-duration: 11s; animation-delay: 1s; }
+.snowflake:nth-child(17) { left: 70%; animation-duration: 13s; animation-delay: 3s; }
+.snowflake:nth-child(18) { left: 80%; animation-duration: 15s; animation-delay: 5s; }
+.snowflake:nth-child(19) { left: 90%; animation-duration: 9s; animation-delay: 0s; }
+.snowflake:nth-child(20) { left: 12%; animation-duration: 12s; animation-delay: 2s; }
+.snowflake:nth-child(21) { left: 22%; animation-duration: 10s; animation-delay: 4s; }
+.snowflake:nth-child(22) { left: 32%; animation-duration: 14s; animation-delay: 1s; }
+.snowflake:nth-child(23) { left: 42%; animation-duration: 11s; animation-delay: 3s; }
+.snowflake:nth-child(24) { left: 52%; animation-duration: 13s; animation-delay: 5s; }
+.snowflake:nth-child(25) { left: 62%; animation-duration: 12s; animation-delay: 0s; }
+
+/* ===== VARIAÇÃO DE TAMANHOS ===== */
+.snowflake:nth-child(3n) { font-size: 0.8em; }
+.snowflake:nth-child(5n) { font-size: 1.2em; }
+.snowflake:nth-child(7n) { font-size: 0.9em; }
+{%- endif -%}
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width: 768px) {
+  :root {
+    --christmas-icon-size: calc({{ settings.christmas_icon_size | default: 24 }}px * 0.8);
+  }
+
+  .christmas-header-icon {
+    margin: 0 8px;
+  }
+
+  .christmas-footer-decoration {
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .christmas-footer-decoration img {
+    width: 20px;
+    height: 20px;
+  }
+
+  {%- if settings.christmas_show_snow -%}
+  /* Reduz neve pela metade em tablets */
+  .christmas-snow-container[data-intensity="1"] .snowflake:nth-child(n+4) { display: none; }
+  .christmas-snow-container[data-intensity="2"] .snowflake:nth-child(n+7) { display: none; }
+  .christmas-snow-container[data-intensity="3"] .snowflake:nth-child(n+10) { display: none; }
+  .christmas-snow-container[data-intensity="4"] .snowflake:nth-child(n+13) { display: none; }
+  .christmas-snow-container[data-intensity="5"] .snowflake:nth-child(n+16) { display: none; }
+  {%- endif -%}
+}
+
+@media (max-width: 480px) {
+  :root {
+    --christmas-icon-size: calc({{ settings.christmas_icon_size | default: 24 }}px * 0.7);
+  }
+
+  .christmas-header-icon {
+    margin: 0 6px;
+  }
+
+  .christmas-footer-decoration {
+    gap: 10px;
+  }
+
+  .christmas-product-badge {
+    top: 6px;
+    right: 6px;
+  }
+
+  {%- if settings.christmas_show_snow -%}
+  /* Reduz ainda mais em mobile */
+  .christmas-snow-container[data-intensity="1"] .snowflake:nth-child(n+3) { display: none !important; }
+  .christmas-snow-container[data-intensity="2"] .snowflake:nth-child(n+5) { display: none !important; }
+  .christmas-snow-container[data-intensity="3"] .snowflake:nth-child(n+7) { display: none !important; }
+  .christmas-snow-container[data-intensity="4"] .snowflake:nth-child(n+9) { display: none !important; }
+  .christmas-snow-container[data-intensity="5"] .snowflake:nth-child(n+11) { display: none !important; }
+
+  .snowflake {
+    font-size: 0.8em;
+  }
+  {%- endif -%}
+}
+
+/* ===== ACESSIBILIDADE ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .christmas-header-icon,
+  .christmas-product-badge,
+  .christmas-footer-decoration {
+    animation: none !important;
+  }
+
+  .christmas-footer-decoration img {
+    transition: none;
+  }
+
+  {%- if settings.christmas_show_snow -%}
+  .snowflake,
+  .christmas-snow-container {
+    animation: none !important;
+    display: none;
+  }
+  {%- endif -%}
+}
+
+/* ===== MODO ESCURO ===== */
+
+[data-theme="dark"] .christmas-header-icon img,
+[data-theme="dark"] .christmas-footer-decoration img,
+[data-theme="dark"] .christmas-product-badge img {
+  filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.1));
+}
+</style>
+{%- endif -%}

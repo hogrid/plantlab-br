@@ -839,5 +839,9 @@
         "submitted_label": "Pedido Registrado"
       }
     }
+  },
+  "christmas_theme": {
+    "enabled": "Tema de Natal Ativado",
+    "disabled": "Tema Padrão"
   }
 }

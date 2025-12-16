@@ -1,0 +1,10 @@
+{%- liquid
+  assign christmas_enabled = settings.enable_christmas_theme
+  assign show_icons = settings.christmas_show_icons
+-%}
+
+{%- if christmas_enabled and show_icons -%}
+<span class="christmas-header-icon" aria-hidden="true">
+  <img src="{{ 'christmas-icon-01.svg' | asset_url }}" alt="" loading="lazy">
+</span>
+{%- endif -%}

@@ -93,15 +93,15 @@
     position: relative;
     width: 350px;
     min-height: 150px;
-    border: 2px solid rgba(243, 76, 115, 1);
+    border: 2px solid {% if settings.enable_christmas_theme %}{{ settings.christmas_gradient_end }}{% else %}rgba(243, 76, 115, 1){% endif %};
     display: flex !important;
     align-items: flex-end;
-    color: rgba(243, 76, 115, 1);
+    color: {% if settings.enable_christmas_theme %}{{ settings.christmas_gradient_end }}{% else %}rgba(243, 76, 115, 1){% endif %};
   }
 
   .benefit-showcase-item:hover {
-    background: linear-gradient(90deg, rgba(146, 4, 201, 1), rgba(243, 76, 115, 1) 100%);
-    border-color: transparent; 
+    background: {% if settings.enable_christmas_theme %}linear-gradient(90deg, {{ settings.christmas_gradient_start }} 0%, {{ settings.christmas_gradient_end }} 50%, {{ settings.christmas_gradient_start }} 100%){% else %}linear-gradient(90deg, rgba(146, 4, 201, 1), rgba(243, 76, 115, 1) 100%){% endif %};
+    border-color: transparent;
   }
 
   .benefit-showcase-item:hover .benefit-showcase-item-content p {

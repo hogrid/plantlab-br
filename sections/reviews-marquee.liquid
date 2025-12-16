@@ -1,6 +1,6 @@
 {{ 'component-reviews-marquee.css' | asset_url | stylesheet_tag }}
 
-<div class="reviews-marquee-container"{% unless product %} style="--product-gradient: linear-gradient(255deg, rgba(148, 0, 211, 1), rgba(243, 76, 115, 1) 100%);"{% endunless %}>
+<div class="reviews-marquee-container"{% unless product %} style="--product-gradient: {% if settings.enable_christmas_theme %}linear-gradient(255deg, {{ settings.christmas_gradient_start }} 0%, {{ settings.christmas_gradient_end }} 50%, {{ settings.christmas_gradient_start }} 100%){% else %}linear-gradient(255deg, rgba(148, 0, 211, 1), rgba(243, 76, 115, 1) 100%){% endif %};"{% endunless %}>
   {% for i in (1..5) %}
     <div class="reviews-marquee-wrapper">
       <div class="reviews-marquee">

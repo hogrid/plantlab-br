@@ -164,6 +164,7 @@
                         </a>
                     </{% if request.page_type == 'index' %}h1{% else %}div{% endif %}>
                 </div>
+                {% render 'christmas-header-icon' %}
 
             {%- when 'main_menu' -%}
             <div class="main-menu header-item p-static w-100{% if block.settings.label_position == 'none' %} label-none{% elsif block.settings.label_position == 'main_menu' %} label-main-menu{% if block.settings.new_label_1 != blank or block.settings.sale_label_1 != blank or block.settings.hot_label_1 != blank%} main-menu-hasLabel{% endif %}{% else %}{% endif %}{% if block.settings.menu_top_spacing <= 16 %} label-small{% endif %}{% if block.settings.menu_top_spacing == 18 %} mg-18{% endif %}">

@@ -1,0 +1,12 @@
+{%- liquid
+  assign snow_enabled = settings.enable_christmas_theme and settings.christmas_show_snow
+  assign snow_intensity = settings.christmas_snow_intensity | default: 3
+-%}
+
+{%- if snow_enabled -%}
+<div class="christmas-snow-container" data-intensity="{{ snow_intensity }}" aria-hidden="true">
+  {%- for i in (1..25) -%}
+    <div class="snowflake">❄</div>
+  {%- endfor -%}
+</div>
+{%- endif -%}
