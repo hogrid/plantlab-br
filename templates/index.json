@@ -14,10 +14,9 @@
       "blocks": {
         "16321237356a896dad-0": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image_slide": "shopify://shop_images/BANNER_DESKTOP_-_CYBER_MONDAY.png",
-            "image_slide_mb": "shopify://shop_images/BANNER_MOBILE_-_Cyber_Monday.png",
+            "image_slide": "shopify://shop_images/Banner_Desktop_-_Natal.png",
+            "image_slide_mb": "shopify://shop_images/Banner_Mobile_-_Natal.png",
             "alignment": "left",
             "enable_custom_position": false,
             "custom_horizontal": "40",
@@ -81,7 +80,7 @@
             "enable_underline": true,
             "font_size_link": 36,
             "button_slide": "",
-            "link": "shopify://collections/all",
+            "link": "shopify://products/kit-de-natal-plantlab",
             "button_style": "button",
             "button_slide_2": "",
             "link_2": "",
@@ -302,6 +301,7 @@
         },
         "video_fQbCi6": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "style_video": "mp4",
             "video_link": "eTCtDW7O1aM",
@@ -546,7 +546,7 @@
             "bg_color_icon": "#000000",
             "button_style": "style_1",
             "btn_text": "﻿﻿QUERO MEU KIT",
-            "link": "",
+            "link": "shopify://products/kit-de-natal-plantlab",
             "button_1_width": 195,
             "enable_button_custom_border": false,
             "button_color": "#000000",
@@ -575,7 +575,6 @@
       "block_order": [
         "small_img_QMx9Vm"
       ],
-      "disabled": true,
       "settings": {
         "id_section": "",
         "container": "1170",
