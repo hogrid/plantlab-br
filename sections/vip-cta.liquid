@@ -89,13 +89,13 @@ assign btn2_text_color = section.settings.button_secondary_text_color | default:
       {%- if btn1_text != blank or btn2_text != blank -%}
       <div class="vip-button-wrapper vip-cta-buttons">
         {%- if btn1_text != blank and btn1_link != blank -%}
-        <a href="{{ btn1_link }}" class="vip-button vip-button--outline" aria-label="{{ btn1_text }}">
+        <a href="{{ btn1_link }}" class="vip-button vip-button--outline" data-use-configured-url="true" aria-label="{{ btn1_text }}">
           <span class="vip-button-text">{{ btn1_text }}</span>
         </a>
         {%- endif -%}
 
-        {%- if btn2_text != blank -%}
-        <a href="{{ btn2_link | default: '#' }}" class="vip-button vip-button--cta-shiny" aria-label="{{ btn2_text }}">
+        {%- if btn2_text != blank and btn2_link != blank -%}
+        <a href="{{ btn2_link }}" class="vip-button vip-button--cta-shiny" data-use-configured-url="true" aria-label="{{ btn2_text }}">
           {%- if section.settings.show_icon -%}
           <span class="vip-icon">{% render 'icon-star' %}</span>
           {%- endif -%}

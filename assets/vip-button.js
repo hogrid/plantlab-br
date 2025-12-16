@@ -23,6 +23,13 @@ class VIPButton {
     if (triggers.length) {
       triggers.forEach((btn) => {
         btn.addEventListener('click', (e) => {
+          // Se o botão tem data-use-configured-url, sempre usa o href configurado
+          if (btn.dataset.useConfiguredUrl === 'true') {
+            // Permite o comportamento padrão do link (navegação normal)
+            return;
+          }
+
+          // Caso contrário (botões do header), força WhatsApp
           e.preventDefault();
           this.redirectToWhatsApp();
         });
@@ -57,9 +64,17 @@ class VIPButton {
    * Handle mobile button click with feedback
    */
   handleMobileClick(button) {
+    // Se o botão tem data-use-configured-url, usa o href configurado
+    if (button.dataset.useConfiguredUrl === 'true') {
+      const href = button.getAttribute('href');
+      // Navega para o href configurado
+      window.location.href = href;
+      return;
+    }
+
     // Add visual feedback
     this.addClickFeedback(button);
-    
+
     // Small delay for visual feedback before redirect
     setTimeout(() => {
       this.redirectToWhatsApp();
