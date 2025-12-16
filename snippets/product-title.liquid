@@ -7,7 +7,7 @@
       class="productView-title"
       style="--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};"
     >
-      <span>{{ product.title | escape }}</span>
+      <span>{{ product.title | escape }}{% render 'christmas-product-icon-inline', product: product %}</span>
     </h1>
     {% render 'halo-share', product: product, share_layout: check_show_share %}
   </div>
@@ -17,7 +17,7 @@
       class="productView-title"
       style="--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};"
     >
-      <span>{{ product.metafields.custom.fixed_title.value | default: product.title | escape }}</span>
+      <span>{{ product.metafields.custom.fixed_title.value | default: product.title | escape }}{% render 'christmas-product-icon-inline', product: product %}</span>
     </h1>
     {% render 'light-stock' %}
   </div>

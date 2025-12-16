@@ -7,6 +7,7 @@
   {%- if settings.show_badge -%}
     {% render 'product-badge', product: product, class: 'card__badge', badge_detail: true %}
   {%- endif -%}
+  {% render 'christmas-product-badge', product: product %}
   <div>
     <div class="product-showcase-item-image">
       <img

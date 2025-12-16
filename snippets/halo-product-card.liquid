@@ -141,7 +141,7 @@
                 {%- endif -%}
                 <a class="card-title link-underline{% if settings.product_title_line_text != 'full' %} card-title-ellipsis{% endif %}{% if variant_selected != blank %} card-title-change{% endif %}" href="{{ product.url | within: collection }}" data-product-title="{{ product.title | escape }}" data-product-url="{{ product.url | within: collection }}">
                     <span class="text">
-                        {{ product.title | escape }}
+                        {{ product.title | escape }}{% render 'christmas-product-icon-inline', product: product %}
                         {% if variant_selected != blank %}
                             <span data-change-title> - {{ variant_selected }}</span>
                         {% endif %}

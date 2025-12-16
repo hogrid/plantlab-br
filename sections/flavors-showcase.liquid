@@ -27,6 +27,7 @@
       {%- if settings.show_badge -%}
         {% render 'product-badge', product: block.settings.product, class: 'card__badge', badge_detail: true %}
       {%- endif -%}
+      {% render 'christmas-product-badge', product: block.settings.product %}
         <div>
           <div class="product-showcase-item-content">
             <p>{{ block.settings.description | default: block.settings.product.description }}</p>

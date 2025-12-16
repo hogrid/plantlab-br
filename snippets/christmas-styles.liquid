@@ -190,6 +190,37 @@ html[data-theme="dark"] .globo-form-id-65895 .globo-form-app .gfb__footer button
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
+/* Ícone inline (após nome do produto) */
+.christmas-product-icon-inline {
+  display: inline-block !important;
+  margin-left: 6px;
+  line-height: 1;
+  vertical-align: middle;
+  animation: christmas-sparkle 3s ease-in-out infinite;
+}
+
+.christmas-product-icon-inline img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+/* Ícone maior na página do produto (dentro do título principal) */
+.productView-title .christmas-product-icon-inline {
+  margin-left: 10px;
+}
+
+.productView-title .christmas-product-icon-inline img {
+  width: 36px;
+  height: 36px;
+}
+
+h1 .christmas-product-icon-inline img {
+  width: 32px;
+  height: 32px;
+}
+
 /* ===== ANIMAÇÕES ===== */
 
 @keyframes christmas-pulse {
@@ -308,6 +339,21 @@ html[data-theme="dark"] .globo-form-id-65895 .globo-form-app .gfb__footer button
     height: 20px;
   }
 
+  /* Ícone maior na página do produto - tablet */
+  .productView-title .christmas-product-icon-inline {
+    margin-left: 8px;
+  }
+
+  .productView-title .christmas-product-icon-inline img {
+    width: 30px;
+    height: 30px;
+  }
+
+  h1 .christmas-product-icon-inline img {
+    width: 26px;
+    height: 26px;
+  }
+
   {%- if settings.christmas_show_snow -%}
   /* Reduz neve pela metade em tablets */
   .christmas-snow-container[data-intensity="1"] .snowflake:nth-child(n+4) { display: none; }
@@ -336,6 +382,26 @@ html[data-theme="dark"] .globo-form-id-65895 .globo-form-app .gfb__footer button
     right: 6px;
   }
 
+  .christmas-product-icon-inline img {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Ícone maior na página do produto - mobile */
+  .productView-title .christmas-product-icon-inline {
+    margin-left: 6px;
+  }
+
+  .productView-title .christmas-product-icon-inline img {
+    width: 24px;
+    height: 24px;
+  }
+
+  h1 .christmas-product-icon-inline img {
+    width: 22px;
+    height: 22px;
+  }
+
   {%- if settings.christmas_show_snow -%}
   /* Reduz ainda mais em mobile */
   .christmas-snow-container[data-intensity="1"] .snowflake:nth-child(n+3) { display: none !important; }
@@ -355,6 +421,7 @@ html[data-theme="dark"] .globo-form-id-65895 .globo-form-app .gfb__footer button
 @media (prefers-reduced-motion: reduce) {
   .christmas-header-icon,
   .christmas-product-badge,
+  .christmas-product-icon-inline,
   .christmas-footer-decoration {
     animation: none !important;
   }
@@ -376,7 +443,8 @@ html[data-theme="dark"] .globo-form-id-65895 .globo-form-app .gfb__footer button
 
 [data-theme="dark"] .christmas-header-icon img,
 [data-theme="dark"] .christmas-footer-decoration img,
-[data-theme="dark"] .christmas-product-badge img {
+[data-theme="dark"] .christmas-product-badge img,
+[data-theme="dark"] .christmas-product-icon-inline img {
   filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.1));
 }
 </style>

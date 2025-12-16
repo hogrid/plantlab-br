@@ -5,7 +5,7 @@
 -%}
 {%- if check_show_share == '3' -%}
     <div class="halo-share-3">
-        <h1 class="productView-title" style="--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};"><span>{{ product.title | escape }}</span></h1>
+        <h1 class="productView-title" style="--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};"><span>{{ product.title | escape }}{% render 'christmas-product-icon-inline', product: product %}</span></h1>
         {% render 'halo-share', product: product, share_layout: check_show_share %}
     </div>
 {%- else -%}

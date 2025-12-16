@@ -1,0 +1,29 @@
+{%- liquid
+  assign christmas_enabled = settings.enable_christmas_theme
+  assign show_icons = settings.christmas_show_icons
+
+  comment
+    Aceita tanto 'product' quanto a variável passada como parâmetro
+  endcomment
+  if product == blank
+    assign current_product = product_card_product
+  else
+    assign current_product = product
+  endif
+
+  if current_product != blank
+    assign icon_index = current_product.id | modulo: 9
+    assign icon_number = icon_index | plus: 1
+    if icon_number < 10
+      assign icon_file = 'christmas-icon-0' | append: icon_number | append: '.svg'
+    else
+      assign icon_file = 'christmas-icon-' | append: icon_number | append: '.svg'
+    endif
+  endif
+-%}
+
+{%- if christmas_enabled and show_icons and current_product != blank -%}
+<span class="christmas-product-icon-inline" aria-hidden="true">
+  <img src="{{ icon_file | asset_url }}" alt="" loading="lazy">
+</span>
+{%- endif -%}
