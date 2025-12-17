@@ -28,6 +28,7 @@
 .halo-productBadges .badge.new-badge{
     color: var(--new-badge-color);
     background-color: var(--new-badge-bg);
+    margin-top: 20px;
 }
 
 .style-arrows-6 .halo-productBadges .badge.new-badge {

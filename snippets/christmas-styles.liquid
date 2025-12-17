@@ -103,6 +103,22 @@ html[data-theme="dark"] .globo-form-id-65895 .globo-form-app .gfb__footer button
   /* Nota: Gradientes inline precisam ser substituídos manualmente */
 }
 
+/* ===== PRODUCT ADD TO CART BUTTON ===== */
+
+/* Redefine a variável CSS --product-gradient para produtos sem metafields no tema de Natal */
+body.christmas-theme-active.product-no-metafields {
+  --product-gradient: var(--christmas-gradient) !important;
+}
+
+/* Sobrescreve o gradiente do botão de adicionar ao carrinho para produtos sem metafields */
+.christmas-theme-active.product-no-metafields .productView-action .button,
+.christmas-theme-active.product-no-metafields .productView-action .product-form__submit,
+.christmas-theme-active.product-no-metafields button#product-add-to-cart {
+  background: var(--christmas-gradient) !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
 /* ===== ANNOUNCEMENT BAR & MARQUEE ===== */
 
 /* Announcement bar (barra de anúncio no topo) */

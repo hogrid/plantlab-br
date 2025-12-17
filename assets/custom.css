@@ -294,6 +294,59 @@ body:not(.template-index)
 }
 
 /* PRODUCT PAGE */
+
+/* Gallery main image padding and cursor */
+.productView-image-wrapper {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.productView-image .productView-img-container {
+  cursor: pointer;
+}
+
+/* Gallery navigation dots */
+.productView-image-wrapper .slick-dots {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin: 12px 0 0 0;
+  list-style: none;
+}
+
+.productView-image-wrapper .slick-dots li {
+  margin: 0;
+  padding: 0;
+  width: 8px;
+  height: 8px;
+}
+
+.productView-image-wrapper .slick-dots li button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #ccc;
+  font-size: 0;
+  line-height: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.productView-image-wrapper .slick-dots li.slick-active button {
+  background: var(--product-color, #9204C8);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.productView-image-wrapper .slick-dots li button:hover {
+  background: var(--product-color, #9204C8);
+  opacity: 0.7;
+}
+
 .productView-action .button {
   background: var(--product-gradient) !important;
   position: relative;
@@ -306,8 +359,8 @@ body.product-no-metafields .productView-action .button {
 }
 
 /* Christmas theme override for products without metafields */
-body.product-no-metafields.christmas-theme-active .productView-action .button {
-  background: var(--christmas-gradient) !important;
+body.christmas-theme-active.product-no-metafields .productView-action .button {
+  background: linear-gradient(90deg, #991B1B 0%, #DC2626 50%, #991B1B 100%) !important;
 }
 
 .jdgm-rev-widg__actions {

@@ -5759,9 +5759,10 @@
           checkNav = sliderNav;
         } else {
           if (!sliderNav.is(".style-2, .style-3") || window.innerWidth < 768) {
+            const hasMultipleImages = sliderNav.find('.productView-image').length > 1;
             sliderNav.slick({
               fade: false,
-              dots: false,
+              dots: hasMultipleImages,
               arrows: navArrowsDesk,
               infinite: true,
               slidesToShow: 1,
@@ -5775,6 +5776,7 @@
                   breakpoint: 768,
                   settings: {
                     arrows: navArrowsMobi,
+                    dots: hasMultipleImages,
                   },
                 },
               ],
