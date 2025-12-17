@@ -22,6 +22,33 @@
         assign gift_card_recipient_feature_active = true
       endif
     assign sticky_add_to_cart_always_mb = section.settings.enable_sticky_add_to_cart_always_mobile
+
+    comment
+      For products without metafields, override empty color values with fallback
+    endcomment
+    if product.metafields.custom.cor_de_fundo.value == blank
+      assign default_color = '#9204C8'
+      assign default_color_hover = '#7B04A8'
+
+      if atc_bg_color == blank or atc_bg_color == '' or atc_bg_color == '{{' or atc_bg_color contains '{{'
+        assign atc_bg_color = default_color
+      endif
+      if atc_border_color == blank or atc_border_color == '' or atc_border_color contains '{{'
+        assign atc_border_color = default_color
+      endif
+      if atc_bg_color_hover == blank or atc_bg_color_hover == '' or atc_bg_color_hover contains '{{'
+        assign atc_bg_color_hover = default_color_hover
+      endif
+      if atc_border_color_hover == blank or atc_border_color_hover == '' or atc_border_color_hover contains '{{'
+        assign atc_border_color_hover = default_color_hover
+      endif
+      if atc_color == blank or atc_color == ''
+        assign atc_color = '#ffffff'
+      endif
+      if atc_color_hover == blank or atc_color_hover == ''
+        assign atc_color_hover = '#ffffff'
+      endif
+    endif
 -%}
 <div class="productView-buttons">
     {%- if gift_card_recipient_feature_active -%}

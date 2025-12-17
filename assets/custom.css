@@ -300,6 +300,16 @@ body:not(.template-index)
   overflow: visible;
 }
 
+/* Fallback for products without gradient metafield */
+body.product-no-metafields .productView-action .button {
+  background: linear-gradient(135deg, #9204C8 0%, #7B04A8 100%) !important;
+}
+
+/* Christmas theme override for products without metafields */
+body.product-no-metafields.christmas-theme-active .productView-action .button {
+  background: var(--christmas-gradient) !important;
+}
+
 .jdgm-rev-widg__actions {
   display: none;
 }

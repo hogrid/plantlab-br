@@ -280,6 +280,10 @@ assign customization_option_2 = settings.customization_option_2
 endif
 -%}
 
+{{ 'component-custom-subscription.css' | asset_url | stylesheet_tag }}
+{{ 'nice-select2.css' | asset_url | stylesheet_tag }}
+{{ 'nice-select2.js' | asset_url | script_tag }}
+
 {%- if first_3d_model -%}
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-product-model.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -291,6 +295,54 @@ endif
 {%- endif -%}
 
 <style type="text/css">
+  {%- if product.metafields.custom.cor_de_fundo.value == blank -%}
+  /* CRITICAL: Fallback styles for products without metafields - loaded first */
+  .productView-action .button,
+  .productView-action .product-form__submit,
+  .productView-action button.button--primary,
+  .productView-action button.button--secondary,
+  .productView-form button[type="submit"],
+  .product-form button[type="submit"],
+  button#product-add-to-cart,
+  #product-add-to-cart.button--primary {
+    background: #9204C8 !important;
+    background-color: #9204C8 !important;
+    border-color: #9204C8 !important;
+    color: #ffffff !important;
+  }
+
+  .productView-action .button:hover,
+  .productView-action .product-form__submit:hover,
+  .productView-action button.button--primary:hover,
+  .productView-action button.button--secondary:hover,
+  .productView-form button[type="submit"]:hover,
+  .product-form button[type="submit"]:hover,
+  button#product-add-to-cart:hover,
+  #product-add-to-cart.button--primary:hover {
+    background: #7B04A8 !important;
+    background-color: #7B04A8 !important;
+    border-color: #7B04A8 !important;
+    color: #ffffff !important;
+  }
+
+  /* Override any CSS variables that might be empty */
+  .productView-action {
+    --atc-bg-color: #9204C8 !important;
+    --atc-color: #ffffff !important;
+    --atc-border-color: #9204C8 !important;
+    --atc-bg-color-hover: #7B04A8 !important;
+    --atc-color-hover: #ffffff !important;
+    --atc-border-color-hover: #7B04A8 !important;
+  }
+  {%- endif -%}
+
+  :root {
+    --product-color: {{ product.metafields.custom.cor_de_fundo.value | default: '#9204C8' }};
+    --product-color-transparent: {{ product.metafields.custom.cor_de_fundo.value | default: '#9204C8' | append: '33' }};
+    --background: {{ product.metafields.custom.hexadecimal_2.value | default: 'linear-gradient(135deg, #9204C8 0%, #7B04A8 100%)' }};
+    --product-gradient: {{ product.metafields.custom.hexadecimal_2.value | default: 'linear-gradient(135deg, #9204C8 0%, #7B04A8 100%)' }};
+  }
+
   #ProductSection- {
       {
       section.id
@@ -834,10 +886,12 @@ endif
         </div>
         <div class="price-product-wrapper d-flex flex-align-center">
           {% render 'price', product: product %}
+          {%- if product.metafields.custom.doses.value != blank and product.metafields.custom.doses.value > 0 -%}
           <div class="per-dose-price">
             {{ product.price | divided_by: product.metafields.custom.doses.value | money_without_trailing_zeros }} por
             dose
           </div>
+          {%- endif -%}
         </div>
       </div>
       {% if breadcrumb_has_bg %}
@@ -1182,10 +1236,12 @@ endif
               -%}
               {%- case block.type -%}
               {%- when 'payment_promo' -%}
+              {%- if product.metafields.custom.cor_de_fundo.value != blank -%}
               <div class="productView-moreItem"
                 style="--spacing-top: {{ spacing_top | append: 'px' }}; --spacing-bottom: {{ spacing_bottom | append: 'px' }}">
                 {% render 'product-payment-promo', block: block, section: section %}
               </div>
+              {%- endif -%}
               {%- when 'promo_countdown' -%}
               <div class="productView-moreItem"
                 style="--spacing-top: {{ spacing_top | append: 'px' }}; --spacing-bottom: {{ spacing_bottom | append: 'px' }}">
@@ -1222,7 +1278,9 @@ endif
                 %}
               </div>
               {%- when 'flavors_selector' -%}
+              {%- if product.metafields.custom.opcoes_de_tamanhos.value != blank -%}
               {% render 'product-flavors-selector', block: block %}
+              {%- endif -%}
               {%- when 'flavors' -%}
               <div class="productView-moreItem">
                 {% render 'product-heading', block: block %}
@@ -1251,6 +1309,7 @@ endif
                 </div>
               </div>
               {%- when 'purchase_type' -%}
+              {%- if product.requires_selling_plan or product.selling_plan_groups.size > 0 -%}
               <div class="productView-moreItem productView-purchaseType">
                 <style>
                   .rc-radio__subscription::after {
@@ -1268,6 +1327,7 @@ endif
                 {% render 'product-heading', block: block %}
                 {% render 'subscription_snippet' %}
               </div>
+              {%- endif -%}
               {%- when 'minibanner' -%}
               {% render 'minibanner-info',
               title: 'Dúvidas sobre nossa assinatura?',
