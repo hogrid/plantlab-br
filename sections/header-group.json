@@ -17,7 +17,7 @@
         "announcement_EHeFaG": {
           "type": "announcement",
           "settings": {
-            "text": "<p>🎁 NIVER PLANTLAB: CASHBACK TURBINADO: DE 7% PARA 10%💸 PAGUE NO PIX E GANHE + 3% OFF! 🥳</p>",
+            "text": "<p>🎁 CASHBACK DE 7% EM TODOS OS PEDIDOS 💸 PAGUE NO PIX E GANHE + 3% OFF! 🥳</p>",
             "btn_color": "#f84248",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -37,7 +37,7 @@
         "enable_close": false,
         "color_text": "#ffffff",
         "bg_color_text": "rgba(0,0,0,0)",
-        "bg_color_text_gradient": "linear-gradient(90deg, rgba(142, 18, 255, 1) 1%, rgba(225, 0, 255, 1) 99%)",
+        "bg_color_text_gradient": "linear-gradient(90deg, rgba(142, 18, 255, 1) 1%, rgba(255, 0, 171, 1) 99%)",
         "font_size_text": 12,
         "font_style_text": "normal",
         "font_weight_text": "500",

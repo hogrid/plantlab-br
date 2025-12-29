@@ -850,7 +850,7 @@
     "mobile_menu": "default",
     "collection_layout": "default",
     "product_page_layout": "default",
-    "enable_christmas_theme": true,
+    "enable_christmas_theme": false,
     "type_font_1": "google_fonts",
     "type_font_1_name": "SF Pro Display",
     "type_font_1_font": "mono",
