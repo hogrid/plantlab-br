@@ -83,7 +83,6 @@
         },
         "pl-payment-promo": {
           "type": "payment_promo",
-          "disabled": true,
           "settings": {
             "enable_module": true,
             "spacing_top": 8,
@@ -124,6 +123,7 @@
         },
         "promo_countdown_Yk9bqn": {
           "type": "promo_countdown",
+          "disabled": true,
           "settings": {
             "enable_module": true,
             "spacing_top": 16,
