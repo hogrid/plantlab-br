@@ -389,6 +389,7 @@
         },
         "product_7R4yM6": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "product": "ecobag-plantlab",
             "description": "Ecobag Preta",
