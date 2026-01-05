@@ -14,10 +14,9 @@
       "blocks": {
         "16321237356a896dad-0": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image_slide": "shopify://shop_images/Banner_Desktop_-_Natal.png",
-            "image_slide_mb": "shopify://shop_images/Banner_Mobile_-_Natal.png",
+            "image_slide": "shopify://shop_images/Banner_Desktop_-_Summer_1.png",
+            "image_slide_mb": "shopify://shop_images/Banner_Mobile_-_Summer_1.png",
             "alignment": "left",
             "enable_custom_position": false,
             "custom_horizontal": "40",
@@ -81,7 +80,7 @@
             "enable_underline": true,
             "font_size_link": 36,
             "button_slide": "",
-            "link": "shopify://products/kit-de-natal-plantlab",
+            "link": "shopify://collections/all",
             "button_style": "button",
             "button_slide_2": "",
             "link_2": "",
@@ -110,10 +109,9 @@
         },
         "image_xeUd87": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image_slide": "shopify://shop_images/BLUE_WEEK_-_Banner_Desktop_2.png",
-            "image_slide_mb": "shopify://shop_images/BLUE_WEEK_-_Banner_Mobile_2.png",
+            "image_slide": "shopify://shop_images/Banner_Desktop_-_Summer_2.png",
+            "image_slide_mb": "shopify://shop_images/Banner_Mobile_-_Summer_2.png",
             "alignment": "left",
             "enable_custom_position": false,
             "custom_horizontal": "40",
@@ -206,10 +204,9 @@
         },
         "image_Knj7wm": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "image_slide": "shopify://shop_images/Banner_Desktop_-_Semana_do_Consumidor_0ea357b7-a240-4a38-980f-998521b88997.png",
-            "image_slide_mb": "shopify://shop_images/Banner_Mobile_3_-_Semana_do_Consumidor_5b6d6c87-d0c4-4da7-a257-e3751ffffd0a.png",
+            "image_slide": "shopify://shop_images/Banner_Desktop_-_Summer_3_1.png",
+            "image_slide_mb": "shopify://shop_images/Banner_Mobile_-_Summer_3.png",
             "alignment": "left",
             "enable_custom_position": false,
             "custom_horizontal": "40",
@@ -302,6 +299,7 @@
         },
         "video_fQbCi6": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "style_video": "mp4",
             "video_link": "eTCtDW7O1aM",
@@ -429,7 +427,7 @@
         "announcement_EHeFaG": {
           "type": "announcement",
           "settings": {
-            "text": "<p>🚨 ATENÇÃO HUMAN! 👽 ALIEN FRIDAY ESTÁ ON!</p>",
+            "text": "<p>☀️ SUMMER SALE: 20% OFF</p>",
             "btn_color": "#f84248",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -439,7 +437,7 @@
         "announcement_FGbqHf": {
           "type": "announcement",
           "settings": {
-            "text": "<p>•</p>",
+            "text": "<p>• 🎟️ CUPOM SUMMER20 •</p>",
             "btn_color": "#f84248",
             "btn_border_color": "#ffffff",
             "btn_bg_color": "#ffffff",
@@ -450,7 +448,7 @@
           "type": "countdown",
           "settings": {
             "top_message_text": "",
-            "annou_countdown": "Nov 30, 2025 23:59:59",
+            "annou_countdown": "Jan 12, 2026 23:59:59",
             "color_countdown_text": "#06142e",
             "border_color_countdown": "#f7f8fa",
             "bg_color_countdown": "#f7f8fa"
@@ -473,7 +471,6 @@
         "countdown_XJexgU",
         "announcement_EVXXNk"
       ],
-      "disabled": true,
       "custom_css": [
         ".container {max-width: 100% !important;}"
       ],
@@ -483,7 +480,7 @@
         "enable_close": false,
         "color_text": "#ffffff",
         "bg_color_text": "rgba(0,0,0,0)",
-        "bg_color_text_gradient": "linear-gradient(90deg, rgba(239, 186, 66, 1), rgba(230, 154, 28, 1) 99%)",
+        "bg_color_text_gradient": "linear-gradient(90deg, rgba(255, 0, 183, 1), rgba(109, 0, 255, 1) 99%)",
         "font_size_text": 12,
         "font_style_text": "normal",
         "font_weight_text": "500",
