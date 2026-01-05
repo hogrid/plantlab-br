@@ -351,13 +351,14 @@
         "benefit_8Mnp8m",
         "benefit_Kqr9wc"
       ],
+      "disabled": true,
       "name": "CTA Grupo VIP",
       "settings": {
         "heading": "GARANTA SEU KIT DE NATAL",
         "subheading": "KIT SUPER EXCLUSIVO E LIMITADO",
         "description": "<p>O Kit de Natal da Plantlab chegou reunindo planner, livrinho de receitas e caixa presente. É o trio perfeito para fechar o ano com sabor, organização e aquela vibe gostosa de celebração. 🚀💚</p>",
-        "accent_color_start": "#DC2626",
-        "accent_color_end": "#991B1B",
+        "accent_color_start": "#dc2626",
+        "accent_color_end": "#991b1b",
         "bg_gradient_start": "#0f0f0f",
         "bg_gradient_end": "#1c1c1c",
         "bg_angle": 135,
