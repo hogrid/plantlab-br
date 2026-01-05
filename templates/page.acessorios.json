@@ -39,6 +39,7 @@
         },
         "product_cYfaaM": {
           "type": "product",
+          "disabled": true,
           "settings": {
             "product": "ecobag-plantlab",
             "description": "Ecobag",
