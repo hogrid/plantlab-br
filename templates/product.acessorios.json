@@ -297,8 +297,8 @@
         "marquee_hzaTV3"
       ],
       "settings": {
-        "mq_background": "#e100ff",
-        "mq_gradient": "",
+        "mq_background": "#d92591",
+        "mq_gradient": "linear-gradient(90deg, rgba(217, 37, 145, 1) 1%, rgba(163, 54, 148, 1) 100%)",
         "type_tab_font": "font_1",
         "text_size": 40,
         "text_font_weight": "400",
@@ -405,6 +405,7 @@
         "heading_RwkJPp",
         "text_T6i4d9"
       ],
+      "disabled": true,
       "custom_css": [
         ".heading {color: var(--white) !important;}"
       ],
