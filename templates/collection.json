@@ -371,20 +371,28 @@
     "flavors_showcase_TAXpec": {
       "type": "flavors-showcase",
       "blocks": {
+        "product_bh8Kq9": {
+          "type": "product",
+          "settings": {
+            "product": "planner-2026",
+            "description": "Planner 2026",
+            "gradient": "linear-gradient(90deg, rgba(99, 63, 153, 1), rgba(170, 143, 210, 1) 100%)"
+          }
+        },
+        "product_b8UAMX": {
+          "type": "product",
+          "settings": {
+            "product": "caixa-de-presente",
+            "description": "Caixa Presente",
+            "gradient": "linear-gradient(90deg, rgba(217, 37, 145, 1) 4%, rgba(140, 34, 126, 1) 100%)"
+          }
+        },
         "product_gxaFde": {
           "type": "product",
           "settings": {
             "product": "ebook-digital-de-receitas-veganas",
             "description": "Ebook Plantlab",
             "gradient": "linear-gradient(46deg, rgba(52, 133, 236, 1) 13%, rgba(170, 248, 219, 1) 86%)"
-          }
-        },
-        "product_b8UAMX": {
-          "type": "product",
-          "settings": {
-            "product": "kit-de-natal-plantlab",
-            "description": "Kit de Natal",
-            "gradient": "linear-gradient(310deg, rgba(251, 17, 17, 1) 4%, rgba(44, 161, 21, 1) 100%)"
           }
         },
         "product_7R4yM6": {
@@ -398,8 +406,9 @@
         }
       },
       "block_order": [
-        "product_gxaFde",
+        "product_bh8Kq9",
         "product_b8UAMX",
+        "product_gxaFde",
         "product_7R4yM6"
       ],
       "settings": {
