@@ -52,6 +52,8 @@ assign upsell_cta_text = settings.combo_natal_cta_text | default: default_cta
 assign upsell_badge_text = settings.combo_natal_badge_text | default: default_badge
 assign combo_price_color = settings.combo_natal_price_color | default: '#D4AF37'
 assign combo_button_color = settings.combo_natal_button_color | default: '#D4AF37'
+assign combo_border_gradient = settings.combo_natal_border_gradient | default: 'linear-gradient(90deg, #C8102E, #228B22,
+#D4AF37, #C8102E)'
 
 # Imagem do combo (metafield ou featured image do produto)
 assign combo_image = combo_product.metafields.combo_natal.image | default: combo_product.featured_image
@@ -61,13 +63,14 @@ assign selected_variant = combo_product.selected_or_first_available_variant
 -%}
 
 {%- if should_render -%}
-<div class="combo-natal-upsell" id="combo-natal-upsell" style="--combo-price-color: {{ combo_price_color }}; --combo-button-color: {{ combo_button_color }};" data-combo-product-id="{{ combo_product.id }}"
-  data-combo-variant-id="{{ selected_variant.id }}" aria-label="Oferta especial: {{ upsell_title | escape }}">
+<div class="combo-natal-upsell" id="combo-natal-upsell"
+  style="--combo-price-color: {{ combo_price_color }}; --combo-button-color: {{ combo_button_color }}; --combo-border-gradient: {{ combo_border_gradient }};"
+  data-combo-product-id="{{ combo_product.id }}" data-combo-variant-id="{{ selected_variant.id }}"
+  aria-label="Oferta especial: {{ upsell_title | escape }}">
   <div class="combo-natal-upsell__container">
     {%- comment -%} Badge de destaque {%- endcomment -%}
     {%- if upsell_badge_text != blank -%}
     <div class="combo-natal-upsell__badge">
-      <span class="combo-natal-upsell__badge-icon" aria-hidden="true">🎄</span>
       <span class="combo-natal-upsell__badge-text">{{ upsell_badge_text }}</span>
     </div>
     {%- endif -%}
@@ -431,10 +434,11 @@ assign selected_variant = combo_product.selected_or_first_available_variant
 
     border: none;
     border-radius: var(--border-radius, 16px);
-    padding: 2px;
+    padding: 10px;
+    /* Espessura fixa da borda */
     margin: 16px 0;
     position: relative;
-    background: linear-gradient(90deg, var(--xmas-red), var(--xmas-green), var(--xmas-gold), var(--xmas-red));
+    background: var(--combo-border-gradient);
     background-size: 200% 100%;
     animation: xmas-gradient 3s ease infinite;
   }
@@ -443,8 +447,11 @@ assign selected_variant = combo_product.selected_or_first_available_variant
   .combo-natal-upsell__container {
     position: relative;
     background: linear-gradient(135deg, var(--xmas-snow) 0%, #fff9f9 100%);
-    border-radius: calc(var(--border-radius, 16px) - 2px);
+    border-radius: calc(var(--border-radius, 16px) - 10px);
+    /* Subtrai exatamente a espessura da borda */
     padding: 14px;
+    height: 100%;
+    /* Garante que preencha o container pai */
   }
 
   @keyframes xmas-gradient {

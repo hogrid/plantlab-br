@@ -6090,6 +6090,12 @@
         "id": "combo_natal_button_color",
         "label": "Cor do botão (Combo de Natal)",
         "default": "#D4AF37"
+      },
+      {
+        "type": "color_background",
+        "id": "combo_natal_border_gradient",
+        "label": "Gradiente da Borda",
+        "default": "linear-gradient(90deg, #C8102E, #228B22, #D4AF37, #C8102E)"
       }
     ]
   },
