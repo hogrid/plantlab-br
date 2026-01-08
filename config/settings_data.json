@@ -1076,6 +1076,7 @@
     "combo_natal_title": "🎁 Caixa para presente",
     "combo_natal_description": "Seu pedido é um presente? Adicione a caixa presente para torná-lo ainda mais especial (cabe até 2 proteínas 500g).",
     "combo_natal_badge_text": "PRESENTEIE QUEM VOCÊ AMA 😍",
+    "combo_natal_badge_bg": "#aa10c8",
     "combo_natal_price_color": "#d92591",
     "combo_natal_button_color": "#d92591",
     "combo_natal_border_gradient": "linear-gradient(90deg, rgba(217, 37, 145, 1), rgba(140, 53, 126, 1) 100%)",
