@@ -6081,6 +6081,12 @@
       },
       {
         "type": "color",
+        "id": "combo_natal_badge_bg",
+        "label": "Cor do fundo do Badge",
+        "default": "#C8102E"
+      },
+      {
+        "type": "color",
         "id": "combo_natal_price_color",
         "label": "Cor do preço (Combo de Natal)",
         "default": "#D4AF37"

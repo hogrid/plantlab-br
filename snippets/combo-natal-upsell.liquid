@@ -50,6 +50,7 @@ assign upsell_title = settings.combo_natal_title | default: default_title
 assign upsell_description = settings.combo_natal_description | default: default_desc
 assign upsell_cta_text = settings.combo_natal_cta_text | default: default_cta
 assign upsell_badge_text = settings.combo_natal_badge_text | default: default_badge
+assign combo_badge_bg = settings.combo_natal_badge_bg | default: '#C8102E'
 assign combo_price_color = settings.combo_natal_price_color | default: '#D4AF37'
 assign combo_button_color = settings.combo_natal_button_color | default: '#D4AF37'
 assign combo_border_gradient = settings.combo_natal_border_gradient | default: 'linear-gradient(90deg, #C8102E, #228B22,
@@ -64,7 +65,7 @@ assign selected_variant = combo_product.selected_or_first_available_variant
 
 {%- if should_render -%}
 <div class="combo-natal-upsell" id="combo-natal-upsell"
-  style="--combo-price-color: {{ combo_price_color }}; --combo-button-color: {{ combo_button_color }}; --combo-border-gradient: {{ combo_border_gradient }};"
+  style="--combo-price-color: {{ combo_price_color }}; --combo-button-color: {{ combo_button_color }}; --combo-border-gradient: {{ combo_border_gradient }}; --combo-badge-bg: {{ combo_badge_bg }};"
   data-combo-product-id="{{ combo_product.id }}" data-combo-variant-id="{{ selected_variant.id }}"
   aria-label="Oferta especial: {{ upsell_title | escape }}">
   <div class="combo-natal-upsell__container">
@@ -475,7 +476,7 @@ assign selected_variant = combo_product.selected_or_first_available_variant
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--xmas-red);
+    background: var(--combo-badge-bg);
     color: #fff;
     padding: 4px 10px;
     border-radius: 20px;
